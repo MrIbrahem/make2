@@ -4,15 +4,7 @@ python3 core8/pwb.py make2/m test Category:People executed by the International 
 
 from  make2.bots import univer # univer.universities_tables | univer.test_Universities(cate, print_def=printo)
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
-# import time
-#
-# import re
-# import sys
-# ---
+
 from ma_lists.Cities import N_cit_ies_s_lower
 
 # ---
@@ -92,31 +84,31 @@ def test_Universities(cate, print_def=printo):
     cite = ""
     majorlab = ""
     # ---
-    for xi in universities_tables:
+    for xi, xi_lab in universities_tables.items():
         xi2 = f"the {xi}"
         if cate.endswith(xi):
-            majorlab = universities_tables[xi]
+            majorlab = xi_lab
             cite = cate[: -len(xi)].strip()
             break
         elif cate.endswith(xi2):
-            majorlab = universities_tables[xi]
+            majorlab = xi_lab
             cite = cate[: -len(xi2)].strip()
             break
     # ---
     if not cite:
-        for xi in universities_tables:
+        for xi, xi_lab in universities_tables.items():
             xi3 = f"{xi}, "
             the_xi = f"the {xi}"
             if cate.startswith(xi3):
-                majorlab = universities_tables[xi]
+                majorlab = xi_lab
                 cite = cate[len(xi3) :].strip()
                 break
             elif cate.startswith(xi):
-                majorlab = universities_tables[xi]
+                majorlab = xi_lab
                 cite = cate[len(xi) :].strip()
                 break
             elif cate.startswith(the_xi):
-                majorlab = universities_tables[xi]
+                majorlab = xi_lab
                 cite = cate[len(the_xi) :].strip()
                 break
     # ---

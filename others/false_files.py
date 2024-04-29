@@ -3,10 +3,6 @@
 
 python3 core8/pwb.py make2/false_files
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
 
 import re
 import os
@@ -46,7 +42,7 @@ for root, dirs, files in os.walk(Dir / "make2", topdown=True):
         # ---
 # ---
 # text = re.sub(r'from\s*make2\s*import\s*', 'from make2 import ', text)
-# text = re.sub(r'from\s*make2\.(.*?)\s*import', 'from make2.$1 import ', text)
+# text = re.sub(r'from\s*make2\.(.*?)\s*import', 'from ..$1 import ', text)
 # ---
 for x in files_all:
     x = x.replace(".py", "")

@@ -1,13 +1,13 @@
 """
 
 Usage:
-from make2.matables_bots.table1_bot import table1get, get_KAKO
+from ..matables_bots.table1_bot import table1get, get_KAKO
 
 """
 
-from make2 import printe
+from .. import printe
 from .bot_2018 import pop_All_2018
-from make2.helps.print_bot import output_test
+from ..helps.print_bot import output_test
 from .bot import Add_to_main2_tab  # Add_to_main2_tab()
 from .bot import Films_O_TT, New_players
 from .centries_bot import centries_years_dec

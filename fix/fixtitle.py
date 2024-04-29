@@ -6,7 +6,7 @@
 
 import re
 import sys
-from make2 import printe
+from .. import printe
 from .fixlists import replase, Starting, Ending, fix_years
 from .mv_years import move_years
 
@@ -236,7 +236,11 @@ def fix_it(arlabel, en):
 
 def fixlab(label_old, out=False, en=""):
     # ---
+    en_literes = "[abcdefghijklmnopqrstuvwxyz]"
     # output_main('fixlab:"%s"' % label_old)
+    # ---
+    if re.sub(en_literes, "", label_old, flags=re.IGNORECASE) != label_old:
+        return ""
     # ---
     label_old = label_old.strip()
     label_old = re.sub(r"_", " ", label_old)

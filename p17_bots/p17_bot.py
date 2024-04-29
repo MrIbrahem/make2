@@ -1,19 +1,14 @@
 """
-from  make2.bots import year_lab #make_year_lab#make_month_lab
+
 """
 
-#
-# (C) Ibrahem Qasim, 2023
-#
-#
-# ---
-# ---
-from .test_4 import get_con_3
+from ..jobs_bots.get_helps import get_con_3
+from ..matables_bots.bot import All_P17, Add_to_main2_tab
+from ..pop_format import Tit_ose_Nmaes, pop_format
+
+from ma_lists.sports import sport_formts_en_ar_is_p17
 from ma_lists.test_4_list import en_is_P17_ar_is_mens, en_and_ar_is_P17
 from ma_lists.Nationality import All_contry_with_nat_keys_is_en, contries_from_nat
-from make2.matables_bots.bot import All_P17, Add_to_main2_tab
-from make2.pop_format import Tit_ose_Nmaes, pop_format
-from ma_lists.sports import sport_formts_en_ar_is_p17
 from ma_lists import sport_lab  # sport_lab.Get_Sport_Format_xo_en_ar_is_P17(en) # sport_lab.Get_sport_formts_female_nat(en) # sport_lab.Get_New_team_xo(team, fafa_2 = False)
 
 

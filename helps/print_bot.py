@@ -2,12 +2,12 @@
 """
 
 Usage:
-from make2.helps.print_bot import mainoutput, fafa2, testprint, only_print_heads
-from make2.helps.print_bot import do_print_options, print_def_head, output_main, print_put, output_test, output_test4
+from ..helps.print_bot import mainoutput, fafa2, testprint, only_print_heads
+from ..helps.print_bot import do_print_options, print_def_head, output_main, print_put, output_test, output_test4
 # do_print_options(noprint="", printfirst="", printhead="", all_print_off="", tst_prnt_all=False)
 """
 
-from make2 import printe
+from .. import printe
 import sys
 
 mainoutput = {1: False}

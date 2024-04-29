@@ -45,8 +45,8 @@ from .bot import (
 import sys
 
 from .bot_2018 import pop_All_2018, olympicss
-from make2.helps import len_print
-from ma_lists.test_4_list import military_format_women, military_format_men
+from ..helps import len_print
+from ma_lists.military_keys import military_format_women, military_format_men
 from ma_lists.languages import languages_pop
 from ma_lists.films_mslslat import Films_TT, typeTable_4
 from ma_lists.all_keys3 import typeTable_7, albums_type, film_production_company
@@ -59,7 +59,7 @@ from ma_lists.keys2 import Add_in_table2
 from ma_lists.peoples import People_key
 from ma_lists.Nationality import All_contry_with_nat
 
-from make2.pop_format import Tit_ose_Nmaes
+from ..pop_format import Tit_ose_Nmaes
 
 # ---
 MONTH_table = {

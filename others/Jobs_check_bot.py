@@ -9,7 +9,7 @@ from pathlib import Path
 # ---
 from ma_lists.Nationality import ar_Nat_men
 from ma_lists.Jobs import Jobs_new, Jobs_key_womens, Jobs_key_mens, Men_Womens_Jobs
-from make2 import printe
+from .. import printe
 
 # ---
 Dir = Path(__file__).parent.parent

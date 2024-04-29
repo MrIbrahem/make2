@@ -5,15 +5,13 @@ from  make2.ma_bots import fax
 
 """
 
-import re
-from make2.bots.part import get_parties_lab
 from ma_lists import sport_lab
-from make2.bots import team_work
 from ma_lists.Sport_key import Sports_Keys_For_Jobs
 from ma_lists.languages import languages_pop, lang_ttty
-from ma_lists.films_mslslat import film_key_women_2
-from ma_lists.Nationality import nats_to_add
-from make2.helps.print_bot import print_put, fafa2
+
+from .parties_bot import get_parties_lab
+from ..sports_bots import team_work
+from ..helps.print_bot import print_put, fafa2
 
 test_Lang_Cash = {}
 
@@ -82,29 +80,3 @@ def test_Lang(cate):
 
     test_Lang_Cash[cate] = cnt_la
     return cnt_la
-
-
-def make_people_lab(type_lower):
-    type_lower = type_lower.strip()
-
-    newlab = nats_to_add.get(type_lower, "")
-
-    if not newlab:
-        ty2 = re.sub(r"people$", "", type_lower)
-
-        lab2 = film_key_women_2.get(ty2, "")
-
-        if lab2:
-            newlab = f"أعلام {lab2}"
-
-    if newlab:
-        print(">>>>>>>>>>>>")
-        print(">>>>>>>>>>>>")
-        print(">>>>>>>>>>>>")
-        print(">>>>>>>>>>>>")
-        print(">>>>>>>>>>>>")
-        print(">>>>>>>>>>>>")
-        print(">>>>>>>>>>>>")
-        print(f">> make_people_lab type_lower: {type_lower}, newlab: {newlab}")
-
-    return newlab

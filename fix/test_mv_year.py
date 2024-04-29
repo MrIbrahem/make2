@@ -4,8 +4,8 @@ python3 core8/pwb.py make2/fix/test_mv_year
 
 """
 
-from .fix import mv_years
-from make2 import printe
+from . import mv_years
+from .. import printe
 
 mv_years.print_test = printe.output
 

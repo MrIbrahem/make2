@@ -9,7 +9,7 @@ from  make2 import bot as MA_MAIN # MA_MAIN.event(tab, **kwargs)
 """
 
 from . import main
-from .ma_bots import films_bot  # test_films
+from .media_bots import films_bot  # test_films
 
 
 def event(tab, **kwargs):

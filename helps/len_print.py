@@ -2,7 +2,7 @@
 """
 
 Usage:
-from make2.helps import len_print
+from ..helps import len_print
 # ---
 # len_print.lenth_pri_text = False
 # ---
@@ -15,12 +15,9 @@ Lentha = {
 len_print.lenth_pri("Labels_Contry.py", Lentha)
 
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
+
 import sys
-from make2 import printe
+from .. import printe
 from humanize import naturalsize
 
 lenth_pri_text = True

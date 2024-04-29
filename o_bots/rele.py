@@ -2,10 +2,10 @@
 """
 
 import re
-from make2 import printe
+from .. import printe
 from ma_lists.Nationality import Nat_women, Nat_men, All_contry_with_nat_keys_is_en
 from ma_lists.Nationality import All_contry_ar
-from make2.helps.print_bot import print_put
+from ..helps.print_bot import print_put
 
 # ---
 Pp_Priffix_p17 = {

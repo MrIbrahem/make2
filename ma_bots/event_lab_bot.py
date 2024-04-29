@@ -1,29 +1,29 @@
 """
 Usage:
-from make2.ma_bots import event_lab_bot
+from ..ma_bots import event_lab_bot
 # category_lab = event_lab_bot.event_Lab(category_r)
 
 """
 
 import sys
 import re
-from make2 import printe
+from .. import printe
 
 from . import fax2
 from . import list_cat_format
-from make2.helps.print_bot import print_put
-from make2.bots import year_lab
-from make2.bots import univer
+from ..helps.print_bot import print_put
+from ..date_bots import year_lab
+from ..o_bots import univer
 from ma_lists import sport_lab
 from ma_lists.Labels_Contry import New_P17_Finall
-from make2.fromnet import kooora
-from make2.fromnet.wd_bot import find_wikidata
-from make2.pop_format import pp_ends_with, pp_ends_with_pase, change_cat
-from make2.fix import fixtitle
-from make2.matables_bots.bot_2018 import pop_All_2018
+from ..fromnet import kooora
+from ..fromnet.wd_bot import find_wikidata
+from ..pop_format import pp_ends_with, pp_ends_with_pase, change_cat
+from ..fix import fixtitle
+from ..matables_bots.bot_2018 import pop_All_2018
 from .ye_ts_bot import yementest_with_Titose_Nmaes
 from .lab_seoo_bot import event_Lab_seoo
-from make2.bots import tmp_bot
+from ..bots import tmp_bot
 from .contry2_bot import Get_contry2
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"

@@ -1,30 +1,30 @@
 #!/usr/bin/python3
 """
 Usage:
-from make2.ma_bots import event2bot
+from ..ma_bots import event2bot
 # category_lab = event2bot.event2(category_r)
 
 """
 
 
 import re
-from make2 import printe
+from .. import printe
 import sys
 
 from pathlib import Path
 
 Dir_ma = Path(__file__).parent.parent
-from make2.fix import fixtitle
-from make2.bots import tmp_bot
-from make2.bots import year_lab
-from make2.bots.year_lab2 import Try_With_Years
+from ..fix import fixtitle
+from ..bots import tmp_bot
+from ..date_bots import year_lab
+from ..date_bots.with_years_bot import Try_With_Years
 from .lab_seoo_bot import event_Lab_seoo
-from make2.bots import univer  # univer.test_Universities(cate, print_def=printo)
+from ..o_bots import univer  # univer.test_Universities(cate, print_def=printo)
 
-from make2.pop_format import Tit_ose_Nmaes, NewFormat, ar_lab_before_year_to_add_in, contry_before_year
+from ..pop_format import Tit_ose_Nmaes, NewFormat, ar_lab_before_year_to_add_in, contry_before_year
 from ma_lists.Nationality import Nat_mens
-from make2.matables_bots.bot import Add_to_main2_tab  # Add_to_main2_tab()
-from make2.matables_bots.bot import (
+from ..matables_bots.bot import Add_to_main2_tab  # Add_to_main2_tab()
+from ..matables_bots.bot import (
     New_Lan,
     Films_O_TT,
     New_players,
@@ -37,8 +37,8 @@ from make2.matables_bots.bot import (
     add_in_to_contry,
     type_after_contry,
 )
-from make2.matables_bots.bot_2018 import pop_All_2018
-from make2.helps.print_bot import print_put, output_test
+from ..matables_bots.bot_2018 import pop_All_2018
+from ..helps.print_bot import print_put, output_test
 from .contry_bot import Get_contry
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"

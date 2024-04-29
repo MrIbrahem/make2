@@ -4,25 +4,22 @@ from  make2.bots import team_work # team_work.Get_Club(cate, out=False) | team_w
 Category:Sports_commentators_by_sport
 
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
+
 
 import re
-from make2 import printe
+from .. import printe
 import sys
 
 # ---
 from ma_lists.all_keys5 import Clubs_key_2
 from ma_lists.all_keys4 import International_Federation_lower
 from ma_lists.all_keys2 import pop_of_football_lower
-from . import test_4  # test_4.test4_2018_with_nat()#test_4.Work_for_New_2018_men_Keys_with_all()
-from make2.matables_bots.bot_2018 import Add_to_pop_All_18
+from ..jobs_bots import test_4  # test_4.test4_2018_with_nat()#test_4.Work_for_New_2018_men_Keys_with_all()
+from ..matables_bots.bot_2018 import Add_to_pop_All_18
 
 # from ma_lists.all_keys2 import pop_of_football_lower
 # ---
-from make2.fromnet import kooora
+from ..fromnet import kooora
 
 # kooora.kooora_team(EnName)
 # ---
@@ -171,6 +168,19 @@ def Get_Club(cate, out=False, return_tab=False):
     Add_to_pop_All_18(added)
     # ---
     return tab if return_tab else catelab
+
+
+def Get_team_work_Club(s):
+    lab = ""
+
+    slab = Get_Club(s, return_tab=True)
+
+    if isinstance(slab, str):
+        return slab
+
+    lab = slab.get("lab", "")
+
+    return lab
 
 
 # ---

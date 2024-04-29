@@ -2,12 +2,12 @@
 r"""
 
 Usage:
-from make2.matables_bots import bot_2018
+from ..matables_bots import bot_2018
 # bot_2018.pop_All_2018.get()
 
 
-from make2.matables_bots.bot_2018 import pop_All_2018
-from make2.matables_bots.bot_2018 import get_pop_All_18, Add_to_pop_All_18 # get_pop_All_18(key, "") #Add_to_pop_All_18(tab)
+from ..matables_bots.bot_2018 import pop_All_2018
+from ..matables_bots.bot_2018 import get_pop_All_18, Add_to_pop_All_18 # get_pop_All_18(key, "") #Add_to_pop_All_18(tab)
 
 
 # pop_All_2018\.get\((.*?), (.*?)\)
@@ -22,7 +22,7 @@ or
 
 import sys
 
-from make2.helps import len_print
+from ..helps import len_print
 from ma_lists.all_keys2 import pop_final_all_keys2
 from ma_lists.Labels_Contry import New_P17_Finall
 from ma_lists.films_mslslat import films_mslslat_tab

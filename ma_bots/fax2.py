@@ -1,11 +1,11 @@
 """
-from  make2.ma_bots import fax2
+from make2.co_bots import fax2
 # list_of_cat, Find_wd, Find_ko, foot_ballers, category_lab = fax2.get_list_of_and_cat3(category3, category3_nolower)
 
 """
 
 import sys
-from make2.helps.print_bot import print_put
+from ..helps.print_bot import print_put
 from .squad_title_bot import get_squad_title
 
 Find_stubs = {1: True if "-stubs" in sys.argv else False}

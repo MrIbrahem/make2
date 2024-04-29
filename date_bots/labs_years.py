@@ -1,7 +1,7 @@
 """
 Usage:
 
-from  make2.bots import labs_years
+from .date_bots import labs_years
 # ---
 cat_year, from_year = labs_years.lab_from_year(category_r)
 if from_year:
@@ -18,7 +18,7 @@ if not from_year and cat_year:
 """
 
 import re
-from make2 import printe
+from .. import printe
 
 labs_done = {1: 0}
 cats_labels = {}

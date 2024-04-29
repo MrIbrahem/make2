@@ -4,43 +4,30 @@ from  make2.ma_bots.lab_seoo_bot import event_Lab_seoo
 
 """
 import re
-from make2.fix import fixtitle
+from ..fix import fixtitle
 
-from make2.bots.us_stat import Work_US_State
-from make2.bots.popl import Work_peoples
+from ..p17_bots.us_stat import Work_US_State
+from ..o_bots.popl import Work_peoples
 
-# from make2.bots import tmp_bot
-from make2.bots import nats
-from make2.bots import univer
-from make2.bots import team_work
-from make2.bots.test_4 import test4_2018_Jobs, Jobs_in_Multi_Sports
+# from ..bots import tmp_bot
+from ..p17_bots import nats
+from ..o_bots import univer
+from ..sports_bots import team_work
+from ..jobs_bots.test_4 import test4_2018_Jobs, Jobs_in_Multi_Sports
 
 # ---
 from . import ye_ts_bot
-from .films_bot import test_films
+from ..media_bots.films_bot import test_films
 from . import event2bot
 from ma_lists.Labels_Contry import New_P17_Finall
 from ma_lists.all_keys3 import Ambassadors_tab
-from make2.fromnet.wd_bot import find_wikidata
-from make2.matables_bots.bot_2018 import pop_All_2018
-from make2.matables_bots.centries_bot import centries_years_dec
-from make2.matables_bots.bot import New_Lan
-from make2.helps.print_bot import print_put, mainoutput
+from ..fromnet.wd_bot import find_wikidata
+from ..matables_bots.bot_2018 import pop_All_2018
+from ..matables_bots.centries_bot import centries_years_dec
+from ..matables_bots.bot import New_Lan
+from ..helps.print_bot import print_put, mainoutput
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
-
-
-def Get_team_work_Club(s):
-    lab = ""
-
-    slab = team_work.Get_Club(s, out=mainoutput[1], return_tab=True)
-
-    if isinstance(slab, str):
-        return slab
-
-    lab = slab.get("lab", "")
-
-    return lab
 
 
 def test3(category_r):
@@ -75,7 +62,7 @@ def event_Lab_seoo(category_r, category3):
         category_lab = Ambassadors_tab.get(category3, "")
 
     if not category_lab:
-        category_lab = Get_team_work_Club(category3_no_lower)
+        category_lab = team_work.Get_team_work_Club(category3_no_lower)
 
     if not category_lab:
         category_lab = event2bot.event2(category3)

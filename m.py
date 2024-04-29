@@ -18,7 +18,7 @@ sys.path.append(str(Dir))
 from make2 import bot  # event
 from make2.helps.print_bot import do_print_options
 from make2.memory import print_memory
-from make2 import printe
+from . import printe
 
 do_print_options(tst_prnt_all=True)
 

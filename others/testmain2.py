@@ -2,14 +2,11 @@
 """
 
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
+
 # ---
-from make2 import printe
+from .. import printe
 import sys
-from make2.memory import print_memory
+from ..memory import print_memory
 
 # ---
 if True:
@@ -823,7 +820,7 @@ if True:
         """
     States3_list = [x.strip() for x in States3.split("\n")]
 # ---
-from make2.bot import event  # event(tab, **kwargs)
+from ..bot import event  # event(tab, **kwargs)
 
 
 def maintest():
