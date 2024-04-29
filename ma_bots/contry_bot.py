@@ -39,7 +39,7 @@ from ..matables_bots.bot_2018 import pop_All_2018
 Get_contry_done = {}
 
 
-def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
+def Get_contry(contry, do_Get_contry2=True):
     contry_no_lower = contry
     contry = contry.lower()
 
@@ -60,7 +60,7 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
         cnt_la = team_work.Get_team_work_Club(contry_no_lower)
 
     if cnt_la == "" and do_Get_contry2:
-        cnt_la = get_lab_for_contry2(contry, make_yementest=make_yementest)
+        cnt_la = get_lab_for_contry2(contry)
 
     if cnt_la == "":
         cnt_la = yementest_with_Titose_Nmaes(contry)
@@ -164,7 +164,7 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
     return cnt_la
 
 
-def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=False):
+def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
     print_put(f'Get_c_t_lab Type:"{Type}", tito:"{tito}", c_ct_lower:"{c_t_lower}" ')
     if "makeerr" in sys.argv:
         do_Get_contry2 = True
@@ -185,7 +185,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
             c_t_lab = pop_All_2018.get(LLL, "")
 
             if not c_t_lab:
-                c_t_lab = Get_contry(LLL, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+                c_t_lab = Get_contry(LLL, do_Get_contry2=do_Get_contry2)
 
     if not c_t_lab:
         if re.sub(r"\d+", "", c_t_lower) == "":
@@ -194,7 +194,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
             c_t_lab = centries_years_dec.get(c_t_lower, "")
 
     if c_t_lab == "":
-        c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+        c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2)
 
     if c_t_lab == "" and Type == "Type_lab":
         tatos = [" of", " in", " at"]
@@ -220,7 +220,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
                 tto = pop_All_2018.get(tti, "")
 
             if not tto:
-                tto = Get_contry(tti, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+                tto = Get_contry(tti, do_Get_contry2=do_Get_contry2)
 
             if c_t_lab == "" and tto:
                 if c_t_lower in pop_of_without_in:
@@ -234,7 +234,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
             c_t_lab = pop_All_2018.get(f"{c_t_lower} in", "")
 
         if not c_t_lab:
-            c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+            c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2)
 
     if not c_t_lab:
         c_t_lab = find_wikidata(c_t_lower)

@@ -8,17 +8,14 @@ from ..ma_bots.ar_label_bot import find_ar_label
 import re
 import sys
 
-try:
-    from .contry_bot import Get_contry, Get_c_t_lab
-except:
-    Get_contry = False
-    Get_c_t_lab = False
 from ..ma_bots.contry2_lab import get_lab_for_contry2
 from ..fix import fixtitle
 from ..o_bots.popl import make_people_lab
 from ..sports_bots import team_work
 from ..date_bots import year_lab
-from ..bots import tmp_bot
+
+# from ..bots import tmp_bot
+tmp_bot = False
 from ..o_bots import bys
 from ..p17_bots import nats
 from ..jobs_bots.test_4 import test4_2018_Jobs
@@ -45,6 +42,14 @@ from ..matables_bots.bot import (
 )
 
 from ..helps.print_bot import print_def_head, print_put, output_test, mainoutput
+
+
+try:
+    from .contry_bot import Get_contry, Get_c_t_lab
+except:
+    Get_contry = False
+    Get_c_t_lab = False
+from .contry_bot import Get_contry, Get_c_t_lab
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 
@@ -201,6 +206,12 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
         print_put(">>>>> > X:<<lightred>> Type_lower and contry_lower in New_players.")
         print_put(">>>> ================ ")
 
+    faa = Tit_ose_Nmaes.get(tito2.strip()) or Tit_ose_Nmaes.get(tito2.replace("-", " ").strip())
+    print(f"{tito2=}, {faa=}, {sps=}")
+
+    if not sps.strip() and faa:
+        sps = f" {faa} "
+
     Keep_Type_last = False
     keep_Type_first = False
 
@@ -325,7 +336,8 @@ def get_con_lab(tito, do_Get_contry2, tito2, contry, contry_lower):
         con_lab = nats.find_nat_others(contry)
     if not con_lab:
         con_lab = team_work.Get_team_work_Club(contry.strip())
-    if not con_lab:
+
+    if not con_lab and tmp_bot:
         con_lab = tmp_bot.Work_Templates(contry_lower)
 
     if not con_lab:
@@ -345,7 +357,7 @@ def get_con_lab(tito, do_Get_contry2, tito2, contry, contry_lower):
 
 
 def get_Type_lab(tito, Type, Type_lower, contry_lower, Type_lower_in):
-    tito2 = tito.lower()
+    tito2 = tito.strip()
 
     Type_lab = ""
     if Type_lower == "women" and tito2 == "from":
@@ -390,14 +402,14 @@ def get_Type_lab(tito, Type, Type_lower, contry_lower, Type_lower_in):
         Type_lab = nats.find_nat_others(Type_lower)
     if not Type_lab:
         Type_lab = team_work.Get_team_work_Club(Type.strip())
-    if not Type_lab:
+    if not Type_lab and tmp_bot:
         Type_lab = tmp_bot.Work_Templates(Type_lower)
 
     if not Type_lab:
         Type_lab = get_lab_for_contry2(Type_lower)
 
     if not Type_lab and Get_c_t_lab:
-        Type_lab = Get_c_t_lab(Type_lower, tito, Type="Type_lab", make_yementest=False)
+        Type_lab = Get_c_t_lab(Type_lower, tito, Type="Type_lab")
 
     if not Type_lab:
         Type_lab = event2bot.event2(Type_lower)

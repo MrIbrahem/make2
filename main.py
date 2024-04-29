@@ -13,10 +13,8 @@ import sys
 
 from pathlib import Path
 from .date_bots import labs_years
-from .sports_bots import team_work
 
 # ---
-from .ma_bots import event2bot
 from .co_bots import filter_en
 from .ma_bots import event_lab_bot
 from .pop_format import change_cat
@@ -24,7 +22,9 @@ from .matables_bots.bot import cash_2022, make_tab, main2_tab
 
 
 from .ma_bots import ye_ts_bot
-from .helps.print_bot import do_print_options, output_main, print_put, output_test, mainoutput
+from .helps.print_bot import do_print_options, output_main, print_put, output_test
+
+from .ma_bots import event2bot
 
 Dir_ma = Path(__file__).parent.parent
 

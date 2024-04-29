@@ -55,11 +55,8 @@ use_main_s_done = []
 
 use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else False}
 
-if "makeerr" in sys.argv:
-    make_yementest = True
 
-
-def Get_contry2(contry, orginal="", make_yementest=True, With_Years=True):
+def Get_contry2(contry, orginal="", With_Years=True):
     if contry in Get_contry2_done:
         output_test(f'>>>> contry: "{contry}" in Get_contry2_done, lab:"{Get_contry2_done[contry]}"')
         return Get_contry2_done[contry]
@@ -68,7 +65,7 @@ def Get_contry2(contry, orginal="", make_yementest=True, With_Years=True):
 
     cnt_la = get_lab_for_contry2(contry)
 
-    if cnt_la == "" and make_yementest and yementest_with_Titose_Nmaes:
+    if cnt_la == "":
         cnt_la = yementest_with_Titose_Nmaes(contry2, do_Get_contry2=False)
 
     ti_toseslist = [
