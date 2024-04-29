@@ -4,15 +4,7 @@ python3 core8/pwb.py make2/m test Category:People executed by the International 
 
 from  make2.bots import univer # univer.universities_tables | univer.test_Universities(cate, print_def=printo)
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
-# import time
-#
-# import re
-# import sys
-# ---
+
 from ma_lists.Cities import N_cit_ies_s_lower
 
 # ---

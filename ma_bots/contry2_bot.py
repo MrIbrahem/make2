@@ -2,10 +2,10 @@
 """
 python3 core8/pwb.py make2/ma_bots/contry2_bot
 
-# from make2.ma_bots.contry2_bot import Get_contry2
+# from ..ma_bots.contry2_bot import Get_contry2
 
 
-from make2.ma_bots import contry2_bot
+from ..ma_bots import contry2_bot
 
 
 lab = contry2_bot.Get_contry2()
@@ -15,32 +15,32 @@ lab = contry2_bot.Get_contry2()
 import sys
 import re
 from . import fax
-from .films_bot import test_films
+from ..media_bots.films_bot import test_films
 from .contry2_lab import get_lab_for_contry2
-from make2.ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
+from ..ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
 
-from make2.ma_bots.contry_bot import Get_c_t_lab
-from make2 import printe
-from make2.bots import team_work
-from make2.bots import bys
-from make2.bots import nats
+from ..ma_bots.contry_bot import Get_c_t_lab
+from .. import printe
+from ..sports_bots import team_work
+from ..bots import bys
+from ..p17_bots import nats
 from ma_lists.by_type import By_table
-from make2.pop_format import Tit_ose_Nmaes, Tabl_with_in, pp_start_with2, pop_format, pop_format2
+from ..pop_format import Tit_ose_Nmaes, Tabl_with_in, pp_start_with2, pop_format, pop_format2
 
-from make2.matables_bots.centries_bot import centries_years_dec
-from make2.matables_bots.bot import (
+from ..matables_bots.centries_bot import centries_years_dec
+from ..matables_bots.bot import (
     Films_O_TT,
     New_players,
     typeTable,
 )
-from make2.matables_bots.bot_2018 import pop_All_2018
-from make2.matables_bots.table1_bot import get_KAKO
+from ..matables_bots.bot_2018 import pop_All_2018
+from ..matables_bots.table1_bot import get_KAKO
 
-from make2.helps.print_bot import print_def_head, print_put, output_test, mainoutput
+from ..helps.print_bot import print_def_head, print_put, output_test, mainoutput
 
-from make2.bots.year_lab2 import Try_With_Years
+from ..date_bots.with_years_bot import Try_With_Years
 
-from make2.fromnet.wd_bot import find_wikidata
+from ..fromnet.wd_bot import find_wikidata
 
 # from .ye_ts_bot import yementest_with_Titose_Nmaes
 

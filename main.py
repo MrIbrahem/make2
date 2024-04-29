@@ -12,8 +12,8 @@ from . import printe
 import sys
 
 from pathlib import Path
-from .bots import labs_years
-from .bots import team_work
+from .date_bots import labs_years
+from .sports_bots import team_work
 
 # ---
 from .ma_bots import event2bot

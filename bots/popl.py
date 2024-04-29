@@ -2,13 +2,7 @@
 from  make2.bots.popl import Work_peoples
 """
 
-#
-# (C) Ibrahem Qasim, 2023
-#
-#
-# ---
-# ---
-from make2.matables_bots.bot import Pp_Priffix
+from ..matables_bots.bot import Pp_Priffix
 from ma_lists.peoples import People_key
 
 # ---

@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
 
-from  make2.bots import test_5
+from  make2.bots import ethnic_bot
 # ---
-test_5.output_test4 = output_test4
+ethnic_bot.output_test4 = output_test4
 # ---
 def Ethnic(cate, Start, con_3):
-    return test_5.Ethnic(cate, Start, con_3)
+    return ethnic_bot.Ethnic(cate, Start, con_3)
 # ---
 
 """
@@ -14,7 +14,7 @@ def Ethnic(cate, Start, con_3):
 from ma_lists.Nationality import Nat_women, Nat_men, Nat_mens
 from ma_lists.test_4_list import New_2018_for_women_without_al_Keys2
 
-from make2.helps.print_bot import output_test4
+from ..helps.print_bot import output_test4
 
 Ethnic_culture_cash = {}
 Ethnic_cash = {}

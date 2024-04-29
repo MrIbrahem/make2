@@ -1,5 +1,5 @@
 """
-from  make2.bots.year_lab2 import Try_With_Years
+from  ..date_bots.with_years_bot import Try_With_Years
 """
 
 import re
@@ -7,13 +7,13 @@ import re
 # ---
 from ma_lists.numbers import change_numb_to_word
 from ma_lists.all_keys2 import Word_After_Years
-from make2.pop_format import ar_lab_before_year_to_add_in
-from make2.matables_bots.bot import Add_in_table
-from make2.matables_bots.table1_bot import get_KAKO
+from ..pop_format import ar_lab_before_year_to_add_in
+from ..matables_bots.bot import Add_in_table
+from ..matables_bots.table1_bot import get_KAKO
 
-# from make2.ma_bots.contry2_bot import Get_contry2
-from make2.ma_bots.contry2_lab import get_lab_for_contry2
-from make2.ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
+# from ..ma_bots.contry2_bot import Get_contry2
+from ..ma_bots.contry2_lab import get_lab_for_contry2
+from ..ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
 
 Try_With_Years_cash = {}
 
@@ -40,8 +40,6 @@ def Try_With_Years(contry):
 
     contry = contry.strip()
     contry = contry.replace("−", "-")
-
-    prif = r"\d\d\d\d"
 
     # كونغرس
     # cs = re.match(r"^(\d+)(th|nd|st|rd) united states congress", contry)
@@ -82,7 +80,6 @@ def Try_With_Years(contry):
     if year == contry:
         year = ""
 
-    # if contry.startswith(prif):
     if year:
         con_3 = contry[len(year) :]
         con_3 = con_3.strip()
@@ -111,7 +108,6 @@ def Try_With_Years(contry):
             sus = " في "
 
         if con_3_lab:
-            # lab2 = con_3_lab + " " + Preffix[prif]
             lab2 = con_3_lab + sus + year
             print_put(f'>>>>>> Try With Years new lab2  "{lab2}" ')
 
@@ -128,7 +124,6 @@ def Try_With_Years(contry):
         if year2 == contry:
             year2 = ""
 
-        # if contry.startswith(prif):
         if year2:
             year2_lab = year2
             print_put(f">>> Try With Years contry.startswith(year2:{year2})")
@@ -142,7 +137,6 @@ def Try_With_Years(contry):
                 year2_lab = year2_lab.replace("–present", "–الآن")
 
             if con_4_lab:
-                # lab2 = con_3_lab + " " + Preffix[prif]
                 lab2 = f"{con_4_lab} {year2_lab}"
                 print_put(f'>>>>>> Try With Years new lab4  "{lab2}" ')
 

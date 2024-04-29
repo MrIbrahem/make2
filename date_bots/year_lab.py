@@ -1,13 +1,9 @@
 """
-from  make2.bots import year_lab #make_year_lab#make_month_lab
+from  ..date_bots.year_lab import year_lab #make_year_lab#make_month_lab
 """
 
-#
-# (C) Ibrahem Qasim, 2023
-#
-#
 import re
-from make2.matables_bots.bot import MONTH_table
+from ..matables_bots.bot import MONTH_table
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 

@@ -2,17 +2,13 @@
 """
 محاولة إيجاد تسميات من ويكي بيانات
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
 
 import re
 import json
 
 #
 import requests
-from make2 import printe
+from .. import printe
 import sys
 
 # ---

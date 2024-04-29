@@ -6,14 +6,14 @@ from  make2.ma_bots import fax
 """
 
 import re
-from make2.bots.part import get_parties_lab
+from ..bots.parties_bot import get_parties_lab
 from ma_lists import sport_lab
-from make2.bots import team_work
+from ..sports_bots import team_work
 from ma_lists.Sport_key import Sports_Keys_For_Jobs
 from ma_lists.languages import languages_pop, lang_ttty
 from ma_lists.films_mslslat import film_key_women_2
 from ma_lists.Nationality import nats_to_add
-from make2.helps.print_bot import print_put, fafa2
+from ..helps.print_bot import print_put, fafa2
 
 test_Lang_Cash = {}
 

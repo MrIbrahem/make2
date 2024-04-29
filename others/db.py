@@ -15,7 +15,7 @@ import json
 import pywikibot
 
 # ---
-from make2 import printe
+from .. import printe
 
 Dir = Path(__file__).parent
 print_t = {1: False}

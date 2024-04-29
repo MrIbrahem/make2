@@ -4,12 +4,12 @@ from  make2.fromnet.wd_bot import find_wikidata
 
 import sys
 from .wd import find_name_from_wikidata
-from make2.helps.print_bot import print_put
+from ..helps.print_bot import print_put
 from ma_lists.Labels_Contry import New_P17_Finall
 from ma_lists.all_keys3 import Ambassadors_tab
-from make2.matables_bots.centries_bot import centries_years_dec
-from make2.matables_bots.bot_2018 import pop_All_2018
-from make2.matables_bots.bot_2018 import Add_to_pop_All_18  # Add_to_pop_All_18(tab)
+from ..matables_bots.centries_bot import centries_years_dec
+from ..matables_bots.bot_2018 import pop_All_2018
+from ..matables_bots.bot_2018 import Add_to_pop_All_18  # Add_to_pop_All_18(tab)
 
 wikidata_cash_oo = {}
 Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}

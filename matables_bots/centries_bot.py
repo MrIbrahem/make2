@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Usage:
-from make2.matables_bots.centries_bot import centries_years_dec
+from ..matables_bots.centries_bot import centries_years_dec
 """
 
 centries_years_dec = {}

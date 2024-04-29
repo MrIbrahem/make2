@@ -35,20 +35,17 @@ in_France_by
 
 
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
+
 import re
-from make2 import printe
+from .. import printe
 import sys
-from make2.memory import print_memory
+from ..memory import print_memory
 from pathlib import Path
 
 Dir = Path(__file__).parent.parent.parent
 # ---
 sys.argv.append("printhead")
-from make2.bot import event  # event(tab, **kwargs)
+from ..bot import event  # event(tab, **kwargs)
 
 # ---
 """

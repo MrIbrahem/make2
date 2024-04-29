@@ -4,7 +4,7 @@ from  make2.ma_bots import filter_en # filter_en.filter_cat(encat)
 
 # ---
 import re
-from make2 import printe
+from .. import printe
 
 # ---
 

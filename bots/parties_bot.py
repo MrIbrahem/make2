@@ -1,13 +1,8 @@
 """
-from  make2.bots.part import get_parties_lab
+from  make2.bots.parties_bot import get_parties_lab
 
 """
 
-#
-# (C) Ibrahem Qasim, 2023
-#
-#
-# ---
 from ma_lists.us_counties import party_end_keys
 from ma_lists.keys2 import Parties
 

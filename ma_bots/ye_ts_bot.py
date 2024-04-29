@@ -2,7 +2,7 @@
 """
 from  make2.ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
 
-from make2.ma_bots import ye_ts_bot
+from ..ma_bots import ye_ts_bot
 
 
 lab = ye_ts_bot.yementest_with_Titose_Nmaes()
@@ -16,17 +16,17 @@ import sys
 from .contry_bot import Get_contry, Get_c_t_lab
 
 
-from make2.fix import fixtitle
+from ..fix import fixtitle
 
-from make2.bots import team_work
-from make2.bots import year_lab
-from make2.bots import tmp_bot
-from make2.bots import bys
-from make2.bots import nats
-from make2.bots.test_4 import test4_2018_Jobs
+from ..sports_bots import team_work
+from ..date_bots import year_lab
+from ..bots import tmp_bot
+from ..bots import bys
+from ..p17_bots import nats
+from ..jobs_bots.test_4 import test4_2018_Jobs
 
 # ---
-from .films_bot import test_films
+from ..media_bots.films_bot import test_films
 from . import event2bot
 
 from . import fax
@@ -37,12 +37,12 @@ from ma_lists.Labels_Contry import New_P17_Finall
 from ma_lists.jobs_defs import religious_keys_PP
 from ma_lists.male_keys import New_female_keys
 
-from make2.fromnet.wd_bot import find_wikidata
-from make2.fromnet import kooora
-from make2.pop_format import Tit_ose_Nmaes, for_table, Tabl_with_in, pop_format33, pop_format, pop_format2, tito_list_s, Dont_Add_min
+from ..fromnet.wd_bot import find_wikidata
+from ..fromnet import kooora
+from ..pop_format import Tit_ose_Nmaes, for_table, Tabl_with_in, pop_format33, pop_format, pop_format2, tito_list_s, Dont_Add_min
 
-from make2.matables_bots.bot_2018 import pop_All_2018
-from make2.matables_bots.bot import (
+from ..matables_bots.bot_2018 import pop_All_2018
+from ..matables_bots.bot import (
     Films_O_TT,
     New_players,
     Table_for_frist_word,
@@ -51,7 +51,7 @@ from make2.matables_bots.bot import (
     Keep_it_frist,
 )
 
-from make2.helps.print_bot import print_def_head, print_put, output_test, mainoutput
+from ..helps.print_bot import print_def_head, print_put, output_test, mainoutput
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 

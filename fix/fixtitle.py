@@ -6,7 +6,7 @@
 
 import re
 import sys
-from make2 import printe
+from .. import printe
 from .fixlists import replase, Starting, Ending, fix_years
 from .mv_years import move_years
 

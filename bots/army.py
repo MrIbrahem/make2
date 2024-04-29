@@ -2,10 +2,6 @@
 !
 """
 
-#
-# (C) Ibrahem Qasim, 2023
-#
-#
 import re
 
 # ---

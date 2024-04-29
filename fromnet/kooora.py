@@ -10,19 +10,16 @@ python3 core8/pwb.py make2/testmain testfile:koo
 
 Usage:
 
-from make2.fromnet import kooora
+from ..fromnet import kooora
 # kooora.kooora_team(entitle)
 # kooora.kooora_player(entitle)
 
 """
-#
-# (C) Ibrahem Qasim, 2022
-#
-#
+
 import re
 import sys
 
-from make2 import printe
+from .. import printe
 
 try:
     from API import open_url

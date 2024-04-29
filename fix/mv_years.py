@@ -1,6 +1,6 @@
 """
 
-from make2.fix.mv_years import move_years
+from ..fix.mv_years import move_years
 
 تصنيف:1974–75 في دوريات كرة قدم لبنانية
 Category:1974–75 in Lebanese football leagues
@@ -184,7 +184,7 @@ def move_years(text_str):
 
 
 if __name__ == "__main__":
-    from make2 import printe
+    from .. import printe
 
     print_test = printe.output
     # python3 core8/pwb.py make2/fix/mv_years test
