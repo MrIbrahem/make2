@@ -11,7 +11,6 @@ lab = ye_ts_bot.yementest_with_Titose_Nmaes()
 
 import re
 import sys
-
 from ..fix import fixtitle
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..helps.print_bot import print_def_head, print_put
