@@ -1,0 +1,121 @@
+#!/usr/bin/python3
+"""
+
+from  make2.bots import test_5
+# ---
+test_5.output_test4 = output_test4
+# ---
+def Ethnic(cate, Start, con_3):
+    return test_5.Ethnic(cate, Start, con_3)
+# ---
+
+"""
+
+from ma_lists.Nationality import Nat_women, Nat_men, Nat_mens
+from ma_lists.test_4_list import New_2018_for_women_without_al_Keys2
+
+from make2.helps.print_bot import output_test4
+
+Ethnic_culture_cash = {}
+Ethnic_cash = {}
+
+
+def Ethnic_culture(cate, Start, con_3):
+    # ---
+    cash_key = f"{cate}, {Start}, {con_3}".lower().strip()
+    # ---
+    if cash_key in Ethnic_culture_cash:
+        return Ethnic_culture_cash[cash_key]
+    # ---
+    contry = Start
+    cas = ""
+    con_3_lab = ""
+    cas_lab = ""
+    contry_lab = ""
+    # ---
+    if Nat_women.get(contry, "") == "" and Nat_men.get(contry, "") == "":
+        return contry_lab
+    # ---
+    _culture_table = {
+        "culture": "ثقافة {}",
+    }
+    # ---
+    # if Nat_women.get("jnhn",""):
+    if not cas and not cas_lab:
+        contry_L = Nat_women.get(contry, "")
+        # for x in culture_table:
+        for x, x_lab in New_2018_for_women_without_al_Keys2.items():
+            if not cas_lab:
+                xx = f" {x}"
+                if con_3.endswith(xx):
+                    cas = x
+                    con_3 = con_3[: -len(xx)]
+                    cas_lab = x_lab
+                    con_3_lab = Nat_women.get(con_3, "")
+    # ---
+    male_table = {
+        "history": "تاريخ {}",
+        "descent": "أصل {}",
+        "cuisine": "مطبخ {}",
+        "literature": "أدب {}",
+        "law": "قانون {}",
+        "wine": "نبيذ {}",
+        "diaspora": "شتات {}",
+        "traditions": "تراث {}",
+        "folklore": "فلكور {}",
+        "television": "تلفاز {}",
+    }
+    # ---
+    if cas == "" and cas_lab == "":
+        contry_L = Nat_men.get(contry, "")
+        for x, xlab in male_table.items():
+            if not cas_lab:
+                xx = f" {x}"
+                if con_3.endswith(xx):
+                    cas = x
+                    con_3 = con_3[: -len(xx)]
+                    cas_lab = xlab
+                    con_3_lab = Nat_men.get(con_3, "")
+    # ---history
+    if cas and cas_lab:
+        if con_3_lab:
+            rz = f"{con_3_lab} {contry_L}"
+            contry_lab = cas_lab.format(rz)
+            output_test4(f'<<lightblue>> test Ethnic_culture: new contry_lab  "{contry_lab}" ')
+    # ---
+    Ethnic_culture_cash[cash_key] = contry_lab
+    # ---
+    return contry_lab
+
+
+def Ethnic(cate, Start, con_3):
+    # ---
+    cash_key = f"{cate}, {Start}, {con_3}".lower().strip()
+    # ---
+    if cash_key in Ethnic_cash:
+        return Ethnic_cash[cash_key]
+    # ---
+    contry = Start
+    contry_lab = ""
+    # ---
+    if con_3.endswith(" people"):
+        con_nat = con_3[: -len(" people")]
+        if Nat_mens.get(con_nat):
+            con_3 = con_3[: -len(" people")]
+        # ---
+    # ---
+    # output_test4('<<lightblue>> Ethnic: cate:"%s" , Start:"%s" , con_3:"%s" ' % (cate,Start,con_3))
+    # ---
+    con_3_lab = Nat_mens.get(con_3, "")
+    if con_3_lab:
+        if Nat_mens.get(contry, "") != "":
+            # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
+            contry_lab = f"{con_3_lab} {Nat_mens.get(contry, '')}"
+            output_test4(f'<<lightblue>> test Ethnic: new contry_lab  "{contry_lab}" ')
+    # ---
+    if not contry_lab:
+        contry_lab = Ethnic_culture(cate, Start, con_3)
+    # ---
+    Ethnic_cash[cash_key] = contry_lab
+    # ---
+    return contry_lab
