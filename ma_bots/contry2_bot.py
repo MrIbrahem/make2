@@ -14,15 +14,23 @@ lab = contry2_bot.Get_contry2()
 
 import sys
 import re
-from . import fax
+from .. import printe
+
+from ..o_bots import fax
 from ..media_bots.films_bot import test_films
 from .contry2_lab import get_lab_for_contry2
 from ..ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
 
+# try:
+#     from .ye_ts_bot import yementest_with_Titose_Nmaes
+# except ImportError as e:
+#     yementest_with_Titose_Nmaes = False
+#     printe.output(f"<<green>> contry2_bot.py <<red>> ImportError (yementest_with_Titose_Nmaes):\n\t {e}")
+
+
 from ..ma_bots.contry_bot import Get_c_t_lab
-from .. import printe
 from ..sports_bots import team_work
-from ..bots import bys
+from ..o_bots import bys
 from ..p17_bots import nats
 from ma_lists.by_type import By_table
 from ..pop_format import Tit_ose_Nmaes, Tabl_with_in, pp_start_with2, pop_format, pop_format2
@@ -42,14 +50,6 @@ from ..date_bots.with_years_bot import Try_With_Years
 
 from ..fromnet.wd_bot import find_wikidata
 
-# from .ye_ts_bot import yementest_with_Titose_Nmaes
-
-try:
-    from .ye_ts_bot import yementest_with_Titose_Nmaes
-except ImportError as e:
-    yementest_with_Titose_Nmaes = False
-    printe.output(f"<<green>> contry2_bot.py <<red>> ImportError (yementest_with_Titose_Nmaes):\n\t {e}")
-
 Get_contry2_done = {}
 use_main_s_done = []
 
@@ -57,19 +57,6 @@ use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else
 
 if "makeerr" in sys.argv:
     make_yementest = True
-
-
-def Get_team_work_Club(s):
-    lab = ""
-
-    slab = team_work.Get_Club(s, out=mainoutput[1], return_tab=True)
-
-    if isinstance(slab, str):
-        return slab
-
-    lab = slab.get("lab", "")
-
-    return lab
 
 
 def Get_contry2(contry, orginal="", make_yementest=True, With_Years=True):
@@ -180,7 +167,7 @@ def contry_2_tit(tat_o, contry, With_Years=True):
     if not c_1_l:
         c_1_l = fax.Get_Teams_new(con_1)
     if not c_1_l:
-        c_1_l = Get_team_work_Club(con_1_no_lower)
+        c_1_l = team_work.Get_team_work_Club(con_1_no_lower)
 
     c_2_l = pop_All_2018.get(con_2, "")
     if c_2_l == "" and con_2.find(" by ") != -1:
@@ -194,7 +181,7 @@ def contry_2_tit(tat_o, contry, With_Years=True):
     if c_2_l == "" and con_2.find(" and ") != -1:
         c_2_l = bys.Get_and_label(con_2)
     if not c_2_l:
-        c_2_l = Get_team_work_Club(con_2_no_lower)
+        c_2_l = team_work.Get_team_work_Club(con_2_no_lower)
 
     if con_1 == "women" and tat_o.strip() == "from":
         c_1_l = "نساء"

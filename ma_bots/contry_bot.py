@@ -39,19 +39,6 @@ from ..matables_bots.bot_2018 import pop_All_2018
 Get_contry_done = {}
 
 
-def Get_team_work_Club(s):
-    lab = ""
-
-    slab = team_work.Get_Club(s, out=mainoutput[1], return_tab=True)
-
-    if isinstance(slab, str):
-        return slab
-
-    lab = slab.get("lab", "")
-
-    return lab
-
-
 def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
     contry_no_lower = contry
     contry = contry.lower()
@@ -70,7 +57,7 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
     if not cnt_la:
         cnt_la = nats.find_nat_others(contry_no_lower)
     if not cnt_la:
-        cnt_la = Get_team_work_Club(contry_no_lower)
+        cnt_la = team_work.Get_team_work_Club(contry_no_lower)
 
     if cnt_la == "" and do_Get_contry2:
         cnt_la = get_lab_for_contry2(contry, make_yementest=make_yementest)

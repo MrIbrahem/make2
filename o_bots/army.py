@@ -1,16 +1,13 @@
 """
-!
+from ..o_bots.army import test_Army
 """
 
 import re
 
-# ---
-# ---
 from ma_lists.Nationality import All_contry_with_nat, All_contry_with_nat_keys_is_en
 from ma_lists.sports import sport_formts_en_p17_ar_nat
 
-# ---
-from ma_lists.test_4_list import military_format_women_without_al_from_end, military_format_women_without_al, military_format_women, military_format_men
+from ma_lists.military_keys import military_format_women_without_al_from_end, military_format_women_without_al, military_format_women, military_format_men
 
 test_Army_Cash = {}
 

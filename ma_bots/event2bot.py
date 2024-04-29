@@ -19,7 +19,7 @@ from ..bots import tmp_bot
 from ..date_bots import year_lab
 from ..date_bots.with_years_bot import Try_With_Years
 from .lab_seoo_bot import event_Lab_seoo
-from ..bots import univer  # univer.test_Universities(cate, print_def=printo)
+from ..o_bots import univer  # univer.test_Universities(cate, print_def=printo)
 
 from ..pop_format import Tit_ose_Nmaes, NewFormat, ar_lab_before_year_to_add_in, contry_before_year
 from ma_lists.Nationality import Nat_mens

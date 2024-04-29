@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 
-from  make2.bots import ethnic_bot
+from ..bots import ethnic_bot
 # ---
 ethnic_bot.output_test4 = output_test4
 # ---

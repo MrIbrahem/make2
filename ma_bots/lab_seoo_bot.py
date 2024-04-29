@@ -7,11 +7,11 @@ import re
 from ..fix import fixtitle
 
 from ..p17_bots.us_stat import Work_US_State
-from ..bots.popl import Work_peoples
+from ..o_bots.popl import Work_peoples
 
 # from ..bots import tmp_bot
 from ..p17_bots import nats
-from ..bots import univer
+from ..o_bots import univer
 from ..sports_bots import team_work
 from ..jobs_bots.test_4 import test4_2018_Jobs, Jobs_in_Multi_Sports
 
@@ -28,19 +28,6 @@ from ..matables_bots.bot import New_Lan
 from ..helps.print_bot import print_put, mainoutput
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
-
-
-def Get_team_work_Club(s):
-    lab = ""
-
-    slab = team_work.Get_Club(s, out=mainoutput[1], return_tab=True)
-
-    if isinstance(slab, str):
-        return slab
-
-    lab = slab.get("lab", "")
-
-    return lab
 
 
 def test3(category_r):
@@ -75,7 +62,7 @@ def event_Lab_seoo(category_r, category3):
         category_lab = Ambassadors_tab.get(category3, "")
 
     if not category_lab:
-        category_lab = Get_team_work_Club(category3_no_lower)
+        category_lab = team_work.Get_team_work_Club(category3_no_lower)
 
     if not category_lab:
         category_lab = event2bot.event2(category3)

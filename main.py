@@ -17,7 +17,7 @@ from .sports_bots import team_work
 
 # ---
 from .ma_bots import event2bot
-from .ma_bots import filter_en
+from .co_bots import filter_en
 from .ma_bots import event_lab_bot
 from .pop_format import change_cat
 from .matables_bots.bot import cash_2022, make_tab, main2_tab
@@ -33,19 +33,6 @@ event_done = {}
 start_yementest = {1: True if "yementest" in sys.argv else False}
 use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else False}
 Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
-
-
-def Get_team_work_Club(s):
-    lab = ""
-
-    slab = team_work.Get_Club(s, out=mainoutput[1], return_tab=True)
-
-    if isinstance(slab, str):
-        return slab
-
-    lab = slab.get("lab", "")
-
-    return lab
 
 
 def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Local=False, printhead=False, all_print_off=False, tst_prnt_all=None):

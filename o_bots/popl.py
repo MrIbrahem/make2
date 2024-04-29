@@ -1,19 +1,17 @@
 """
-from  make2.bots.popl import Work_peoples
-"""
 
+from ..bots.popl import Work_peoples, make_people_lab
+
+"""
+import re
+from ma_lists.films_mslslat import film_key_women_2
+from ma_lists.Nationality import nats_to_add
+from ..helps.print_bot import print_put
 from ..matables_bots.bot import Pp_Priffix
 from ma_lists.peoples import People_key
 
 # ---
 Work_peoples_cash = {}
-
-
-def print_put(s):
-    # ---
-    # printe.output(s)
-    # ---
-    return
 
 
 def Work_peoples(SUUS):
@@ -47,3 +45,29 @@ def Work_peoples(SUUS):
     Work_peoples_cash[cash_key] = PpP_lab
     # ---
     return PpP_lab
+
+
+def make_people_lab(type_lower):
+    type_lower = type_lower.strip()
+
+    newlab = nats_to_add.get(type_lower, "")
+
+    if not newlab:
+        ty2 = re.sub(r"people$", "", type_lower)
+
+        lab2 = film_key_women_2.get(ty2, "")
+
+        if lab2:
+            newlab = f"أعلام {lab2}"
+
+    if newlab:
+        print(">>>>>>>>>>>>")
+        print(">>>>>>>>>>>>")
+        print(">>>>>>>>>>>>")
+        print(">>>>>>>>>>>>")
+        print(">>>>>>>>>>>>")
+        print(">>>>>>>>>>>>")
+        print(">>>>>>>>>>>>")
+        print(f">> make_people_lab type_lower: {type_lower}, newlab: {newlab}")
+
+    return newlab

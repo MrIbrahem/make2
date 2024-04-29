@@ -1,5 +1,5 @@
 """
-from  make2.ma_bots import fax2
+from make2.co_bots import fax2
 # list_of_cat, Find_wd, Find_ko, foot_ballers, category_lab = fax2.get_list_of_and_cat3(category3, category3_nolower)
 
 """

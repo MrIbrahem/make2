@@ -13,7 +13,7 @@ from . import fax2
 from . import list_cat_format
 from ..helps.print_bot import print_put
 from ..date_bots import year_lab
-from ..bots import univer
+from ..o_bots import univer
 from ma_lists import sport_lab
 from ma_lists.Labels_Contry import New_P17_Finall
 from ..fromnet import kooora

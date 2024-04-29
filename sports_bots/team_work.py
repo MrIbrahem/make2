@@ -170,6 +170,19 @@ def Get_Club(cate, out=False, return_tab=False):
     return tab if return_tab else catelab
 
 
+def Get_team_work_Club(s):
+    lab = ""
+
+    slab = Get_Club(s, return_tab=True)
+
+    if isinstance(slab, str):
+        return slab
+
+    lab = slab.get("lab", "")
+
+    return lab
+
+
 # ---
 # python3 core8/pwb.py make2/team_work Major_League_Soccer_team_manager
 

@@ -236,7 +236,11 @@ def fix_it(arlabel, en):
 
 def fixlab(label_old, out=False, en=""):
     # ---
+    en_literes = "[abcdefghijklmnopqrstuvwxyz]"
     # output_main('fixlab:"%s"' % label_old)
+    # ---
+    if re.sub(en_literes, "", label_old, flags=re.IGNORECASE) != label_old:
+        return ""
     # ---
     label_old = label_old.strip()
     label_old = re.sub(r"_", " ", label_old)
