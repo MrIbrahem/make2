@@ -9,6 +9,7 @@ import sys
 from .. import printe
 from .fixlists import replase, Starting, Ending, fix_years
 from .mv_years import move_years
+from ..helps.print_bot import print_put
 
 
 def fix_n(arlabel):
@@ -42,7 +43,7 @@ def fix_n(arlabel):
     for mat in mates:
         if re.match(mat, arlabel):
             year = re.sub(mat, r"\g<1>", arlabel)
-            print(f"year: {year}")
+            print_put(f"year: {year}")
             fa = re.sub(year, "", arlabel)
             arlabel = f"{fa} في {year}"
     # ---
@@ -156,7 +157,7 @@ def fix_it(arlabel, en):
     # ---
     en = en.replace("_", " ")
     en = en.lower()
-    # print("fixlab : " + en )
+    # print_put("fixlab : " + en )
     # if arlabel.find( "سرائيل") != -1 and "israeli" not in sys.argv :
     # return ""
     # ---
@@ -169,7 +170,7 @@ def fix_it(arlabel, en):
         te_1 = mat.group(1)
         te_2 = mat.group(2)
         arlabel = re.sub(f"{te_1}-{te_2}", f"{te_1}–{te_2}", arlabel)
-        print(" fixlab : fixlab :  replace - by  u2013.. ")
+        print_put(" fixlab : fixlab :  replace - by  u2013.. ")
     # ---
     if re.sub(r"^\–\d+", "", arlabel) != arlabel:
         return ""
@@ -278,12 +279,12 @@ if __name__ == "__main__":
         ]
 
         for text in text_list:
-            print(f'old: "{text}"')
-            print(f'new: "{fixlab(text)}"')
-            print("----------")
+            print_put(f'old: "{text}"')
+            print_put(f'new: "{fixlab(text)}"')
+            print_put("----------")
     else:
         text = " ".join(sys.argv[1:])
         new = fixlab(text)
-        print(f'old: "{text}"')
-        print(f'new: "{new}"')
-        print("----------")
+        print_put(f'old: "{text}"')
+        print_put(f'new: "{new}"')
+        print_put("----------")

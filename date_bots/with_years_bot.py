@@ -12,7 +12,7 @@ from ..matables_bots.bot import Add_in_table
 from ..matables_bots.table1_bot import get_KAKO
 
 # from ..ma_bots.contry2_bot import Get_contry2
-from ..ma_bots.contry2_lab import get_lab_for_contry2
+from ..ma_bots import contry2_lab
 from ..ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
 
 Try_With_Years_cash = {}
@@ -92,11 +92,13 @@ def Try_With_Years(contry):
             con_3_lab = get_KAKO(con_3.strip().lower())
             print_put(f">>> Try With Years get_KAKO con_3_lab:{con_3_lab}")
 
-        if not con_3_lab:
-            con_3_lab = get_lab_for_contry2(con_3)
-
         if con_3_lab == "":
+            print("yementest_with_Titose_Nmaes 4")
             con_3_lab = yementest_with_Titose_Nmaes(con_3)
+
+        if not con_3_lab:
+            con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
+
         sus = " "
 
         if con_3_lab.strip() in ar_lab_before_year_to_add_in:
@@ -128,10 +130,12 @@ def Try_With_Years(contry):
             year2_lab = year2
             print_put(f">>> Try With Years contry.startswith(year2:{year2})")
             con_4 = contry[: -len(year2)]
-            con_4_lab = get_lab_for_contry2(con_4)
+
+            print("yementest_with_Titose_Nmaes 5")
+            con_4_lab = yementest_with_Titose_Nmaes(con_4)
 
             if con_4_lab == "":
-                con_4_lab = yementest_with_Titose_Nmaes(con_4)
+                con_4_lab = contry2_lab.get_lab_for_contry2(con_4)
 
             if year2_lab.find("–present") != -1:
                 year2_lab = year2_lab.replace("–present", "–الآن")

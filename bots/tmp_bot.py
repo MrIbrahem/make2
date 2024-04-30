@@ -7,11 +7,12 @@ if not sub_ar_label:
 from ..pop_format import pp_start_with, pp_ends_with, pp_ends_with_pase
 from ..helps.print_bot import print_put
 
-from ..date_bots.with_years_bot import Try_With_Years
+from ..date_bots import with_years_bot
+
 
 # from ..ma_bots.contry2_bot import Get_contry2
-from ..ma_bots.contry2_lab import get_lab_for_contry2
-from ..ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
+from ..ma_bots import contry2_lab
+from ..ma_bots import ye_ts_bot
 
 Work_Templates_cash = {}
 
@@ -38,12 +39,13 @@ def Work_Templates(SUUS):
         U_8 = SUUS[: -len(pri_ooo)]
         print_put(f'>>>><<lightblue>> Work_ Templates.endswith pri_ooo("{pri_ooo}"), U_8:"{U_8}"')
 
-        U_lab = get_lab_for_contry2(U_8)
+        U_lab = contry2_lab.get_lab_for_contry2(U_8)
         if not U_lab:
-            U_lab = Try_With_Years(U_8)
+            U_lab = with_years_bot.Try_With_Years(U_8)
 
         if U_lab == "":
-            U_lab = yementest_with_Titose_Nmaes(U_8)
+            print("yementest_with_Titose_Nmaes 2")
+            U_lab = ye_ts_bot.yementest_with_Titose_Nmaes(U_8)
 
         print_put(f'>>>><<lightblue>> Work_ Templates :"{SUUS}", U_8 :"{U_8}"')
         # ---
@@ -64,13 +66,14 @@ def Work_Templates(SUUS):
             continue
         U_c = SUUS[len(pri_ss) :]
 
-        U_lab = get_lab_for_contry2(U_c)
+        U_lab = contry2_lab.get_lab_for_contry2(U_c)
 
         if not U_lab:
-            U_lab = Try_With_Years(U_c)
+            U_lab = with_years_bot.Try_With_Years(U_c)
 
         if U_lab == "":
-            U_lab = yementest_with_Titose_Nmaes(U_c)
+            print("yementest_with_Titose_Nmaes 3")
+            U_lab = ye_ts_bot.yementest_with_Titose_Nmaes(U_c)
 
         print_put(f'>>>><<lightblue>> Work_ Templates :"{SUUS}", U_c :"{U_c}"')
         if U_lab:

@@ -21,7 +21,7 @@ from ..fromnet.wd_bot import find_wikidata
 from ..pop_format import pp_ends_with, pp_ends_with_pase, change_cat
 from ..fix import fixtitle
 from ..matables_bots.bot_2018 import pop_All_2018
-from .ye_ts_bot import yementest_with_Titose_Nmaes
+from . import ye_ts_bot
 from .lab_seoo_bot import event_Lab_seoo
 from ..bots import tmp_bot
 from .contry2_bot import Get_contry2
@@ -72,7 +72,8 @@ def event_Lab(category_r):
         category_lab = pop_All_2018.get(category3, "")
 
     if list_of_cat == "" and category_lab == "":
-        category_lab = yementest_with_Titose_Nmaes(category)
+        print("yementest_with_Titose_Nmaes 10")
+        category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(category)
 
     if not category_lab:
         category_lab = Get_contry2(category3)
@@ -119,7 +120,8 @@ def event_Lab(category_r):
         category_lab = tmp_bot.Work_Templates(orginal_category3)
     # ---
     if not category_lab:
-        category_lab = yementest_with_Titose_Nmaes(orginal_category3)
+        print("yementest_with_Titose_Nmaes 11")
+        category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(orginal_category3)
 
     if not category_lab:
         category32 = ""
@@ -139,11 +141,8 @@ def event_Lab(category_r):
                 category_lab = list_of_cat2.format(category3_lab)
 
     if category_lab:
-        if re.sub(en_literes, "", category_lab, flags=re.IGNORECASE) == category_lab:
-            # category_lab = "تصنيف:" + fixlab(category_lab, en=category_r)
-            category_lab = f"تصنيف:{fixtitle.fixlab(category_lab, en=category_r)}"
-        else:
-            printe.output(f'<<lightblue>> event_Lab re.sub( en_literes!= category_lab:"{category_lab}" ')
-            category_lab = ""
+        # category_lab = "تصنيف:" + fixlab(category_lab, en=category_r)
+        fixed = fixtitle.fixlab(category_lab, en=category_r)
+        category_lab = f"تصنيف:{fixed}"
 
     return category_lab
