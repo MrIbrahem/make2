@@ -13,18 +13,18 @@ import sys
 
 from pathlib import Path
 from .date_bots import labs_years
-from .sports_bots import team_work
 
 # ---
-from .ma_bots import event2bot
 from .co_bots import filter_en
 from .ma_bots import event_lab_bot
 from .pop_format import change_cat
 from .matables_bots.bot import cash_2022, make_tab, main2_tab
-
+from .fix import fixtitle
 
 from .ma_bots import ye_ts_bot
-from .helps.print_bot import do_print_options, output_main, print_put, output_test, mainoutput
+from .helps.print_bot import do_print_options, output_main, print_put, output_test
+
+from .ma_bots import event2bot
 
 Dir_ma = Path(__file__).parent.parent
 
@@ -97,6 +97,7 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
 
             if not category_lab:
                 if start_yementest[1]:
+                    print("yementest_with_Titose_Nmaes 1")
                     category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(changed_cat)
 
             if not category_lab:
@@ -104,6 +105,9 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
 
             if not category_lab:
                 category_lab = event_lab_bot.event_Lab(changed_cat)
+        # ---
+        if category_lab:
+            category_lab = fixtitle.fixlab(category_lab, en=category_r)
         # ---
         if not category_lab or category_lab.strip() == "تصنيف:":
             NoLab_list.append(category_r)

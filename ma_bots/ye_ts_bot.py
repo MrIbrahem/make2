@@ -75,7 +75,11 @@ def yementest_with_Titose_Nmaes(category_r, do_Get_contry2=True):
     if cash_key in YTN_cash:
         return YTN_cash[cash_key]
 
-    print_def_head("<<lightyellow>>>>yementest vvvvvvvvvvvv yementest start vvvvvvvvvvvv ")
+    print_def_head(f"<<lightyellow>>>> ^^^^^^^^^ yementest start ^^^^^^^^^ ({category}) ")
+
+    # if category == "women's universities and colleges":
+    #     print(dadas)
+
     print_def_head(f'<<lightyellow>>>>>> yementest, category_r:"{category_r}", category:"{category}"')
     Cate_test = category.lower()
 

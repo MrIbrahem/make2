@@ -13,22 +13,24 @@ lab = contry_bot.Get_contry()
 import sys
 import re
 
-from .ye_ts_bot import yementest_with_Titose_Nmaes
+from . import ye_ts_bot
 
-# from ..date_bots.with_years_bot import Try_With_Years
+from ..date_bots import with_years_bot
 from ..p17_bots import nats
 from ..sports_bots import team_work
 
 from ..media_bots.films_bot import test_films
 
 # from .contry2_bot import Get_contry2
-from .contry2_lab import get_lab_for_contry2
+from . import contry2_bot  # contry2_bot.Get_contry2()
+
+from . import contry2_lab
 from ma_lists.Sport_key import Sports_Keys_For_Label
 from ma_lists.Nationality import Nat_mens
 from ma_lists.male_keys import New_female_keys
 
 from ..matables_bots.bot import Add_to_main2_tab
-from ..helps.print_bot import print_put, output_test, mainoutput
+from ..helps.print_bot import print_put, output_test
 
 from ..fromnet.wd_bot import find_wikidata
 from ..matables_bots.centries_bot import centries_years_dec
@@ -39,7 +41,7 @@ from ..matables_bots.bot_2018 import pop_All_2018
 Get_contry_done = {}
 
 
-def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
+def Get_contry(contry, do_Get_contry2=True):
     contry_no_lower = contry
     contry = contry.lower()
 
@@ -47,7 +49,7 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
         output_test(f'>>>> Get_contry: "{contry}" in Get_contry_done, lab:"{Get_contry_done[contry]}"')
         return Get_contry_done[contry]
 
-    output_test(">> ----------------- Get_contry ----------------- ")
+    output_test(">> ----------------- Get_contry start ----------------- ")
     print_put(f'>>>> Get contry for "{contry}"')
     cnt_la = contry if contry.strip().isdigit() else ""
     if not cnt_la:
@@ -60,10 +62,12 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
         cnt_la = team_work.Get_team_work_Club(contry_no_lower)
 
     if cnt_la == "" and do_Get_contry2:
-        cnt_la = get_lab_for_contry2(contry, make_yementest=make_yementest)
+        # cnt_la = contry2_lab.get_lab_for_contry2(contry)
+        cnt_la = contry2_bot.Get_contry2(contry)
+    # جديدة!
+    # if cnt_la == "":
+    #     cnt_la = ye_ts_bot.yementest_with_Titose_Nmaes(contry)
 
-    if cnt_la == "":
-        cnt_la = yementest_with_Titose_Nmaes(contry)
     if not cnt_la:
         Preffix = {
             "women's ": "نسائية",
@@ -79,11 +83,14 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
             print(f">>> contry.startswith({prif})")
             con_3 = contry[len(prif) :]
             Add_to_main2_tab(prif, prif_lab)
-
-            con_3_lab = get_lab_for_contry2(con_3)
+            con_3_lab = contry2_bot.Get_contry2(con_3)
 
             if con_3_lab == "":
-                con_3_lab = yementest_with_Titose_Nmaes(con_3)
+                con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
+
+            if con_3_lab == "":
+                print("yementest_with_Titose_Nmaes 6")
+                con_3_lab = ye_ts_bot.yementest_with_Titose_Nmaes(con_3)
 
             if con_3_lab:
                 Add_to_main2_tab(con_3, con_3_lab)
@@ -123,11 +130,15 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
                 continue
             print(f">>> contry.startswith({prif})")
             con_3 = contry[len(prif) :]
-
-            con_3_lab = get_lab_for_contry2(con_3)
+            con_3_lab = contry2_bot.Get_contry2(con_3)
 
             if con_3_lab == "":
-                con_3_lab = yementest_with_Titose_Nmaes(con_3)
+                con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
+
+            if con_3_lab == "":
+                print("yementest_with_Titose_Nmaes 7")
+                con_3_lab = ye_ts_bot.yementest_with_Titose_Nmaes(con_3)
+
             if con_3_lab:
                 Add_to_main2_tab(con_3, con_3_lab)
                 cnt_la = prif_lab.format(con_3_lab)
@@ -140,13 +151,13 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
         if cnt_la.find("سنوات في القرن") != -1:
             cnt_la = re.sub(r"سنوات في القرن", "سنوات القرن", cnt_la)
 
-    # if not cnt_la:
-    #     RE1 = re.match(r"^(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d).*", contry)
-    #     RE2 = re.match(r"^.*?\s*(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d)$", contry)
-    #     RE3 = re.match(r"^.*?\s*\((\d+\-\d+|\d+\–\d+|\d+\–present|\d+\−\d+|\d\d\d\d)\)$", contry)
+    if not cnt_la:
+        RE1 = re.match(r"^(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d).*", contry)
+        RE2 = re.match(r"^.*?\s*(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d)$", contry)
+        RE3 = re.match(r"^.*?\s*\((\d+\-\d+|\d+\–\d+|\d+\–present|\d+\−\d+|\d\d\d\d)\)$", contry)
 
-    #     if RE1 or RE2 or RE3:
-    #         cnt_la = Try_With_Years(contry)
+        if RE1 or RE2 or RE3:
+            cnt_la = with_years_bot.Try_With_Years(contry)
 
     if cnt_la == "" and contry.endswith(" members of"):
         contry2 = contry.replace(" members of", "")
@@ -164,7 +175,7 @@ def Get_contry(contry, do_Get_contry2=True, make_yementest=True):
     return cnt_la
 
 
-def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=False):
+def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
     print_put(f'Get_c_t_lab Type:"{Type}", tito:"{tito}", c_ct_lower:"{c_t_lower}" ')
     if "makeerr" in sys.argv:
         do_Get_contry2 = True
@@ -185,7 +196,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
             c_t_lab = pop_All_2018.get(LLL, "")
 
             if not c_t_lab:
-                c_t_lab = Get_contry(LLL, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+                c_t_lab = Get_contry(LLL, do_Get_contry2=do_Get_contry2)
 
     if not c_t_lab:
         if re.sub(r"\d+", "", c_t_lower) == "":
@@ -194,7 +205,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
             c_t_lab = centries_years_dec.get(c_t_lower, "")
 
     if c_t_lab == "":
-        c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+        c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2)
 
     if c_t_lab == "" and Type == "Type_lab":
         tatos = [" of", " in", " at"]
@@ -220,7 +231,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
                 tto = pop_All_2018.get(tti, "")
 
             if not tto:
-                tto = Get_contry(tti, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+                tto = Get_contry(tti, do_Get_contry2=do_Get_contry2)
 
             if c_t_lab == "" and tto:
                 if c_t_lower in pop_of_without_in:
@@ -234,7 +245,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True, make_yementest=Fa
             c_t_lab = pop_All_2018.get(f"{c_t_lower} in", "")
 
         if not c_t_lab:
-            c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2, make_yementest=make_yementest)
+            c_t_lab = Get_contry(c_t_lower, do_Get_contry2=do_Get_contry2)
 
     if not c_t_lab:
         c_t_lab = find_wikidata(c_t_lower)

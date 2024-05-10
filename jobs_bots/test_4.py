@@ -49,7 +49,7 @@ from ..jobs_bots.get_helps import get_con_3
 
 # ---
 from ..o_bots import ethnic_bot
-from ..helps.print_bot import output_test4
+from ..helps.print_bot import output_test4, print_put
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
 from ..jobs_bots.jobs_mainbot import Jobs  # , Jobs2
 
@@ -83,7 +83,7 @@ def Lang_work(con_3):
         if con_3.startswith(wriff) and lang_lab == "":
             con_43 = con_3[len(wriff) :].strip()
             lang_lac = languages_key.get(f"{con_43} language", "")
-            print(con_43)
+            print_put(con_43)
             if lang_lac:
                 lang_lab = Wriff_lab.format(lang_lac)
                 break
@@ -198,7 +198,7 @@ def test4_2018_Jobs(cate, out=False, tab=None):
     # ---
     if Main_Ss.strip() == "fictional" and cate.strip().startswith("female"):
         Main_lab = "{} خياليات"
-        print("{} خياليات")
+        print_put("{} خياليات")
     # ---
     if not contry_lab:
         contry_lab = People_key.get(cate, "")
@@ -554,7 +554,7 @@ def Jobs_in_Multi_Sports(cate, out=False, tab=None):
 
 def main():
     # ase = try_relegins_jobs("hindu apologists")
-    # print(f"ase:{ase}")
+    # print_put(f"ase:{ase}")
     # ---
     # python3 core8/pwb.py make2/bots/test_4 Afghan_men's_football_players testprint
     # ---
@@ -566,10 +566,10 @@ def main():
         # ss = nat_match(La, out = True)
         # so = test4_2018_Jobs(La, out=True)
         # so = priffix_Mens_work(La)
-        print(f"Lab: {La}")
-        print(f"so :{so}")
-        # print("yemeni :" +  Nat_mens.get("yemeni","")   )
-        # print("so :" + so   )
+        print_put(f"Lab: {La}")
+        print_put(f"so :{so}")
+        # print_put("yemeni :" +  Nat_mens.get("yemeni","")   )
+        # print_put("so :" + so   )
 
 
 if __name__ == "__main__":

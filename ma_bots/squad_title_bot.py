@@ -5,7 +5,7 @@ from ..ma_bots.squad_title_bot import get_squad_title
 
 """
 
-from ..date_bots.with_years_bot import Try_With_Years
+from ..date_bots import with_years_bot
 from ma_lists import sport_lab
 from ma_lists.all_keys2 import pop_of_football_lower
 from ma_lists.Labels_Contry import New_P17_Finall
@@ -23,7 +23,7 @@ def get_squad_title(tit):
     lab = sport_lab.Get_New_team_xo(tit)
 
     if not lab:
-        lab = Try_With_Years(tit)
+        lab = with_years_bot.Try_With_Years(tit)
 
     if lab:
         lab = f"تشكيلات {lab}"

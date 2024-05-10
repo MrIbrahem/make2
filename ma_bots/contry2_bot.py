@@ -5,7 +5,7 @@ python3 core8/pwb.py make2/ma_bots/contry2_bot
 # from ..ma_bots.contry2_bot import Get_contry2
 
 
-from ..ma_bots import contry2_bot
+from ..ma_bots import contry2_bot # contry2_bot.Get_contry2()
 
 
 lab = contry2_bot.Get_contry2()
@@ -18,17 +18,12 @@ from .. import printe
 
 from ..o_bots import fax
 from ..media_bots.films_bot import test_films
-from .contry2_lab import get_lab_for_contry2
-from ..ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
+from . import contry2_lab
 
-# try:
-#     from .ye_ts_bot import yementest_with_Titose_Nmaes
-# except ImportError as e:
-#     yementest_with_Titose_Nmaes = False
-#     printe.output(f"<<green>> contry2_bot.py <<red>> ImportError (yementest_with_Titose_Nmaes):\n\t {e}")
+from . import ye_ts_bot
 
-
-from ..ma_bots.contry_bot import Get_c_t_lab
+# from ..ma_bots.contry_bot import Get_c_t_lab
+from ..ma_bots import contry_bot
 from ..sports_bots import team_work
 from ..o_bots import bys
 from ..p17_bots import nats
@@ -46,7 +41,7 @@ from ..matables_bots.table1_bot import get_KAKO
 
 from ..helps.print_bot import print_def_head, print_put, output_test, mainoutput
 
-from ..date_bots.with_years_bot import Try_With_Years
+from ..date_bots import with_years_bot
 
 from ..fromnet.wd_bot import find_wikidata
 
@@ -55,22 +50,23 @@ use_main_s_done = []
 
 use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else False}
 
-if "makeerr" in sys.argv:
-    make_yementest = True
 
-
-def Get_contry2(contry, orginal="", make_yementest=True, With_Years=True):
+def Get_contry2(contry, orginal="", With_Years=True):
     if contry in Get_contry2_done:
         output_test(f'>>>> contry: "{contry}" in Get_contry2_done, lab:"{Get_contry2_done[contry]}"')
         return Get_contry2_done[contry]
 
     contry2 = contry.lower().strip()
+    print_def_head(f'>> Get_contry2 "{contry2}":')
 
-    cnt_la = get_lab_for_contry2(contry)
+    cnt_la = ""
 
-    if cnt_la == "" and make_yementest and yementest_with_Titose_Nmaes:
-        cnt_la = yementest_with_Titose_Nmaes(contry2, do_Get_contry2=False)
+    if not cnt_la:
+        cnt_la = contry2_lab.get_lab_for_contry2(contry, with_test_ye=False)
 
+    if not cnt_la:
+        print("yementest_with_Titose_Nmaes 8")
+        cnt_la = ye_ts_bot.yementest_with_Titose_Nmaes(contry2, do_Get_contry2=False)
     ti_toseslist = [
         " based in ",
         " in ",
@@ -83,8 +79,6 @@ def Get_contry2(contry, orginal="", make_yementest=True, With_Years=True):
         " at ",
         " on ",
     ]
-    print_def_head(f'>> Get_contry2 "{contry2}":')
-
     for tat_o in ti_toseslist:
         if contry2.find(tat_o) == -1:
             continue
@@ -207,10 +201,10 @@ def contry_2_tit(tat_o, contry, With_Years=True):
             if con_1.startswith(pri_ss):
                 U_c = con_1[len(pri_ss) :]
                 print_put(f' pp_start_with2 <<lightblue>> con_1 :"{con_1}", U_c :"{U_c}", tat_o:"{tat_o}" ')
-                U_lab = get_lab_for_contry2(U_c)
+                U_lab = contry2_lab.get_lab_for_contry2(U_c)
 
                 if U_lab == "" and With_Years:
-                    U_lab = Try_With_Years(U_c)
+                    U_lab = with_years_bot.Try_With_Years(U_c)
 
                 if U_lab:
                     print_put(f'>>>><<lightblue>> dddd.startswith pri_ss("{pri_ss}"),U_c:"{U_c}", U_lab:"{U_lab}"')
@@ -223,7 +217,7 @@ def contry_2_tit(tat_o, contry, With_Years=True):
 
     # add in 4-10-2019
     if not c_1_l:
-        c_1_l = Get_c_t_lab(con_1, "", Type="Type_lab")
+        c_1_l = contry_bot.Get_c_t_lab(con_1, "", Type="Type_lab")
     if not c_1_l:
         c_1_l = get_KAKO(con_1)
     if not c_2_l:
@@ -242,9 +236,9 @@ def contry_2_tit(tat_o, contry, With_Years=True):
     if not c_2_l:
         c_2_l = centries_years_dec.get(con_2, "")
     if c_2_l == "" and With_Years:
-        c_2_l = Try_With_Years(con_2)
+        c_2_l = with_years_bot.Try_With_Years(con_2)
     if not c_2_l:
-        c_2_l = Get_c_t_lab(con_2, "")
+        c_2_l = contry_bot.Get_c_t_lab(con_2, "")
     # if not c_2_l:       c_2_l = pop_All_2018.get( con_2, "")
     if not c_1_l:
         output_test(f'>>>> XX--== c_1_l =  "{c_1_l}" con_1:"{con_1}" not in pop_new')

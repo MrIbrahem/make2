@@ -17,7 +17,7 @@ Dir_ma = Path(__file__).parent.parent
 from ..fix import fixtitle
 from ..bots import tmp_bot
 from ..date_bots import year_lab
-from ..date_bots.with_years_bot import Try_With_Years
+from ..date_bots import with_years_bot
 from .lab_seoo_bot import event_Lab_seoo
 from ..o_bots import univer  # univer.test_Universities(cate, print_def=printo)
 
@@ -157,7 +157,7 @@ def event2(category_r):
                         category_lab = Get_contry(category3_not_lower)
 
                     else:
-                        category_lab = Try_With_Years(category3)
+                        category_lab = with_years_bot.Try_With_Years(category3)
                         if category_lab:
                             category_lab = "تصنيف:" + category_lab
 

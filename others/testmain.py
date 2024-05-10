@@ -37,16 +37,16 @@ in_France_by
 """
 
 import re
-from .. import printe
 import sys
-from ..memory import print_memory
+
+sys.argv.append("printhead")
 from pathlib import Path
 
-Dir = Path(__file__).parent.parent.parent
-# ---
-sys.argv.append("printhead")
-from ..bot import event  # event(tab, **kwargs)
+from make import printe
+from make.memory import print_memory
+from make.bot import event  # event(tab, **kwargs)
 
+Dir = Path(__file__).parent.parent.parent
 # ---
 """
 python3 core8/pwb.py make2/others/testmain nosql local testfile:Olympics
