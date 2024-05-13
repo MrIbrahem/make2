@@ -87,6 +87,18 @@ def fix_sub(text):
 
 
 def fix_it2(arlabel, en):
+    fixx_byy = [
+        "أعمال",
+        "اختراعات",
+        "لوحات",
+        "شعر",
+        "مسرحيات",
+        "روايات",
+        "كتب",
+    ]
+    for x in fixx_byy:
+        arlabel = re.sub(f"{x} بواسطة ", f"{x} ", arlabel)
+    
     arlabel = re.sub(r"كاميرات اخترعت ", "كاميرات عرضت ", arlabel)
     arlabel = re.sub(r"هواتف محمولة اخترعت ", "هواتف محمولة عرضت ", arlabel)
     arlabel = re.sub(r"مركبات اخترعت ", "مركبات عرضت ", arlabel)
@@ -96,7 +108,6 @@ def fix_it2(arlabel, en):
     arlabel = re.sub(r"هولوكوستية", "الهولوكوست", arlabel)
     arlabel = re.sub(r"في هولوكوست", "في الهولوكوست", arlabel)
     arlabel = re.sub(r"صدور عظام في الدولة العثمانية", "صدور عظام عثمانيون في", arlabel)
-    arlabel = re.sub(r"أعمال بواسطة ", "أعمال ", arlabel)
     arlabel = re.sub(r" في فائزون ", " فائزون ", arlabel)
     arlabel = re.sub(r" في منافسون ", " منافسون ", arlabel)
     arlabel = re.sub(r" على السجل الوطني للأماكن ", " في السجل الوطني للأماكن ", arlabel)
