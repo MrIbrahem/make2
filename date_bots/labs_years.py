@@ -18,8 +18,7 @@ if not from_year and cat_year:
 """
 
 import re
-from .. import printe
-
+from ..helps.print_bot import output_main
 labs_done = {1: 0}
 cats_labels = {}
 
@@ -54,9 +53,9 @@ def lab_from_year(category_r: str) -> tuple:
         # ---
         labs_done[1] += 1
         # ---
-        printe.output(f"<<green>> lab_from_year: {labs_done[1]}")
-        # printe.output(f"\t<<green>> {cat_key=} , {cat_key_value=}")
-        printe.output(f"\t<<green>> {category_r=} , {from_year=}")
+        output_main(f"<<green>> lab_from_year: {labs_done[1]}")
+        # output_main(f"\t<<green>> {cat_key=} , {cat_key_value=}")
+        output_main(f"\t<<green>> {category_r=} , {from_year=}")
     # ---
     return cat_year, from_year
 
@@ -78,7 +77,7 @@ def lab_from_year_add(category_r: str, category_lab: str, cat_year: str) -> None
     cat_key = category_r.replace(cat_year, "2020")
     lab_key = category_lab.replace(cat_year, "2020")
     # ---
-    printe.output("<<yellow>> lab_from_year_add:")
-    printe.output(f"\t<<yellow>> {cat_key=} , {lab_key=}")
+    output_main("<<yellow>> lab_from_year_add:")
+    output_main(f"\t<<yellow>> {cat_key=} , {lab_key=}")
     # ---
     cats_labels[cat_key] = lab_key

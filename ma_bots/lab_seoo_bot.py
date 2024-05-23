@@ -91,7 +91,7 @@ def event_Lab_seoo(category_r, category3):
         category_lab = nats.find_nat_others(category3, fa=category_r)
 
     if not category_lab:
-        print("yementest_with_Titose_Nmaes 12")
+        #print("yementest_with_Titose_Nmaes 12")
         category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(category3)
 
     if not category_lab:

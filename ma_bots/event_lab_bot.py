@@ -72,7 +72,7 @@ def event_Lab(category_r):
         category_lab = pop_All_2018.get(category3, "")
 
     if list_of_cat == "" and category_lab == "":
-        print("yementest_with_Titose_Nmaes 10")
+        #print("yementest_with_Titose_Nmaes 10")
         category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(category)
 
     if not category_lab:
@@ -120,7 +120,7 @@ def event_Lab(category_r):
         category_lab = tmp_bot.Work_Templates(orginal_category3)
     # ---
     if not category_lab:
-        print("yementest_with_Titose_Nmaes 11")
+        #print("yementest_with_Titose_Nmaes 11")
         category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(orginal_category3)
 
     if not category_lab:

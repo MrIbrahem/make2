@@ -59,7 +59,7 @@ def get_lab_for_contry2(contry, with_test_ye=False, **kwargs):
         cnt_la = pop_All_2018.get(contry2[len("the ") :], "")
 
     if not cnt_la and with_test_ye:
-        print("yementest_with_Titose_Nmaes 9")
+        #print("yementest_with_Titose_Nmaes 9")
         cnt_la = ye_ts_bot.yementest_with_Titose_Nmaes(contry2, do_Get_contry2=False)
 
     if cnt_la:

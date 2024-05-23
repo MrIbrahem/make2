@@ -11,7 +11,7 @@ from . import printe
 from .helps import len_print
 from ma_lists.ministers import ministrs_tab_for_pop_format
 from ma_lists.male_keys import New_Company
-
+from .helps.print_bot import output_main
 # ---
 Tit_ose_Nmaes = {
     "for-the-deaf": "للصم",
@@ -707,7 +707,7 @@ def change_cat(Cate):
     category = category.replace("party of ", "party-of ")
     # ---
     if category != Cate:
-        printe.output(f'change_cat to :"{category}", orginal: {Cate}.')
+        output_main(f'change_cat to :"{category}", orginal: {Cate}.')
         # print(dodd)
     # ---
     return category
