@@ -62,7 +62,7 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
     # ---
     for category_r in uxu:
         num += 1
-        toout = f'<<lightyellow>>> event ===  {int(num)} / {int(lenth)}  category_r:"{category_r}" === '
+        toout = f'<<lightyellow>>> event ===  {num} / {lenth}  category_r:"{category_r}" === '
 
         if not category_r:
             continue
@@ -140,7 +140,7 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
             if printfirst:
                 print(f'     {ux.ljust(60)} : "{cat_lab}",')
     else:
-        printe.output(f"<<lightyellow>>> event: Labels == None len = {int(_lenth_)}")
+        printe.output(f"<<lightyellow>>> event: Labels == None len = {_lenth_}")
 
     for cat in NoLab_list[:]:
         if cat in Labels:
@@ -151,6 +151,6 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
         printe.output(f"a<<lightred>>> {len(NoLab_list)} cat in NoLab_list ")
         for cat in NoLab_list:
             catb += 1
-            printe.output(f'  {int(catb)}:  "{cat}" : "",')
+            printe.output(f'  {catb}:  "{cat}" : "",')
     print_put("<<lightred>>> ^^^^^^^^^ event end ^^^^^^^^^ ")
     return Labels
