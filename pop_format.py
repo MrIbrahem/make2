@@ -55,6 +55,7 @@ Tit_ose_Nmaes = {
     "that closed in": "أغلقت في",
     "conducted by": "نفذت بواسطة",
     "acquired by": "حصل عليها",
+    "destroyed during": "دمرت خلال",
     "during": "خلال",
     "written": "كتبت",
     "closed in": "أغلقت في",
