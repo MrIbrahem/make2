@@ -44,7 +44,7 @@ def Work_Templates(SUUS):
             U_lab = with_years_bot.Try_With_Years(U_8)
 
         if U_lab == "":
-            print("yementest_with_Titose_Nmaes 2")
+            #print("yementest_with_Titose_Nmaes 2")
             U_lab = ye_ts_bot.yementest_with_Titose_Nmaes(U_8)
 
         print_put(f'>>>><<lightblue>> Work_ Templates :"{SUUS}", U_8 :"{U_8}"')
@@ -72,7 +72,7 @@ def Work_Templates(SUUS):
             U_lab = with_years_bot.Try_With_Years(U_c)
 
         if U_lab == "":
-            print("yementest_with_Titose_Nmaes 3")
+            #print("yementest_with_Titose_Nmaes 3")
             U_lab = ye_ts_bot.yementest_with_Titose_Nmaes(U_c)
 
         print_put(f'>>>><<lightblue>> Work_ Templates :"{SUUS}", U_c :"{U_c}"')

@@ -42,7 +42,7 @@ def get_con_3(cate, keys, Type):
                     if cate.lower().startswith(tables[key_d].lower()):
                         contry_start = key
                         fo_3 = cate[len(tables[key_d]) :].strip()
-                        output_test4(f'<<lightyellow>>>>>> get_con_3 start_th key_:{int(key_d)} ("{tables[key_d]}"), fo_3:"{fo_3}",contry_start:"{contry_start}"')
+                        output_test4(f'<<lightyellow>>>>>> get_con_3 start_th key_:{key_d} ("{tables[key_d]}"), fo_3:"{fo_3}",contry_start:"{contry_start}"')
                         break
     # ---
     get_con_cash[T_uple] = fo_3, contry_start

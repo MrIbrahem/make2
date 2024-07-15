@@ -8,13 +8,13 @@ python3 core8/pwb.py -m cProfile -s ncalls make2/main.py
 
 
 import re
-from . import printe
 import sys
-
+from tqdm import tqdm
 from pathlib import Path
 from .date_bots import labs_years
 
 # ---
+from . import printe
 from .co_bots import filter_en
 from .ma_bots import event_lab_bot
 from .pop_format import change_cat
@@ -58,9 +58,11 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
     Labels = {}
     NoLab_list = []
     # ---
-    for category_r in NewList:
+    uxu = NewList if "all_print_off" not in sys.argv else tqdm(NewList)
+    # ---
+    for category_r in uxu:
         num += 1
-        toout = f'<<lightyellow>>> event ===  {int(num)} / {int(lenth)}  category_r:"{category_r}" === '
+        toout = f'<<lightyellow>>> event ===  {num} / {lenth}  category_r:"{category_r}" === '
 
         if not category_r:
             continue
@@ -97,7 +99,7 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
 
             if not category_lab:
                 if start_yementest[1]:
-                    print("yementest_with_Titose_Nmaes 1")
+                    #print("yementest_with_Titose_Nmaes 1")
                     category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(changed_cat)
 
             if not category_lab:
@@ -138,7 +140,7 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
             if printfirst:
                 print(f'     {ux.ljust(60)} : "{cat_lab}",')
     else:
-        output_main(f"<<lightyellow>>> event: Labels == None len = {int(_lenth_)}")
+        printe.output(f"<<lightyellow>>> event: Labels == None len = {_lenth_}")
 
     for cat in NoLab_list[:]:
         if cat in Labels:
@@ -146,9 +148,9 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
 
     catb = 0
     if NoLab_list:
-        output_main(f"a<<lightred>>> {len(NoLab_list)} cat in NoLab_list ")
+        printe.output(f"a<<lightred>>> {len(NoLab_list)} cat in NoLab_list ")
         for cat in NoLab_list:
             catb += 1
-            output_main(f'  {int(catb)}:  "{cat}" : "",')
+            printe.output(f'  {catb}:  "{cat}" : "",')
     print_put("<<lightred>>> ^^^^^^^^^ event end ^^^^^^^^^ ")
     return Labels

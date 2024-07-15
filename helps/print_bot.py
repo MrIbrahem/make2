@@ -10,6 +10,7 @@ from ..helps.print_bot import do_print_options, print_def_head, output_main, pri
 from .. import printe
 import sys
 
+all_the_print_off = "all_print_off" in sys.argv
 mainoutput = {1: False}
 fafa2 = {1: False}
 testprint = {1: False}
@@ -27,11 +28,15 @@ if "testprint" in sys.argv:
 
 
 def output_test4(string):
+    if all_the_print_off:
+        return
     if print_test4[1]:
         printe.output(string)
 
 
 def output_main(string):
+    if all_the_print_off:
+        return
     if only_print_heads[1]:
         return ""
     if mainoutput[1]:
@@ -39,12 +44,16 @@ def output_main(string):
 
 
 def print_def_head(string):
+    if all_the_print_off:
+        return
     # if only_print_heads[1]:
     if mainoutput[1] or only_print_heads[1]:
         printe.output(string)
 
 
 def print_put(string):
+    if all_the_print_off:
+        return
     if "print_put" in sys.argv:
         printe.output(string)
     else:
@@ -55,6 +64,8 @@ def print_put(string):
 
 
 def output_test(string):
+    if all_the_print_off:
+        return
     if only_print_heads[1]:
         return ""
     if testprint[1]:

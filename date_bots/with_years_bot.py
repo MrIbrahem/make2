@@ -93,7 +93,7 @@ def Try_With_Years(contry):
             print_put(f">>> Try With Years get_KAKO con_3_lab:{con_3_lab}")
 
         if con_3_lab == "":
-            print("yementest_with_Titose_Nmaes 4")
+            #print("yementest_with_Titose_Nmaes 4")
             con_3_lab = yementest_with_Titose_Nmaes(con_3)
 
         if not con_3_lab:
@@ -131,7 +131,7 @@ def Try_With_Years(contry):
             print_put(f">>> Try With Years contry.startswith(year2:{year2})")
             con_4 = contry[: -len(year2)]
 
-            print("yementest_with_Titose_Nmaes 5")
+            #print("yementest_with_Titose_Nmaes 5")
             con_4_lab = yementest_with_Titose_Nmaes(con_4)
 
             if con_4_lab == "":

@@ -104,7 +104,7 @@ def mainx():
     finals = time.time()
     delta = int(finals - starten)
 
-    printe.output(f"<<lightgreen>> def main(): done in {int(delta)} seconds")
+    printe.output(f"<<lightgreen>> def main(): done in {delta} seconds")
 
 
 def main_or():

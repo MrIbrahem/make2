@@ -44,7 +44,7 @@ for elff in elfffff:
         if centry2 == "0":
             centry2 = ""
 
-        decades = [f"{centry2}{int(x)}0" for x in range(0, 10)]
+        decades = [f"{centry2}{x}0" for x in range(0, 10)]
 
         th = "th"
 

@@ -65,7 +65,7 @@ def Get_contry2(contry, orginal="", With_Years=True):
         cnt_la = contry2_lab.get_lab_for_contry2(contry, with_test_ye=False)
 
     if not cnt_la:
-        print("yementest_with_Titose_Nmaes 8")
+        #print("yementest_with_Titose_Nmaes 8")
         cnt_la = ye_ts_bot.yementest_with_Titose_Nmaes(contry2, do_Get_contry2=False)
     ti_toseslist = [
         " based in ",
