@@ -184,7 +184,7 @@ def Get_team_work_Club(s):
 
 
 # ---
-# python3 core8/pwb.py make2/team_work Major_League_Soccer_team_manager
+# python3 core8/pwb.py make/team_work Major_League_Soccer_team_manager
 
 
 def main():

@@ -192,8 +192,8 @@ by district
 def mainae():
     # ---
     pprint[1] = True
-    # python3 core8/pwb.py make2/s test Osceola, Fond du Lac County, Wisconsin
-    # python3 core8/pwb.py make2/s test kristianstad
+    # python3 core8/pwb.py make/s test Osceola, Fond du Lac County, Wisconsin
+    # python3 core8/pwb.py make/s test kristianstad
     if sys.argv and "test" in sys.argv:
         Olist = sys.argv
         Olist.remove(sys.argv[0])

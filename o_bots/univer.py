@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-python3 core8/pwb.py make2/m test Category:People executed by the International Military Tribunal in Nuremberg
+python3 core8/pwb.py make/m test Category:People executed by the International Military Tribunal in Nuremberg
 
 from  make2.bots import univer # univer.universities_tables | univer.test_Universities(cate, print_def=printo)
 """

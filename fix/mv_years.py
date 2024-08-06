@@ -187,8 +187,8 @@ if __name__ == "__main__":
     from .. import printe
 
     print_test = printe.output
-    # python3 core8/pwb.py make2/fix/mv_years test
-    # python3 core8/pwb.py make2/fix/mv_years أشخاص أمريكيون شماليون حسب الجنسية في القرن 17
+    # python3 core8/pwb.py make/fix/mv_years test
+    # python3 core8/pwb.py make/fix/mv_years أشخاص أمريكيون شماليون حسب الجنسية في القرن 17
     text_list = [
         "أشخاص أمريكيون شماليون حسب الجنسية في القرن 17",
         "1989 في اتحاد الرجبي حسب البلد",

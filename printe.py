@@ -238,6 +238,9 @@ def get_color_table():
     return color_table
 
 
+color_table = get_color_table()
+
+
 def output(textm):
     """
     Prints the given text with color formatting.
@@ -252,7 +255,6 @@ def output(textm):
     if "noprint" in sys.argv:
         return
 
-    color_table = get_color_table()
     # Define a pattern for color tags
     _color_pat = r"((:?\w+|previous);?(:?\w+|previous)?)"
     # Compile a regex for color tags
@@ -662,7 +664,6 @@ def showDiff(text_a: str, text_b: str, context: int = 0) -> None:
 
 
 if __name__ == "__main__":
-    color_table = get_color_table()
     line = ""
     numb = 0
     for co, cac in color_table.items():

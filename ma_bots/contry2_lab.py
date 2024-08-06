@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-python3 core8/pwb.py make2/ma_bots/contry2_bot
+python3 core8/pwb.py make/ma_bots/contry2_bot
 
 # from ..ma_bots.contry2_lab import get_lab_for_contry2
 
