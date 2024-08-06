@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 
-python3 core8/pwb.py make2/false_files
+python3 core8/pwb.py make/false_files
 """
 
 import re
@@ -12,7 +12,7 @@ Dir = Path(__file__).parent.parent.parent.parent
 # ---
 lenthes = {}
 # ---
-# python3 core8/pwb.py make2/read import
+# python3 core8/pwb.py make/read import
 files_all = []
 # ---
 text = ""

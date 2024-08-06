@@ -15,6 +15,7 @@ Pp_Priffix_p17 = {
 # ---
 PP_PRIFFIX_RELATIONS_FEMALE = {
     " military relations": "العلاقات {} العسكرية",
+    " joint economic efforts": "الجهود الاقتصادية المشتركة {}",
     " relations": "العلاقات {}",
     " border crossings": "معابر الحدود {}",
     " border towns": "بلدات الحدود {}",
@@ -25,6 +26,9 @@ PP_PRIFFIX_RELATIONS_FEMALE = {
 }
 
 PP_PRIFFIX_RELATIONS_MALE = {
+    " conflict video games": "ألعاب فيديو الصراع {}",
+    " conflict legal issues": "قضايا قانونية في الصراع {}",
+    " conflict": "الصراع {}",
     " football rivalry": "التنافس {} في كرة القدم",
 }
 

@@ -3,10 +3,10 @@
 
 محاولة إيجاد تسميات من كوووورة
 
-python3 core8/pwb.py make2/kooora test Al-Arabi SC
+python3 core8/pwb.py make/kooora test Al-Arabi SC
 
 
-python3 core8/pwb.py make2/testmain testfile:koo
+python3 core8/pwb.py make/testmain testfile:koo
 
 Usage:
 
@@ -248,8 +248,8 @@ def kooora_team(EnName, Local=True):
 def main():
     # ---
     pprindt[1] = True
-    # python3 core8/pwb.py make2/kooora test Osceola, Fond du Lac County, Wisconsin
-    # python3 core8/pwb.py make2/kooora test kristianstad
+    # python3 core8/pwb.py make/kooora test Osceola, Fond du Lac County, Wisconsin
+    # python3 core8/pwb.py make/kooora test kristianstad
     # ---
     if sys.argv:
         if "team" in sys.argv:
@@ -260,7 +260,7 @@ def main():
             Name = " ".join(Olist)
             printe.output(f'Name: "{Name}"')
             kooora_team(Name)
-        # python3 core8/pwb.py make2/kooora player Lasse Nilsson
+        # python3 core8/pwb.py make/kooora player Lasse Nilsson
         elif "player" in sys.argv:
             Olist = sys.argv
             Olist.remove(sys.argv[0])

@@ -1,6 +1,6 @@
 """
 
-python3 core8/pwb.py make2/fix/test_mv_year
+python3 core8/pwb.py make/fix/test_mv_year
 
 """
 

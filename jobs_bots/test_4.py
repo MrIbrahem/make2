@@ -516,7 +516,7 @@ def Jobs_in_Multi_Sports(cate, out=False, tab=None):
     # ---
 
     # ---
-    # python3 core8/pwb.py make2/test_4 Asian_Games_wrestlers
+    # python3 core8/pwb.py make/test_4 Asian_Games_wrestlers
     # ---
     output_test4(f"<<lightyellow>>>> Jobs_in_Multi_Sports >> cate:({cate}) ")
     # ---
@@ -556,7 +556,7 @@ def main():
     # ase = try_relegins_jobs("hindu apologists")
     # print_put(f"ase:{ase}")
     # ---
-    # python3 core8/pwb.py make2/bots/test_4 Afghan_men's_football_players testprint
+    # python3 core8/pwb.py make/bots/test_4 Afghan_men's_football_players testprint
     # ---
     if sys.argv and sys.argv[1]:
         La = sys.argv[1].lower()

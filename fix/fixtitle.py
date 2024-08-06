@@ -31,6 +31,13 @@ def fix_n(arlabel):
             arlabel = re.sub(f"{fa}$", falab, arlabel).strip()
             # arlabel = arlabel[:-len(fa)] + " " + falab
     # ---
+    # نصب تذكارية إلى الملكة
+    # نصب تذكارية لالملكة
+    # ---
+    # tab[Category:Monuments and memorials to women] = "تصنيف:معالم أثرية ونصب تذكارية لالمرأة"
+    # ---
+    arlabel = arlabel.replace("نصب تذكارية لال", "نصب تذكارية لل")
+    # ---
     mates = [
         # "^تصنيف\:(\d+|عقد \d+) مسلسلات تلفزيونية .*بدأ عرضها$",
         r"^(\d+|عقد \d+) مسلسلات تلفزيونية .*بدأ عرضها$",
@@ -87,7 +94,12 @@ def fix_sub(text):
 
 
 def fix_it2(arlabel, en):
+    # مسلسلات تلفزيونية ...> مسلسلات تلفازية أنتجها أو أنتجتها ...
+    # مبان ومنشآت بواسطة ...> مبان ومنشآت صممها أو خططها ...
+    # ألبومات ... بواسطة ... > ألبومات ... ل.....
+    # لاعبو كرة بواسطة > لاعبو كرة حسب
     fixx_byy = [
+        "أفلام",
         "أعمال",
         "اختراعات",
         "لوحات",
@@ -98,16 +110,28 @@ def fix_it2(arlabel, en):
     ]
     for x in fixx_byy:
         arlabel = re.sub(f"{x} بواسطة ", f"{x} ", arlabel)
-    
+
+    arlabel = re.sub(r"وفيات بواسطة ضربات ", "وفيات بضربات ", arlabel)
+    arlabel = re.sub(r"ضربات جوية نفذت بواسطة ", "ضربات جويت نفذتها ", arlabel)
+    arlabel = re.sub(r"أفلام أنتجت بواسطة ", "أفلام أنتجها ", arlabel)
     arlabel = re.sub(r"كاميرات اخترعت ", "كاميرات عرضت ", arlabel)
     arlabel = re.sub(r"هواتف محمولة اخترعت ", "هواتف محمولة عرضت ", arlabel)
     arlabel = re.sub(r"مركبات اخترعت ", "مركبات عرضت ", arlabel)
     arlabel = re.sub(r"منتجات اخترعت ", "منتجات عرضت ", arlabel)
+    # ---
+
+    # قصص قصيرة 1613 > قصص قصيرة كتبت سنة 1613
+    # قصص قصيرة من تأليف إرنست همينغوي > قصص إرنست همينغوي القصيرة
+    # قصص قصيرة لأنطون تشيخوف > قصص أنطون تشيخوف القصيرة
+    arlabel = re.sub(r"^قصص قصيرة (\d+)$", r"قصص قصيرة كتبت سنة \1", arlabel)
+    # ---
+    arlabel = re.sub(r"ردود فعل إلى ", "ردود فعل على ", arlabel)
     arlabel = re.sub(r"مدراء كرة", "مدربو كرة", arlabel)
     arlabel = re.sub(r"متعلقة 2", "متعلقة ب2", arlabel)
     arlabel = re.sub(r"هولوكوستية", "الهولوكوست", arlabel)
     arlabel = re.sub(r"في هولوكوست", "في الهولوكوست", arlabel)
     arlabel = re.sub(r"صدور عظام في الدولة العثمانية", "صدور عظام عثمانيون في", arlabel)
+    arlabel = re.sub(r"أعمال بواسطة ", "أعمال ", arlabel)
     arlabel = re.sub(r" في فائزون ", " فائزون ", arlabel)
     arlabel = re.sub(r" في منافسون ", " منافسون ", arlabel)
     arlabel = re.sub(r" على السجل الوطني للأماكن ", " في السجل الوطني للأماكن ", arlabel)
@@ -271,7 +295,7 @@ def fixlab(label_old, out=False, en=""):
 
 
 if __name__ == "__main__":
-    # python3 core8/pwb.py make2/fix/fixtitle test
+    # python3 core8/pwb.py make/fix/fixtitle test
     if "test" in sys.argv:
         text_list = [
             "2020 في جنوب إفريقيا",

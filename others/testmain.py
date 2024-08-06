@@ -1,21 +1,21 @@
 #!/usr/bin/python3
 r"""
-python3 core8/pwb.py make2/others/testmain nosql local testfile:fot
-python3 core8/pwb.py make2/others/testmain nosql local testfile:most
-python3 core8/pwb.py make2/others/testmain nosql local testfile:fd
-python3 core8/pwb.py make2/others/testmain nosql local testfile:uyu
-python3 core8/pwb.py make2/others/testmain nosql local testfile:nl
-python3 core8/pwb.py make2/others/testmain nosql local testfile:int
-python3 core8/pwb.py make2/others/testmain nosql local testfile:Healthcare
-python3 core8/pwb.py make2/others/testmain nosql local testfile:indor
-python3 core8/pwb.py make2/others/testmain nosql local testfile:22
-python3 core8/pwb.py make2/others/testmain nosql local testfile:hindus
-python3 core8/pwb.py make2/others/testmain nosql local testfile:new1txt
-python3 core8/pwb.py make2/others/testmain nosql local testfile:blind
-python3 core8/pwb.py make2/others/testmain nosql local testfile:occ limit:100
+python3 core8/pwb.py make/others/testmain nosql local testfile:fot
+python3 core8/pwb.py make/others/testmain nosql local testfile:most
+python3 core8/pwb.py make/others/testmain nosql local testfile:fd
+python3 core8/pwb.py make/others/testmain nosql local testfile:uyu
+python3 core8/pwb.py make/others/testmain nosql local testfile:nl
+python3 core8/pwb.py make/others/testmain nosql local testfile:int
+python3 core8/pwb.py make/others/testmain nosql local testfile:Healthcare
+python3 core8/pwb.py make/others/testmain nosql local testfile:indor
+python3 core8/pwb.py make/others/testmain nosql local testfile:22
+python3 core8/pwb.py make/others/testmain nosql local testfile:hindus
+python3 core8/pwb.py make/others/testmain nosql local testfile:new1txt
+python3 core8/pwb.py make/others/testmain nosql local testfile:blind
+python3 core8/pwb.py make/others/testmain nosql local testfile:occ limit:100
 
 python -m cProfile -s ncalls  make2/others/testmain.py nosql local testfile:yemen2
-python3 core8/pwb.py make2/others/testmain nosql file:c18/ennewtocreate.txt
+python3 core8/pwb.py make/others/testmain nosql file:c18/ennewtocreate.txt
 
 in_\d\d\d\d$
 in_2020
@@ -49,182 +49,182 @@ from make.bot import event  # event(tab, **kwargs)
 Dir = Path(__file__).parent.parent.parent
 # ---
 """
-python3 core8/pwb.py make2/others/testmain nosql local testfile:Olympics
-python3 core8/pwb.py make2/others/testmain nosql local testfile:ae
-python3 core8/pwb.py make2/others/testmain nosql local testfile:nag
-python3 core8/pwb.py make2/others/testmain nosql local testfile:c2
-python3 core8/pwb.py make2/others/testmain nosql local testfile:pb
-python3 core8/pwb.py make2/others/testmain nosql local testfile:
-python3 core8/pwb.py make2/others/testmain nosql local testfile:yemen
-python3 core8/pwb.py make2/others/testmain nosql local testfile:yemen2
-python3 core8/pwb.py make2/others/testmain nosql local testfile:
-python3 core8/pwb.py make2/others/testmain nosql local testfile:
-python3 core8/pwb.py make2/others/testmain nosql local testfile:base
-python3 core8/pwb.py make2/others/testmain nosql local testfile:
-python3 core8/pwb.py make2/others/testmain nosql local testfile:e
-python3 core8/pwb.py make2/others/testmain nosql local testfile:in2
-python3 core8/pwb.py make2/others/testmain nosql local testfile:in
-python3 core8/pwb.py make2/others/testmain nosql local testfile:ma
-python3 core8/pwb.py make2/others/testmain nosql local testfile:ru
-python3 core8/pwb.py make2/others/testmain nosql local testfile:nato
-python3 core8/pwb.py make2/others/testmain nosql local testfile:covid20
-python3 core8/pwb.py make2/others/testmain nosql testfile:covid19 local
-python3 core8/pwb.py make2/others/testmain nosql testfile:ind local
-python3 core8/pwb.py make2/others/testmain nosql testfile:
-python3 core8/pwb.py make2/others/testmain nosql testfile:fe
-python3 core8/pwb.py make2/others/testmain nosql testfile:ws
-python3 core8/pwb.py make2/others/testmain nosql testfile:
-python3 core8/pwb.py make2/others/testmain nosql testfile:spo
-python3 core8/pwb.py make2/others/testmain nosql testfile:
-python3 core8/pwb.py make2/others/testmain nosql testfile:
-python3 core8/pwb.py make2/others/testmain nosql testfile:ws
-python3 core8/pwb.py make2/others/testmain nosql testfile:gaza
-python3 core8/pwb.py make2/others/testmain nosql testfile:ta
-python3 core8/pwb.py make2/others/testmain nosql testfile:bai
-python3 core8/pwb.py make2/others/testmain nosql testfile:nab
-python3 core8/pwb.py make2/others/testmain nosql testfile:poo
-python3 core8/pwb.py make2/others/testmain nosql testfile:una local
-python3 core8/pwb.py make2/others/testmain nosql testfile:2020
-python3 core8/pwb.py make2/others/testmain nosql testfile:
-python3 core8/pwb.py make2/others/testmain nosql testfile:player
-python3 core8/pwb.py make2/others/testmain nosql testfile:
-python3 core8/pwb.py make2/others/testmain nosql testfile:se
-python3 core8/pwb.py make2/others/testmain nosql testfile:
-python3 core8/pwb.py make2/others/testmain nosql testfile:ik
-python3 core8/pwb.py make2/others/testmain nosql testfile:most
-python3 core8/pwb.py make2/others/testmain nosql testfile:joe
-python3 core8/pwb.py make2/others/testmain nosql testfile:by
-python3 core8/pwb.py make2/others/testmain nosql testfile:ga
-python3 core8/pwb.py make2/others/testmain nosql testfile:congo
-python3 core8/pwb.py make2/others/testmain nosql testfile:covid3
-python3 core8/pwb.py make2/others/testmain nosql testfile:covid2
-python3 core8/pwb.py make2/others/testmain nosql testfile:covid
-python3 core8/pwb.py make2/others/testmain nosql testfile:sent
-python3 core8/pwb.py make2/others/testmain nosql testfile:fr
-python3 core8/pwb.py make2/others/testmain nosql testfile:fr2
-python3 core8/pwb.py make2/others/testmain nosql testfile:po
-python3 core8/pwb.py make2/others/testmain nosql testfile:gh
-python3 core8/pwb.py make2/others/testmain nosql testfile:z5
-python3 core8/pwb.py make2/others/testmain nosql testfile:z4
-python3 core8/pwb.py make2/others/testmain nosql testfile:z
-python3 core8/pwb.py make2/others/testmain nosql testfile:ddd
-python3 core8/pwb.py make2/others/testmain nosql testfile:koo5
-python3 core8/pwb.py make2/others/testmain nosql testfile:koo
-python3 core8/pwb.py make2/others/testmain nosql testfile:ppp
-python3 core8/pwb.py make2/others/testmain nosql testfile:fer
-python3 core8/pwb.py make2/others/testmain nosql testfile:ba
-python3 core8/pwb.py make2/others/testmain nosql testfile:ttt
-python3 core8/pwb.py make2/others/testmain nosql testfile:irl
-python3 core8/pwb.py make2/others/testmain nosql testfile:iq
-python3 core8/pwb.py make2/others/testmain nosql testfile:iz
-python3 core8/pwb.py make2/others/testmain nosql testfile:ass
-python3 core8/pwb.py make2/others/testmain nosql testfile:af
-python3 core8/pwb.py make2/others/testmain nosql testfile:co
-python3 core8/pwb.py make2/others/testmain nosql testfile:fan
-python3 core8/pwb.py make2/others/testmain nosql testfile:sing
-python3 core8/pwb.py make2/others/testmain nosql testfile:yya
-python3 core8/pwb.py make2/others/testmain nosql testfile:ya
-python3 core8/pwb.py make2/others/testmain nosql testfile:multin
-python3 core8/pwb.py make2/others/testmain nosql testfile:sea
-python3 core8/pwb.py make2/others/testmain nosql testfile:multi2
-python3 core8/pwb.py make2/others/testmain nosql testfile:multi
-python3 core8/pwb.py make2/others/testmain nosql testfile:cyf
-python3 core8/pwb.py make2/others/testmain nosql testfile:paper
-python3 core8/pwb.py make2/others/testmain nosql testfile:albums
-python3 core8/pwb.py make2/others/testmain nosql testfile:Joker
-python3 core8/pwb.py make2/others/testmain nosql testfile:jud
-python3 core8/pwb.py make2/others/testmain nosql testfile:ships3
-python3 core8/pwb.py make2/others/testmain nosql testfile:teams
-python3 core8/pwb.py make2/others/testmain nosql testfile:crr
-python3 core8/pwb.py make2/others/testmain nosql testfile:cyc
-python3 core8/pwb.py make2/others/testmain nosql testfile:muay
-python3 core8/pwb.py make2/others/testmain nosql testfile:mi
-python3 core8/pwb.py make2/others/testmain nosql testfile:us
-python3 core8/pwb.py make2/others/testmain nosql testfile:28
-python3 core8/pwb.py make2/others/testmain nosql testfile:india
-python3 core8/pwb.py make2/others/testmain nosql testfile:it
-python3 core8/pwb.py make2/others/testmain nosql testfile:can
-python3 core8/pwb.py make2/others/testmain nosql testfile:pro
-python3 core8/pwb.py make2/others/testmain nosql testfile:mo
-python3 core8/pwb.py make2/others/testmain nosql testfile:cy
-python3 core8/pwb.py make2/others/testmain nosql testfile:usa
-python3 core8/pwb.py make2/others/testmain nosql testfile:vf
-python3 core8/pwb.py make2/others/testmain nosql testfile:uu
-python3 core8/pwb.py make2/others/testmain nosql testfile:i
-python3 core8/pwb.py make2/others/testmain nosql testfile:fis
-python3 core8/pwb.py make2/others/testmain nosql testfile:mn
-python3 core8/pwb.py make2/others/testmain nosql testfile:jobs
-python3 core8/pwb.py make2/others/testmain nosql testfile:un
-python3 core8/pwb.py make2/others/testmain nosql testfile:rt
-python3 core8/pwb.py make2/others/testmain nosql testfile:uiu
-python3 core8/pwb.py make2/others/testmain nosql testfile:sri
-python3 core8/pwb.py make2/others/testmain nosql testfile:play
-python3 core8/pwb.py make2/others/testmain nosql testfile:ts
-python3 core8/pwb.py make2/others/testmain nosql testfile:names
-python3 core8/pwb.py make2/others/testmain nosql testfile:football
-python3 core8/pwb.py make2/others/testmain nosql testfile:am
-python3 core8/pwb.py make2/others/testmain nosql testfile:do
-python3 core8/pwb.py make2/others/testmain nosql testfile:tax
-python3 core8/pwb.py make2/others/testmain nosql testfile:c
-python3 core8/pwb.py make2/others/testmain nosql testfile:works
-python3 core8/pwb.py make2/others/testmain nosql testfile:ng
-python3 core8/pwb.py make2/others/testmain nosql testfile:cdcd
-python3 core8/pwb.py make2/others/testmain nosql testfile:ss
-python3 core8/pwb.py make2/others/testmain nosql testfile:singers
-python3 core8/pwb.py make2/others/testmain nosql testfile:so
-python3 core8/pwb.py make2/others/testmain nosql testfile:fra
-python3 core8/pwb.py make2/others/testmain nosql testfile:su
-python3 core8/pwb.py make2/others/testmain nosql testfile:ww
-python3 core8/pwb.py make2/others/testmain nosql testfile:20
-python3 core8/pwb.py make2/others/testmain nosql testfile:2018
-python3 core8/pwb.py make2/others/testmain nosql testfile:xd
-python3 core8/pwb.py make2/others/testmain nosql testfile:people
-python3 core8/pwb.py make2/others/testmain nosql testfile:o
-python3 core8/pwb.py make2/others/testmain nosql testfile:ada
-python3 core8/pwb.py make2/others/testmain nosql testfile:h
-python3 core8/pwb.py make2/others/testmain nosql testfile:ii
-python3 core8/pwb.py make2/others/testmain nosql testfile:films
-python3 core8/pwb.py make2/others/testmain nosql testfile:sport
-python3 core8/pwb.py make2/others/testmain nosql testfile:io
-python3 core8/pwb.py make2/others/testmain nosql testfile:jv
-python3 core8/pwb.py make2/others/testmain nosql testfile:amr
-python3 core8/pwb.py make2/others/testmain nosql testfile:ip
-python3 core8/pwb.py make2/others/testmain nosql testfile:dd
-python3 core8/pwb.py make2/others/testmain nosql testfile:r
-python3 core8/pwb.py make2/others/testmain nosql testfile:ff
-python3 core8/pwb.py make2/others/testmain nosql testfile:j
+python3 core8/pwb.py make/others/testmain nosql local testfile:Olympics
+python3 core8/pwb.py make/others/testmain nosql local testfile:ae
+python3 core8/pwb.py make/others/testmain nosql local testfile:nag
+python3 core8/pwb.py make/others/testmain nosql local testfile:c2
+python3 core8/pwb.py make/others/testmain nosql local testfile:pb
+python3 core8/pwb.py make/others/testmain nosql local testfile:
+python3 core8/pwb.py make/others/testmain nosql local testfile:yemen
+python3 core8/pwb.py make/others/testmain nosql local testfile:yemen2
+python3 core8/pwb.py make/others/testmain nosql local testfile:
+python3 core8/pwb.py make/others/testmain nosql local testfile:
+python3 core8/pwb.py make/others/testmain nosql local testfile:base
+python3 core8/pwb.py make/others/testmain nosql local testfile:
+python3 core8/pwb.py make/others/testmain nosql local testfile:e
+python3 core8/pwb.py make/others/testmain nosql local testfile:in2
+python3 core8/pwb.py make/others/testmain nosql local testfile:in
+python3 core8/pwb.py make/others/testmain nosql local testfile:ma
+python3 core8/pwb.py make/others/testmain nosql local testfile:ru
+python3 core8/pwb.py make/others/testmain nosql local testfile:nato
+python3 core8/pwb.py make/others/testmain nosql local testfile:covid20
+python3 core8/pwb.py make/others/testmain nosql testfile:covid19 local
+python3 core8/pwb.py make/others/testmain nosql testfile:ind local
+python3 core8/pwb.py make/others/testmain nosql testfile:
+python3 core8/pwb.py make/others/testmain nosql testfile:fe
+python3 core8/pwb.py make/others/testmain nosql testfile:ws
+python3 core8/pwb.py make/others/testmain nosql testfile:
+python3 core8/pwb.py make/others/testmain nosql testfile:spo
+python3 core8/pwb.py make/others/testmain nosql testfile:
+python3 core8/pwb.py make/others/testmain nosql testfile:
+python3 core8/pwb.py make/others/testmain nosql testfile:ws
+python3 core8/pwb.py make/others/testmain nosql testfile:gaza
+python3 core8/pwb.py make/others/testmain nosql testfile:ta
+python3 core8/pwb.py make/others/testmain nosql testfile:bai
+python3 core8/pwb.py make/others/testmain nosql testfile:nab
+python3 core8/pwb.py make/others/testmain nosql testfile:poo
+python3 core8/pwb.py make/others/testmain nosql testfile:una local
+python3 core8/pwb.py make/others/testmain nosql testfile:2020
+python3 core8/pwb.py make/others/testmain nosql testfile:
+python3 core8/pwb.py make/others/testmain nosql testfile:player
+python3 core8/pwb.py make/others/testmain nosql testfile:
+python3 core8/pwb.py make/others/testmain nosql testfile:se
+python3 core8/pwb.py make/others/testmain nosql testfile:
+python3 core8/pwb.py make/others/testmain nosql testfile:ik
+python3 core8/pwb.py make/others/testmain nosql testfile:most
+python3 core8/pwb.py make/others/testmain nosql testfile:joe
+python3 core8/pwb.py make/others/testmain nosql testfile:by
+python3 core8/pwb.py make/others/testmain nosql testfile:ga
+python3 core8/pwb.py make/others/testmain nosql testfile:congo
+python3 core8/pwb.py make/others/testmain nosql testfile:covid3
+python3 core8/pwb.py make/others/testmain nosql testfile:covid2
+python3 core8/pwb.py make/others/testmain nosql testfile:covid
+python3 core8/pwb.py make/others/testmain nosql testfile:sent
+python3 core8/pwb.py make/others/testmain nosql testfile:fr
+python3 core8/pwb.py make/others/testmain nosql testfile:fr2
+python3 core8/pwb.py make/others/testmain nosql testfile:po
+python3 core8/pwb.py make/others/testmain nosql testfile:gh
+python3 core8/pwb.py make/others/testmain nosql testfile:z5
+python3 core8/pwb.py make/others/testmain nosql testfile:z4
+python3 core8/pwb.py make/others/testmain nosql testfile:z
+python3 core8/pwb.py make/others/testmain nosql testfile:ddd
+python3 core8/pwb.py make/others/testmain nosql testfile:koo5
+python3 core8/pwb.py make/others/testmain nosql testfile:koo
+python3 core8/pwb.py make/others/testmain nosql testfile:ppp
+python3 core8/pwb.py make/others/testmain nosql testfile:fer
+python3 core8/pwb.py make/others/testmain nosql testfile:ba
+python3 core8/pwb.py make/others/testmain nosql testfile:ttt
+python3 core8/pwb.py make/others/testmain nosql testfile:irl
+python3 core8/pwb.py make/others/testmain nosql testfile:iq
+python3 core8/pwb.py make/others/testmain nosql testfile:iz
+python3 core8/pwb.py make/others/testmain nosql testfile:ass
+python3 core8/pwb.py make/others/testmain nosql testfile:af
+python3 core8/pwb.py make/others/testmain nosql testfile:co
+python3 core8/pwb.py make/others/testmain nosql testfile:fan
+python3 core8/pwb.py make/others/testmain nosql testfile:sing
+python3 core8/pwb.py make/others/testmain nosql testfile:yya
+python3 core8/pwb.py make/others/testmain nosql testfile:ya
+python3 core8/pwb.py make/others/testmain nosql testfile:multin
+python3 core8/pwb.py make/others/testmain nosql testfile:sea
+python3 core8/pwb.py make/others/testmain nosql testfile:multi2
+python3 core8/pwb.py make/others/testmain nosql testfile:multi
+python3 core8/pwb.py make/others/testmain nosql testfile:cyf
+python3 core8/pwb.py make/others/testmain nosql testfile:paper
+python3 core8/pwb.py make/others/testmain nosql testfile:albums
+python3 core8/pwb.py make/others/testmain nosql testfile:Joker
+python3 core8/pwb.py make/others/testmain nosql testfile:jud
+python3 core8/pwb.py make/others/testmain nosql testfile:ships3
+python3 core8/pwb.py make/others/testmain nosql testfile:teams
+python3 core8/pwb.py make/others/testmain nosql testfile:crr
+python3 core8/pwb.py make/others/testmain nosql testfile:cyc
+python3 core8/pwb.py make/others/testmain nosql testfile:muay
+python3 core8/pwb.py make/others/testmain nosql testfile:mi
+python3 core8/pwb.py make/others/testmain nosql testfile:us
+python3 core8/pwb.py make/others/testmain nosql testfile:28
+python3 core8/pwb.py make/others/testmain nosql testfile:india
+python3 core8/pwb.py make/others/testmain nosql testfile:it
+python3 core8/pwb.py make/others/testmain nosql testfile:can
+python3 core8/pwb.py make/others/testmain nosql testfile:pro
+python3 core8/pwb.py make/others/testmain nosql testfile:mo
+python3 core8/pwb.py make/others/testmain nosql testfile:cy
+python3 core8/pwb.py make/others/testmain nosql testfile:usa
+python3 core8/pwb.py make/others/testmain nosql testfile:vf
+python3 core8/pwb.py make/others/testmain nosql testfile:uu
+python3 core8/pwb.py make/others/testmain nosql testfile:i
+python3 core8/pwb.py make/others/testmain nosql testfile:fis
+python3 core8/pwb.py make/others/testmain nosql testfile:mn
+python3 core8/pwb.py make/others/testmain nosql testfile:jobs
+python3 core8/pwb.py make/others/testmain nosql testfile:un
+python3 core8/pwb.py make/others/testmain nosql testfile:rt
+python3 core8/pwb.py make/others/testmain nosql testfile:uiu
+python3 core8/pwb.py make/others/testmain nosql testfile:sri
+python3 core8/pwb.py make/others/testmain nosql testfile:play
+python3 core8/pwb.py make/others/testmain nosql testfile:ts
+python3 core8/pwb.py make/others/testmain nosql testfile:names
+python3 core8/pwb.py make/others/testmain nosql testfile:football
+python3 core8/pwb.py make/others/testmain nosql testfile:am
+python3 core8/pwb.py make/others/testmain nosql testfile:do
+python3 core8/pwb.py make/others/testmain nosql testfile:tax
+python3 core8/pwb.py make/others/testmain nosql testfile:c
+python3 core8/pwb.py make/others/testmain nosql testfile:works
+python3 core8/pwb.py make/others/testmain nosql testfile:ng
+python3 core8/pwb.py make/others/testmain nosql testfile:cdcd
+python3 core8/pwb.py make/others/testmain nosql testfile:ss
+python3 core8/pwb.py make/others/testmain nosql testfile:singers
+python3 core8/pwb.py make/others/testmain nosql testfile:so
+python3 core8/pwb.py make/others/testmain nosql testfile:fra
+python3 core8/pwb.py make/others/testmain nosql testfile:su
+python3 core8/pwb.py make/others/testmain nosql testfile:ww
+python3 core8/pwb.py make/others/testmain nosql testfile:20
+python3 core8/pwb.py make/others/testmain nosql testfile:2018
+python3 core8/pwb.py make/others/testmain nosql testfile:xd
+python3 core8/pwb.py make/others/testmain nosql testfile:people
+python3 core8/pwb.py make/others/testmain nosql testfile:o
+python3 core8/pwb.py make/others/testmain nosql testfile:ada
+python3 core8/pwb.py make/others/testmain nosql testfile:h
+python3 core8/pwb.py make/others/testmain nosql testfile:ii
+python3 core8/pwb.py make/others/testmain nosql testfile:films
+python3 core8/pwb.py make/others/testmain nosql testfile:sport
+python3 core8/pwb.py make/others/testmain nosql testfile:io
+python3 core8/pwb.py make/others/testmain nosql testfile:jv
+python3 core8/pwb.py make/others/testmain nosql testfile:amr
+python3 core8/pwb.py make/others/testmain nosql testfile:ip
+python3 core8/pwb.py make/others/testmain nosql testfile:dd
+python3 core8/pwb.py make/others/testmain nosql testfile:r
+python3 core8/pwb.py make/others/testmain nosql testfile:ff
+python3 core8/pwb.py make/others/testmain nosql testfile:j
 """
 # ---
-# python3 core8/pwb.py make2/others/testmain nosql te:Assa
-# python3 core8/pwb.py make2/others/testmain nosql te:Assa2
-# python3 core8/pwb.py make2/others/testmain nosql te:am
-# python3 core8/pwb.py make2/others/testmain nosql te:misic
-# python3 core8/pwb.py make2/others/testmain nosql te:l
-# python3 core8/pwb.py make2/others/testmain nosql te:iii
-# python3 core8/pwb.py make2/others/testmain nosql te:foot
-# python3 core8/pwb.py make2/others/testmain nosql te:fe
-# python3 core8/pwb.py make2/others/testmain nosql te:D
-# python3 core8/pwb.py make2/others/testmain nosql te:mo
-# python3 core8/pwb.py make2/others/testmain nosql te:op
-# python3 core8/pwb.py make2/others/testmain nosql te:oil
-# python3 core8/pwb.py make2/others/testmain nosql te:new
-# python3 core8/pwb.py make2/others/testmain nosql te:tennis
-# python3 core8/pwb.py make2/others/testmain nosql te:ye1
-# python3 core8/pwb.py make2/others/testmain nosql te:19
-# python3 core8/pwb.py make2/others/testmain nosql te:ye2
-# python3 core8/pwb.py make2/others/testmain nosql te:ddd
+# python3 core8/pwb.py make/others/testmain nosql te:Assa
+# python3 core8/pwb.py make/others/testmain nosql te:Assa2
+# python3 core8/pwb.py make/others/testmain nosql te:am
+# python3 core8/pwb.py make/others/testmain nosql te:misic
+# python3 core8/pwb.py make/others/testmain nosql te:l
+# python3 core8/pwb.py make/others/testmain nosql te:iii
+# python3 core8/pwb.py make/others/testmain nosql te:foot
+# python3 core8/pwb.py make/others/testmain nosql te:fe
+# python3 core8/pwb.py make/others/testmain nosql te:D
+# python3 core8/pwb.py make/others/testmain nosql te:mo
+# python3 core8/pwb.py make/others/testmain nosql te:op
+# python3 core8/pwb.py make/others/testmain nosql te:oil
+# python3 core8/pwb.py make/others/testmain nosql te:new
+# python3 core8/pwb.py make/others/testmain nosql te:tennis
+# python3 core8/pwb.py make/others/testmain nosql te:ye1
+# python3 core8/pwb.py make/others/testmain nosql te:19
+# python3 core8/pwb.py make/others/testmain nosql te:ye2
+# python3 core8/pwb.py make/others/testmain nosql te:ddd
 #
-# python3 core8/pwb.py make2/others/testmain nosql file:textfiles/ennewtocreate.txt
-# python3 core8/pwb.py make2/others/testmain nosql testfile:yemen
-# python3 core8/pwb.py make2/others/testmain nosql testfile:india
-# python3 core8/pwb.py make2/others/testmain nosql testfile:elph2
-# python3 core8/pwb.py make2/others/testmain nosql testfile:elph
-# python3 core8/pwb.py make2/others/testmain nosql testfile:military
+# python3 core8/pwb.py make/others/testmain nosql file:textfiles/ennewtocreate.txt
+# python3 core8/pwb.py make/others/testmain nosql testfile:yemen
+# python3 core8/pwb.py make/others/testmain nosql testfile:india
+# python3 core8/pwb.py make/others/testmain nosql testfile:elph2
+# python3 core8/pwb.py make/others/testmain nosql testfile:elph
+# python3 core8/pwb.py make/others/testmain nosql testfile:military
 #
-# python3 core8/pwb.py make2/others/testmain nosql testfile:winter
-# python3 core8/pwb.py make2/others/testmain nosql testfile:z
-# python3 core8/pwb.py make2/others/testmain nosql testfile:nn
-# python3 core8/pwb.py make2/others/testmain nosql testfile:Businesspeople
+# python3 core8/pwb.py make/others/testmain nosql testfile:winter
+# python3 core8/pwb.py make/others/testmain nosql testfile:z
+# python3 core8/pwb.py make/others/testmain nosql testfile:nn
+# python3 core8/pwb.py make/others/testmain nosql testfile:Businesspeople
 # ---
 test_table = {}
 # ---

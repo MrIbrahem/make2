@@ -2,8 +2,8 @@
 
 Usage:
 python3 I:/core/bots/ma/make2/m.py exit lenth_pri_text
-python3 core8/pwb.py make2/m exit lenth_pri_text
-python3 core8/pwb.py make2/m test Category:People executed by the International Military Tribunal in Nuremberg
+python3 core8/pwb.py make/m exit lenth_pri_text
+python3 core8/pwb.py make/m test Category:People executed by the International Military Tribunal in Nuremberg
 """
 
 import time
@@ -74,13 +74,13 @@ def justlab(opo=""):
 
 
 def mainx():
-    # python3 core8/pwb.py make2/m t:2
-    # python3 core8/pwb.py make2/m t:2 -lang:en -family:wikipedia -subcats:Category:Films_by_decade_of_setting
-    # python3 core8/pwb.py make2/m t:2 -lang:en -family:wikipedia -subcats:Category:Actors_by_medium_by_nationality
-    # python3 core8/pwb.py make2/m t:5 -cat:Category:Drama_films_by_country
-    # python3 core8/pwb.py make2/m t:5 -cat:Category:Actors_by_medium_by_nationality
-    # python3 core8/pwb.py make2/m t:lab -cat:Category:Ambassadors_of_Afghanistan_to_Australia
-    # python3 core8/pwb.py make2/m t:lab -cat:Category:Military_installations_of_Morocco -cat1:Category:Military_installations_in_Morocco
+    # python3 core8/pwb.py make/m t:2
+    # python3 core8/pwb.py make/m t:2 -lang:en -family:wikipedia -subcats:Category:Films_by_decade_of_setting
+    # python3 core8/pwb.py make/m t:2 -lang:en -family:wikipedia -subcats:Category:Actors_by_medium_by_nationality
+    # python3 core8/pwb.py make/m t:5 -cat:Category:Drama_films_by_country
+    # python3 core8/pwb.py make/m t:5 -cat:Category:Actors_by_medium_by_nationality
+    # python3 core8/pwb.py make/m t:lab -cat:Category:Ambassadors_of_Afghanistan_to_Australia
+    # python3 core8/pwb.py make/m t:lab -cat:Category:Military_installations_of_Morocco -cat1:Category:Military_installations_in_Morocco
 
     starten = time.time()
 

@@ -1,5 +1,5 @@
 """
-python3 core8/pwb.py make2/others/fixnat
+python3 core8/pwb.py make/others/fixnat
 
 """
 
