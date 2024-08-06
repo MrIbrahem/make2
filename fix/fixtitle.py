@@ -31,6 +31,13 @@ def fix_n(arlabel):
             arlabel = re.sub(f"{fa}$", falab, arlabel).strip()
             # arlabel = arlabel[:-len(fa)] + " " + falab
     # ---
+    # نصب تذكارية إلى الملكة
+    # نصب تذكارية لالملكة
+    # ---
+    # tab[Category:Monuments and memorials to women] = "تصنيف:معالم أثرية ونصب تذكارية لالمرأة"
+    # ---
+    arlabel = arlabel.replace("نصب تذكارية لال", "نصب تذكارية لل")
+    # ---
     mates = [
         # "^تصنيف\:(\d+|عقد \d+) مسلسلات تلفزيونية .*بدأ عرضها$",
         r"^(\d+|عقد \d+) مسلسلات تلفزيونية .*بدأ عرضها$",
