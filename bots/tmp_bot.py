@@ -1,5 +1,5 @@
 """
-from  make2.bots import tmp_bot
+from .bots import tmp_bot
 if not sub_ar_label:
     sub_ar_label = tmp_bot.Work_Templates(category)
 """

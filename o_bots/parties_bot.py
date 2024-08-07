@@ -1,10 +1,10 @@
 """
-from  make2.bots.parties_bot import get_parties_lab
+from  make.bots.parties_bot import get_parties_lab
 
 """
 
-from ma_lists.us_counties import party_end_keys
-from ma_lists.keys2 import Parties
+from ..ma_lists_bots import party_end_keys
+from ..ma_lists_bots import Parties
 
 
 def print_put(s):

@@ -11,8 +11,8 @@ def Ethnic(cate, Start, con_3):
 
 """
 
-from ma_lists.Nationality import Nat_women, Nat_men, Nat_mens
-from ma_lists.test_4_list import New_2018_for_women_without_al_Keys2
+from ..ma_lists_bots import Nat_women, Nat_men, Nat_mens
+from ..ma_lists_bots import New_2018_for_women_without_al_Keys2
 
 from ..helps.print_bot import output_test4
 

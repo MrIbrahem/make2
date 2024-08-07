@@ -14,8 +14,8 @@ from . import list_cat_format
 from ..helps.print_bot import print_put
 from ..date_bots import year_lab
 from ..o_bots import univer
-from ma_lists import sport_lab
-from ma_lists.Labels_Contry import New_P17_Finall
+from .. import ma_lists_sport_lab as sport_lab
+from ..ma_lists_bots import New_P17_Finall
 from ..fromnet import kooora
 from ..fromnet.wd_bot import find_wikidata
 from ..pop_format import pp_ends_with, pp_ends_with_pase, change_cat
@@ -60,7 +60,7 @@ def event_Lab(category_r):
             list_of_cat = ""
 
     if not category_lab:
-        category_lab = univer.test_Universities(category3, print_put)
+        category_lab = univer.test_Universities(category3)
 
     if not category_lab:
         category_lab = year_lab.make_year_lab(category3)
@@ -107,7 +107,7 @@ def event_Lab(category_r):
         category_lab = event_Lab_seoo("", category3)
 
     if list_of_cat and category_lab:
-        category_lab, list_of_cat = list_cat_format.list_of_cat_func(category_r, category_lab, list_of_cat, foot_ballers, print_put)
+        category_lab, list_of_cat = list_cat_format.list_of_cat_func(category_r, category_lab, list_of_cat, foot_ballers)
 
     # ---
     # عند عدم وجود تعريب إلغاء العمل مع list_of_cat

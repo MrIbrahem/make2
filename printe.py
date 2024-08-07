@@ -312,6 +312,10 @@ def output(textm):
     print(toprint)
 
 
+def error(text):
+    output(f"<<red>> {str(text)} <<default>>")
+
+
 def replace_invisible(text):
     """Replace invisible characters by '<codepoint>'."""
 
@@ -392,7 +396,7 @@ class Hunk:
     def create_diff(self) -> Iterable[str]:
         """Generator of diff text for this hunk, without formatting."""
 
-        # make2 sure each line ends with '\n' to prevent
+        # make sure each line ends with '\n' to prevent
         # behaviour like https://bugs.python.org/issue2142
         def check_line(line: str) -> str:
             return line if line.endswith("\n") else f"{line}\n"

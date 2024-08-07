@@ -2,11 +2,11 @@
 """
 python3 core8/pwb.py make/m test Category:People executed by the International Military Tribunal in Nuremberg
 
-from  make2.bots import univer # univer.universities_tables | univer.test_Universities(cate, print_def=printo)
+from  make.bots import univer # univer.universities_tables | univer.test_Universities(cate)
 """
 
-from ma_lists.Cities import N_cit_ies_s_lower
-
+from ..ma_lists_bots import N_cit_ies_s_lower
+from ..helps.print_bot import print_put
 # ---
 majors = {
     "medical sciences": "للعلوم الطبية",
@@ -58,16 +58,10 @@ for major, maj_ar in majors.items():
     universities_tables[f"university of the {major}"] = "جامعة {} %s" % maj_ar
     universities_tables[f"university-of-the-{major}"] = "جامعة {} %s" % maj_ar
 
-
-def printo(strs):
-    print(strs)
-
-
-# ---
 test_Universities_cash = {}
 
 
-def test_Universities(cate, print_def=printo):
+def test_Universities(cate):
     cate = cate.lower()
     # ---
     if cate.startswith("category:"):
@@ -76,10 +70,7 @@ def test_Universities(cate, print_def=printo):
     if cate.lower().strip() in test_Universities_cash:
         return test_Universities_cash[cate.lower().strip()]
     # ---
-    if not print_def:
-        print_def = printo
-    # ---
-    print_def(f"<<lightblue>>>> vvvvvvvvvvvv test_Universities start, (cate:{cate}) vvvvvvvvvvvv ")
+    print_put(f"<<lightblue>>>> vvvvvvvvvvvv test_Universities start, (cate:{cate}) vvvvvvvvvvvv ")
     # ---
     cite = ""
     majorlab = ""
@@ -117,16 +108,16 @@ def test_Universities(cate, print_def=printo):
         # ---
         citelab = N_cit_ies_s_lower.get(cite, "")
         # ---
-        print_def(f"<<lightblue>>>> test_Universities cite:{cite}, majorlab:{majorlab}, citelab:{citelab}")
+        print_put(f"<<lightblue>>>> test_Universities cite:{cite}, majorlab:{majorlab}, citelab:{citelab}")
         # ---
     # ---
     univer_lab = ""
     # ---
     if citelab:
         univer_lab = majorlab.format(citelab)
-        print_def(f'<<lightblue>>>>>> test_Universities: new univer_lab  "{univer_lab}" ')
+        print_put(f'<<lightblue>>>>>> test_Universities: new univer_lab  "{univer_lab}" ')
     # ---
-    print_def("<<lightblue>>>> ^^^^^^^^^ test_Universities end ^^^^^^^^^ ")
+    print_put("<<lightblue>>>> ^^^^^^^^^ test_Universities end ^^^^^^^^^ ")
     # ---
     test_Universities_cash[cate.lower().strip()] = univer_lab
     # ---

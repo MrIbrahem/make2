@@ -4,11 +4,11 @@ from ..bots.popl import Work_peoples, make_people_lab
 
 """
 import re
-from ma_lists.films_mslslat import film_key_women_2
-from ma_lists.Nationality import nats_to_add
+from ..ma_lists_bots import film_key_women_2
+from ..ma_lists_bots import nats_to_add
 from ..helps.print_bot import print_put
 from ..matables_bots.bot import Pp_Priffix
-from ma_lists.peoples import People_key
+from ..ma_lists_bots import People_key
 
 # ---
 Work_peoples_cash = {}

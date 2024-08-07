@@ -22,10 +22,10 @@ from ..jobs_bots.test_4 import test4_2018_Jobs
 from ..media_bots.films_bot import test_films
 from . import event2bot
 
-from ma_lists.all_keys2 import pop_final_all_keys2, pop_of_without_in
-from ma_lists.Labels_Contry import New_P17_Finall
-from ma_lists.jobs_defs import religious_keys_PP
-from ma_lists.male_keys import New_female_keys
+from ..ma_lists_bots import pop_final_all_keys2, pop_of_without_in
+from ..ma_lists_bots import New_P17_Finall
+from ..ma_lists_bots import religious_keys_PP
+from ..ma_lists_bots import New_female_keys
 
 from ..fromnet.wd_bot import find_wikidata
 from ..fromnet import kooora

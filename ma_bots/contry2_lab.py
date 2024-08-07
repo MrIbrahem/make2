@@ -44,7 +44,7 @@ def get_lab_for_contry2(contry, with_test_ye=False, **kwargs):
     if not cnt_la:
         cnt_la = Work_relations(contry2)
     if not cnt_la:
-        cnt_la = univer.test_Universities(contry2, print_put)
+        cnt_la = univer.test_Universities(contry2)
     if not cnt_la:
         cnt_la = Work_US_State(contry2)
     if not cnt_la:

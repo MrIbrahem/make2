@@ -1,11 +1,11 @@
 """
 
 Usage:
-from make2.bot import event # event(tab, **kwargs)
+from .bot import event # event(tab, **kwargs)
 
-from make2 import bot # bot.event(tab, **kwargs)
+from . import bot # bot.event(tab, **kwargs)
 
-from make2 import bot as MA_MAIN # MA_MAIN.event(tab, **kwargs)
+from . import bot as MA_MAIN # MA_MAIN.event(tab, **kwargs)
 """
 
 from . import main

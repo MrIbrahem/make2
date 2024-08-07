@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-from  make2.bots import team_work # team_work.Get_Club(cate, out=False) | team_work.Teams_new_end_keys
+from  make.bots import team_work # team_work.Get_Club(cate, out=False) | team_work.Teams_new_end_keys
 Category:Sports_commentators_by_sport
 
 """
@@ -11,13 +11,13 @@ from .. import printe
 import sys
 
 # ---
-from ma_lists.all_keys5 import Clubs_key_2
-from ma_lists.all_keys4 import International_Federation_lower
-from ma_lists.all_keys2 import pop_of_football_lower
+from ..ma_lists_bots import Clubs_key_2
+from ..ma_lists_bots import International_Federation_lower
+from ..ma_lists_bots import pop_of_football_lower
 from ..jobs_bots import test_4  # test_4.test4_2018_with_nat()#test_4.Work_for_New_2018_men_Keys_with_all()
 from ..matables_bots.bot_2018 import Add_to_pop_All_18
 
-# from ma_lists.all_keys2 import pop_of_football_lower
+# from ..ma_lists_bots import pop_of_football_lower
 # ---
 from ..fromnet import kooora
 

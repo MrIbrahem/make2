@@ -19,10 +19,10 @@ from ..bots import tmp_bot
 from ..date_bots import year_lab
 from ..date_bots import with_years_bot
 from .lab_seoo_bot import event_Lab_seoo
-from ..o_bots import univer  # univer.test_Universities(cate, print_def=printo)
+from ..o_bots import univer  # univer.test_Universities(cate)
 
 from ..pop_format import Tit_ose_Nmaes, NewFormat, ar_lab_before_year_to_add_in, contry_before_year
-from ma_lists.Nationality import Nat_mens
+from ..ma_lists_bots import Nat_mens
 from ..matables_bots.bot import Add_to_main2_tab  # Add_to_main2_tab()
 from ..matables_bots.bot import (
     New_Lan,
@@ -111,7 +111,7 @@ def event2(category_r):
     # tit = {}
     NoLab_list = {}
     ar_label = ""
-    ar_label = univer.test_Universities(category_r, print_put)
+    ar_label = univer.test_Universities(category_r)
     if category_r and ar_label == "":
         Add_In_Done = False
         NoLab = False

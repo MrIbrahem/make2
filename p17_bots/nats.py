@@ -4,11 +4,11 @@ from ..p17_bots import nats
 
 import re
 from .. import printe
-from ma_lists.sportsb.nat_p17 import sport_formts_for_p17, nat_p17_oioi
-from ma_lists.Sport_key import fanco_line, Sports_Keys_For_Team
+from ..ma_lists_bots import sport_formts_for_p17, nat_p17_oioi
+from ..ma_lists_bots import fanco_line, Sports_Keys_For_Team
 from ..matables_bots.bot import New_players, Add_to_main2_tab  # Add_to_main2_tab()
-from ma_lists import sport_lab
-from ma_lists.Nationality import All_Nat, Nat_women
+from .. import ma_lists_sport_lab as sport_lab
+from ..ma_lists_bots import All_Nat, Nat_women
 from ..jobs_bots.get_helps import get_con_3
 
 

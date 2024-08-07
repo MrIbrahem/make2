@@ -17,10 +17,12 @@ files_all = []
 # ---
 text = ""
 # ---
-for root, dirs, files in os.walk(Dir / "make2", topdown=True):
+dir_to_work = "make2"
+# ---
+for root, dirs, files in os.walk(Dir / dir_to_work, topdown=True):
     for f in files:
         # ---
-        if not root.endswith("make2"):
+        if not root.endswith(dir_to_work):
             continue
         # ---
         if not f.endswith(".py"):
@@ -41,15 +43,16 @@ for root, dirs, files in os.walk(Dir / "make2", topdown=True):
         files_all.append(f)
         # ---
 # ---
-# text = re.sub(r'from\s*make2\s*import\s*', 'from make2 import ', text)
-# text = re.sub(r'from\s*make2\.(.*?)\s*import', 'from ..$1 import ', text)
+# text = re.sub(rf'from\s*{dir_to_work}\s*import\s*', f'from {dir_to_work} import ', text)
+# text = re.sub(rf'from\s*{dir_to_work}\.(.*?)\s*import', 'from ..$1 import ', text)
 # ---
 for x in files_all:
     x = x.replace(".py", "")
+    # find if text has x like from make import x
     # find if text has x like from make2 import x
     test = text
-    test = re.sub(r"from\s*make2\s*import\s*%s" % x, "", test)
-    test = re.sub(r"from\s*make2.%s\s*import" % x, "", test)
+    test = re.sub(rf"from\s*{dir_to_work}\s*import\s*%s" % x, "", test)
+    test = re.sub(rf"from\s*{dir_to_work}.%s\s*import" % x, "", test)
     # ---
     if test == text:
         print(f"file:({x}.py)")

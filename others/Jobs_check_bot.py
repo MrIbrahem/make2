@@ -7,13 +7,12 @@ import sys
 from pathlib import Path
 
 # ---
-from ma_lists.Nationality import ar_Nat_men
-from ma_lists.Jobs import Jobs_new, Jobs_key_womens, Jobs_key_mens, Men_Womens_Jobs
+from ..ma_lists_bots import ar_Nat_men
+from ..ma_lists_bots import Jobs_new, Jobs_key_womens, Jobs_key_mens, Men_Womens_Jobs
 from .. import printe
 
 # ---
-Dir = Path(__file__).parent.parent
-# ---
+Dir = Path(__file__).parent
 # ---
 # Nat_Womens#Nat_mens
 # def main():
@@ -27,7 +26,7 @@ def main2():
     for k in Jobs_new:
         kaka = f'\t,"{k}": {Jobs_new[k]}\n'
         printe.output(kaka)
-        with open(f"{str(Dir)}/make2/aaaa.py", "a", encoding="utf-8") as logfile:
+        with open(f"{str(Dir)}/aaaa.py", "a", encoding="utf-8") as logfile:
             logfile.write(kaka)
 
 

@@ -1,13 +1,13 @@
 """
-from  make2.ma_bots import fax
+from  make.ma_bots import fax
 # Get_Teams_new(team)
 # test_Lang(cate)
 
 """
 
-from ma_lists import sport_lab
-from ma_lists.Sport_key import Sports_Keys_For_Jobs
-from ma_lists.languages import languages_pop, lang_ttty
+from .. import ma_lists_sport_lab as sport_lab
+from ..ma_lists_bots import Sports_Keys_For_Jobs
+from ..ma_lists_bots import languages_pop, lang_ttty
 
 from .parties_bot import get_parties_lab
 from ..sports_bots import team_work

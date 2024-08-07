@@ -23,27 +23,27 @@ import re
 import sys
 
 # ---
-from ma_lists.Nationality import (
+from ..ma_lists_bots import NN_table
+from ..ma_lists_bots import People_key
+from ..ma_lists_bots import (
     All_Nat,
     Nat_women,
     Nat_men,
     Nat_mens,
     All_contry_with_nat_ar,
 )
-from ma_lists.all_keys3 import NN_table
-from ma_lists.Jobs import (
+from ..ma_lists_bots import (
     Jobs_key_mens,
     Jobs_key_womens,
 )
-from ma_lists.peoples import People_key
-from ma_lists.languages import (
+from ..ma_lists_bots import (
     languages_key,
     lang_key_m,
 )
-from ma_lists.male_keys import New_female_keys, New_male_keys
+from ..ma_lists_bots import New_female_keys, New_male_keys
 
-from ma_lists.test_4_list import New_2018_For_kkk, New_2018_men_Keys_with_all, New_2018_men_Keys_without_all, New_2018_for_women_Keys_with_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
-from ma_lists.jobs_defs import religious_keys_PP
+from ..ma_lists_bots import New_2018_For_kkk, New_2018_men_Keys_with_all, New_2018_men_Keys_without_all, New_2018_for_women_Keys_with_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
+from ..ma_lists_bots import religious_keys_PP
 from ..media_bots.film_keys_bot import Films
 from ..jobs_bots.get_helps import get_con_3
 
