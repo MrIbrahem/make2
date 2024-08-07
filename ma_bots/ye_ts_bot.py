@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-from  make2.ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
+from  make.ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
 
 from ..ma_bots import ye_ts_bot
 

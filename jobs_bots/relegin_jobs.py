@@ -3,7 +3,7 @@
 
 """
 from ..jobs_bots.jobs_mainbot import Jobs  # , Jobs2
-from ma_lists.jobs_defs import religious_keys_PP
+from ..ma_lists_bots import religious_keys_PP
 from ..helps.print_bot import output_test4
 from ..jobs_bots.get_helps import get_con_3
 

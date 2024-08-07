@@ -27,7 +27,7 @@ from ..ma_bots import contry_bot
 from ..sports_bots import team_work
 from ..o_bots import bys
 from ..p17_bots import nats
-from ma_lists.by_type import By_table
+from ..ma_lists_bots import By_table
 from ..pop_format import Tit_ose_Nmaes, Tabl_with_in, pp_start_with2, pop_format, pop_format2
 
 from ..matables_bots.centries_bot import centries_years_dec

@@ -1,5 +1,5 @@
 """
-from  make2.ma_bots import filter_en # filter_en.filter_cat(encat)
+from  make.ma_bots import filter_en # filter_en.filter_cat(encat)
 """
 
 # ---

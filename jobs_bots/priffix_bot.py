@@ -2,17 +2,17 @@
 """
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
 """
-# from ma_lists.test_4_list import New_2018_For_kkk, New_2018_men_Keys_with_all, New_2018_men_Keys_without_all, New_2018_for_women_Keys_with_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
+# from ..ma_lists_bots import New_2018_For_kkk, New_2018_men_Keys_with_all, New_2018_men_Keys_without_all, New_2018_for_women_Keys_with_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
 
-from ma_lists.Nationality import Nat_mens
-from ma_lists.Jobs import (
+from ..ma_lists_bots import Nat_mens
+from ..ma_lists_bots import (
     Jobs_key_mens,
     Jobs_key_womens,
     womens_Jobs_2017,
     Female_Jobs,
 )
-from ma_lists.by_type import By_table
-from ma_lists.test_4_list import replace_labels_2022, change_male_to_female, Mens_suffix, Mens_priffix, Women_s_priffix
+from ..ma_lists_bots import By_table
+from ..ma_lists_bots import replace_labels_2022, change_male_to_female, Mens_suffix, Mens_priffix, Women_s_priffix
 
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..helps.print_bot import output_test4

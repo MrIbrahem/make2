@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-from  make2.ma_bots.lab_seoo_bot import event_Lab_seoo
+from  make.ma_bots.lab_seoo_bot import event_Lab_seoo
 
 """
 import re
@@ -19,8 +19,8 @@ from ..jobs_bots.test_4 import test4_2018_Jobs, Jobs_in_Multi_Sports
 from . import ye_ts_bot
 from ..media_bots.films_bot import test_films
 from . import event2bot
-from ma_lists.Labels_Contry import New_P17_Finall
-from ma_lists.all_keys3 import Ambassadors_tab
+from ..ma_lists_bots import New_P17_Finall
+from ..ma_lists_bots import Ambassadors_tab
 from ..fromnet.wd_bot import find_wikidata
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..matables_bots.centries_bot import centries_years_dec
@@ -82,7 +82,7 @@ def event_Lab_seoo(category_r, category3):
     #     category_lab = tmp_bot.Work_Templates(category3)
 
     if not category_lab:
-        category_lab = univer.test_Universities(category3, print_put)
+        category_lab = univer.test_Universities(category3)
 
     if not category_lab:
         category_lab = test_films(category3, fa=category_r)

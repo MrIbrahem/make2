@@ -1,7 +1,7 @@
 """
 
 Usage:
-python3 I:/core/bots/ma/make2/m.py exit lenth_pri_text
+python3 I:/core/bots/ma/make/m.py exit lenth_pri_text
 python3 core8/pwb.py make/m exit lenth_pri_text
 python3 core8/pwb.py make/m test Category:People executed by the International Military Tribunal in Nuremberg
 """
@@ -10,9 +10,9 @@ import time
 import sys
 import re
 from pathlib import Path
-from make2.bot import event
+from .bot import event
 
-from make2.helps.print_bot import do_print_options
+from .helps.print_bot import do_print_options
 
 do_print_options(tst_prnt_all=True)
 

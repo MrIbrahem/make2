@@ -3,16 +3,16 @@
 from ..media_bots.film_keys_bot import get_Films_key_CAO, Films
 
 """
-from ma_lists.test_4_list import New_2018_for_women_without_al_Keys
+from ..ma_lists_bots import New_2018_for_women_without_al_Keys
 
-from ma_lists.films_mslslat import (
+from ..ma_lists_bots import (
     Films_key_CAO,
     Films_key_For_nat,
     Films_key_CAO_new_format,
     television_keys_female,
     Films_key_333,
 )
-from ma_lists.Nationality import (
+from ..ma_lists_bots import (
     Nat_women,
     Nat_mens,
 )

@@ -1,5 +1,5 @@
 """
-from  make2.db import make_db
+from  make.db import make_db
 mdb = make_db()
 # All = mdb.get_all(table='cities')
 # add = mdb.insert_dict_into_table(to_work)
@@ -199,11 +199,11 @@ def main():
         "Sana'a": "صنعاء",
     }
     # ---
-    from ma_lists.Cities import New_2018_cities
+    from ..ma_lists_bots import N_cit_ies_s_lower
 
     # ---
-    print(f"len(New_2018_cities): {len(New_2018_cities)}")
-    mdb.insert_dict_into_table(New_2018_cities)
+    print(f"len(N_cit_ies_s_lower): {len(N_cit_ies_s_lower)}")
+    mdb.insert_dict_into_table(N_cit_ies_s_lower)
     # ---
     All = mdb.get_all(table="cities")
     print(f"len(All): {len(All)}")

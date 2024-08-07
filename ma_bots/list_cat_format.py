@@ -1,11 +1,12 @@
 """
-from  make2.ma_bots import list_cat_format
-# category_lab, list_of_cat = list_cat_format.list_of_cat_func(category_r, category_lab, list_of_cat, foot_ballers, print_put)
+from  make.ma_bots import list_cat_format
+# category_lab, list_of_cat = list_cat_format.list_of_cat_func(category_r, category_lab, list_of_cat, foot_ballers)
 
 """
+from ..helps.print_bot import print_put
 
 
-def list_of_cat_func(category_r, category_lab, list_of_cat, foot_ballers, print_put):
+def list_of_cat_func(category_r, category_lab, list_of_cat, foot_ballers):
     # ---
     category_lab_or = category_lab
     # ---

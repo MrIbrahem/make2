@@ -6,9 +6,9 @@ from ..ma_bots.squad_title_bot import get_squad_title
 """
 
 from ..date_bots import with_years_bot
-from ma_lists import sport_lab
-from ma_lists.all_keys2 import pop_of_football_lower
-from ma_lists.Labels_Contry import New_P17_Finall
+from .. import ma_lists_sport_lab as sport_lab
+from ..ma_lists_bots import pop_of_football_lower
+from ..ma_lists_bots import New_P17_Finall
 from ..fromnet.wd_bot import find_wikidata
 
 from ..matables_bots.bot import All_P17

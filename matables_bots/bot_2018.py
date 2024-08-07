@@ -23,15 +23,15 @@ or
 import sys
 
 from ..helps import len_print
-from ma_lists.all_keys2 import pop_final_all_keys2
-from ma_lists.Labels_Contry import New_P17_Finall
-from ma_lists.films_mslslat import films_mslslat_tab
-from ma_lists.Jobs import Jobs_new, Jobs_key
-from ma_lists.Sport_key import Sports_Keys_For_Label
-from ma_lists.by_type import By_table
+from ..ma_lists_bots import pop_final_all_keys2
+from ..ma_lists_bots import New_P17_Finall
+from ..ma_lists_bots import films_mslslat_tab
+from ..ma_lists_bots import Jobs_new, Jobs_key
+from ..ma_lists_bots import Sports_Keys_For_Label
+from ..ma_lists_bots import By_table
 
-from ma_lists.sports import Teams_new
-from ma_lists.pop_2018 import pop_All_2018
+from ..ma_lists_bots import Teams_new
+from ..ma_lists_bots import pop_All_2018
 
 
 pop_All_2018["country"] = "البلد"

@@ -14,7 +14,7 @@ python3 core8/pwb.py make/others/testmain nosql local testfile:new1txt
 python3 core8/pwb.py make/others/testmain nosql local testfile:blind
 python3 core8/pwb.py make/others/testmain nosql local testfile:occ limit:100
 
-python -m cProfile -s ncalls  make2/others/testmain.py nosql local testfile:yemen2
+python -m cProfile -s ncalls  make/others/testmain.py nosql local testfile:yemen2
 python3 core8/pwb.py make/others/testmain nosql file:c18/ennewtocreate.txt
 
 in_\d\d\d\d$
@@ -42,9 +42,9 @@ import sys
 sys.argv.append("printhead")
 from pathlib import Path
 
-from make import printe
-from make.memory import print_memory
-from make.bot import event  # event(tab, **kwargs)
+from .. import printe
+from ..memory import print_memory
+from ..bot import event  # event(tab, **kwargs)
 
 Dir = Path(__file__).parent.parent.parent
 # ---
