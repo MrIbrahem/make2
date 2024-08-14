@@ -12,6 +12,7 @@ import os
 from pathlib import Path
 import traceback
 import json
+from newapi.except_err import exception_err
 import pywikibot
 
 # ---
@@ -54,10 +55,8 @@ class make_db:
             else:
                 self.conn.commit()
             # ---
-        except Exception:
-            pywikibot.output("<<lightred>> Traceback (most recent call last):")
-            pywikibot.output(traceback.format_exc())
-            pywikibot.output("CRITICAL:")
+        except Exception as e:
+            exception_err(e)
             if get_data:
                 return []
             else:
@@ -112,10 +111,8 @@ class make_db:
             try:
                 self.cursor.executemany(qua, values)
                 self.conn.commit()
-            except Exception:
-                pywikibot.output("<<lightred>> Traceback (most recent call last):")
-                pywikibot.output(traceback.format_exc())
-                pywikibot.output("CRITICAL:")
+            except Exception as e:
+                exception_err(e)
             finally:
                 done += int(len(values))
                 print(f"not_in_db.py insert_dict() {done} done, from {len(table)}.")
