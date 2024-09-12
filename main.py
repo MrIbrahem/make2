@@ -36,6 +36,32 @@ Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 
 
 def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Local=False, printhead=False, all_print_off=False, tst_prnt_all=None, return_no_labs=False):
+    """Process a list of categories and generate corresponding labels.
+
+    This function takes a list of categories and processes each category to
+    determine its corresponding label. It handles various options for
+    printing and tabulation. The function also manages categories that do
+    not have associated labels and can return these as needed. If specified,
+    it can also utilize a main script for additional functionality.
+
+    Args:
+        NewList (list): A list of category names to process.
+        noprint (str?): Option to suppress printing. Defaults to "".
+        maketab (str?): Option to create a table. Defaults to "".
+        Use_main_s (str?): Flag to indicate the use of the main script. Defaults to "".
+        printfirst (bool?): If True, prints the first output. Defaults to False.
+        Local (bool?): If True, sets local processing options. Defaults to False.
+        printhead (bool?): If True, prints the header. Defaults to False.
+        all_print_off (bool?): If True, disables all printing. Defaults to False.
+        tst_prnt_all (any?): Test print option. Defaults to None.
+        return_no_labs (bool?): If True, returns categories without labels. Defaults to False.
+
+    Returns:
+        dict: A dictionary mapping categories to their corresponding labels.
+        list: A list of categories that do not have associated labels (if
+            return_no_labs is True).
+    """
+
     if Local is True:
         Find_f_wikidata[1] = False
     # ---
