@@ -12,8 +12,8 @@ from . import main
 from .media_bots import films_bot  # test_films
 
 
-def event(tab, **kwargs):
-    return main.event(tab, **kwargs)
+def event(tab, return_no_labs=False, **kwargs):
+    return main.event(tab, return_no_labs=return_no_labs, **kwargs)
 
 
 def test_films(cate, fa=""):

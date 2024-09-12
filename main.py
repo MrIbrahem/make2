@@ -35,7 +35,7 @@ use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else
 Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 
 
-def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Local=False, printhead=False, all_print_off=False, tst_prnt_all=None):
+def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Local=False, printhead=False, all_print_off=False, tst_prnt_all=None, return_no_labs=False):
     if Local is True:
         Find_f_wikidata[1] = False
     # ---
@@ -153,4 +153,8 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
             catb += 1
             printe.output(f'  {catb}:  "{cat}" : "",')
     print_put("<<lightred>>> ^^^^^^^^^ event end ^^^^^^^^^ ")
+    # ---
+    if return_no_labs:
+        return Labels, NoLab_list
+    # ---
     return Labels
