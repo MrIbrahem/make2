@@ -76,10 +76,9 @@ def main2(args):
     # python3 core8/pwb.py make/ma_main t:2 -lang:en -family:wikipedia -subcats:Category:20th-century_actresses
     # python3 core8/pwb.py make/ma_main t:2 -lang:en -family:wikipedia -subcats:Category:20th-century_actresses
     printe.output("<<lightgreen>> main2")
-    generator = gent.get_gent(*args)
+    generator = gent.get_gent(listonly=True, *args)
 
-    for page in generator:
-        title = page.title(as_link=False)
+    for title in generator:
         printe.output(f"title: {title}")
         tab = event([title])
         if tab and tab is not None:
