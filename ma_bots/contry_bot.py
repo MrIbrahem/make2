@@ -21,7 +21,6 @@ from ..sports_bots import team_work
 
 from ..media_bots.films_bot import test_films
 
-# from .contry2_bot import Get_contry2
 from . import contry2_bot  # contry2_bot.Get_contry2()
 
 from . import contry2_lab

@@ -6,7 +6,7 @@ from . import fax2
 
 import sys
 from ..helps.print_bot import print_put
-from .squad_title_bot import get_squad_title
+from .fax2_bots.squad_title_bot import get_squad_title
 
 Find_stubs = {1: True if "-stubs" in sys.argv else False}
 

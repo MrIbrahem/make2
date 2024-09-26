@@ -184,10 +184,16 @@ def move_years(text_str):
 
 
 if __name__ == "__main__":
-    from .. import printe
+    from newapi import printe
 
     print_test = printe.output
     # python3 core8/pwb.py make/fix/mv_years test
+    # python3 core8/pwb.py make/fix/mv_years القرن 21 أعضاء مجلس العموم الكندي
+    # python3 core8/pwb.py make/fix/mv_years
+    # python3 core8/pwb.py make/fix/mv_years
+    # python3 core8/pwb.py make/fix/mv_years
+    # python3 core8/pwb.py make/fix/mv_years القرن 21 أعضاء مجلس الشيوخ الكندي
+    # python3 core8/pwb.py make/fix/mv_years القرن 21 أشخاص من العراق العثمانية حسب المهنة
     # python3 core8/pwb.py make/fix/mv_years أشخاص أمريكيون شماليون حسب الجنسية في القرن 17
     text_list = [
         "أشخاص أمريكيون شماليون حسب الجنسية في القرن 17",
@@ -211,7 +217,7 @@ if __name__ == "__main__":
         "يونانيون حسب المهنة في القرن 9",
         "القرن 21 في يونانيون في حسب المهنة",
         "تصنيف:1974–75 في دوريات كرة قدم لبنانية",
-        "",
+        "تصنيف:القرن 21 أشخاص من العراق العثمانية حسب المهنة",
         "",
         "",
         "",
@@ -228,6 +234,7 @@ if __name__ == "__main__":
     same = []
     # ---
     for text in lista:
+        text = text.replace("تصنيف:", "")
         text = text.replace("_", " ")
         if not text:
             continue

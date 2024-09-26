@@ -119,7 +119,7 @@ def find_nat_others(cate, fa=""):
 
 if __name__ == "__main__":
     print_put = printe.output
-    print_put("_________________")
+    print("_________________")
     # python3 core8/pwb.py make/bots/nats
     op = make_sport_formts_p17("football junior championships")
     print(op)

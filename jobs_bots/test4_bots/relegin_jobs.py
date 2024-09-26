@@ -1,11 +1,12 @@
 #!/usr/bin/python3
 """
+from .test4_bots.relegin_jobs import try_relegins_jobs
 
 """
-from ..jobs_bots.jobs_mainbot import Jobs  # , Jobs2
-from ..ma_lists_bots import religious_keys_PP
-from ..helps.print_bot import output_test4
-from ..jobs_bots.get_helps import get_con_3
+from ..jobs_mainbot import Jobs
+from ...ma_lists_bots import religious_keys_PP
+from ...helps.print_bot import output_test4
+from ..get_helps import get_con_3
 
 try_relegins_jobs_cash = {}
 

@@ -16,7 +16,8 @@ import re
 from ..o_bots.army import test_Army
 from ..p17_bots import p17_bot
 from ..media_bots.film_keys_bot import get_Films_key_CAO
-from ..jobs_bots.test_4 import test4_2018_Jobs, test4_2018_with_nat, Jobs_in_Multi_Sports, nat_match
+from ..jobs_bots.test4_bots.t4_2018_jobs import test4_2018_Jobs
+from ..jobs_bots.test_4 import test4_2018_with_nat, Jobs_in_Multi_Sports, nat_match
 from ..o_bots import fax
 from ..matables_bots.bot import Add_to_main2_tab
 from ..matables_bots.bot import Films_O_TT, New_players

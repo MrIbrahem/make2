@@ -4,7 +4,7 @@
 
 from ..jobs_bots.get_helps import get_con_3
 from ..matables_bots.bot import All_P17, Add_to_main2_tab
-from ..pop_format import Tit_ose_Nmaes, pop_format
+from ..pop_format_bot import Tit_ose_Nmaes, pop_format
 
 from ..ma_lists_bots import sport_formts_en_ar_is_p17
 from ..ma_lists_bots import en_is_P17_ar_is_mens, en_and_ar_is_P17
