@@ -408,7 +408,19 @@ class Hunk:
                     yield check_line(line)
 
     def format_diff(self) -> Iterable[str]:
-        """Color diff lines."""
+        """Color diff lines.
+
+        This method processes a diff iterable and yields colored lines based on
+        their status (added, removed, or unchanged). It skips lines that start
+        with '?' and applies color formatting to lines that are marked for
+        addition or removal. The method ensures that the formatting is reused
+        appropriately for consecutive lines while preventing incorrect coloring
+        of lines.
+
+        Yields:
+            Iterable[str]: A generator that yields colored strings
+            representing the diff lines.
+        """
         diff = iter(self.diff)
 
         fmt = ""
