@@ -30,6 +30,28 @@ en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 
 
 def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contry2=True):
+    """Find the Arabic label based on the provided parameters.
+
+    This function processes various inputs to generate an Arabic label that
+    corresponds to the given category and tito. It performs several checks
+    and transformations based on the type and country derived from the input
+    parameters. The function modifies the `Cate_test` string based on the
+    presence of specific keywords and conditions, and it constructs the
+    final Arabic label by combining different components based on predefined
+    rules.
+
+    Args:
+        category (str): The category to which the label belongs.
+        tito (str): The keyword or phrase used for label generation.
+        tito_name (str): The name associated with the tito.
+        Cate_test (str): A string used for testing and modification.
+        category_r (str): The category reference for final output.
+        do_Get_contry2 (bool?): Flag to determine if country retrieval is needed. Defaults to True.
+
+    Returns:
+        str: The generated Arabic label or an empty string if conditions are not met.
+    """
+
     # Keep_Work = False
     # NoLabb = True
     CAO = True
