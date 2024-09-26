@@ -9,7 +9,7 @@ import sys
 import re
 # from .. import printe
 
-from . import ye_ts_bot
+
 from . import fax2
 from . import list_cat_format
 
@@ -28,6 +28,10 @@ from ..bots import tmp_bot
 
 from .lab_seoo_bot import event_Lab_seoo
 from .contry2_bot import Get_contry2
+
+# ImportError: cannot import name 'yementest_with_Titose_Nmaes' from partially initialized module 'make2.ma_bots.ye_ts_bot'
+#  (most likely due to a circular import) (I:\core\bots\ma\make2\ma_bots\ye_ts_bot.py)
+from . import ye_ts_bot
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
