@@ -4,32 +4,12 @@ from ..ma_bots.ar_label_bot import find_ar_label
 
 """
 
-
 import re
-import sys
 
-from ..ma_bots import contry2_lab
 from ..fix import fixtitle
-from ..o_bots.popl import make_people_lab
-from ..sports_bots import team_work
-from ..date_bots import year_lab
+from ..ma_lists_bots import pop_of_without_in
 
-from ..bots import tmp_bot
-from ..o_bots import bys
-from ..p17_bots import nats
-from ..jobs_bots.test_4 import test4_2018_Jobs
-
-from ..media_bots.films_bot import test_films
-from . import event2bot
-
-from ..ma_lists_bots import pop_final_all_keys2, pop_of_without_in
-from ..ma_lists_bots import New_P17_Finall
-from ..ma_lists_bots import religious_keys_PP
-from ..ma_lists_bots import New_female_keys
-
-from ..fromnet.wd_bot import find_wikidata
-from ..fromnet import kooora
-from ..pop_format import Tit_ose_Nmaes, for_table, Tabl_with_in, pop_format33, pop_format, pop_format2, tito_list_s, Dont_Add_min
+from ..pop_format_bot import Tit_ose_Nmaes, for_table, pop_format33, pop_format, pop_format2, tito_list_s, Dont_Add_min
 
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..matables_bots.bot import (
@@ -40,13 +20,13 @@ from ..matables_bots.bot import (
     Keep_it_frist,
 )
 
-from ..helps.print_bot import print_def_head, print_put, output_test, mainoutput
+from ..helps.print_bot import print_put, output_test
 
-from .contry_bot import Get_contry, Get_c_t_lab
+from .arlabel_bots.bot_type_country import get_type_country
+from .arlabel_bots.bot_type_lab import get_Type_lab
+from .arlabel_bots.bot_con_lab import get_con_lab
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
-
-Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 
 
 def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contry2=True):
@@ -278,195 +258,3 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
 
     print_put('>>>> <<lightblue>>Cate_test :"%s"' % Cate_test)
     return arlabel
-
-
-def get_con_lab(tito, do_Get_contry2, tito2, contry, contry_lower):
-    con_lab = ""
-
-    if not con_lab:
-        con_lab = New_P17_Finall.get(contry_lower, "")
-    if not con_lab:
-        con_lab = pop_final_all_keys2.get(contry_lower, "")
-    if not con_lab:
-        con_lab = pop_All_2018.get(contry_lower, "")
-    if not con_lab:
-        con_lab = pop_All_2018.get(contry_lower.replace("-", " "), "")
-    if not con_lab:
-        con_lab = New_female_keys.get(contry_lower.replace("-", " "), "")
-
-    if con_lab == "" and contry_lower.find("kingdom-of") != -1:
-        con_lab = pop_All_2018.get(contry_lower.replace("kingdom-of", "kingdom of"), "")
-
-    if con_lab == "" and contry_lower.startswith("by "):
-        con_lab = bys.Make_By_lab(contry_lower)
-
-    if con_lab == "" and contry_lower.find(" by ") != -1:
-        con_lab = bys.Get_by_label(contry_lower)
-
-    if tito2 == "for":
-        con_lab = for_table.get(contry_lower, "")
-
-    if con_lab == "" and contry_lower.strip().startswith("in "):
-        cco2 = contry_lower.strip()[len("in ") :].strip()
-
-        cco2_ = Get_contry(cco2)
-
-        if not cco2_:
-            cco2_ = contry2_lab.get_lab_for_contry2(cco2)
-
-        if cco2_:
-            con_lab = "في " + cco2_
-
-    if not con_lab:
-        con_lab = year_lab.make_month_lab(contry_lower)
-    if not con_lab:
-        con_lab = test_films(contry)
-    if not con_lab:
-        con_lab = nats.find_nat_others(contry)
-    if not con_lab:
-        con_lab = team_work.Get_team_work_Club(contry.strip())
-
-    if not con_lab:
-        con_lab = Get_c_t_lab(contry_lower, tito, do_Get_contry2=do_Get_contry2)
-
-    if not con_lab:
-        con_lab = tmp_bot.Work_Templates(contry_lower)
-
-    if not con_lab:
-        con_lab = contry2_lab.get_lab_for_contry2(contry_lower)
-
-    if not con_lab:
-        con_lab = find_wikidata(contry_lower)
-    if not con_lab:
-        con_lab = kooora.kooora_team(contry_lower, Local=Find_f_wikidata[1])
-
-    print_put(f"?????? get_con_lab: {contry_lower=}, {con_lab=}")
-
-    return con_lab
-
-
-def get_Type_lab(tito, Type, Type_lower, contry_lower):
-    tito2 = tito.strip()
-
-    Type_lab = ""
-    if Type_lower == "women" and tito2 == "from":
-        Type_lab = "نساء"
-        print_put('>> >> >> Make Type_lab "%s".' % Type_lab)
-
-    elif Type_lower == "women of":
-        Type_lab = "نساء من"
-        print_put('>> >> >> Make Type_lab "%s".' % Type_lab)
-
-    Add_in_lab = True
-    Type_lower_in = Type_lower.strip()
-
-    if not Type_lower_in.endswith(" " + tito2):
-        Type_lower_in = Type_lower.strip() + " " + tito2
-
-    if not Type_lab:
-        Type_lab = Tabl_with_in.get(Type_lower_in, "")
-        if Type_lab:
-            Add_in_lab = False
-            print_put(f'<<<< Type_lower_in "{Type_lower_in}",Type_lab : "{Type_lab}"')
-
-    if not Type_lab:
-        Type_lab = New_P17_Finall.get(Type_lower, "")
-        if Type_lab:
-            output_test(f'<< Type_lower_in "{Type_lower_in}", Type_lab : "{Type_lab}"')
-
-    if Type_lab == "" and Type_lower.startswith("the "):
-        Type_lower2 = Type_lower[len("the ") :]
-
-        Type_lab = New_P17_Finall.get(Type_lower2, "")
-        if Type_lab:
-            output_test(f'<<< Type_lower_in "{Type_lower_in}", Type_lab : "{Type_lab}"')
-    if Type_lower == "sport" and contry_lower.startswith("by "):
-        Type_lab = "رياضة"
-
-    if Type_lab == "" and Type_lower.strip().endswith(" people"):
-        Type_lab = make_people_lab(Type_lower)
-
-    if not Type_lab:
-        Type_lab = religious_keys_PP.get(Type_lower, {}).get("mens", "")
-    if not Type_lab:
-        Type_lab = New_female_keys.get(Type_lower, "")
-    if not Type_lab:
-        Type_lab = test_films(Type_lower)
-    if not Type_lab:
-        Type_lab = nats.find_nat_others(Type_lower)
-    if not Type_lab:
-        Type_lab = team_work.Get_team_work_Club(Type.strip())
-
-    if not Type_lab:
-        Type_lab = tmp_bot.Work_Templates(Type_lower)
-
-    if not Type_lab:
-        Type_lab = Get_c_t_lab(Type_lower, tito, Type="Type_lab")
-
-    if not Type_lab:
-        Type_lab = event2bot.event2(Type_lower)
-    if not Type_lab:
-        Type_lab = test4_2018_Jobs(Type_lower, out=mainoutput[1])
-
-    if not Type_lab:
-        Type_lab = contry2_lab.get_lab_for_contry2(Type_lower)
-
-    print_put(f"?????? get_Type_lab: {Type_lower=}, {Type_lab=}")
-
-    return Type_lab, Add_in_lab
-
-
-def get_type_country(category, tito):
-    Type = category.split(tito)[0]
-    contry = category.split(tito)[1]
-    contry = contry.lower()
-    Mash = "^(.*?)(?:%s?)(.*?)$" % tito
-    Type_t = re.sub(Mash, r"\g<1>", category.lower())
-    contry_t = re.sub(Mash, r"\g<2>", category.lower())
-
-    test_N = category.lower()
-    try:
-        test_N = re.sub(Type.lower(), "", test_N)
-        test_N = re.sub(contry.lower(), "", test_N)
-
-    except Exception:
-        print_put("<<lightred>>>>>> except test_N ")
-    test_N = test_N.strip()
-
-    tito2 = tito.strip()
-
-    if tito2 == "in" and Type.endswith(" playerss"):
-        Type = Type.replace(" playerss", " players")
-
-    titoends = f" {tito2}"
-    titostarts = f"{tito2} "
-
-    if tito2 == "of" and not Type.endswith(titoends):
-        Type = f"{Type} of"
-    elif tito2 == "spies for" and not Type.endswith(" spies"):
-        Type = f"{Type} spies"
-
-    elif tito2 == "by" and not contry.startswith(titostarts):
-        contry = f"by {contry}"
-    elif tito2 == "for" and not contry.startswith(titostarts):
-        contry = f"for {contry}"
-
-    print_def_head(f'>xx>>> Type: "{Type.strip()}", contry: "{contry.strip()}", tito: "{tito}" ')
-
-    if test_N and test_N != tito2:
-        print_put(f'>>>> test_N != "", Type_t:"{Type_t}", tito:"{tito}", contry_t:"{contry_t}" ')
-
-        if tito2 == "of" and not Type_t.endswith(titoends):
-            Type_t = f"{Type_t} of"
-        elif tito2 == "by" and not contry_t.startswith(titostarts):
-            contry_t = f"by {contry_t}"
-        elif tito2 == "for" and not contry_t.startswith(titostarts):
-            contry_t = f"for {contry_t}"
-        Type = Type_t
-        contry = contry_t
-
-        print_put(f'>>>> yementest: Type_t:"{Type_t}", contry_t:"{contry_t}"')
-    else:
-        print_put('>>>> test_N:"%s" == tito' % test_N)
-
-    return Type, contry

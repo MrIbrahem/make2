@@ -23,27 +23,14 @@ import re
 import sys
 
 # ---
-from ..ma_lists_bots import NN_table
-from ..ma_lists_bots import People_key
 from ..ma_lists_bots import (
+    Multi_sport_for_Jobs,
     All_Nat,
-    Nat_women,
-    Nat_men,
     Nat_mens,
-    All_contry_with_nat_ar,
-)
-from ..ma_lists_bots import (
     Jobs_key_mens,
     Jobs_key_womens,
 )
-from ..ma_lists_bots import (
-    languages_key,
-    lang_key_m,
-)
-from ..ma_lists_bots import New_female_keys, New_male_keys
 
-from ..ma_lists_bots import New_2018_For_kkk, New_2018_men_Keys_with_all, New_2018_men_Keys_without_all, New_2018_for_women_Keys_with_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
-from ..ma_lists_bots import religious_keys_PP
 from ..media_bots.film_keys_bot import Films
 from ..jobs_bots.get_helps import get_con_3
 
@@ -51,359 +38,18 @@ from ..jobs_bots.get_helps import get_con_3
 from ..o_bots import ethnic_bot
 from ..helps.print_bot import output_test4, print_put
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
-from ..jobs_bots.jobs_mainbot import Jobs  # , Jobs2
 
-try_relegins_jobs_cash = {}
-Lang_work_cash = {}
-priffix_Mens_work_cash = {}
-priffix_woMens_work_cash = {}
-Jobs_cash = {}
+from .test4_bots.for_me import Work_for_me
+# from .test4_bots.relegin_jobs import try_relegins_jobs
+from .test4_bots.t4_2018_jobs import test4_2018_Jobs
+
 Jobs_in_Multi_Sports_cash = {}
-test4_2018_Jobs_cash = {}
-wo_2018_cash = {}
-Work_for_me_cash = {}
 test4_2018_with_nat_cash = {}
-
-
-def Lang_work(con_3):
-    output_test4(f'<<lightblue>> Lang_work :"{con_3}"')
-    lang_lab = ""
-    # ---
-    cash_key = con_3.lower().strip()
-    # ---
-    if cash_key in Lang_work_cash:
-        return Lang_work_cash[cash_key]
-    # ---
-    if not lang_lab:
-        lang_lab = languages_key.get(con_3, "")
-    # ---
-    tta = {"romanization of": "رومنة {}"}
-    # ---
-    for wriff, Wriff_lab in tta.items():
-        if con_3.startswith(wriff) and lang_lab == "":
-            con_43 = con_3[len(wriff) :].strip()
-            lang_lac = languages_key.get(f"{con_43} language", "")
-            print_put(con_43)
-            if lang_lac:
-                lang_lab = Wriff_lab.format(lang_lac)
-                break
-    # ---
-    for lang, l_lab in languages_key.items():
-        # ---
-        if lang_lab:
-            break
-        # ---
-        lang2 = f"{lang} "
-        # ---
-        lang3 = f"{lang.replace('-language', '')} films"
-        if lang3 == con_3:
-            lang_lab = f"أفلام ب{l_lab}"
-            break
-        # ---
-        if con_3.startswith(lang2):
-            output_test4(f"<<lightblue>> con_3.startswith(lang:{lang2})")
-            output_test4(f"<<lightblue>> con_3.startswith(lang:{lang2})")
-            output_test4(f"<<lightblue>> con_3.startswith(lang:{lang2})")
-            # ---
-            if All_Nat.get(lang, False):
-                nat_labe = All_Nat[lang]["mens"]
-                output_test4(f'<<lightred>> skip lang:"{lang}" in All_Nat,l_lab:"{l_lab}",nat_labe:"{nat_labe}" ')
-            else:
-                con_8 = con_3[len(lang2) :]
-                con_78_lab = Jobs_key_mens.get(con_8, "")
-                if con_78_lab:
-                    lang_lab = f"{con_78_lab} ب{languages_key[lang]}"  # languages_key[lang].format(con_78_lab)
-                    output_test4(f'<<lightblue>> con_3.startswith_priff2("{lang2}"), lang_lab:"{lang_lab}"')
-                # ---
-                else:
-                    con_78_lab = lang_key_m.get(con_8, "")
-                    # ---
-                    if con_78_lab:
-                        output_test4(f'<<lightblue>> con_3.startswith_lang("{lang}"), con_78_lab:"{con_78_lab}"')
-                        lang_lab = lang_key_m[con_8].format(languages_key[lang])
-    # ---
-    Lang_work_cash[cash_key] = lang_lab
-    # ---
-    return lang_lab
-
-
-def try_relegins_jobs(cate):
-    # ---
-    cach_key = cate.lower().strip()
-    # ---
-    if cach_key in try_relegins_jobs_cash:
-        return try_relegins_jobs_cash[cach_key]
-    # ---
-    output_test4(f"\t xx start: <<lightred>>try_relegins_jobs >> <<lightpurple>> cate:{cate}")
-    # ---
-    contry_lab = ""
-    # ---
-
-    # ---
-    job_example, nat = get_con_3(cate, religious_keys_PP, "religions")
-    # ---
-    Tab = religious_keys_PP.get(nat, {})
-    # ---
-    if job_example:
-        contry_lab = Jobs(cate, nat, job_example, Type="rel", tab=Tab)
-    # ---
-    output_test4(f"\t xx end: <<lightred>>try_relegins_jobs <<lightpurple>> cate:{cate}, contry_lab:{contry_lab} ")
-    # ---
-    try_relegins_jobs_cash[cach_key] = contry_lab
-    # ---
-    return contry_lab
-
-
-def test4_2018_Jobs(cate, out=False, tab=None):
-    # ---
-    if not tab:
-        tab = {}
-    # ---
-    cate = re.sub(r"_", " ", cate)
-    # ---
-    cach_key = cate.lower().strip()
-    # ---
-    if cach_key in test4_2018_Jobs_cash:
-        return test4_2018_Jobs_cash[cach_key]
-    # ---
-    output_test4(f"<<lightyellow>>>> test4_2018_Jobs >> cate:({cate}) ")
-    # ---
-
-    # ---
-    cate2_no_lower = cate.lower()
-    cate2 = cate.lower()
-    # ---
-    Main_Ss = ""
-    Main_lab = ""
-    # ---
-    for me, melab in Main_priffix.items():
-        me2 = f"{me} "
-        if cate.lower().startswith(me2.lower()):
-            Main_Ss = me
-            cate = cate2_no_lower[len(me2) :]
-            # ---
-            Main_lab = melab
-            if cate.endswith("women") or cate.endswith("women's"):
-                if Main_lab in change_male_to_female:
-                    Main_lab = change_male_to_female[Main_lab]
-            # ---
-            output_test4(f'<<lightblue>> test4_2018_Jobs Main_priffix cate.startswith(me2: "{me2}") cate:"{cate}",Main_lab:"{Main_lab}". ')
-    # ---
-    cate2_no_lower = cate
-    cate = cate.lower()
-    # ---
-    if cate != cate2:
-        output_test4(f'<<lightblue>> test4_2018_Jobs cate:"{cate}",cate2:"{cate2}",Main_Ss:"{Main_Ss}". ')
-    contry_lab = "أشخاص" if cate == "people" else ""
-    # ---
-    if Main_Ss.strip() == "fictional" and cate.strip().startswith("female"):
-        Main_lab = "{} خياليات"
-        print_put("{} خياليات")
-    # ---
-    if not contry_lab:
-        contry_lab = People_key.get(cate, "")
-    if not contry_lab:
-        contry_lab = Jobs_key_womens.get(cate, "")
-    if not contry_lab:
-        contry_lab = Lang_work(cate)
-    if not contry_lab:
-        contry_lab = Jobs_key_mens.get(cate, "")
-    # ---
-    nat = ""
-    job_example = ""
-    # ---
-    if not contry_lab:
-        job_example, nat = get_con_3(cate, All_Nat, "nat")
-    # ---
-    job_example_lab = ""
-    # ---
-    # priffix_lab_for_2018
-    if job_example and (Main_Ss in priffix_lab_for_2018) and contry_lab == "":
-        # ---
-        # New_2018_for_women_without_al_Keys
-        job_example_lab = New_2018_for_women_without_al_Keys.get(job_example.strip(), "")
-        if job_example_lab:
-            contry_lab = job_example_lab.format(Nat_women[nat])
-            output_test4(f'<<lightblue>> test_4, new contry_lab "{contry_lab}" ')
-            Main_lab = priffix_lab_for_2018[Main_Ss]["women"]
-        # ---
-        # New_2018_men_Keys_without_all
-        if not contry_lab:
-            job_example_lab = New_2018_men_Keys_without_all.get(job_example.strip(), "")
-            if job_example_lab:
-                contry_lab = job_example_lab.format(Nat_men[nat])
-                output_test4(f'<<lightblue>> test_4, new contry_lab "{contry_lab}" ')
-                Main_lab = priffix_lab_for_2018[Main_Ss]["men"]
-    # ---
-    if job_example and contry_lab == "":
-        contry_lab = Jobs(cate, nat, job_example, Type="nat")
-    # ---
-    if not contry_lab:
-        contry_lab = Women_s_priffix_work(cate)
-    # ---
-    if not contry_lab:
-        contry_lab = priffix_Mens_work(cate)
-    # ---
-    # Try with Jobs
-    # ---
-    if Main_Ss and Main_lab and contry_lab:
-        contry_lab = Main_lab.format(contry_lab)
-        # ---
-        if Main_Ss in Main_priffix_to and job_example_lab:
-            job_example_lab = job_example_lab.format("").strip()
-            contry_lab = Main_priffix_to[Main_Ss].format(nat=Nat_women[nat], t=job_example_lab)
-    # ---
-    if not contry_lab:
-        contry_lab = try_relegins_jobs(cate)
-    # ---
-    output_test4(f'end test4_2018_Jobs "{cate}" , contry_lab:"{contry_lab}", cate2:{cate2}')
-    # ---
-    test4_2018_Jobs_cash[cach_key] = contry_lab
-    # ---
-    return contry_lab
-
-
-def Work_for_New_2018_men_Keys_with_all(cate, nat, con_3):
-    # ---
-    cash_key = f"{cate}, {nat}, {con_3}".lower().strip()
-    # ---
-    if cash_key in wo_2018_cash:
-        return wo_2018_cash[cash_key]
-    # ---
-    # women_nat_lab = Nat_women.get(nat, "")
-    men_nat_lab = Nat_men.get(nat, "")
-    # nat_lab = Nat_women[nat]
-    # ---
-    # output_test4('<<lightblue>>>> Work_for_me >> %s .nat:(%s), con_3:"%s", nat_lab:"%s"' % (cate , nat , con_3,nat_lab))
-    # contry = nat
-    contry_lab = ""
-    con_3_lab = ""
-    # cco_lab = ""
-    # ---
-    # رجالية بألف ولام التعريف
-    if not con_3_lab and not contry_lab:
-        con_3_lab = New_2018_men_Keys_with_all.get(con_3.strip(), "")
-        # ---
-        if con_3_lab:
-            if nat in NN_table:
-                men_nat_lab = NN_table[nat]["men"]
-            men_nat_lab_no_al = re.sub(r" ", " ال", men_nat_lab)
-            men_nat_lab = f"ال{men_nat_lab_no_al}"
-            contry_lab = con_3_lab.format(men_nat_lab)
-            output_test4(f'<<lightblue>> test_4:New_2018_men_Keys_with_all new contry_lab  "{contry_lab}" ')
-    # ---
-    # output_test4('<<lightblue>>>> Work_for_me >> contry_lab:"%s"' % contry_lab)
-    # ---
-    wo_2018_cash[cash_key] = contry_lab
-    # ---
-    return contry_lab
-
-
-def Work_for_me(cate, nat, con_3):
-    # ---
-    cash_key = f"{cate}, {nat}, {con_3}".lower().strip()
-    # ---
-    if cash_key in Work_for_me_cash:
-        return Work_for_me_cash[cash_key]
-    # ---
-    women_nat_lab = Nat_women.get(nat, "")
-    men_nat_lab = Nat_men.get(nat, "")
-    nat_lab = Nat_women[nat]
-    # ---
-    output_test4(f'<<lightblue>>>> Work_for_me >> {cate} .nat:({nat}), con_3:"{con_3}", nat_lab:"{nat_lab}"')
-    # contry = nat
-    contry_lab = ""
-    con_3_lab = ""
-    cco_lab = ""
-    # ---
-    # الإنجليزي جنسية والعربي اسم البلد
-    if not con_3_lab and not contry_lab:
-        con_3_lab = New_2018_For_kkk.get(con_3.strip(), "")
-        if nat.strip() in All_contry_with_nat_ar:
-            cco_lab = All_contry_with_nat_ar[nat.strip()].get("ar", "")
-        # ---
-        if con_3_lab:
-            output_test4(f'<<lightblue>> Work_for_me:con_3_lab: "{con_3_lab}" ')
-            if cco_lab:
-                contry_lab = con_3_lab.format(cco_lab)
-                output_test4(f'<<lightblue>> test_4:New_2018_for_women_without_al_Keys new contry_lab   "{contry_lab}" ')
-    # ---
-    # نسائية بدون ألف ولام التعريف
-    if con_3_lab == "" and contry_lab == "":
-        contry_lab = ethnic_bot.Ethnic(cate, nat, con_3)
-    # ---
-    # en_is_P17_ar_is_mens
-    # mens_nat_lab = Nat_mens.get(nat, "")
-    # con_3_lab = Nat_mens.get(con_3 , "")
-    # if con_3_lab:
-    # if Nat_mens.get(contry,""):
-    # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
-    # contry_lab = con_3_lab + " " + Nat_mens.get(contry,"")
-    # output_test4('<<lightblue>> test Work_for_me: new contry_lab  "%s" ' % contry_lab)
-    # ---
-    # نسائية بدون ألف ولام التعريف
-    if con_3_lab == "" and contry_lab == "":
-        con_3_lab = New_2018_for_women_without_al_Keys.get(con_3.strip(), "")
-        # ---
-        # new 24-02-2022
-        if not con_3_lab:
-            con_3_lab = New_female_keys.get(con_3.strip(), "")
-            if con_3_lab:
-                con_3_lab += " {}"
-        # ---
-        if con_3_lab:
-            contry_lab = con_3_lab.format(women_nat_lab)
-            output_test4(f'<<lightblue>> test44:New_2018_for_women_without_al_Keys new contry_lab   "{contry_lab}" ')
-    # ---
-    # نسائية بألف ولام التعريف
-    if con_3_lab == "" and contry_lab == "":
-        con_3_lab = New_2018_for_women_Keys_with_all.get(con_3.strip(), "")
-        # ---
-        if con_3_lab:
-            # ---
-            if nat in NN_table:
-                women_nat_lab = NN_table[nat]["women"]
-            women_nat_lab_no_al = re.sub(r" ", " ال", women_nat_lab)
-            women_nat_lab = f"ال{women_nat_lab_no_al}"
-            # ---
-            if con_3_lab.find("{nat}") != -1:
-                contry_lab = con_3_lab.format(nat=women_nat_lab)
-            else:
-                contry_lab = con_3_lab.format(women_nat_lab)
-            # ---
-            output_test4(f'<<lightblue>> test_4:New_2018_for_women_Keys_with_all new contry_lab  "{contry_lab}" ')
-    # ---
-    # رجالية بدون ألف ولام التعريف
-    if con_3_lab == "" and contry_lab == "":
-        con_3_lab = New_2018_men_Keys_without_all.get(con_3.strip(), "")
-        # ---
-        # new 24-02-2022
-        if not con_3_lab:
-            con_3_lab = New_male_keys.get(con_3.strip(), "")
-            if con_3_lab:
-                con_3_lab += " {}"
-        # ---
-        if con_3_lab:
-            contry_lab = con_3_lab.format(men_nat_lab)
-            output_test4(f'<<lightblue>> test_4:New_2018_men_Keys_without_all new contry_lab    "{contry_lab}" ')
-    # ---
-    # رجالية بألف ولام التعريف
-    if con_3_lab == "" and contry_lab == "":
-        contry_lab = Work_for_New_2018_men_Keys_with_all(cate, nat, con_3)
-    # ---
-    # output_test4('<<lightblue>>>> Work_for_me >> contry_lab:"%s"' % contry_lab)
-    # ---
-    Work_for_me_cash[cash_key] = contry_lab
-    # ---
-    return contry_lab
-
 
 def nat_match(cate, out=False, fa="", tab=None):
     # ---
     if not tab:
         tab = {}
-    # ---
-
     # ---
     cate2 = cate.lower().replace("category:", "")
     contry = ""
@@ -513,8 +159,6 @@ def Jobs_in_Multi_Sports(cate, out=False, tab=None):
     # ---
     if cate in Jobs_in_Multi_Sports_cash:
         return Jobs_in_Multi_Sports_cash[cate]
-    # ---
-
     # ---
     # python3 core8/pwb.py make/test_4 Asian_Games_wrestlers
     # ---

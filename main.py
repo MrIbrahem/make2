@@ -17,7 +17,7 @@ from .date_bots import labs_years
 from . import printe
 from .co_bots import filter_en
 from .ma_bots import event_lab_bot
-from .pop_format import change_cat
+from .pop_format_bot import change_cat
 from .matables_bots.bot import cash_2022, make_tab, main2_tab
 from .fix import fixtitle
 

@@ -7,23 +7,26 @@ from ..ma_bots import event_lab_bot
 
 import sys
 import re
-from .. import printe
+# from .. import printe
 
+from . import ye_ts_bot
 from . import fax2
 from . import list_cat_format
+
+from .. import ma_lists_sport_lab as sport_lab
+
 from ..helps.print_bot import print_put
 from ..date_bots import year_lab
 from ..o_bots import univer
-from .. import ma_lists_sport_lab as sport_lab
 from ..ma_lists_bots import New_P17_Finall
 from ..fromnet import kooora
 from ..fromnet.wd_bot import find_wikidata
-from ..pop_format import pp_ends_with, pp_ends_with_pase, change_cat
+from ..pop_format_bot import pp_ends_with, pp_ends_with_pase, change_cat
 from ..fix import fixtitle
 from ..matables_bots.bot_2018 import pop_All_2018
-from . import ye_ts_bot
-from .lab_seoo_bot import event_Lab_seoo
 from ..bots import tmp_bot
+
+from .lab_seoo_bot import event_Lab_seoo
 from .contry2_bot import Get_contry2
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"

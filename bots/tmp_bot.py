@@ -4,13 +4,12 @@ if not sub_ar_label:
     sub_ar_label = tmp_bot.Work_Templates(category)
 """
 
-from ..pop_format import pp_start_with, pp_ends_with, pp_ends_with_pase
+from ..pop_format_bot import pp_start_with, pp_ends_with, pp_ends_with_pase
 from ..helps.print_bot import print_put
 
 from ..date_bots import with_years_bot
 
 
-# from ..ma_bots.contry2_bot import Get_contry2
 from ..ma_bots import contry2_lab
 from ..ma_bots import ye_ts_bot
 
