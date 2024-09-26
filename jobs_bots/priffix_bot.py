@@ -22,6 +22,24 @@ priffix_woMens_work_cash = {}
 
 
 def priffix_Mens_work(con_33):
+    """Process and retrieve the appropriate label for a given input string.
+
+    This function takes an input string, processes it to determine if it
+    matches any predefined prefixes or suffixes associated with male job
+    categories. It first normalizes the input by converting it to lowercase
+    and stripping whitespace. The function checks various dictionaries to
+    find a corresponding label based on the input. If a match is found, it
+    formats the label accordingly and caches the result for future use. The
+    function also handles specific cases where the input may end with
+    "people" and adjusts the label based on additional mappings.
+
+    Args:
+        con_33 (str): The input string representing a job title or category.
+
+    Returns:
+        str: The formatted label corresponding to the input string.
+    """
+
     # ---
     cash_key = con_33.lower().strip()
     # ---
@@ -132,6 +150,23 @@ def priffix_Mens_work(con_33):
 
 
 def Women_s_priffix_work(con_3):
+    """Retrieve the women's prefix work label based on the input string.
+
+    This function processes the input string to determine if it matches any
+    predefined women's job prefixes. It first checks if the lowercase and
+    stripped version of the input exists in a cache. If not found, it
+    attempts to derive the job label from a mapping of women's jobs. The
+    function also handles specific cases where the input string ends with "
+    women" and checks against various prefixes to find a match. The result
+    is cached for future reference.
+
+    Args:
+        con_3 (str): The input string representing a job or title related to women.
+
+    Returns:
+        str: The corresponding job label or an empty string if no match is found.
+    """
+
     # ---
     cash_key = con_3.lower().strip()
     # ---
