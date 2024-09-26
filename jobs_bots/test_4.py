@@ -178,10 +178,10 @@ def Jobs_in_Multi_Sports(cate, out=False, tab=None):
     category.
 
     This function checks if the provided category exists in a cached
-    dictionary of job information. If not found, it processes the category
-    to determine the relevant job and game labels. The function also formats
-    the output to provide a meaningful representation of the job in relation
-    to the sport.
+    dictionary of job information. If the category is not found, it
+    processes the category to determine the relevant job and game labels.
+    The function formats the output to provide a meaningful representation
+    of the job in relation to the sport.
 
     Args:
         cate (str): The category string representing the sport or job type.
