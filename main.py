@@ -22,7 +22,7 @@ from .matables_bots.bot import cash_2022, make_tab, main2_tab
 from .fix import fixtitle
 
 from .ma_bots import ye_ts_bot
-from .helps.print_bot import do_print_options, output_main, print_put, output_test
+from .helps.print_bot import do_print_options, print_put, output_test
 
 from .ma_bots import event2bot
 
