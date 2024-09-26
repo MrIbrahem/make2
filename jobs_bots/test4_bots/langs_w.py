@@ -18,6 +18,22 @@ Lang_work_cash = {}
 
 
 def Lang_work(con_3):
+    """Process and retrieve language-related information based on input.
+
+    This function takes a string input representing a language or a related
+    term, processes it to determine the appropriate language label, and
+    returns the corresponding label. It checks against predefined
+    dictionaries to find matches and formats the output accordingly. The
+    function also caches results for efficiency.
+
+    Args:
+        con_3 (str): A string representing a language or related term.
+
+    Returns:
+        str: The corresponding language label or an empty string if no match is
+            found.
+    """
+
     output_test4(f'<<lightblue>> Lang_work :"{con_3}"')
     lang_lab = ""
     # ---
