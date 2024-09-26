@@ -218,7 +218,7 @@ def Jobs_in_Multi_Sports(cate, out=False, tab=None):
         # ---
         game = f"{ga} "
         if cate.startswith(game):
-            job = cate2[len(game) :]
+            job = cate2[len(game):]
             output_test4(f'Jobs_in_Multi_Sports cate.startswith(game: "{game}") game_lab:"{game_lab}",job:"{job}". ')
     # ---
     if not job_lab and job:

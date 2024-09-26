@@ -10,7 +10,6 @@ import re
 
 # from .. import printe
 
-
 from . import fax2
 from . import list_cat_format
 

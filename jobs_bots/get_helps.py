@@ -31,7 +31,7 @@ def get_con_3(cate, keys, Type):
                 tables[1] = f"{key.lower().strip()} people "
             # ---
             if key.startswith("the "):
-                tables[3] = key[len("the ") :]  #
+                tables[3] = key[len("the "):]  #
                 # output_test4('<<lightblue>>>>>> get_con_3 startswith "the ", key3:"%s" changed to %s' % ( key , tables[3]) )
             # ---
             # sorted_list = [ x for x in tables ]
@@ -41,7 +41,7 @@ def get_con_3(cate, keys, Type):
                 if fo_3 == "" and tables.get(key_d):
                     if cate.lower().startswith(tables[key_d].lower()):
                         contry_start = key
-                        fo_3 = cate[len(tables[key_d]) :].strip()
+                        fo_3 = cate[len(tables[key_d]):].strip()
                         output_test4(f'<<lightyellow>>>>>> get_con_3 start_th key_:{key_d} ("{tables[key_d]}"), fo_3:"{fo_3}",contry_start:"{contry_start}"')
                         break
     # ---

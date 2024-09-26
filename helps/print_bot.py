@@ -21,7 +21,6 @@ print_test4 = {1: False}
 if "printhead" in sys.argv:
     only_print_heads[1] = True
 
-
 if "testprint" in sys.argv:
     print_test4[1] = True
     printe.output("<<lightgreen>> test_4.py print_test4[1] = True")

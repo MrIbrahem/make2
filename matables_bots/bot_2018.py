@@ -33,7 +33,6 @@ from ..ma_lists_bots import By_table
 from ..ma_lists_bots import Teams_new
 from ..ma_lists_bots import pop_All_2018
 
-
 pop_All_2018["country"] = "البلد"
 
 
@@ -92,7 +91,6 @@ for paa in Sports_Keys_For_Label:  #
     if Sports_Keys_For_Label[paa]:
         if not pop_All_2018.get(paa2):
             pop_All_2018[paa2] = Sports_Keys_For_Label[paa]
-
 
 # pop_All_2018["conflicts"] = "نزاعات"
 pop_All_2018["by country"] = "حسب البلد"

@@ -19,7 +19,6 @@ from ..date_bots import year_lab
 
 from ..ma_bots.ar_label_bot import find_ar_label
 
-
 Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 
 YTN_cash = {}

@@ -56,11 +56,11 @@ def priffix_Mens_work(con_33):
         if not con_33.startswith(pri):
             continue
         # ---
-        con_8 = con_33[len(pri) :]
+        con_8 = con_33[len(pri):]
         con_88 = con_8
         # ---
         if con_8.endswith(" people"):
-            con_nat = con_8[: -len(" people")]
+            con_nat = con_8[:-len(" people")]
             if Nat_mens.get(con_nat):
                 con_88 = con_nat
         con_88 = con_88.strip()
@@ -100,11 +100,11 @@ def priffix_Mens_work(con_33):
         if not con_33.endswith(suffix2):
             continue
         # ---
-        con_8 = con_33[: -len(suffix2)]
+        con_8 = con_33[:-len(suffix2)]
         con_88 = con_8
         # ---
         if con_8.endswith(" people"):
-            con_nat = con_8[: -len(" people")]
+            con_nat = con_8[:-len(" people")]
             if Nat_mens.get(con_nat):
                 con_88 = con_nat
         con_88 = con_88.strip()
@@ -146,7 +146,7 @@ def Women_s_priffix_work(con_3):
     # ---
     con_33 = con_3
     if con_3.endswith(" women"):
-        con_33 = con_3[: len(" women")]
+        con_33 = con_3[:len(" women")]
     # ---
     for wriff, wrifflab in Women_s_priffix.items():
         if f_lab:
@@ -155,7 +155,7 @@ def Women_s_priffix_work(con_3):
         if wriff == "women's":
             Wriff2 = "women's-"
         if con_33.startswith(Wriff2):
-            con_4 = con_33[len(Wriff2) :]
+            con_4 = con_33[len(Wriff2):]
             con_8_Wb = womens_Jobs_2017.get(con_4, "")
             output_test4(f'<<lightblue>> con_33.startswith_Wriff2("{Wriff2}"),con_4:"{con_4}", con_8_Wb:"{con_8_Wb}"')
             if con_8_Wb:

@@ -7,7 +7,6 @@ from ..jobs_bots.jobs_mainbot import Jobs#, Jobs2
 
 from ..ma_lists_bots import Nat_mens, Nat_Womens
 
-
 from ..ma_lists_bots import (
     Jobs_key_mens,
     Jobs_key_womens,
@@ -53,7 +52,7 @@ def Jobs(cate, Start, con_3, Type="", tab=None):
     # ---
     con_4 = con_3
     if con_3.startswith("people "):
-        con_4 = con_3[len("people ") :]
+        con_4 = con_3[len("people "):]
     # ---
     pkjn = [" مغتربون", " مغتربات"]
     # ---
