@@ -106,36 +106,7 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
         else:
             print_put(toout)
 
-        category_lab = ""
-        # ---
-        cat_year, from_year = labs_years.lab_from_year(category_r)
-        if from_year:
-            category_lab = from_year
-        # ---
-        if not category_lab and filter_en.filter_cat(category_r):
-            changed_cat = change_cat(category_r)
-
-            if category_r in event_done:
-                output_test(f'>>>> category_r: "{category_r}" in event_done, lab:"{event_done[category_r]}"')
-                category_lab = event_done[category_r]
-
-            if not category_lab:
-                if category_r.lower() in cash_2022:
-                    category_lab = cash_2022[category_r.lower()]
-
-            if not category_lab:
-                if start_yementest[1]:
-                    #print("yementest_with_Titose_Nmaes 1")
-                    category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(changed_cat)
-
-            if not category_lab:
-                category_lab = event2bot.event2(changed_cat)
-
-            if not category_lab:
-                category_lab = event_lab_bot.event_Lab(changed_cat)
-        # ---
-        if category_lab:
-            category_lab = fixtitle.fixlab(category_lab, en=category_r)
+        category_lab = new_func_lab(category_r)
         # ---
         if not category_lab or category_lab.strip() == "تصنيف:":
             NoLab_list.append(category_r)
@@ -147,9 +118,6 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
         if make_tab[1]:
             main2_tab[1]["ar"] = category_lab
             Labels__p[category_r] = main2_tab[1]
-        # ---
-        if not from_year and cat_year:
-            labs_years.lab_from_year_add(category_r, category_lab, cat_year)
         # ---
         event_done[category_r] = category_lab
     # ---
@@ -184,3 +152,42 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
         return Labels, NoLab_list
     # ---
     return Labels
+
+
+def new_func_lab(category_r):
+    category_lab = ""
+    # ---
+    cat_year, from_year = labs_years.lab_from_year(category_r)
+    if from_year:
+        category_lab = from_year
+    # ---
+    if not category_lab and filter_en.filter_cat(category_r):
+        changed_cat = change_cat(category_r)
+
+        if category_r in event_done:
+            output_test(f'>>>> category_r: "{category_r}" in event_done, lab:"{event_done[category_r]}"')
+            category_lab = event_done[category_r]
+
+        if not category_lab:
+            if category_r.lower() in cash_2022:
+                category_lab = cash_2022[category_r.lower()]
+
+        if not category_lab:
+            if start_yementest[1]:
+                # print("yementest_with_Titose_Nmaes 1")
+                category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(changed_cat)
+
+        if not category_lab:
+            category_lab = event2bot.event2(changed_cat)
+
+        if not category_lab:
+            category_lab = event_lab_bot.event_Lab(changed_cat)
+    # ---
+    if category_lab:
+        category_lab = fixtitle.fixlab(category_lab, en=category_r)
+
+    # ---
+    if not from_year and cat_year:
+        labs_years.lab_from_year_add(category_r, category_lab, cat_year)
+
+    return category_lab
