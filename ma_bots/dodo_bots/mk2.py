@@ -22,6 +22,34 @@ from ...helps.print_bot import print_put, output_test
 
 
 def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe, suf, Add_In, cnt_la, Add_In_Done):
+    """Process and modify category-related labels based on various conditions.
+
+    This function takes multiple parameters related to categories and
+    modifies the `cat_test` and `arlabel` based on the presence of the
+    country in predefined tables, the type of input, and other conditions.
+    It also handles specific formatting for the labels and manages the
+    addition of certain phrases based on the context. The function performs
+    checks against lists of countries and predefined rules to determine how
+    to construct the final output labels.
+
+    Args:
+        category (str): The category to be processed.
+        cat_test (str): The test string for the category.
+        year (str): The year associated with the category.
+        typeo (str): The type of input being processed.
+        In (str): A string indicating location (e.g., "in", "at").
+        contry (str): The country name to be checked.
+        arlabel (str): The Arabic label to be modified.
+        year_labe (str): The label for the year.
+        suf (str): A suffix to be added to the label.
+        Add_In (bool): A flag indicating whether to add a specific input.
+        cnt_la (str): A counter or label associated with the country.
+        Add_In_Done (bool): A flag indicating whether the addition has been completed.
+
+    Returns:
+        tuple: A tuple containing the modified `cat_test` and `arlabel`.
+    """
+
     Add_to_main2_tab(contry, cnt_la)
     cat_test = cat_test.replace(contry, "")
     arlabel = re.sub(r" ", " ", arlabel)
