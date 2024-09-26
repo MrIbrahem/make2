@@ -47,6 +47,25 @@ Jobs_in_Multi_Sports_cash = {}
 test4_2018_with_nat_cash = {}
 
 def nat_match(cate, out=False, fa="", tab=None):
+    """Match a category string to a localized sentiment label.
+
+    This function takes a category string, processes it to identify if it
+    matches any predefined sentiment patterns, and returns the corresponding
+    localized sentiment label. It uses regular expressions to match patterns
+    and replaces parts of the category string to generate the output label.
+    If no match is found, an empty string is returned.
+
+    Args:
+        cate (str): The category string to be matched.
+        out (bool?): A flag to control output behavior. Defaults to False.
+        fa (str?): An additional parameter for future use. Defaults to an empty string.
+        tab (dict?): A dictionary for additional context. Defaults to None.
+
+    Returns:
+        str: The localized sentiment label corresponding to the input category,
+            or an empty string if no match is found.
+    """
+
     # ---
     if not tab:
         tab = {}
@@ -153,6 +172,25 @@ def test4_2018_with_nat(cate, out=False, fa="", tab=None):
 
 
 def Jobs_in_Multi_Sports(cate, out=False, tab=None):
+    """Retrieve job information related to multiple sports based on the
+    category.
+
+    This function checks if the provided category exists in a cached
+    dictionary of job information. If not found, it processes the category
+    to determine the relevant job and game labels. The function also formats
+    the output to provide a meaningful representation of the job in relation
+    to the sport.
+
+    Args:
+        cate (str): The category string representing the sport or job type.
+        out (bool?): A flag to control output behavior. Defaults to False.
+        tab (dict?): A dictionary for additional parameters. Defaults to None.
+
+    Returns:
+        str: A formatted string representing the job information related to the
+            specified category.
+    """
+
     # ---
     if not tab:
         tab = {}
