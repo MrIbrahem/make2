@@ -51,17 +51,17 @@ def get_Type_lab(tito, Type, Type_lower, contry_lower):
     Type_lab = ""
     if Type_lower == "women" and tito2 == "from":
         Type_lab = "نساء"
-        print_put('>> >> >> Make Type_lab "%s".' % Type_lab)
+        print_put(f'>> >> >> Make Type_lab "{Type_lab}".')
 
     elif Type_lower == "women of":
         Type_lab = "نساء من"
-        print_put('>> >> >> Make Type_lab "%s".' % Type_lab)
+        print_put(f'>> >> >> Make Type_lab "{Type_lab}".')
 
     Add_in_lab = True
     Type_lower_in = Type_lower.strip()
 
-    if not Type_lower_in.endswith(" " + tito2):
-        Type_lower_in = Type_lower.strip() + " " + tito2
+    if not Type_lower_in.endswith(f" {tito2}"):
+        Type_lower_in = f"{Type_lower.strip()} {tito2}"
 
     if not Type_lab:
         Type_lab = Tabl_with_in.get(Type_lower_in, "")

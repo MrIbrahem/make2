@@ -52,7 +52,7 @@ def work_titose_nmaes(category_r, do_Get_contry2, category, Cate_test):
     arlabel = ""
 
     for tito, tito_name in Tit_ose_Nmaes.items():
-        tito = " %s " % tito
+        tito = f" {tito} "
         # if Keep_Work and category.find(tito) != -1:
         if category.find(tito) == -1:
             continue
@@ -60,7 +60,7 @@ def work_titose_nmaes(category_r, do_Get_contry2, category, Cate_test):
         arlabel = find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contry2=do_Get_contry2)
         # ---
         if arlabel:
-            print_put('>>>> <<lightyellow>>arlabel "%s"' % arlabel)
+            print_put(f'>>>> <<lightyellow>>arlabel "{arlabel}"')
         # ---
         break
     return arlabel
@@ -95,7 +95,7 @@ def yementest_with_Titose_Nmaes(category_r, do_Get_contry2=True):
 
     if arlabel:
         arlabel = fixtitle.fixlab(arlabel, en=category_r)
-        print_put('xxxxx <<lightyellow>>Cate_test: "%s" ' % Cate_test)
+        print_put(f'xxxxx <<lightyellow>>Cate_test: "{Cate_test}" ')
         print_put(f'>>>>>> <<lightyellow>>test: cat "{category_r}", arlabel:"{arlabel}"')
 
     print_def_head("<<lightyellow>>>> ^^^^^^^^^ yementest end ^^^^^^^^^ ")

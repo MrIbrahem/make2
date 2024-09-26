@@ -56,7 +56,7 @@ def event2_d2(cat3, category3_not_lower):
             else:
                 category_lab = with_years_bot.Try_With_Years(cat3)
                 if category_lab:
-                    category_lab = "تصنيف:" + category_lab
+                    category_lab = f"تصنيف:{category_lab}"
 
     return category_lab
 
@@ -90,7 +90,7 @@ def event2(category_r):
         return event2_cash[cash_key]
 
     print_put("<<lightblue>>>> vvvvvvvvvvvv event2 start vvvvvvvvvvvv ")
-    print_put('<<lightyellow>>>>>> event2 :"%s"' % category_r)
+    print_put(f'<<lightyellow>>>>>> event2 :"{category_r}"')
     yy = (
         r"\d+th century BCE|\d+th millennium BCE|\d+th century BC|\d+th millennium BC|\d+th century|\d+th millennium"
         + r"|\d+st century BCE|\d+st millennium BCE|\d+st century BC|\d+st millennium BC|\d+st century|\d+st millennium"
@@ -124,7 +124,7 @@ def event2(category_r):
         category = category.replace("−century", " century")
         category = category.replace("–century", " century")
         if not category.lower().startswith("category:"):
-            category = "Category:" + category
+            category = f"Category:{category}"
 
         Tita_year = tita_year
         ddd = r"category\:(january|february|march|april|may|june|july|august|september|october|november|december|)\s*"
@@ -144,7 +144,7 @@ def event2(category_r):
         category3 = re.sub(r"category:", "", _category_, flags=re.IGNORECASE)
         cat_test = category3
 
-        print_put('<<lightred>>>>>> category33:"%s" ' % category3)
+        print_put(f'<<lightred>>>>>> category33:"{category3}" ')
 
         category_lab = event2_d2(category3, category3_not_lower)
 
@@ -196,7 +196,7 @@ def dodo(category_r):
     category = category.replace("−century", " century")
     category = category.replace("–century", " century")
     if not category.lower().startswith("category:"):
-        category = "Category:" + category
+        category = f"Category:{category}"
 
     if category.endswith(" stubs") and Find_stubs[1]:
         list_of_cat = "بذرة {}"

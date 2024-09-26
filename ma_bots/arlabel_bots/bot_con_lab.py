@@ -93,7 +93,7 @@ def get_con_lab(tito, do_Get_contry2, tito2, contry, contry_lower):
             cco2_ = contry2_lab.get_lab_for_contry2(cco2)
 
         if cco2_:
-            con_lab = "في " + cco2_
+            con_lab = f"في {cco2_}"
 
     if not con_lab:
         con_lab = year_lab.make_month_lab(contry_lower)

@@ -33,16 +33,16 @@ def work_2019(category3, year, year_labe):
     """
 
     print_put(f'<<lightyellow>>>> ============ start work_2019 :"{category3}", year:"{year}" ============ ')
-    cat_4 = re.sub(year + r"\s*(.*)$", r"\g<1>", category3)
+    cat_4 = re.sub(rf"{year}\s*(.*)$", r"\g<1>", category3)
     cat_4 = cat_4.strip()
-    print_put('<<lightgreen>>>>>> 2019: NoLab and year, cat_4="%s"' % cat_4)
+    print_put(f'<<lightgreen>>>>>> 2019: NoLab and year, cat_4="{cat_4}"')
     cat4_lab = pop_All_2018.get(cat_4, "")
     if not cat4_lab:
         cat4_lab = Get_contry(cat_4)
 
     arlabel = ""
     if cat4_lab:
-        print_put('<<lightgreen>>>>>> cat4_lab = "%s"' % cat4_lab)
+        print_put(f'<<lightgreen>>>>>> cat4_lab = "{cat4_lab}"')
         # cat_4_in_Table = False
         for table, ta_t in Table_for_frist_word.items():
             if cat_4 in ta_t:
@@ -50,13 +50,13 @@ def work_2019(category3, year, year_labe):
                 print_put(f'X:<<lightpurple>>>>>> cat_4 "{cat_4}" in {table}.')
 
         if cat_4 in New_players:
-            arlabel = cat4_lab + " في " + year_labe
+            arlabel = f"{cat4_lab} في {year_labe}"
         elif cat4_lab.endswith(" في"):
-            arlabel = cat4_lab + " " + year_labe
+            arlabel = f"{cat4_lab} {year_labe}"
         else:
-            arlabel = year_labe + " " + cat4_lab
+            arlabel = f"{year_labe} {cat4_lab}"
 
-        print_put('<<lightgreen>>>>>> 2019: New arlabel :"%s" ' % arlabel)
+        print_put(f'<<lightgreen>>>>>> 2019: New arlabel :"{arlabel}" ')
         print_put("<<lightyellow>>>> ^^^^^^^^^ end work_2019 ^^^^^^^^^ ")
     # ---
     return arlabel
