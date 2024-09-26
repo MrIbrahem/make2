@@ -38,6 +38,24 @@ Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 
 
 def event_Lab(category_r):
+    """Generate a category label based on the input category string.
+
+    This function processes the input category string to generate a
+    corresponding category label. It performs various transformations and
+    checks, including converting the string to lowercase, replacing
+    underscores with spaces, and adding a prefix if necessary. The function
+    also attempts to retrieve category information from multiple sources and
+    applies specific logic based on the content of the input string. If no
+    category label is found, it falls back on additional methods to derive a
+    suitable label.
+
+    Args:
+        category_r (str): The input category string that needs to be processed.
+
+    Returns:
+        str: The generated category label based on the input string.
+    """
+
     category_lab = ""
     list_of_cat = ""
     category_r2 = category_r

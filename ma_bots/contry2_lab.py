@@ -28,6 +28,28 @@ from . import ye_ts_bot
 
 
 def get_lab_for_contry2(contry, with_test_ye=False, **kwargs):
+    """Retrieve laboratory information for a specified country.
+
+    This function attempts to gather laboratory data for a given country by
+    checking various sources in a specific order. It first normalizes the
+    input country name and then queries multiple data sources to find
+    relevant information. If no data is found, it checks for variations of
+    the country name (e.g., removing "the" prefix). Additionally, if the
+    `with_test_ye` flag is set to True, it will attempt to retrieve data
+    using an alternative method.
+
+    Args:
+        contry (str): The name of the country for which to retrieve laboratory information.
+        with_test_ye (bool?): A flag indicating whether to use an alternative method for data
+            retrieval. Defaults to False.
+        **kwargs: Additional keyword arguments that may be used by the underlying data
+            retrieval functions.
+
+    Returns:
+        str: The laboratory information for the specified country, or an empty string
+            if no data is found.
+    """
+
     contry2_no_lower = contry.strip()
     contry2 = contry.lower().strip()
     cnt_la = pop_All_2018.get(contry2, "")

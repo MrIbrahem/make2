@@ -35,6 +35,27 @@ def Jobs2(cate, Start, con_3):
 
 
 def Jobs(cate, Start, con_3, Type="", tab=None):
+    """Retrieve job labels based on category and country.
+
+    This function generates job labels for both men and women based on the
+    provided category, starting country, and additional context. It checks
+    cached results to improve performance and utilizes various mappings to
+    determine the appropriate labels. The function handles different cases
+    for men's and women's jobs, including specific prefixes and country-
+    specific labels.
+
+    Args:
+        cate (str): The category of the job.
+        Start (str): The starting country for the job label.
+        con_3 (str): Additional context for the job label.
+        Type (str?): An optional type parameter. Defaults to an empty string.
+        tab (dict?): A dictionary containing additional labels for men and women.
+            Defaults to None.
+
+    Returns:
+        str: The generated job label based on the input parameters.
+    """
+
     # ---
     if not tab:
         tab = {}

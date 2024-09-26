@@ -76,8 +76,7 @@ def event2(category_r):
 
     Returns:
         str: The generated label corresponding to the input category string, or an
-            empty string
-        if no label could be determined.
+            empty string if no label could be determined.
     """
 
     NoLab_list = {}
@@ -173,12 +172,12 @@ def event2(category_r):
 def dodo(category_r):
     """Generate an Arabic label for a given category.
 
-    This function takes a category string, processes it to ensure it is in
-    the correct format, and generates an Arabic label if the category
-    indicates it is a stub. The function checks for specific patterns in the
-    category string and modifies it accordingly. If the category ends with
-    "stubs", it attempts to find a corresponding label using helper
-    functions. If no label is found, it falls back to a default template.
+    This function processes a category string to generate an Arabic label,
+    particularly for categories that indicate they are stubs. It checks the
+    input category for specific patterns and modifies it to ensure it is in
+    the correct format. If the category ends with "stubs", the function
+    attempts to find a corresponding label using helper functions. If no
+    label is found, it falls back to a default template.
 
     Args:
         category_r (str): The input category string to be processed.

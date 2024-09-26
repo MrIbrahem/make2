@@ -16,6 +16,24 @@ Work_Templates_cash = {}
 
 
 def Work_Templates(SUUS):
+    """Generate work templates based on the provided input string.
+
+    This function takes an input string, processes it to determine if it
+    matches any predefined templates based on its suffix or prefix. It
+    attempts to extract relevant information and format the output
+    accordingly. The function checks both suffixes and prefixes against a
+    set of predefined mappings and utilizes helper functions to retrieve
+    additional data as needed.
+
+    Args:
+        SUUS (str): The input string for which the work template is to be generated.
+
+    Returns:
+        str: The formatted work template based on the input string, or an empty
+            string
+        if no matching template is found.
+    """
+
     # ---
     cash_key = SUUS.lower().strip()
     # ---
