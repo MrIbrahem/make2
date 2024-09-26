@@ -41,6 +41,27 @@ Get_contry_done = {}
 
 
 def Get_contry(contry, do_Get_contry2=True):
+    """Retrieve the label for a given country name.
+
+    This function takes a country name as input and attempts to retrieve its
+    corresponding label from various sources. It first checks if the country
+    has already been processed and stored in a cache. If not, it attempts to
+    derive the label through several methods, including checking against
+    predefined keys, utilizing helper functions, and applying specific
+    prefixes. The function also handles cases where the country name may
+    contain additional descriptors or is formatted in a certain way.
+
+    Args:
+        contry (str): The name of the country to retrieve the label for.
+        do_Get_contry2 (bool): A flag indicating whether to attempt a secondary retrieval method
+            if the initial attempts fail. Defaults to True.
+
+    Returns:
+        str: The label corresponding to the input country name, or an empty string if
+            no label
+            could be found.
+    """
+
     contry_no_lower = contry
     contry = contry.lower()
 
@@ -175,6 +196,28 @@ def Get_contry(contry, do_Get_contry2=True):
 
 
 def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
+    """Retrieve the corresponding label for a given country or term.
+
+    This function attempts to find a label associated with the input
+    `c_t_lower`, which may represent a country or other geographical term.
+    It utilizes various lookup mechanisms, including predefined dictionaries
+    and regular expressions, to derive the appropriate label. The function
+    also considers the context provided by the `tito` parameter and the
+    `Type` argument to refine its search. If no label is found, it may
+    recursively call itself to handle specific cases.
+
+    Args:
+        c_t_lower (str): The input string representing a country or term.
+        tito (str): Contextual information that may influence the label retrieval.
+        Type (str?): Specifies the type of label to retrieve. Defaults to an empty string.
+        do_Get_contry2 (bool?): A flag indicating whether to perform additional country lookups.
+            Defaults to True.
+
+    Returns:
+        str: The label corresponding to the input term, or an empty string if no
+            label is found.
+    """
+
     print_put(f'Get_c_t_lab Type:"{Type}", tito:"{tito}", c_ct_lower:"{c_t_lower}" ')
     if "makeerr" in sys.argv:
         do_Get_contry2 = True
