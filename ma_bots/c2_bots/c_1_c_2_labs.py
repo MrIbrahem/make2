@@ -27,6 +27,18 @@ from ...helps.print_bot import print_put, output_test
 from ...date_bots import with_years_bot
 
 
+def check_sources(cone_1):
+    sources = [
+        test_films,
+        nats.find_nat_others,
+        fax.Get_Teams_new,
+    ]
+    for source in sources:
+        result = source(cone_1)
+        if result:
+            return result
+    return ""
+
 def c_1_1_lab(tat_o, With_Years, cone_1):
     con_1_no_lower = cone_1.strip()
 
