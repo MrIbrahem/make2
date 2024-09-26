@@ -11,6 +11,25 @@ get_con_cash = {}
 
 
 def get_con_3(cate, keys, Type):
+    """Retrieve country information based on category and keys.
+
+    This function checks if a given category and type tuple exists in a
+    cached dictionary. If it does, it returns the cached result. If not, it
+    processes the provided keys to extract relevant country information. The
+    function looks for specific patterns in the keys and modifies the
+    category string accordingly. The results are then cached for future
+    reference.
+
+    Args:
+        cate (str): The category string to be processed.
+        keys (list): A list of keys to match against the category.
+        Type (str): The type of information being processed, e.g., "nat".
+
+    Returns:
+        tuple: A tuple containing the modified category string and the
+        corresponding country name, or empty strings if no match is found.
+    """
+
     # ---
     T_uple = cate, Type
     # ---
