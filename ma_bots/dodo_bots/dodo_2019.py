@@ -15,6 +15,23 @@ from ..contry_bot import Get_contry
 
 
 def work_2019(category3, year, year_labe):
+    """Process category data for the year 2019.
+
+    This function takes a category string and a year, processes the category
+    to extract relevant information, and generates a label based on the
+    extracted data. It checks for existing labels and formats the output
+    accordingly. The function also prints debug information to track its
+    execution flow.
+
+    Args:
+        category3 (str): The input category string containing year-related data.
+        year (str): The year to be processed, expected to be part of the category string.
+        year_labe (str): A label associated with the year for formatting the output.
+
+    Returns:
+        str: A formatted label based on the processed category data.
+    """
+
     print_put(f'<<lightyellow>>>> ============ start work_2019 :"{category3}", year:"{year}" ============ ')
     cat_4 = re.sub(year + r"\s*(.*)$", r"\g<1>", category3)
     cat_4 = cat_4.strip()
