@@ -30,6 +30,31 @@ en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 
 
 def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, cat_test, category_r):
+    """Generate a label based on various input parameters related to categories
+    and years.
+
+    This function processes the input parameters to create a formatted label
+    that incorporates information about the category, year, type, and
+    country. It handles various conditions to determine how to construct the
+    label, including checking for specific keywords and replacing them as
+    necessary. The function also manages cases where certain inputs may not
+    yield a valid label and provides fallback mechanisms to ensure
+    meaningful output.
+
+    Args:
+        _category_ (str): The initial category string to be processed.
+        Tita_year (str): A pattern for extracting the year from the category.
+        tita (str): A pattern used for type extraction.
+        tita_other (str): Additional type information.
+        category3 (str): A secondary category for comparison.
+        category (str): The main category name.
+        cat_test (str): A test string for validating categories.
+        category_r (str): The category reference for output labeling.
+
+    Returns:
+        str: The generated label if successful; otherwise, an empty string.
+    """
+
     # ---
     Add_In_Done = False
     NoLab = False

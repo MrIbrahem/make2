@@ -48,6 +48,23 @@ def test3(category_r):
 
 
 def event_Lab_seoo(category_r, category3):
+    """Retrieve category lab information based on the provided category.
+
+    This function attempts to find the corresponding category lab for a
+    given category string by checking multiple sources in a specific order.
+    It first normalizes the input category string and then queries various
+    data sources to retrieve the relevant information. If no match is found,
+    it attempts to find a wikidata entry based on the category string.
+
+    Args:
+        category_r (str): A reference category string used in some lookups.
+        category3 (str): The category string for which the lab information is sought.
+
+    Returns:
+        str: The corresponding category lab information or an empty string if not
+            found.
+    """
+
     category3_no_lower = category3.strip()
     category3 = category3.lower().strip()
 

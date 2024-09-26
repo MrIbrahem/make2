@@ -32,6 +32,24 @@ test4_2018_Jobs_cash = {}
 
 
 def test4_2018_Jobs(cate, out=False, tab=None):
+    """Retrieve job-related information based on the specified category.
+
+    This function processes the input category to determine the appropriate
+    job-related label and returns it. It utilizes various mappings and
+    conditions to derive the correct label based on prefixes, gender
+    considerations, and other contextual information. The function also
+    caches results for efficiency, avoiding redundant computations for
+    previously queried categories.
+
+    Args:
+        cate (str): The category of jobs to retrieve information for.
+        out (bool?): A flag to control output behavior. Defaults to False.
+        tab (dict?): An optional dictionary for additional parameters. Defaults to None.
+
+    Returns:
+        str: The job-related label corresponding to the input category.
+    """
+
     # ---
     if not tab:
         tab = {}

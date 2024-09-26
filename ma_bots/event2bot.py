@@ -29,6 +29,24 @@ Find_stubs = {1: True if "-stubs" in sys.argv else False}
 
 
 def event2_d2(cat3, category3_not_lower):
+    """Determine the category label based on the input string.
+
+    This function analyzes the input string `cat3` to determine a
+    corresponding category label. It checks for specific keywords to decide
+    how to process the input. If none of the keywords are found, it attempts
+    to derive the category label using a helper function based on whether
+    the input starts with a digit or not. The resulting category label is
+    prefixed with "تصنيف:" if it is successfully determined.
+
+    Args:
+        cat3 (str): The input string representing a category.
+        category3_not_lower (str): A string used for country determination.
+
+    Returns:
+        str: The determined category label, or an empty string if no category
+        could be determined.
+    """
+
     category_lab = ""
 
     if cat3.find(" in ") == -1 and cat3.find(" of ") == -1 and cat3.find(" from ") == -1:
@@ -44,6 +62,24 @@ def event2_d2(cat3, category3_not_lower):
 
 
 def event2(category_r):
+    """Process a category string and return a corresponding label.
+
+    This function takes a category string as input, processes it to extract
+    relevant information, and attempts to generate a label based on
+    predefined patterns and rules. It utilizes regular expressions to
+    identify various time periods, such as centuries and millennia, and
+    checks against existing labels in a cache. If no label can be generated,
+    it defaults to a fallback mechanism.
+
+    Args:
+        category_r (str): The category string to be processed.
+
+    Returns:
+        str: The generated label corresponding to the input category string, or an
+            empty string
+        if no label could be determined.
+    """
+
     NoLab_list = {}
     cash_key = category_r.replace("category:", "").lower().strip()
 
@@ -135,6 +171,23 @@ def event2(category_r):
 
 
 def dodo(category_r):
+    """Generate an Arabic label for a given category.
+
+    This function takes a category string, processes it to ensure it is in
+    the correct format, and generates an Arabic label if the category
+    indicates it is a stub. The function checks for specific patterns in the
+    category string and modifies it accordingly. If the category ends with
+    "stubs", it attempts to find a corresponding label using helper
+    functions. If no label is found, it falls back to a default template.
+
+    Args:
+        category_r (str): The input category string to be processed.
+
+    Returns:
+        str: The generated Arabic label for the category, or an empty string if no
+            label is generated.
+    """
+
     ar_label = ""
     sub_ar_label = ""
     list_of_cat = ""

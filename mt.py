@@ -72,6 +72,23 @@ def justlab(opo=""):
 
 
 def main2(args):
+    """Execute the main functionality of the script with specified arguments.
+
+    This function serves as the entry point for processing a list of titles
+    based on the provided command-line arguments. It utilizes a generator to
+    retrieve titles and then processes each title to output relevant
+    information. The output includes the title itself and associated
+    categories, if available.
+
+    Args:
+        args (list): A list of command-line arguments to customize the
+            behavior of the function.
+
+    Returns:
+        None: This function does not return a value; it outputs results
+            directly to the console.
+    """
+
     # python3 core8/pwb.py make/ma_main t:2 -lang:en -family:wikipedia -subcatsr:Category:Establishments_in_India_by_millennium
     # python3 core8/pwb.py make/ma_main t:2 -lang:en -family:wikipedia -subcats:Category:20th-century_actresses
     # python3 core8/pwb.py make/ma_main t:2 -lang:en -family:wikipedia -subcats:Category:20th-century_actresses

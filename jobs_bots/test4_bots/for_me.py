@@ -23,6 +23,25 @@ Work_for_me_cash = {}
 
 
 def Work_for_New_2018_men_Keys_with_all(cate, nat, con_3):
+    """Retrieve country label for men based on category, nationality, and a
+    specific key.
+
+    This function constructs a cash key from the provided category,
+    nationality, and a third parameter. It checks if this key exists in the
+    `wo_2018_cash` dictionary. If it does, it returns the corresponding
+    value. If not, it attempts to derive a country label based on the
+    nationality and the provided key. The function utilizes various mappings
+    to format the country label appropriately.
+
+    Args:
+        cate (str): The category of the work.
+        nat (str): The nationality to be used for label generation.
+        con_3 (str): A specific key used to retrieve additional information.
+
+    Returns:
+        str: The formatted country label for men based on the inputs.
+    """
+
     # ---
     cash_key = f"{cate}, {nat}, {con_3}".lower().strip()
     # ---
@@ -59,6 +78,27 @@ def Work_for_New_2018_men_Keys_with_all(cate, nat, con_3):
 
 
 def Work_for_me(cate, nat, con_3):
+    """Retrieve a country label based on category, nationality, and a third
+    parameter.
+
+    This function constructs a unique key from the provided category,
+    nationality, and third parameter, and checks if this key exists in a
+    cached dictionary. If the key is found, it returns the corresponding
+    value. If not, it attempts to derive the country label through various
+    lookups and transformations based on the nationality and the third
+    parameter. The function handles different cases for both male and female
+    labels, ensuring that the correct format is applied based on the input
+    values.
+
+    Args:
+        cate (str): The category to be used in the lookup.
+        nat (str): The nationality to be used in the lookup.
+        con_3 (str): An additional parameter that influences the country label.
+
+    Returns:
+        str: The derived country label based on the inputs.
+    """
+
     # ---
     cash_key = f"{cate}, {nat}, {con_3}".lower().strip()
     # ---

@@ -11,6 +11,23 @@ from ...helps.print_bot import print_def_head, print_put
 
 
 def get_type_country(category, tito):
+    """Extract the type and country from a given category string.
+
+    This function takes a category string and a delimiter (tito) to split
+    the category into a type and a country. It processes the strings to
+    ensure proper formatting and handles specific cases based on the value
+    of tito. The function also performs some cleanup on the extracted
+    strings to remove any unwanted characters or formatting issues.
+
+    Args:
+        category (str): The category string containing type and country information.
+        tito (str): The delimiter used to separate the type and country in the category
+            string.
+
+    Returns:
+        tuple: A tuple containing the processed type (str) and country (str).
+    """
+
     Type = category.split(tito)[0]
     contry = category.split(tito)[1]
     contry = contry.lower()
