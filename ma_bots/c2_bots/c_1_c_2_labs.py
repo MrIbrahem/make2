@@ -28,6 +28,21 @@ from ...date_bots import with_years_bot
 
 
 def check_sources(cone_1):
+    """Check multiple sources for a result based on the provided input.
+
+    This function iterates through a predefined list of source functions,
+    passing the input parameter `cone_1` to each source. If any source
+    returns a truthy value, that value is returned immediately. If none of
+    the sources return a truthy value, an empty string is returned.
+
+    Args:
+        cone_1: The input parameter to be passed to each source function.
+
+    Returns:
+        str: The result from the first truthy source or an empty string
+        if no sources return a truthy value.
+    """
+
     sources = [
         test_films,
         nats.find_nat_others,
