@@ -17,6 +17,27 @@ from ...helps.print_bot import print_put
 
 
 def make_cnt_lab(tat_o, contry2, c_2_l, c_1_l, cona_1, cona_2, sps):
+    """Construct a formatted string based on various input parameters.
+
+    This function generates a string that combines different components
+    based on the provided arguments. It checks for specific conditions
+    related to the input values and formats the output accordingly. The
+    function also handles special cases for certain input values and
+    modifies the output string based on predefined formats.
+
+    Args:
+        tat_o (str): A string representing some title or description.
+        contry2 (str): A string representing the country name.
+        c_2_l (str): A string that may represent a location or context.
+        c_1_l (str): A string that may represent another location or context.
+        cona_1 (str): A string that represents a specific entity or subject.
+        cona_2 (str): A string that may represent another entity or subject.
+        sps (str): A string that serves as a separator or additional context.
+
+    Returns:
+        str: The formatted string based on the input parameters.
+    """
+
     cnt_la = c_1_l + sps + c_2_l
 
     if cona_1 in typeTable or cona_1 in Films_O_TT or cona_1.lower() in New_players:
