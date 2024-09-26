@@ -35,6 +35,30 @@ Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 
 
 def get_con_lab(tito, do_Get_contry2, tito2, contry, contry_lower):
+    """Retrieve the corresponding label for a given country.
+
+    This function attempts to find a label associated with the specified
+    country by checking various data sources in a specific order. It first
+    checks if a label exists in predefined dictionaries and makes
+    adjustments to the country name if necessary. If no label is found, it
+    tries to derive a label based on the country name's structure or related
+    information. The function also handles specific cases such as names
+    starting with "by" or containing "kingdom-of".
+
+    Args:
+        tito (str): A parameter used in label retrieval.
+        do_Get_contry2 (bool): A flag indicating whether to perform a secondary
+            country lookup.
+        tito2 (str): A parameter that influences the retrieval process.
+        contry (str): The original country name.
+        contry_lower (str): The lowercase version of the country name for
+            consistent lookup.
+
+    Returns:
+        str: The label corresponding to the provided country name, or an
+            empty string if no label is found.
+    """
+
     con_lab = ""
 
     if not con_lab:
