@@ -694,6 +694,17 @@ def info(text):
 
 
 def warn(text):
+    """Log a warning message with the specified text.
+
+    This function takes a text input, converts it to a string using the
+    `make_str` function, and then logs it as a warning using the logging
+    module. It is useful for generating warning messages in applications
+    where logging is required for monitoring or debugging purposes.
+
+    Args:
+        text (any): The message to be logged as a warning. It can be of
+    """
+
     new_text = make_str(text)
     log.warning(new_text)
 
