@@ -38,11 +38,12 @@ Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Local=False, printhead=False, all_print_off=False, tst_prnt_all=None, return_no_labs=False):
     """Process a list of categories and generate corresponding labels.
 
-    This function takes a list of categories and processes each category to
-    determine its corresponding label. It handles various options for
-    printing and tabulation. The function also manages categories that do
-    not have associated labels and can return these as needed. If specified,
-    it can also utilize a main script for additional functionality.
+    This function processes a list of category names to determine their
+    corresponding labels. It provides options for printing and creating
+    tables, and can manage categories that do not have associated labels.
+    Additionally, it can utilize a main script for enhanced functionality.
+    The function returns a dictionary mapping each category to its label,
+    and optionally returns a list of categories that lack labels.
 
     Args:
         NewList (list): A list of category names to process.
@@ -155,6 +156,24 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
 
 
 def new_func_lab(category_r):
+    """Determine the laboratory category based on the provided category.
+
+    This function attempts to derive the laboratory category for a given
+    input category. It first checks if there is an existing mapping from the
+    input category to a laboratory year. If no mapping is found, it applies
+    various filters and transformations to determine the appropriate
+    laboratory category. The function also updates the mapping if a new
+    laboratory category is found.
+
+    Args:
+        category_r (str): The input category for which the laboratory
+            category needs to be determined.
+
+    Returns:
+        str: The determined laboratory category, or an empty string if
+            no category could be determined.
+    """
+
     category_lab = ""
     # ---
     cat_year, from_year = labs_years.lab_from_year(category_r)
