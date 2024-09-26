@@ -9,7 +9,6 @@ from ..helps.print_bot import print_put
 
 from ..date_bots import with_years_bot
 
-
 from ..ma_bots import contry2_lab
 from ..ma_bots import ye_ts_bot
 
@@ -35,7 +34,7 @@ def Work_Templates(SUUS):
     for pri_ooo, pri_lll in meregd.items():
         if not SUUS.lower().endswith(pri_ooo.lower()):
             continue
-        U_8 = SUUS[: -len(pri_ooo)]
+        U_8 = SUUS[:-len(pri_ooo)]
         print_put(f'>>>><<lightblue>> Work_ Templates.endswith pri_ooo("{pri_ooo}"), U_8:"{U_8}"')
 
         U_lab = contry2_lab.get_lab_for_contry2(U_8)
@@ -43,7 +42,7 @@ def Work_Templates(SUUS):
             U_lab = with_years_bot.Try_With_Years(U_8)
 
         if U_lab == "":
-            #print("yementest_with_Titose_Nmaes 2")
+            # print("yementest_with_Titose_Nmaes 2")
             U_lab = ye_ts_bot.yementest_with_Titose_Nmaes(U_8)
 
         print_put(f'>>>><<lightblue>> Work_ Templates :"{SUUS}", U_8 :"{U_8}"')
@@ -63,7 +62,7 @@ def Work_Templates(SUUS):
     for pri_ss, pri_lll in pp_start_with.items():
         if not SUUS.startswith(pri_ss):
             continue
-        U_c = SUUS[len(pri_ss) :]
+        U_c = SUUS[len(pri_ss):]
 
         U_lab = contry2_lab.get_lab_for_contry2(U_c)
 
@@ -71,7 +70,7 @@ def Work_Templates(SUUS):
             U_lab = with_years_bot.Try_With_Years(U_c)
 
         if U_lab == "":
-            #print("yementest_with_Titose_Nmaes 3")
+            # print("yementest_with_Titose_Nmaes 3")
             U_lab = ye_ts_bot.yementest_with_Titose_Nmaes(U_c)
 
         print_put(f'>>>><<lightblue>> Work_ Templates :"{SUUS}", U_c :"{U_c}"')

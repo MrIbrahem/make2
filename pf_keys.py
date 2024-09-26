@@ -3,7 +3,6 @@
 from .pf_keys import Change_key, Change_key2
 """
 
-
 Change_key = {
     # "people of the ottoman empire" :"people-of-the-ottoman-empire",
     # "sentenced to death" :"sentenced-to-death",

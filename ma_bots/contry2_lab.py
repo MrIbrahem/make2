@@ -19,7 +19,6 @@ from ..matables_bots.table1_bot import get_KAKO
 
 from ..helps.print_bot import print_put
 
-
 from ..p17_bots.us_stat import Work_US_State
 from ..o_bots.rele import Work_relations
 from ..o_bots.popl import Work_peoples
@@ -56,10 +55,10 @@ def get_lab_for_contry2(contry, with_test_ye=False, **kwargs):
         cnt_la = centries_years_dec.get(contry2, "")
 
     if not cnt_la and contry2.startswith("the "):
-        cnt_la = pop_All_2018.get(contry2[len("the ") :], "")
+        cnt_la = pop_All_2018.get(contry2[len("the "):], "")
 
     if not cnt_la and with_test_ye:
-        #print("yementest_with_Titose_Nmaes 9")
+        # print("yementest_with_Titose_Nmaes 9")
         cnt_la = ye_ts_bot.yementest_with_Titose_Nmaes(contry2, do_Get_contry2=False)
 
     if cnt_la:

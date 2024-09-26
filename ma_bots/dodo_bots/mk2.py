@@ -62,10 +62,10 @@ def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe
 
     if contry in contry_before_year:
         Contry_In_Table = True
-        output_test('>> >> X:<<lightpurple>> Contry_In_Table "%s" in contry_before_year.' % contry)
+        output_test(f'>> >> X:<<lightpurple>> Contry_In_Table "{contry}" in contry_before_year.')
 
     if suf:
-        suf = " %s " % suf.strip()
+        suf = f" {suf.strip()} "
     else:
         suf = " "
 
@@ -74,7 +74,7 @@ def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe
     if Contry_In_Table and typeo not in Keep_it_frist:
         if (In.strip() == "in" or In.strip() == "at") or (contry.lower() in New_players) and not con_lab.startswith("حسب"):
             if year_labe:
-                con_lab = con_lab + " في "
+                con_lab = f"{con_lab} في "
                 Add_In_Done = True
                 output_test(">>> Add في line: 1010")
                 cat_test = cat_test.replace(In, "")
@@ -85,7 +85,7 @@ def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe
         Add_to_main2_tab(In.strip(), "في")
     else:
         if In.strip() == "in" or In.strip() == "at":
-            con_lab = "في " + con_lab
+            con_lab = f"في {con_lab}"
 
             cat_test = cat_test.replace(In, "")
             Add_to_main2_tab(In.strip(), "في")
@@ -97,7 +97,7 @@ def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe
         # ---
         arlabel = arlabel.replace(" في في ", " في ")
         # ---
-        print_put(">3252 arlabel: " + arlabel)
+        print_put(f">3252 arlabel: {arlabel}")
 
         # if (typeo == '" and In == "') and (contry and year != ""):
 
@@ -126,9 +126,9 @@ def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe
         arlabel = con_lab + suf + arlabel2
 
         print_put("a<<lightblue>>>3265>>>arlabel = con_lab + suf +  arlabel2")
-        print_put("a<<lightblue>>>3265>>>" + arlabel)
+        print_put(f"a<<lightblue>>>3265>>>{arlabel}")
 
     print_put(f'a<<lightblue>>>>>> p:{cnt_la}, year_labe: {year_labe}:, cat:"{category}"')
-    print_put('a<<lightblue>>>>>> arlabel  "%s"' % arlabel)
+    print_put(f'a<<lightblue>>>>>> arlabel  "{arlabel}"')
 
     return cat_test, arlabel

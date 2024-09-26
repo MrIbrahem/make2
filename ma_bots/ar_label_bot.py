@@ -127,7 +127,7 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
 
         if Type_lower not in Dont_Add_min:
             if Type_lower.endswith(" of") and ty_in18:
-                Type_lower2 = Type_lower[: -len(" of")]
+                Type_lower2 = Type_lower[:-len(" of")]
                 if Type_lab.find(" في") == -1:
                     if (Type_lower in New_players) or (Type_lower2 in New_players):
                         print_put('>>>> nAdd من to Type_lab"%s" line:1853' % Type_lab)

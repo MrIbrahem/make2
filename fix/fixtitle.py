@@ -23,7 +23,7 @@ def fix_n(arlabel):
     for f_a, f_lab in Starting.items():
         if arlabel.startswith(f_a):
             # arlabel = re.sub(r"^%s" % f_a, f_lab, arlabel)
-            arlabel = f_lab + arlabel[len(f_a) :]
+            arlabel = f_lab + arlabel[len(f_a):]
     # ---
     arlabel = arlabel.strip()
     for fa, falab in Ending.items():
@@ -185,7 +185,7 @@ def fix_it(arlabel, en):
     # ---
     if arlabel.endswith(" في"):
         # arlabel = re.sub(r"في$" ,"" , arlabel ).strip()
-        arlabel = arlabel[: -len(" في")]
+        arlabel = arlabel[:-len(" في")]
     # ---
     if arlabel.startswith("لاعبو ") and arlabel.endswith(" للسيدات"):
         arlabel = re.sub(r"^لاعبو ", "لاعبات ", arlabel)

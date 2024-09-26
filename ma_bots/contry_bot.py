@@ -80,7 +80,7 @@ def Get_contry(contry, do_Get_contry2=True):
             if not contry.startswith(prif):
                 continue
             print(f">>> contry.startswith({prif})")
-            con_3 = contry[len(prif) :]
+            con_3 = contry[len(prif):]
             Add_to_main2_tab(prif, prif_lab)
             con_3_lab = contry2_bot.Get_contry2(con_3)
 
@@ -88,7 +88,7 @@ def Get_contry(contry, do_Get_contry2=True):
                 con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
 
             if con_3_lab == "":
-                #print("yementest_with_Titose_Nmaes 6")
+                # print("yementest_with_Titose_Nmaes 6")
                 con_3_lab = ye_ts_bot.yementest_with_Titose_Nmaes(con_3)
 
             if con_3_lab:
@@ -128,14 +128,14 @@ def Get_contry(contry, do_Get_contry2=True):
             if not contry.startswith(prif):
                 continue
             print(f">>> contry.startswith({prif})")
-            con_3 = contry[len(prif) :]
+            con_3 = contry[len(prif):]
             con_3_lab = contry2_bot.Get_contry2(con_3)
 
             if con_3_lab == "":
                 con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
 
             if con_3_lab == "":
-                #print("yementest_with_Titose_Nmaes 7")
+                # print("yementest_with_Titose_Nmaes 7")
                 con_3_lab = ye_ts_bot.yementest_with_Titose_Nmaes(con_3)
 
             if con_3_lab:
@@ -190,7 +190,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
     if c_t_lab == "" and Type != "Type_lab":
         if c_t_lower.startswith("the "):
             print_put(f'>>>> c_t_lower:"{c_t_lower}" startswith("the ")')
-            LLL = c_t_lower[len("the ") :]
+            LLL = c_t_lower[len("the "):]
 
             c_t_lab = pop_All_2018.get(LLL, "")
 
@@ -216,7 +216,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
             if not c_t_lower.endswith(tat):
                 continue
 
-            tti = c_t_lower[: -len(tat)]
+            tti = c_t_lower[:-len(tat)]
 
             tto = Jobs_key.get(tti, "")
 
@@ -253,6 +253,6 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
         print_put(f'Get_c_t_lab c_t_lab:"{c_t_lab}" ')
 
     elif tito.strip() == "for" and c_t_lower.startswith("for "):
-        return Get_c_t_lab(c_t_lower[len("for ") :], "", Type=Type)
+        return Get_c_t_lab(c_t_lower[len("for "):], "", Type=Type)
 
     return c_t_lab

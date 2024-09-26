@@ -49,7 +49,7 @@ def Lang_work(con_3):
     # ---
     for wriff, Wriff_lab in tta.items():
         if con_3.startswith(wriff) and lang_lab == "":
-            con_43 = con_3[len(wriff) :].strip()
+            con_43 = con_3[len(wriff):].strip()
             lang_lac = languages_key.get(f"{con_43} language", "")
             print_put(con_43)
             if lang_lac:
@@ -77,7 +77,7 @@ def Lang_work(con_3):
                 nat_labe = All_Nat[lang]["mens"]
                 output_test4(f'<<lightred>> skip lang:"{lang}" in All_Nat,l_lab:"{l_lab}",nat_labe:"{nat_labe}" ')
             else:
-                con_8 = con_3[len(lang2) :]
+                con_8 = con_3[len(lang2):]
                 con_78_lab = Jobs_key_mens.get(con_8, "")
                 if con_78_lab:
                     lang_lab = f"{con_78_lab} ب{languages_key[lang]}"  # languages_key[lang].format(con_78_lab)

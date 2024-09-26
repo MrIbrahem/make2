@@ -34,13 +34,9 @@ def lenth_pri(bot, tab, Max=10000, lens=[]):
             return y
         return naturalsize(y, binary=True)
 
-    faf = ", ".join(
-        [
-            # f"<<lightpurple>>{x}<<default>>: {tab[x]}"
-            f"<<lightpurple>>{x}<<default>>: {do(x, tab[x])}"
-            for x in tab
-            if tab[x] > Max
-        ]
-    )
+    faf = ", ".join([
+        # f"<<lightpurple>>{x}<<default>>: {tab[x]}"
+        f"<<lightpurple>>{x}<<default>>: {do(x, tab[x])}" for x in tab if tab[x] > Max
+    ])
     if faf:
         printe.output(f"{bot}:".ljust(20) + faf)

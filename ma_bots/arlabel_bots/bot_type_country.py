@@ -31,7 +31,7 @@ def get_type_country(category, tito):
     Type = category.split(tito)[0]
     contry = category.split(tito)[1]
     contry = contry.lower()
-    Mash = "^(.*?)(?:%s?)(.*?)$" % tito
+    Mash = f"^(.*?)(?:{tito}?)(.*?)$"
     Type_t = re.sub(Mash, r"\g<1>", category.lower())
     contry_t = re.sub(Mash, r"\g<2>", category.lower())
 
@@ -78,6 +78,6 @@ def get_type_country(category, tito):
 
         print_put(f'>>>> yementest: Type_t:"{Type_t}", contry_t:"{contry_t}"')
     else:
-        print_put('>>>> test_N:"%s" == tito' % test_N)
+        print_put(f'>>>> test_N:"{test_N}" == tito')
 
     return Type, contry

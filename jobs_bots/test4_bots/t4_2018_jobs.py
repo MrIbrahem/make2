@@ -75,7 +75,7 @@ def test4_2018_Jobs(cate, out=False, tab=None):
         me2 = f"{me} "
         if cate.lower().startswith(me2.lower()):
             Main_Ss = me
-            cate = cate2_no_lower[len(me2) :]
+            cate = cate2_no_lower[len(me2):]
             # ---
             Main_lab = melab
             if cate.endswith("women") or cate.endswith("women's"):
