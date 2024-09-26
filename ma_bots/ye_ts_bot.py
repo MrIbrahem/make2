@@ -48,6 +48,24 @@ def find_lab(category, category_r):
 
 
 def work_titose_nmaes(category_r, do_Get_contry2, category, Cate_test):
+    """Work with titose names based on the provided category.
+
+    This function iterates through a predefined dictionary of titose names
+    and checks if the given category contains any of these names. If a match
+    is found, it calls the `find_ar_label` function to retrieve an
+    associated label. The function will print the label if it is found and
+    return it. The iteration stops after the first match.
+
+    Args:
+        category_r (type): Description of category_r parameter.
+        do_Get_contry2 (type): Description of do_Get_contry2 parameter.
+        category (str): The category string to search for titose names.
+        Cate_test (type): Description of Cate_test parameter.
+
+    Returns:
+        str: The associated arlabel if found, otherwise an empty string.
+    """
+
     arlabel = ""
 
     for tito, tito_name in Tit_ose_Nmaes.items():
@@ -66,6 +84,23 @@ def work_titose_nmaes(category_r, do_Get_contry2, category, Cate_test):
 
 
 def yementest_with_Titose_Nmaes(category_r, do_Get_contry2=True):
+    """Retrieve and process category names for the Yementest application.
+
+    This function takes a category string, processes it to standardize the
+    format, and attempts to retrieve associated labels from predefined data
+    structures. If the category is not found, it will invoke additional
+    functions to derive the necessary labels based on the input. The
+    function also handles logging for debugging purposes.
+
+    Args:
+        category_r (str): The input category string that needs to be processed.
+        do_Get_contry2 (bool): A flag indicating whether to retrieve country-related data.
+            Defaults to True.
+
+    Returns:
+        str: The processed label associated with the input category.
+    """
+
     category = re.sub(r"_", " ", category_r)
     category = re.sub(r"category:", "", category, flags=re.IGNORECASE)
 
