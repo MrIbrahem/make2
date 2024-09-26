@@ -25,6 +25,26 @@ def print_put(s):
 
 
 def Try_With_Years(contry):
+    """Retrieve a formatted label for a given country based on its historical
+    context.
+
+    This function processes the input country string to extract relevant
+    year information and formats it according to predefined rules. It checks
+    for specific patterns in the input string, such as congressional terms
+    or year ranges, and returns a corresponding label. If the input does not
+    match any known patterns, an empty string is returned. The function also
+    caches results for efficiency.
+
+    Args:
+        contry (str): The name of the country or a related term that may include year
+            information.
+
+    Returns:
+        str: A formatted label that includes the country name and associated year
+            information,
+        or an empty string if no valid information is found.
+    """
+
     # ---
     cash_key = contry.lower().strip()
     # ---
