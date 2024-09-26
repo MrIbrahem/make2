@@ -40,11 +40,13 @@ from ..helps.print_bot import output_test4, print_put
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
 
 from .test4_bots.for_me import Work_for_me
+
 # from .test4_bots.relegin_jobs import try_relegins_jobs
 from .test4_bots.t4_2018_jobs import test4_2018_Jobs
 
 Jobs_in_Multi_Sports_cash = {}
 test4_2018_with_nat_cash = {}
+
 
 def nat_match(cate, out=False, fa="", tab=None):
     """Match a category string to a localized sentiment label.

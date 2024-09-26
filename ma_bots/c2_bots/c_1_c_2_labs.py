@@ -54,6 +54,7 @@ def check_sources(cone_1):
             return result
     return ""
 
+
 def c_1_1_lab(tat_o, With_Years, cone_1):
     """Retrieve a label based on the given parameters.
 

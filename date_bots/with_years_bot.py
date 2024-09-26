@@ -5,8 +5,8 @@ from  ..date_bots.with_years_bot import Try_With_Years
 import re
 
 # ---
-from ..ma_lists_bots import  change_numb_to_word
-from ..ma_lists_bots import  Word_After_Years
+from ..ma_lists_bots import change_numb_to_word
+from ..ma_lists_bots import Word_After_Years
 from ..pop_format_bot import ar_lab_before_year_to_add_in
 from ..matables_bots.bot import Add_in_table
 from ..matables_bots.table1_bot import get_KAKO
@@ -92,7 +92,7 @@ def Try_With_Years(contry):
             print_put(f">>> Try With Years get_KAKO con_3_lab:{con_3_lab}")
 
         if con_3_lab == "":
-            #print("yementest_with_Titose_Nmaes 4")
+            # print("yementest_with_Titose_Nmaes 4")
             con_3_lab = yementest_with_Titose_Nmaes(con_3)
 
         if not con_3_lab:
@@ -130,7 +130,7 @@ def Try_With_Years(contry):
             print_put(f">>> Try With Years contry.startswith(year2:{year2})")
             con_4 = contry[: -len(year2)]
 
-            #print("yementest_with_Titose_Nmaes 5")
+            # print("yementest_with_Titose_Nmaes 5")
             con_4_lab = yementest_with_Titose_Nmaes(con_4)
 
             if con_4_lab == "":

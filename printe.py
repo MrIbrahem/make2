@@ -688,6 +688,7 @@ def debug(text):
     new_text = make_str(text)
     log.debug(new_text)
 
+
 def info(text):
     new_text = make_str(text)
     log.info(new_text)

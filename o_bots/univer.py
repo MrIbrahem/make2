@@ -7,6 +7,7 @@ from  make.bots import univer # univer.universities_tables | univer.test_Univers
 
 from ..ma_lists_bots import N_cit_ies_s_lower
 from ..helps.print_bot import print_put
+
 # ---
 majors = {
     "medical sciences": "للعلوم الطبية",
