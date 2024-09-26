@@ -31,6 +31,26 @@ use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else
 
 
 def Get_contry2(contry, orginal="", With_Years=True):
+    """Retrieve information related to a specified country.
+
+    This function checks if the country has already been processed. If it
+    has, it retrieves the information from a cache. If not, it attempts to
+    gather information based on various criteria, including checking for
+    specific phrases in the country name and querying external data sources.
+    The function also handles cases where the country name may be formatted
+    differently or requires additional processing.
+
+    Args:
+        contry (str): The name of the country to retrieve information for.
+        orginal (str?): An optional original name for the country. Defaults to an empty string.
+        With_Years (bool?): A flag indicating whether to include year-related information. Defaults
+            to True.
+
+    Returns:
+        str: The information related to the specified country, or an empty string if
+            no information is found.
+    """
+
     if contry in Get_contry2_done:
         output_test(f'>>>> contry: "{contry}" in Get_contry2_done, lab:"{Get_contry2_done[contry]}"')
         return Get_contry2_done[contry]
