@@ -10,10 +10,8 @@ mdb = make_db()
 import sqlite3
 import os
 from pathlib import Path
-import traceback
 import json
 from newapi.except_err import exception_err
-import pywikibot
 
 # ---
 from .. import printe
