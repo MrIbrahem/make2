@@ -28,6 +28,27 @@ from ...date_bots import with_years_bot
 
 
 def c_1_1_lab(tat_o, With_Years, cone_1):
+    """Retrieve a label based on the given parameters.
+
+    This function attempts to find a corresponding label for the provided
+    `cone_1` input by checking various data sources in a specific order. It
+    first normalizes the input and checks against predefined mappings and
+    functions. If the input matches certain conditions, it may return
+    localized labels or formatted strings. The function also handles
+    specific cases for "women" and "from" inputs.
+
+    Args:
+        tat_o (str): A string indicating a specific condition or context.
+        With_Years (bool): A flag indicating whether to include year-related
+            information in the label retrieval process.
+        cone_1 (str): A string representing the primary input for label
+            retrieval.
+
+    Returns:
+        str: The corresponding label for the input `cone_1`, or an empty
+            string if no match is found.
+    """
+
     con_1_no_lower = cone_1.strip()
 
     cone_1 = cone_1.strip().lower()
@@ -93,6 +114,26 @@ def c_1_1_lab(tat_o, With_Years, cone_1):
 
 
 def c_2_1_lab(With_Years, cone_2):
+    """Retrieve a label based on the provided cone identifier.
+
+    This function attempts to find a corresponding label for the given cone
+    identifier by checking various sources in a specific order. It first
+    normalizes the input by stripping whitespace and converting it to
+    lowercase. The function checks multiple data sources, including
+    predefined mappings and external functions, to find a match. If no match
+    is found, it applies additional processing to determine if the input can
+    be simplified or transformed to yield a result.
+
+    Args:
+        With_Years (bool): A flag indicating whether to consider year-based
+            labels in the search.
+        cone_2 (str): The identifier for which to retrieve the label.
+
+    Returns:
+        str: The label corresponding to the input identifier, or an empty
+            string if no match is found.
+    """
+
     con_2_no_lower = cone_2.strip()
 
     cone_2 = cone_2.strip().lower()
