@@ -13,6 +13,24 @@ from ..helps.print_bot import print_put
 
 
 def fix_n(arlabel):
+    """Fix and format a given label string based on predefined rules.
+
+    This function takes an input string `arlabel` and applies a series of
+    transformations to fix its format according to specific patterns. It
+    utilizes regular expressions to replace certain substrings, adjust
+    prefixes and suffixes, and ensure the label adheres to the desired
+    formatting standards. The function also handles specific cases for years
+    and categories, ensuring that the output is consistent and correctly
+    formatted.
+
+    Args:
+        arlabel (str): The input label string that needs to be fixed.
+
+    Returns:
+        str: The formatted label string after applying the necessary
+        transformations.
+    """
+
     # ---
     for ree, reelab in replase.items():
         arlabel = re.sub(ree, reelab, arlabel)
@@ -179,6 +197,24 @@ def fix_it2(arlabel, en):
 
 
 def fix_it(arlabel, en):
+    """Fix and normalize the Arabic label based on specific rules.
+
+    This function takes an Arabic label and an English string, processes the
+    label to correct formatting issues, and applies various transformations
+    based on predefined patterns. It handles whitespace, specific phrases,
+    and formats dates and other elements according to the rules defined in
+    the function. The output is a cleaned and normalized version of the
+    input Arabic label.
+
+    Args:
+        arlabel (str): The Arabic label that needs to be fixed.
+        en (str): An English string that may influence the transformation of
+            the Arabic label.
+
+    Returns:
+        str: The normalized Arabic label after applying the necessary fixes.
+    """
+
     # ---
     arlabel = re.sub(r"\s+", " ", arlabel)
     arlabel = re.sub(r"\{\}", "", arlabel)
