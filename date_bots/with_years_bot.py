@@ -80,7 +80,7 @@ def Try_With_Years(contry):
         year = ""
 
     if year:
-        con_3 = contry[len(year) :]
+        con_3 = contry[len(year):]
         con_3 = con_3.strip()
         print_put(f">>> Try With Years contry.startswith(year:{year}) con_3:{con_3}")
 
@@ -128,7 +128,7 @@ def Try_With_Years(contry):
         if year2:
             year2_lab = year2
             print_put(f">>> Try With Years contry.startswith(year2:{year2})")
-            con_4 = contry[: -len(year2)]
+            con_4 = contry[:-len(year2)]
 
             # print("yementest_with_Titose_Nmaes 5")
             con_4_lab = yementest_with_Titose_Nmaes(con_4)

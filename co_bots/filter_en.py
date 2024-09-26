@@ -16,7 +16,32 @@ BBlcak = [
     "images for deletion",
 ]
 # ---
-blcak_starts = ["Clean-up", "Cleanup", "Uncategorized", "Unreferenced", "Unverifiable", "Unverified", "Wikipedia", "Wikipedia articles", "Articles about", "Articles containing", "Articles covered", "Articles lacking", "Articles needing", "Articles prone", "Articles requiring", "Articles slanted", "Articles sourced", "Articles tagged", "Articles that", "Articles to", "Articles with", "use " "User pages" "Userspace"]
+blcak_starts = [
+    "Clean-up",
+    "Cleanup",
+    "Uncategorized",
+    "Unreferenced",
+    "Unverifiable",
+    "Unverified",
+    "Wikipedia",
+    "Wikipedia articles",
+    "Articles about",
+    "Articles containing",
+    "Articles covered",
+    "Articles lacking",
+    "Articles needing",
+    "Articles prone",
+    "Articles requiring",
+    "Articles slanted",
+    "Articles sourced",
+    "Articles tagged",
+    "Articles that",
+    "Articles to",
+    "Articles with",
+    "use ",
+    "User pages",
+    "Userspace",
+]
 
 
 def filter_cat(cat):
