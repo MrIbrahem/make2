@@ -29,7 +29,7 @@ from ma_lists.all_keys5 import Clubs_key_2
 
 from ma_lists.by_type import By_table, By_orginal2, By_table_orginal, Music_By_table
 
-from ma_lists.films_mslslat import Films_TT, typeTable_4, Films_key_CAO, Films_key_For_nat, Films_key_CAO_new_format, television_keys_female, Films_key_333, Films_key_man, film_key_women_2, films_mslslat_tab
+from ma_lists.films_mslslat import Films_TT, typeTable_4, Films_key_CAO, Films_key_For_nat, Films_key_CAO_new_format, television_keys_female, Films_key_333, Films_key_man, film_key_women_2, films_mslslat_tab, film_Keys_For_female, Films_keys_both_new
 
 from ma_lists.jobs_defs import religious_keys_PP
 
@@ -116,10 +116,12 @@ __all__ = [
     "Films_key_For_nat",
     "Films_key_CAO_new_format",
     "television_keys_female",
-    "Films_key_333",
     "Films_key_man",
     "film_key_women_2",
     "films_mslslat_tab",
+    "film_Keys_For_female",
+    "Films_keys_both_new",
+    "Films_key_333",
     #
     "religious_keys_PP",
     #
