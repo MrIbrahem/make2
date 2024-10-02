@@ -86,6 +86,26 @@ def Lang_work(con_3):
 
 
 def lab_from_lang_keys(con_3, lang, l_lab, lang2):
+    """Generate a label from language keys based on input parameters.
+
+    This function takes a set of input parameters including a connection
+    string, a language, and two labels. It attempts to derive a label based
+    on the provided language and connection string by checking various
+    dictionaries that map language keys to their corresponding labels. If no
+    suitable label is found, it returns an empty string. The function also
+    logs output at various stages for debugging purposes.
+
+    Args:
+        con_3 (str): The connection string from which to derive the label.
+        lang (str): The language code used to determine the appropriate label.
+        l_lab (str): An additional label parameter (not used in the current implementation).
+        lang2 (str): A prefix used to check the connection string.
+
+    Returns:
+        str: The generated label based on the input parameters or an empty string if
+            no match is found.
+    """
+
     # ---
     if All_Nat.get(lang, False):
         nat_labe = All_Nat[lang]["mens"]
