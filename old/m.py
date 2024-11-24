@@ -74,6 +74,18 @@ def justlab(opo=""):
 
 
 def mainx():
+    """Execute the main functionality of the script.
+
+    This function serves as the entry point for the script, processing
+    command-line arguments and executing specific tasks based on the
+    provided options. It measures the execution time and outputs relevant
+    information to the user. The function handles various command-line flags
+    and arguments to customize its behavior.  If the script is run with
+    "test" in the command-line arguments, it will parse the arguments,
+    remove certain flags, and print the resulting name. The function also
+    calls `justlab` with the constructed name for further processing.
+    """
+
     # python3 core8/pwb.py make2/m t:2
     # python3 core8/pwb.py make2/m t:2 -lang:en -family:wikipedia -subcats:Category:Films_by_decade_of_setting
     # python3 core8/pwb.py make2/m t:2 -lang:en -family:wikipedia -subcats:Category:Actors_by_medium_by_nationality
