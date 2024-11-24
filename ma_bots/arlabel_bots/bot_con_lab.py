@@ -22,7 +22,7 @@ from ...ma_lists_bots import New_female_keys
 
 from ...fromnet.wd_bot import find_wikidata
 from ...fromnet import kooora
-from ...pop_format_bot import for_table
+from ...format_bots import for_table
 
 from ...matables_bots.bot_2018 import pop_All_2018
 

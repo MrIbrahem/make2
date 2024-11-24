@@ -9,7 +9,7 @@ from .event2bot_dodo import make_lab_dodo
 import re
 from ...fix import fixtitle
 from ...date_bots import year_lab
-from ...pop_format_bot import Tit_ose_Nmaes, NewFormat
+from ...format_bots import Tit_ose_Nmaes, NewFormat
 from ...ma_lists_bots import Nat_mens
 from ...matables_bots.bot import Add_to_main2_tab  # Add_to_main2_tab()
 from ...matables_bots.bot import (

@@ -4,7 +4,7 @@ if not sub_ar_label:
     sub_ar_label = tmp_bot.Work_Templates(category)
 """
 
-from ..pop_format_bot import pp_start_with, pp_ends_with, pp_ends_with_pase
+from ..format_bots import pp_start_with, pp_ends_with, pp_ends_with_pase
 from ..helps.print_bot import print_put
 
 from ..date_bots import with_years_bot

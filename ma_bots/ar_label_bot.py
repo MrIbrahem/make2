@@ -9,7 +9,7 @@ import re
 from ..fix import fixtitle
 from ..ma_lists_bots import pop_of_without_in
 
-from ..pop_format_bot import Tit_ose_Nmaes, for_table, pop_format33, pop_format, pop_format2, tito_list_s, Dont_Add_min
+from ..format_bots import Tit_ose_Nmaes, for_table, pop_format33, pop_format, pop_format2, tito_list_s, Dont_Add_min
 
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..matables_bots.bot import (

@@ -10,15 +10,15 @@ import time
 import sys
 import re
 from pathlib import Path
-from .bot import event
+from ..bot import event
 
-from .helps.print_bot import do_print_options
+from ..helps.print_bot import do_print_options
 
 do_print_options(tst_prnt_all=True)
 
-from .memory import print_memory
+from ..memory import print_memory
 import gent
-from . import printe
+from .. import printe
 
 # gc.set_debug(True)
 removing = [

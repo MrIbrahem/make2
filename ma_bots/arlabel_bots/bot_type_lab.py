@@ -17,7 +17,7 @@ from ...ma_lists_bots import New_P17_Finall
 from ...ma_lists_bots import religious_keys_PP
 from ...ma_lists_bots import New_female_keys
 
-from ...pop_format_bot import Tabl_with_in
+from ...format_bots import Tabl_with_in
 
 from ...helps.print_bot import print_put, output_test, mainoutput
 
