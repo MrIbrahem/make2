@@ -21,7 +21,7 @@ from ..o_bots import univer
 from ..ma_lists_bots import New_P17_Finall
 from ..fromnet import kooora
 from ..fromnet.wd_bot import find_wikidata
-from ..pop_format_bot import pp_ends_with, pp_ends_with_pase, change_cat
+from ..format_bots import pp_ends_with, pp_ends_with_pase, change_cat
 from ..fix import fixtitle
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..bots import tmp_bot

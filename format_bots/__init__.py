@@ -8,10 +8,10 @@ import sys
 
 # from . import printe
 
-from .helps import len_print
-from .ma_lists_bots import ministrs_tab_for_pop_format
-from .ma_lists_bots import New_Company
-from .helps.print_bot import output_main
+from ..helps import len_print
+from ..ma_lists_bots import ministrs_tab_for_pop_format
+from ..ma_lists_bots import New_Company
+from ..helps.print_bot import output_main
 
 from .pf_keys import Change_key, Change_key2
 

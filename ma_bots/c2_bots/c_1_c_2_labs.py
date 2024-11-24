@@ -15,7 +15,7 @@ from .. import contry_bot
 from ...sports_bots import team_work
 from ...o_bots import bys
 from ...p17_bots import nats
-from ...pop_format_bot import Tabl_with_in, pp_start_with2, pop_format
+from ...format_bots import Tabl_with_in, pp_start_with2, pop_format
 
 from ...matables_bots.centries_bot import centries_years_dec
 

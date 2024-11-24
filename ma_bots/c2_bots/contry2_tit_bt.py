@@ -7,7 +7,7 @@ from .c2_bots.contry2_tit_bt import contry_2_tit
 import re
 from ... import printe
 
-from ...pop_format_bot import Tit_ose_Nmaes
+from ...format_bots import Tit_ose_Nmaes
 
 from ...helps.print_bot import print_put, output_test
 
