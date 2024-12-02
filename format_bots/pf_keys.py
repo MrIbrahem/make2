@@ -151,6 +151,7 @@ Change_key2 = {
     " in the 2": " in 2",
     "^tour de ": "tour of ",
     " of the ": " of ",
+    "game of thrones": "game-of-thrones",
     "green party of quebec": "green party-of-quebec",
     "libertarian party of canada": "libertarian party-of-canada",
     "declarations of independence": "declarations-of-independence",
