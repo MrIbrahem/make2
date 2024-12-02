@@ -76,7 +76,12 @@ def event_Lab(category_r):
     orginal_category3 = category3
     # ---
     if not category_lab:
-        list_of_cat, Find_wd, Find_ko, foot_ballers, category_lab, category3 = fax2.get_list_of_and_cat3(category3, category3_nolower)
+        category_lab = fax2.get_list_of_and_cat3_with_lab2(category3, category3_nolower)
+    # ---
+    foot_ballers = False
+    # ---
+    if not category_lab:
+        list_of_cat, Find_wd, Find_ko, foot_ballers, category3 = fax2.get_list_of_and_cat3(category3, category3_nolower)
     # ---
     # ايجاد تسميات مثل لاعبو  كرة سلة أثيوبيون
     if category_lab == "" and list_of_cat == "لاعبو {}":

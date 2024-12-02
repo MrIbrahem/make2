@@ -12,18 +12,13 @@ Find_stubs = {1: True if "-stubs" in sys.argv else False}
 
 # tab[Category:21st-century members of the Louisiana State Legislature] = "تصنيف:أعضاء القرن 21 هيئة ولاية لويزيانا التشريعية"
 # Category:Association football matches navigational boxes by teams:Egypt
-"""
 
-elif category3.endswith(" sports navigational boxes"):
-    list_of_cat = "صناديق تصفح الرياضة في {}"
-    category3 = category3.replace(" sports navigational boxes", "", 1)
-
-elif category3.endswith(" navigational boxes"):
-    list_of_cat = "صناديق تصفح {}"
-    category3 = category3.replace(" navigational boxes", "", 1)
-
-"""
 to_get_endswith = {
+    "squad navigational boxes": {
+        "lab": "صناديق تصفح تشكيلات {}",
+        "Find_wd": False,
+        "example": "Category:1996 Basketball Olympic squad navigational boxes",
+    },
     "sports navigational boxes": {
         "lab": "صناديق تصفح الرياضة في {}",
         "Find_wd": False,
@@ -52,6 +47,26 @@ to_get_endswith = {
     "trustees": {
         "lab": "أمناء {}",
         "Find_wd": True,
+        "example": "",
+    },
+    "award winners": {
+        "lab": "حائزو جوائز {}",
+        "Find_wd": False,
+        "example": "",
+    },
+    "awards winners": {
+        "lab": "حائزو جوائز {}",
+        "Find_wd": False,
+        "example": "",
+    },
+    "sidebars": {
+        "lab": "أشرطة جانبية {}",
+        "Find_wd": False,
+        "example": "",
+    },
+    "charts": {
+        "lab": "مخططات {}",
+        "Find_wd": False,
         "example": "",
     },
 }
@@ -167,6 +182,7 @@ def get_templates_fo(category3):
         "sidebar templates": "قوالب اشرطة جانبية {}",
         "politics and government templates": "قوالب سياسة وحكومة {}",
         "infobox templates": "قوالب معلومات {}",
+        "squad templates": "قوالب تشكيلات {}",
     }
 
     for key, lab in dict_temps.items():
@@ -182,11 +198,35 @@ def get_templates_fo(category3):
     return list_of_cat, category3
 
 
+def get_list_of_and_cat3_with_lab2(category3_o, category3_nolower):
+    category_lab = ""
+    list_of_cat = ""
+    category3 = category3_o
+
+    if category3.endswith(" squad templates"):
+        list_of_cat = "قوالب تشكيلات {}"
+        category3 = category3.replace(" squad templates", "", 1)
+        cate_labs = get_squad_title(category3)
+        if cate_labs:
+            category_lab = f"قوالب {cate_labs}"
+
+    elif category3.endswith(" squad navigational boxes"):
+        list_of_cat = "صناديق تصفح تشكيلات {}"
+        category3 = category3.replace(" squad navigational boxes", "", 1)
+        cate_labs = get_squad_title(category3)
+        if cate_labs:
+            category_lab = f"صناديق تصفح {cate_labs}"
+
+    if category_lab:
+        # print_put(f'<<lightblue>>get_list_of_and_cat3_with_lab(): {list_of_cat=}, {category3=}, {category_lab=}')
+        print(f'<<lightblue>>(): {category3_o=}, {category_lab=}')
+
+    return category_lab
+
 def get_list_of_and_cat3(category3, category3_nolower):
     foot_ballers = False
     Find_wd = False
     Find_ko = False
-    category_lab = ""
     list_of_cat = ""
 
     # print(f"get_list_of_and_cat3: {category3=}\n" * 10)
@@ -227,44 +267,12 @@ def get_list_of_and_cat3(category3, category3_nolower):
                 list_of_cat = "لاعبو {}"
                 category3 = category3_nolower.replace(" footballers", "", 1)
 
-        elif category3.endswith(" squad templates"):
-            list_of_cat = "قوالب تشكيلات {}"
-            category3 = category3.replace(" squad templates", "", 1)
-            cate_labs = get_squad_title(category3)
-            if cate_labs:
-                category_lab = cate_labs
-                list_of_cat = "قوالب {}"
-
         elif category3.endswith(" templates"):
             list_of_cat, category3 = get_templates_fo(category3)
-
-        elif category3.endswith(" squad navigational boxes"):
-            list_of_cat = "قوالب تصفح تشكيلات {}"
-            category3 = category3.replace(" squad navigational boxes", "", 1)
-            cate_labs = get_squad_title(category3)
-            if cate_labs:
-                category_lab = cate_labs
-                list_of_cat = "قوالب تصفح {}"
 
         elif category3.endswith(" stubs") and Find_stubs[1]:
             list_of_cat = "بذرة {}"
             category3 = category3.replace(" stubs", "", 1)
-
-        elif category3.endswith(" award winners"):
-            list_of_cat = "حائزو جوائز {}"
-            category3 = category3.replace(" award winners", "", 1)
-
-        elif category3.endswith(" awards winners"):
-            list_of_cat = "حائزو جوائز {}"
-            category3 = category3.replace(" awards winners", "", 1)
-
-        elif category3.endswith(" sidebars"):
-            list_of_cat = "أشرطة جانبية {}"
-            category3 = category3.replace(" sidebars", "", 1)
-
-        elif category3.endswith(" charts"):
-            list_of_cat = "مخططات {}"
-            category3 = category3.replace(" charts", "", 1)
 
         elif category3.endswith(" players") or category3.endswith(" playerss"):
             Find_wd = True
@@ -312,4 +320,4 @@ def get_list_of_and_cat3(category3, category3_nolower):
     if list_of_cat:
         print_put(f'<<lightblue>> list_of_cat:"{list_of_cat}", category3:"{category3}",Find_wd:{str(Find_wd)},Find_ko:{str(Find_ko)} ')
 
-    return list_of_cat, Find_wd, Find_ko, foot_ballers, category_lab, category3
+    return list_of_cat, Find_wd, Find_ko, foot_ballers, category3
