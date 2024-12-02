@@ -69,6 +69,26 @@ to_get_endswith = {
         "Find_wd": False,
         "example": "",
     },
+    "commissioners": {
+        "lab": "مفوضو {}",
+        "Find_wd": False,
+        "example": "Category:Major Indoor Soccer League (1978–1992) commissioners",
+    },
+    "commentators": {
+        "lab": "معلقو {}",
+        "Find_wd": False,
+        "example": "Category:Major Indoor Soccer League (1978–1992) commentators",
+    },
+    "events": {
+        "lab": "أحداث {}",
+        "Find_wd": False,
+        "example": "",
+    },
+    "tournaments": {
+        "lab": "بطولات {}",
+        "Find_wd": False,
+        "example": "",
+    },
 }
 
 to_get_startswith = {
@@ -219,9 +239,10 @@ def get_list_of_and_cat3_with_lab2(category3_o, category3_nolower):
 
     if category_lab:
         # print_put(f'<<lightblue>>get_list_of_and_cat3_with_lab(): {list_of_cat=}, {category3=}, {category_lab=}')
-        print(f'<<lightblue>>(): {category3_o=}, {category_lab=}')
+        print(f"<<lightblue>>(): {category3_o=}, {category_lab=}")
 
     return category_lab
+
 
 def get_list_of_and_cat3(category3, category3_nolower):
     foot_ballers = False
@@ -293,26 +314,6 @@ def get_list_of_and_cat3(category3, category3_nolower):
             elif category3.endswith(" players"):
                 list_of_cat = "لاعبو {}"
                 category3 = category3_nolower.replace(" players", "", 1)
-
-        elif category3.endswith(" events"):
-            list_of_cat = "أحداث {}"
-            category3 = category3.replace(" events", "", 1)
-
-        elif category3.endswith(" tournaments"):
-            list_of_cat = "بطولات {}"
-            category3 = category3.replace(" tournaments", "", 1)
-
-        elif category3.endswith(" commissioners"):
-            # "Category:Major Indoor Soccer League (1978–1992) commissioners"
-            # "تصنيف:مفوضو الدوري الرئيسي لكرة القدم داخل الصالات (1978–1992)",
-            list_of_cat = "مفوضو {}"
-            category3 = category3.replace(" commissioners", "", 1)
-
-        elif category3.endswith(" commentators"):
-            # "Category:Major Indoor Soccer League (1978–1992) commentators"
-            # "تصنيف:معلقو الدوري الرئيسي لكرة القدم داخل الصالات (1978–1992)",
-            list_of_cat = "معلقو {}"
-            category3 = category3.replace(" commentators", "", 1)
 
     if not list_of_cat:
         category3, list_of_cat, Find_wd = get_from_endswith_dict(category3)
