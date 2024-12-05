@@ -6,6 +6,7 @@ from .pf_keys import Change_key, Change_key2
 Change_key = {
     # "people of the ottoman empire" :"people-of-the-ottoman-empire",
     # "sentenced to death" :"sentenced-to-death",
+    "africa cup of nations": "africa cup-of-nations",
     "health care": "healthcare",
     "child soldiers": "child-soldiers",
     "labour and social security": "labour-and-social security",
