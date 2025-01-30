@@ -19,7 +19,7 @@ from ma_lists.Nationality import All_Nat, Nat_women, All_contry_ar, All_contry_w
 
 from ma_lists.Sport_key import fanco_line, Sports_Keys_For_Team, Sports_Keys_For_Label, Sports_Keys_For_Jobs
 
-from ma_lists.all_keys2 import pop_final_all_keys2, pop_of_without_in, pop_of_football_lower, Word_After_Years
+from ma_lists.all_keys2 import pf_keys2, pop_of_without_in, pop_of_football_lower, Word_After_Years
 
 from ma_lists.all_keys3 import typeTable_7, albums_type, film_production_company, NN_table, Ambassadors_tab
 
@@ -44,7 +44,7 @@ from ma_lists.military_keys import military_format_women_without_al_from_end, mi
 
 from ma_lists.ministers import ministrs_tab_for_pop_format
 
-from ma_lists.numbers import change_numb_to_word
+from ma_lists.numbers1 import change_numb_to_word
 
 from ma_lists.peoples import People_key
 
@@ -90,7 +90,7 @@ __all__ = [
     "Sports_Keys_For_Label",
     "Sports_Keys_For_Jobs",
     #
-    "pop_final_all_keys2",
+    "pf_keys2",
     "pop_of_without_in",
     "pop_of_football_lower",
     "Word_After_Years",

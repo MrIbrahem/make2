@@ -23,7 +23,7 @@ or
 import sys
 
 from ..helps import len_print
-from ..ma_lists_bots import pop_final_all_keys2
+from ..ma_lists_bots import pf_keys2
 from ..ma_lists_bots import New_P17_Finall
 from ..ma_lists_bots import films_mslslat_tab
 from ..ma_lists_bots import Jobs_new, Jobs_key
@@ -45,7 +45,7 @@ def get_pop_All_18(key, va=""):
     return pop_All_2018.get(key, va)
 
 
-for gg, gg_lab in pop_final_all_keys2.items():
+for gg, gg_lab in pf_keys2.items():
     gg2 = gg.lower()
     if not pop_All_2018.get(gg2):
         pop_All_2018[gg2] = gg_lab

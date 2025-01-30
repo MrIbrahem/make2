@@ -140,12 +140,13 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
         if cat in Labels:
             NoLab_list.remove(str(cat))
 
-    catb = 0
-    if NoLab_list:
+    if NoLab_list and not return_no_labs:
         printe.output(f"a<<lightred>>> {len(NoLab_list)} cat in NoLab_list ")
+        catb = 0
         for cat in NoLab_list:
             catb += 1
             printe.output(f'  {catb}:  "{cat}" : "",')
+    # ---
     print_put("<<lightred>>> ^^^^^^^^^ event end ^^^^^^^^^ ")
     # ---
     if return_no_labs:

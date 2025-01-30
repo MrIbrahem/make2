@@ -16,6 +16,8 @@ Change_key = {
     "manufactured in": "manufactured-in",
     "united states department of the ": "united states department of ",
     "manufactured by": "manufactured-by",
+    "launched in": "launched-in",
+    "launched in": "launched-by",
     "built in": "built-in",
     "built by": "built-by",
     "caribbean people": "caribbeans people",
