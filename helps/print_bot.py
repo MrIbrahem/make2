@@ -12,6 +12,7 @@ from .. import printe
 import sys
 
 all_the_print_off = "all_print_off" in sys.argv
+all_the_print_on = "printall" in sys.argv
 mainoutput = {1: False}
 fafa2 = {1: False}
 testprint = {1: False}
@@ -35,15 +36,19 @@ def output_test4(string):
 
 
 def output_main(string):
-    if all_the_print_off:
+    if all_the_print_on:
+        printe.output(string)
         return
-    if only_print_heads[1]:
+    if all_the_print_off or only_print_heads[1]:
         return ""
     if mainoutput[1]:
         printe.output(string)
 
 
 def print_def_head(string):
+    if all_the_print_on:
+        printe.output(string)
+        return
     if all_the_print_off:
         return
     # if only_print_heads[1]:
@@ -52,6 +57,9 @@ def print_def_head(string):
 
 
 def print_put(string):
+    if all_the_print_on:
+        printe.output(string)
+        return
     if all_the_print_off:
         return
     if "print_put" in sys.argv:

@@ -156,9 +156,9 @@ for tty, tty_lab in medalists_type.items():
     olympicss[tty % "pan american games"] = tty_lab % "في دورة الألعاب الأمريكية"
     olympicss[tty % "pan arab games"] = tty_lab % "في دورة الألعاب العربية"
     olympicss[tty % "world athletics indoor championships"] = tty_lab % "بطولة العالم لألعاب القوى داخل الصالات"
-    # olympicss[ tty % " games" ] = tty_lab % "في "
-    # olympicss[ tty % " games" ] = tty_lab % "في "
-    # olympicss[ tty % " games" ] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
     olympicss[tty % "military world games"] = tty_lab % "في دورة الألعاب العسكرية"
     olympicss[tty % "winter olympics"] = tty_lab % "في الألعاب الأولمبية الشتوية"
     olympicss[tty % "summer olympics"] = tty_lab % "في الألعاب الأولمبية الصيفية"
@@ -192,7 +192,7 @@ for tty, tty_lab in medalists_type.items():
     olympicss[tty % "european youth olympic"] = tty_lab % "في الألعاب الأولمبية الشبابية الأوروبية"
     olympicss[tty % "european youth olympic winter"] = tty_lab % "في الألعاب الأولمبية الشبابية الأوروبية الشتوية"
     olympicss[tty % "youth olympic"] = tty_lab % "في الألعاب الأولمبية الشبابية"
-    # olympicss[ tty % " games" ] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
 
     olympicss[tty % "fis nordic world ski championships"] = tty_lab % "في بطولة العالم للتزلج النوردي على الثلج"
 

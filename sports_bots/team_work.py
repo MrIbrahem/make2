@@ -12,7 +12,7 @@ import sys
 
 # ---
 from ..ma_lists_bots import Clubs_key_2
-from ..ma_lists_bots import International_Federation_lower
+from ..ma_lists_bots import Inter_Feds_lower
 from ..ma_lists_bots import pop_of_football_lower
 from ..jobs_bots import test_4
 from ..matables_bots.bot_2018 import Add_to_pop_All_18
@@ -55,6 +55,7 @@ Teams_new_end_keys = {
     "cups": "كؤوس {}",
     "records and statistics": "سجلات وإحصائيات {}",
     "leagues": "دوريات {}",
+    "leagues seasons": "مواسم دوريات {}",
     "seasons": "مواسم {}",
     # ---
     "competition": "منافسات {}",
@@ -137,7 +138,7 @@ def Get_Club(cate, out=False, return_tab=False):
             printet(f'club_uu:"{club_uu}", tat:"{tat}" ')
             # if not c_t_lab:
             # ---
-            club_lab = Clubs_key_2.get(club_uu) or pop_of_football_lower.get(club_uu) or International_Federation_lower.get(club_uu) or ""
+            club_lab = Clubs_key_2.get(club_uu) or pop_of_football_lower.get(club_uu) or Inter_Feds_lower.get(club_uu) or ""
             # ---
             if not club_lab:
                 # sd = ddfer

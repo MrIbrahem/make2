@@ -29,6 +29,11 @@ to_get_endswith = {
         "Find_wd": False,
         "example": "",
     },
+    "leagues seasons": {
+        "lab": "مواسم دوريات {}",
+        "Find_wd": True,
+        "example": "",
+    },
     "alumni": {
         "lab": "خريجو {}",
         "Find_wd": True,

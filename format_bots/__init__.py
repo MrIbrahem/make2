@@ -252,6 +252,7 @@ pp_ends_with_pase = {
     "candidates": "مرشحو {}",
     "candidates for": "مرشحو {} في",
     # ---
+    "squad": "تشكيلة {}",
     "squads": "تشكيلات {}",
     "final tournaments": "نهائيات مسابقات {}",
     "finals": "نهائيات {}",
@@ -316,6 +317,8 @@ fix_o = {
     "bids": "ترشيحات",
     "episodes": "حلقات",
     "treaties": "معاهدات",
+    "leagues seasons": "مواسم دوريات",
+    "leagues": "دوريات",
     "seasons": "مواسم",
     "local elections": "انتخابات محلية",
     "presidential elections": "انتخابات رئاسية",
@@ -432,11 +435,11 @@ pop_format2 = {
 # ---produced
 
 
-def change_cat(Cate):
-    Cate = Cate.lower().strip()
+def change_cat(cat_orginal):
+    cat_orginal = cat_orginal.lower().strip()
     # Category:Basketball at the 2007 All-Africa Games – Women's tournament
-    # output_main('change_cat :"%s" ' % Cate )
-    category = Cate
+    # output_main('change_cat :"%s" ' % cat_orginal )
+    category = cat_orginal
 
     category = re.sub(r"[\s\t]+", " ", category, flags=re.IGNORECASE)
 
@@ -448,7 +451,6 @@ def change_cat(Cate):
     category = re.sub(r"rus'", "rus", category, flags=re.IGNORECASE)
     category = re.sub(r"the kingdom of", " kingdom of", category, flags=re.IGNORECASE)
     category = re.sub(r"-century", " century", category, flags=re.IGNORECASE)
-    category = re.sub(r"association football", "football", category, flags=re.IGNORECASE)
     category = re.sub(r"austria-hungary", "austria hungary", category, flags=re.IGNORECASE)
     category = re.sub(r"austria hungary", "austria hungary", category, flags=re.IGNORECASE)
     category = re.sub(r"-millennium", " millennium", category, flags=re.IGNORECASE)
@@ -542,9 +544,13 @@ def change_cat(Cate):
     category = re.sub(r"category\:ministers of ", "category:ministers-of ", category, flags=re.IGNORECASE)
     # ---
     category = category.replace("party of ", "party-of ")
+    category = category.replace(" uu-16 ", " u-16 ")
     # ---
-    if category != Cate:
-        output_main(f'change_cat to :"{category}", orginal: {Cate}.')
+    category = re.sub(r"association football afc", "association-football afc", category, flags=re.IGNORECASE)
+    category = re.sub(r"association football", "football", category, flags=re.IGNORECASE)
+    # ---
+    if category != cat_orginal:
+        output_main(f'change_cat to :"{category}", orginal: {cat_orginal}.')
         # print(dodd)
     # ---
     return category

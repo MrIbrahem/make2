@@ -23,7 +23,7 @@ from ma_lists.all_keys2 import pf_keys2, pop_of_without_in, pop_of_football_lowe
 
 from ma_lists.all_keys3 import typeTable_7, albums_type, film_production_company, NN_table, Ambassadors_tab
 
-from ma_lists.all_keys4 import International_Federation_lower
+from ma_lists.all_keys4 import Inter_Feds_lower
 
 from ma_lists.all_keys5 import Clubs_key_2
 
@@ -101,7 +101,7 @@ __all__ = [
     "NN_table",
     "Ambassadors_tab",
     #
-    "International_Federation_lower",
+    "Inter_Feds_lower",
     #
     "Clubs_key_2",
     #

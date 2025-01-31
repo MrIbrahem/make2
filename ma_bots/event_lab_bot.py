@@ -1,7 +1,7 @@
 """
 Usage:
 from ..ma_bots import event_lab_bot
-# category_lab = event_lab_bot.event_Lab(category_r)
+# category_lab = event_lab_bot.event_Lab(cate_r)
 
 """
 
@@ -37,7 +37,7 @@ en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
 
 
-def event_Lab(category_r):
+def event_Lab(cate_r):
     """Generate a category label based on the input category string.
 
     This function processes the input category string to generate a
@@ -50,7 +50,7 @@ def event_Lab(category_r):
     suitable label.
 
     Args:
-        category_r (str): The input category string that needs to be processed.
+        cate_r (str): The input category string that needs to be processed.
 
     Returns:
         str: The generated category label based on the input string.
@@ -58,14 +58,14 @@ def event_Lab(category_r):
 
     category_lab = ""
     list_of_cat = ""
-    category_r2 = category_r
-    category = category_r.lower()
+    cate_r2 = cate_r
+    category = cate_r.lower()
     category = category.replace("_", " ")
     if not category.startswith("category:"):
         category = f"category:{category}"
     category = change_cat(category)
 
-    category3_nolower = category_r2
+    category3_nolower = cate_r2
     if category3_nolower.startswith("Category:"):
         category3_nolower = category3_nolower.split("Category:")[1]
 
@@ -137,13 +137,13 @@ def event_Lab(category_r):
         category_lab = event_Lab_seoo("", category3)
 
     if list_of_cat and category_lab:
-        category_lab, list_of_cat = list_cat_format.list_of_cat_func(category_r, category_lab, list_of_cat, foot_ballers)
+        category_lab, list_of_cat = list_cat_format.list_of_cat_func(cate_r, category_lab, list_of_cat, foot_ballers)
 
     # ---
     # عند عدم وجود تعريب إلغاء العمل مع list_of_cat
     if list_of_cat and not category_lab:
         list_of_cat = ""
-        category_lab = event_Lab_seoo(category_r, orginal_category3)
+        category_lab = event_Lab_seoo(cate_r, orginal_category3)
 
     # ---
     if not category_lab:
@@ -171,8 +171,8 @@ def event_Lab(category_r):
                 category_lab = list_of_cat2.format(category3_lab)
 
     if category_lab:
-        # category_lab = "تصنيف:" + fixlab(category_lab, en=category_r)
-        fixed = fixtitle.fixlab(category_lab, en=category_r)
+        # category_lab = "تصنيف:" + fixlab(category_lab, en=cate_r)
+        fixed = fixtitle.fixlab(category_lab, en=cate_r)
         category_lab = f"تصنيف:{fixed}"
 
     return category_lab
