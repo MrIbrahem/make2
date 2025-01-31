@@ -23,7 +23,7 @@ or
 import sys
 
 from ..helps import len_print
-from ..ma_lists_bots import pop_final_all_keys2
+from ..ma_lists_bots import pf_keys2
 from ..ma_lists_bots import New_P17_Finall
 from ..ma_lists_bots import films_mslslat_tab
 from ..ma_lists_bots import Jobs_new, Jobs_key
@@ -45,7 +45,7 @@ def get_pop_All_18(key, va=""):
     return pop_All_2018.get(key, va)
 
 
-for gg, gg_lab in pop_final_all_keys2.items():
+for gg, gg_lab in pf_keys2.items():
     gg2 = gg.lower()
     if not pop_All_2018.get(gg2):
         pop_All_2018[gg2] = gg_lab
@@ -156,9 +156,9 @@ for tty, tty_lab in medalists_type.items():
     olympicss[tty % "pan american games"] = tty_lab % "في دورة الألعاب الأمريكية"
     olympicss[tty % "pan arab games"] = tty_lab % "في دورة الألعاب العربية"
     olympicss[tty % "world athletics indoor championships"] = tty_lab % "بطولة العالم لألعاب القوى داخل الصالات"
-    # olympicss[ tty % " games" ] = tty_lab % "في "
-    # olympicss[ tty % " games" ] = tty_lab % "في "
-    # olympicss[ tty % " games" ] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
     olympicss[tty % "military world games"] = tty_lab % "في دورة الألعاب العسكرية"
     olympicss[tty % "winter olympics"] = tty_lab % "في الألعاب الأولمبية الشتوية"
     olympicss[tty % "summer olympics"] = tty_lab % "في الألعاب الأولمبية الصيفية"
@@ -192,7 +192,7 @@ for tty, tty_lab in medalists_type.items():
     olympicss[tty % "european youth olympic"] = tty_lab % "في الألعاب الأولمبية الشبابية الأوروبية"
     olympicss[tty % "european youth olympic winter"] = tty_lab % "في الألعاب الأولمبية الشبابية الأوروبية الشتوية"
     olympicss[tty % "youth olympic"] = tty_lab % "في الألعاب الأولمبية الشبابية"
-    # olympicss[ tty % " games" ] = tty_lab % "في "
+    # olympicss[tty % " games"] = tty_lab % "في "
 
     olympicss[tty % "fis nordic world ski championships"] = tty_lab % "في بطولة العالم للتزلج النوردي على الثلج"
 

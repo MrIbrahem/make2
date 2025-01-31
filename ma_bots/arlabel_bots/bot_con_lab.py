@@ -16,7 +16,7 @@ from ...p17_bots import nats
 
 from ...media_bots.films_bot import test_films
 
-from ...ma_lists_bots import pop_final_all_keys2
+from ...ma_lists_bots import pf_keys2
 from ...ma_lists_bots import New_P17_Finall
 from ...ma_lists_bots import New_female_keys
 
@@ -64,7 +64,7 @@ def get_con_lab(tito, do_Get_contry2, tito2, contry, contry_lower):
     if not con_lab:
         con_lab = New_P17_Finall.get(contry_lower, "")
     if not con_lab:
-        con_lab = pop_final_all_keys2.get(contry_lower, "")
+        con_lab = pf_keys2.get(contry_lower, "")
     if not con_lab:
         con_lab = pop_All_2018.get(contry_lower, "")
     if not con_lab:

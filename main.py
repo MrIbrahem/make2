@@ -92,7 +92,8 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
 
         if not category_r:
             continue
-
+        # fix \ufeff issue
+        category_r = re.sub(r"^\ufeff", "", category_r)
         category_r = re.sub(r"_", " ", category_r)
 
         if maketab is True:
@@ -140,12 +141,13 @@ def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Loca
         if cat in Labels:
             NoLab_list.remove(str(cat))
 
-    catb = 0
-    if NoLab_list:
+    if NoLab_list and not return_no_labs:
         printe.output(f"a<<lightred>>> {len(NoLab_list)} cat in NoLab_list ")
+        catb = 0
         for cat in NoLab_list:
             catb += 1
             printe.output(f'  {catb}:  "{cat}" : "",')
+    # ---
     print_put("<<lightred>>> ^^^^^^^^^ event end ^^^^^^^^^ ")
     # ---
     if return_no_labs:
@@ -181,7 +183,7 @@ def new_func_lab(category_r):
     # ---
     if not category_lab and filter_en.filter_cat(category_r):
         changed_cat = change_cat(category_r)
-
+        # print(f"{changed_cat=}")
         if category_r in event_done:
             output_test(f'>>>> category_r: "{category_r}" in event_done, lab:"{event_done[category_r]}"')
             category_lab = event_done[category_r]
