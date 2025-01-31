@@ -2,7 +2,7 @@
 """
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
 """
-# from ..ma_lists_bots import New_2018_For_kkk, New_2018_men_Keys_with_all, New_2018_men_Keys_without_all, New_2018_for_women_Keys_with_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
+# from ..ma_lists_bots import en_is_nat_ar_is_P17, en_is_nat_ar_is_al_mens, en_is_nat_ar_is_man, en_is_nat_ar_is_al_women, en_is_nat_ar_is_women, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
 
 from ..ma_lists_bots import Nat_mens
 from ..ma_lists_bots import (

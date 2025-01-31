@@ -19,6 +19,7 @@ Change_key = {
     "association football afc": "association-football afc",
     "launched in": "launched-in",
     "launched by": "launched-by",
+    "transferred from": "transferred-from",
     "built in": "built-in",
     "built by": "built-by",
     "caribbean people": "caribbeans people",

@@ -12,7 +12,7 @@ def Ethnic(cate, Start, con_3):
 """
 
 from ..ma_lists_bots import Nat_women, Nat_men, Nat_mens
-from ..ma_lists_bots import New_2018_for_women_without_al_Keys2
+from ..ma_lists_bots import en_is_nat_ar_is_women_2
 
 from ..helps.print_bot import output_test4
 
@@ -44,7 +44,7 @@ def Ethnic_culture(cate, Start, con_3):
     if not cas and not cas_lab:
         contry_L = Nat_women.get(contry, "")
         # for x in culture_table:
-        for x, x_lab in New_2018_for_women_without_al_Keys2.items():
+        for x, x_lab in en_is_nat_ar_is_women_2.items():
             if not cas_lab:
                 xx = f" {x}"
                 if con_3.endswith(xx):

@@ -1,13 +1,13 @@
 """
 
 """
-
+import re
 from ..jobs_bots.get_helps import get_con_3
 from ..matables_bots.bot import All_P17, Add_to_main2_tab
 from ..format_bots import Tit_ose_Nmaes, pop_format
 
 from ..ma_lists_bots import sport_formts_en_ar_is_p17
-from ..ma_lists_bots import en_is_P17_ar_is_mens, en_and_ar_is_P17
+from ..ma_lists_bots import en_is_P17_ar_is_mens, en_is_P17_ar_is_P17, en_is_P17_ar_is_al_women
 from ..ma_lists_bots import All_contry_with_nat_keys_is_en, contries_from_nat
 from .. import ma_lists_sport_lab as sport_lab  # sport_lab.Get_Sport_Format_xo_en_ar_is_P17(en) # sport_lab.Get_sport_formts_female_nat(en) # sport_lab.Get_New_team_xo(team, fafa_2 = False)
 
@@ -17,6 +17,12 @@ def print_put(s):
     # printe.output(s)
     # ---
     return
+
+
+def add_all(lab):
+    lab_no_al = re.sub(r" ", " ال", lab)
+    new_lab = f"ال{lab_no_al}"
+    return new_lab
 
 
 def Get_P17_2(cate):  # الإنجليزي اسم البلد والعربي جنسية رجال
@@ -31,10 +37,24 @@ def Get_P17_2(cate):  # الإنجليزي اسم البلد والعربي جن
 
             mens = All_contry_with_nat_keys_is_en.get(gagaga, {}).get("mens", "")
             if mens:
-                FOF = "<<lightgreen>>en_is_P17_ar_is_mens<<lightblue>> "
+                # FOF = "<<lightgreen>>en_is_P17_ar_is_mens<<lightblue>> "
                 print_put(f'<<lightblue>>>>>> mens: "{mens}" ')
                 cnt_la = gak.format(mens)
                 print_put(f'<<lightblue>>>>>> en_is_P17_ar_is_mens: new cnt_la  "{cnt_la}" ')
+    # ---
+    if not cnt_la:
+        for nana, gak in en_is_P17_ar_is_al_women.items():
+            nana2 = f" {nana.strip().lower()}"
+            if cate.lower().endswith(nana2):
+                gagaga = cate[: -len(nana2)].strip()
+
+                women = All_contry_with_nat_keys_is_en.get(gagaga, {}).get("women", "")
+                if women:
+                    # FOF = "<<lightgreen>>en_is_P17_ar_is_al_women<<lightblue>> "
+                    women = add_all(women)
+                    print_put(f'<<lightblue>>>>>> women: "{women}" ')
+                    cnt_la = gak.format(women)
+                    print_put(f'<<lightblue>>>>>> en_is_P17_ar_is_al_women: new cnt_la  "{cnt_la}" ')
 
     return cnt_la
 
@@ -67,7 +87,7 @@ def Get_P17(cate):  # الإنجليزي جنسية والعربي اسم الب
             con_3_lab = sport_formts_en_ar_is_p17.get(con_3.strip(), "")
 
         if not con_3_lab:
-            con_3_lab = en_and_ar_is_P17.get(con_3.strip(), "")
+            con_3_lab = en_is_P17_ar_is_P17.get(con_3.strip(), "")
 
         if not con_3_lab:
             con_3_lab = sport_lab.Get_Sport_Format_xo_en_ar_is_P17(con_3.strip())
