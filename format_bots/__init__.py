@@ -312,7 +312,8 @@ for start, start_lab in key_2_3.items():
         pp_ends_with[ke] = lab_ke
 # ---
 fix_o = {
-    "squad navigational boxes": "صناديق تصفح تشكيلات",
+    # "squad navigational boxes": "صناديق تصفح تشكيلات",
+    "squads navigational boxes": "صناديق تصفح تشكيلات",
     "navigational boxes": "صناديق تصفح",
     "bids": "ترشيحات",
     "episodes": "حلقات",
