@@ -16,7 +16,7 @@ from ...ma_lists_bots import (
     Jobs_key_mens,
     Jobs_key_womens,
 )
-from ...ma_lists_bots import New_2018_men_Keys_without_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to
+from ...ma_lists_bots import en_is_nat_ar_is_man, en_is_nat_ar_is_women, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to
 
 from ..get_helps import get_con_3
 
@@ -117,16 +117,16 @@ def test4_2018_Jobs(cate, out=False, tab=None):
     # priffix_lab_for_2018
     if job_example and (Main_Ss in priffix_lab_for_2018) and contry_lab == "":
         # ---
-        # New_2018_for_women_without_al_Keys
-        job_example_lab = New_2018_for_women_without_al_Keys.get(job_example.strip(), "")
+        # en_is_nat_ar_is_women
+        job_example_lab = en_is_nat_ar_is_women.get(job_example.strip(), "")
         if job_example_lab:
             contry_lab = job_example_lab.format(Nat_women[nat])
             output_test4(f'<<lightblue>> test_4, new contry_lab "{contry_lab}" ')
             Main_lab = priffix_lab_for_2018[Main_Ss]["women"]
         # ---
-        # New_2018_men_Keys_without_all
+        # en_is_nat_ar_is_man
         if not contry_lab:
-            job_example_lab = New_2018_men_Keys_without_all.get(job_example.strip(), "")
+            job_example_lab = en_is_nat_ar_is_man.get(job_example.strip(), "")
             if job_example_lab:
                 contry_lab = job_example_lab.format(Nat_men[nat])
                 output_test4(f'<<lightblue>> test_4, new contry_lab "{contry_lab}" ')

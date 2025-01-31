@@ -29,6 +29,8 @@ Tit_ose_Nmaes = {
     "launched-in": "أطلقت في",
     "launched by": "أطلقتها",
     "launched-by": "أطلقت",
+    "transferred-from": "نقلت من",
+    "transferred from": "نقلت من",
     "built-in": "بنيت في",
     "built in": "بنيت في",
     "built by": "بنتها",
@@ -445,6 +447,10 @@ def change_cat(cat_orginal):
     category = re.sub(r"[\s\t]+", " ", category, flags=re.IGNORECASE)
 
     # ---
+    category = re.sub(r"royal (.*?) defence force", r"\g<1> royal defence force", category, flags=re.IGNORECASE)
+    category = re.sub(r"royal (.*?) navy", r"\g<1> royal navy", category, flags=re.IGNORECASE)
+    category = re.sub(r"royal (.*?) air force", r"\g<1> royal air force", category, flags=re.IGNORECASE)
+
     category = re.sub(r"(\w+) expatriate (\w+) people in ", r"\g<1> expatriate \g<2> peoplee in ", category, flags=re.IGNORECASE)
     # category = re.sub(r" deaf people" , " deaf-peopl" , category, flags = re.IGNORECASE)
     category = re.sub(r"organisations", "organizations", category, flags=re.IGNORECASE)

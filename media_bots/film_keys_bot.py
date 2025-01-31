@@ -3,7 +3,7 @@
 from ..media_bots.film_keys_bot import get_Films_key_CAO, Films
 
 """
-from ..ma_lists_bots import New_2018_for_women_without_al_Keys
+from ..ma_lists_bots import en_is_nat_ar_is_women
 
 from ..ma_lists_bots import (
     Films_key_CAO,
@@ -71,7 +71,7 @@ def Films(cate, Start, con_3, fa=""):
     # ---
     if con_3:
         llab = Nat_mens[contry] if con_3 == "people" else Nat_women[contry]
-        con_3_lab = New_2018_for_women_without_al_Keys.get(con_3.strip(), "")
+        con_3_lab = en_is_nat_ar_is_women.get(con_3.strip(), "")
         if con_3_lab:
             contry_lab = con_3_lab.format(llab)
             output_test4(f'<<lightblue>> test_4:Films: new contry_lab  "{contry_lab}" ')

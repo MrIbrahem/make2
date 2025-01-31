@@ -54,7 +54,7 @@ from ma_lists.sports import Teams_new, sport_formts_en_ar_is_p17, sport_formts_e
 
 from ma_lists.sportsb.nat_p17 import sport_formts_for_p17, nat_p17_oioi
 
-from ma_lists.test_4_list import New_2018_For_kkk, New_2018_men_Keys_with_all, New_2018_men_Keys_without_all, New_2018_for_women_Keys_with_all, New_2018_for_women_without_al_Keys, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs, New_2018_for_women_without_al_Keys2, en_is_P17_ar_is_mens, en_and_ar_is_P17, replace_labels_2022, Mens_suffix, Mens_priffix, Women_s_priffix
+from ma_lists.test_4_list import en_is_nat_ar_is_P17, en_is_nat_ar_is_al_mens, en_is_nat_ar_is_man, en_is_nat_ar_is_al_women, en_is_nat_ar_is_women, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs, en_is_nat_ar_is_women_2, en_is_P17_ar_is_mens, en_is_P17_ar_is_P17, replace_labels_2022, Mens_suffix, Mens_priffix, Women_s_priffix, en_is_P17_ar_is_al_women
 
 from ma_lists.us_counties import US_State_lower, kk_end_US_State, party_end_keys
 
@@ -157,19 +157,20 @@ __all__ = [
     "sport_formts_for_p17",
     "nat_p17_oioi",
     #
-    "New_2018_For_kkk",
-    "New_2018_men_Keys_with_all",
-    "New_2018_men_Keys_without_all",
-    "New_2018_for_women_Keys_with_all",
-    "New_2018_for_women_without_al_Keys",
+    "en_is_nat_ar_is_P17",
+    "en_is_nat_ar_is_al_mens",
+    "en_is_nat_ar_is_man",
+    "en_is_nat_ar_is_al_women",
+    "en_is_nat_ar_is_women",
     "change_male_to_female",
     "priffix_lab_for_2018",
     "Main_priffix",
     "Main_priffix_to",
     "Multi_sport_for_Jobs",
-    "New_2018_for_women_without_al_Keys2",
+    "en_is_nat_ar_is_women_2",
     "en_is_P17_ar_is_mens",
-    "en_and_ar_is_P17",
+    "en_is_P17_ar_is_al_women",
+    "en_is_P17_ar_is_P17",
     "replace_labels_2022",
     "Mens_suffix",
     "Mens_priffix",
