@@ -178,6 +178,7 @@ typeTable = {
     "UCI Africa Tour": {"ar": "طواف إفريقيا للدراجات", "Q": ""},
     "Hot springs of": {"ar": "ينابيع حارة في", "Q": ""},
     "FIFA World Cup players": {"ar": "لاعبو كأس العالم لكرة القدم", "Q": ""},
+    "FIFA futsal World Cup players": {"ar": "لاعبو كأس العالم لكرة الصالات", "Q": ""},
     "-related timelines": {"ar": "جداول زمنية متعلقة", "Q": ""},
     "-related professional associations": {"ar": "جمعيات تخصصية متعلقة", "Q": ""},
     "-related lists": {"ar": "قوائم متعلقة", "Q": ""},
