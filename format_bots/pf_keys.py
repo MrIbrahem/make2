@@ -17,6 +17,7 @@ Change_key = {
     "united states department of the ": "united states department of ",
     "manufactured by": "manufactured-by",
     "association football afc": "association-football afc",
+    "imprisoned in": "imprisoned-in",
     "launched in": "launched-in",
     "launched by": "launched-by",
     "transferred from": "transferred-from",
