@@ -26,9 +26,14 @@ Tit_ose_Nmaes = {
     "manufactured-in": "صنعت في",
     "published by": "نشرتها",
     "published in": "نشرت في",
+    "launched in": "أطلقت في",
+    
+    "imprisoned-in": "مسجونون في",
+    "imprisoned in": "مسجونون في",
+    
     "launched-in": "أطلقت في",
     "launched by": "أطلقتها",
-    "launched-by": "أطلقت",
+    "launched-by": "أطلقتها",
     "transferred-from": "نقلت من",
     "transferred from": "نقلت من",
     "built-in": "بنيت في",
@@ -448,6 +453,7 @@ def change_cat(cat_orginal):
 
     # ---
     category = re.sub(r"royal (.*?) defence force", r"\g<1> royal defence force", category, flags=re.IGNORECASE)
+    category = re.sub(r"royal (.*?) naval force", r"\g<1> royal naval force", category, flags=re.IGNORECASE)
     category = re.sub(r"royal (.*?) navy", r"\g<1> royal navy", category, flags=re.IGNORECASE)
     category = re.sub(r"royal (.*?) air force", r"\g<1> royal air force", category, flags=re.IGNORECASE)
 
