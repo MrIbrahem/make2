@@ -314,6 +314,9 @@ def fixlab(label_old, out=False, en=""):
     if re.sub(en_literes, "", label_old, flags=re.IGNORECASE) != label_old:
         return ""
     # ---
+    if label_old.find("مشاعر معادية للإسرائيليون") != -1:
+        return ""
+    # ---
     label_old = label_old.strip()
     label_old = re.sub(r"_", " ", label_old)
     label_old = re.sub(r"تصنيف\:\s*", "", label_old)
