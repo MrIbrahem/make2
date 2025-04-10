@@ -115,6 +115,7 @@ Tit_ose_Nmaes = {
     "reestablished in": "أعيد تأسيسها في",
     "involved in": "مرتبطة مع",
     "established in": "أسست في",
+    "collapses in": "انهارت في",
     "associated with": "مرتبطة مع",  # مرتبطين مع
     "presented by": "قدمها",
     "directed by": "أخرجها",
