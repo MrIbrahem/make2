@@ -23,6 +23,8 @@ import logging
 
 log = logging.getLogger(__name__)
 
+no_print = False
+
 _category_cf = frozenset([
     "\xad",
     "\u0600",
@@ -682,7 +684,7 @@ def output(textm, *kwargs):
 
     :param textm: The text to print. Can contain color tags.
     """
-    if "noprint" in sys.argv:
+    if "noprint" in sys.argv or no_print:
         return
 
     toprint = make_str(textm)
@@ -691,17 +693,26 @@ def output(textm, *kwargs):
 
 
 def error(text):
+    if "noprint" in sys.argv or no_print:
+        return
+
     text = f"<<red>> {str(text)} <<default>>"
     new_text = make_str(text)
     log.error(new_text)
 
 
 def debug(text):
+    if "noprint" in sys.argv or no_print:
+        return
+
     new_text = make_str(text)
     log.debug(new_text)
 
 
 def info(text):
+    if "noprint" in sys.argv or no_print:
+        return
+
     new_text = make_str(text)
     log.info(new_text)
 
@@ -717,6 +728,9 @@ def warn(text):
     Args:
         text (any): The message to be logged as a warning. It can be of
     """
+
+    if "noprint" in sys.argv or no_print:
+        return
 
     new_text = make_str(text)
     log.warning(new_text)

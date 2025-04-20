@@ -18,4 +18,5 @@ jobs:
           script_stop: true
           key: ${{ secrets.KEY }}
           script: |
-            become himo sh -c "shs/update_make2.sh; echo ''"
+            become ${{ secrets.TOOL1 }} sh -c "shs/update_make2.sh; echo ''"
+            become ${{ secrets.TOOL2 }} sh -c "web_sh/install_make2.sh ${{ secrets.GF_TOKEN }}; webservice python3.11 restart"
