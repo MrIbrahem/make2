@@ -1,14 +1,22 @@
 """
 
-python3 core8/pwb.py make/fix/test_mv_year
-
+تصنيف:1974–75 في دوريات كرة قدم لبنانية
+Category:1974–75 in Lebanese football leagues
 """
 
-from . import mv_years
-from .. import printe
-
-mv_years.print_test = printe.output
-
+import sys
+from newapi import printe
+from make2.tests.helps import get_titles_to_tests
+# python3 core8/pwb.py make2/tests/fix/mv_years -list:1
+# python3 core8/pwb.py make2/tests/fix/mv_years -list:2
+# python3 core8/pwb.py make2/tests/fix/mv_years القرن 21 أعضاء مجلس العموم الكندي
+# python3 core8/pwb.py make2/tests/fix/mv_years
+# python3 core8/pwb.py make2/tests/fix/mv_years
+# python3 core8/pwb.py make2/tests/fix/mv_years
+# python3 core8/pwb.py make2/tests/fix/mv_years القرن 21 أعضاء مجلس الشيوخ الكندي
+# python3 core8/pwb.py make2/tests/fix/mv_years القرن 21 أشخاص من العراق العثمانية حسب المهنة
+# python3 core8/pwb.py make2/tests/fix/mv_years أشخاص أمريكيون شماليون حسب الجنسية في القرن 17
+# ---
 textx = """
     عقد 2020 في مجتمع في مدريد
     عقد 2020 في الرياضة في يوتا
@@ -189,22 +197,76 @@ textx = """
     عقد 2020 حسب المدينة والبلد في مجتمع في مدريد
     القرن 17 في أشخاص أمريكيون شماليون حسب الجنسية
 """
-text_list = [x.strip() for x in textx.split("\n")]
+text_list = [x.strip() for x in textx.splitlines() if x.strip()]
+# ---
+text_list2 = [
+    "أشخاص أمريكيون شماليون حسب الجنسية في القرن 17",
+    "1989 في اتحاد الرجبي حسب البلد",
+    "1881_في_الرياضة_في_رود_آيلاند",
+    "القرن_19_في_الرياضة_في_رود_آيلاند",
+    "هجمات_في_كندا_في_عقد_2020",
+    "عقد_2020_في_مجتمع_في_مدريد",
+    "عقد_2020_في_مجتمع_في_مدريد_حسب_المدينة_والبلد",
+    "عقد_2020_حسب_المدينة_والبلد_في_مجتمع_في_مدريد",
+    "القرن 17 في أشخاص أمريكيون شماليون حسب الجنسية",
+    "مرشحون في انتخابات الولايات المتحدة حسب السنة في القرن 21",
+    "منافسون في ألعاب الكومنولث حسب السنة في القرن 20",
+    "أشخاص حسب النزاع في القرن 5 ق م",
+    "المرأة في القرن 19 حسب المهنة والجنسية",
+    "المرأة حسب المهنة والجنسية في القرن 19",
+    "رياضة حسب القارة في عقد 1940",
+    "كنديون حسب الأصل العرقي أو الوطني في القرن 20",
+    "مسلسلات تلفزيونية كوميدية أمريكية حسب النوع الفني في عقد 1960",
+    "",
+    "يونانيون حسب المهنة في القرن 9",
+    "القرن 21 في يونانيون في حسب المهنة",
+    "تصنيف:1974–75 في دوريات كرة قدم لبنانية",
+    "تصنيف:القرن 21 أشخاص من العراق العثمانية حسب المهنة",
+    "",
+    "",
+    "",
+    "",
+    "",
+]
+# ---
+text_list3 = [
+    "تصنيف:قضاة حسب الجنسية عقد 2010",
+    "تصنيف:التلفاز في السويد حسب السنة",
+    "تصنيف:فنانون ذكور حسب الجنسية 2020",
+    "تصنيف:قضاة حسب الجنسية القرن 20",
+    "تصنيف:فنانون ذكور حسب الجنسية القرن 20",
+    "تصنيف:ملكيون حسب البلد القرن 20",
+    "تصنيف:فلاسفة فرنسيون في القرن 20",
+]
+# ---
+lista = {
+    1: text_list,
+    2: text_list2,
+    3: text_list3,
+}
+
+to_work = get_titles_to_tests(lista)
+# ---
+from make2.fix.mv_years import move_years
 # ---
 same = []
 # ---
-n = 0
-# ---
-for text in text_list:
-    n += 1
-    text = text.replace("_", " ")
+for text in to_work:
+    # ---
     if not text:
         continue
-    new = mv_years.move_years(text)
+    # ---
+    text = text.replace("تصنيف:", "")
+    text = text.replace("_", " ")
+    # ---
+    # printe.output(f"({text=})")
+    # ---
+    new = move_years(text)
+    # ---
     if new != text:
         printe.output(f'old: "{text}"')
         printe.output(f'<<green>>new: "{new}"')
-        printe.output(f"{n}----------")
+        printe.output("----------")
     else:
         same.append(text)
 # ---

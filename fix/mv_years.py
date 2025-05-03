@@ -8,7 +8,6 @@ Category:1974–75 in Lebanese football leagues
 
 import re
 import sys
-import re
 
 # YEARS_REGEX = r'(\d+\sق[\s\.]م|\d+)|عقد\s(\d+\sق[\s\.]م|\d+)|القرن\s(\d+\sق[\s\.]م|\d+)|الألفية\s(\d+\sق[\s\.]م|\d+)'
 YEARS_REGEX = r"(\d+[-–]\d+|\d+\sق[\s\.]م|\d+)|عقد\s(\d+\sق[\s\.]م|\d+)|القرن\s(\d+\sق[\s\.]م|\d+)|الألفية\s(\d+\sق[\s\.]م|\d+)"
@@ -158,7 +157,6 @@ def move_years_first(text_str):
     # ---
     return new
 
-
 def move_years(text_str):
     # ---
     text_str = text_str.replace("_", " ").strip()
@@ -181,70 +179,3 @@ def move_years(text_str):
         new_text = f"تصنيف:{new_text}"
     # ---
     return new_text
-
-
-if __name__ == "__main__":
-    from newapi import printe
-
-    print_test = printe.output
-    # python3 core8/pwb.py make/fix/mv_years test
-    # python3 core8/pwb.py make/fix/mv_years القرن 21 أعضاء مجلس العموم الكندي
-    # python3 core8/pwb.py make/fix/mv_years
-    # python3 core8/pwb.py make/fix/mv_years
-    # python3 core8/pwb.py make/fix/mv_years
-    # python3 core8/pwb.py make/fix/mv_years القرن 21 أعضاء مجلس الشيوخ الكندي
-    # python3 core8/pwb.py make/fix/mv_years القرن 21 أشخاص من العراق العثمانية حسب المهنة
-    # python3 core8/pwb.py make/fix/mv_years أشخاص أمريكيون شماليون حسب الجنسية في القرن 17
-    text_list = [
-        "أشخاص أمريكيون شماليون حسب الجنسية في القرن 17",
-        "1989 في اتحاد الرجبي حسب البلد",
-        "1881_في_الرياضة_في_رود_آيلاند",
-        "القرن_19_في_الرياضة_في_رود_آيلاند",
-        "هجمات_في_كندا_في_عقد_2020",
-        "عقد_2020_في_مجتمع_في_مدريد",
-        "عقد_2020_في_مجتمع_في_مدريد_حسب_المدينة_والبلد",
-        "عقد_2020_حسب_المدينة_والبلد_في_مجتمع_في_مدريد",
-        "القرن 17 في أشخاص أمريكيون شماليون حسب الجنسية",
-        "مرشحون في انتخابات الولايات المتحدة حسب السنة في القرن 21",
-        "منافسون في ألعاب الكومنولث حسب السنة في القرن 20",
-        "أشخاص حسب النزاع في القرن 5 ق م",
-        "المرأة في القرن 19 حسب المهنة والجنسية",
-        "المرأة حسب المهنة والجنسية في القرن 19",
-        "رياضة حسب القارة في عقد 1940",
-        "كنديون حسب الأصل العرقي أو الوطني في القرن 20",
-        "مسلسلات تلفزيونية كوميدية أمريكية حسب النوع الفني في عقد 1960",
-        "",
-        "يونانيون حسب المهنة في القرن 9",
-        "القرن 21 في يونانيون في حسب المهنة",
-        "تصنيف:1974–75 في دوريات كرة قدم لبنانية",
-        "تصنيف:القرن 21 أشخاص من العراق العثمانية حسب المهنة",
-        "",
-        "",
-        "",
-        "",
-        "",
-    ]
-    lista = []
-    if "test" in sys.argv:
-        lista = text_list
-    else:
-        text = " ".join(sys.argv[1:])
-        lista = [text]
-    # ---
-    same = []
-    # ---
-    for text in lista:
-        text = text.replace("تصنيف:", "")
-        text = text.replace("_", " ")
-        if not text:
-            continue
-        new = move_years(text)
-        if new != text:
-            print_test(f'old: "{text}"')
-            print_test(f'<<green>>new: "{new}"')
-            print_test("----------")
-        else:
-            same.append(text)
-    # ---
-    for text in same:
-        print_test(f'same: "{text}"')
