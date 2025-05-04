@@ -8,7 +8,7 @@ import re
 import sys
 from .. import printe
 from .fixlists import replase, Starting, Ending, fix_years
-from .mv_years import move_years
+from .mv_years import move_years, YEARS_REGEX
 from ..helps.print_bot import print_put
 
 
@@ -36,7 +36,7 @@ def fix_n(arlabel):
         arlabel = re.sub(ree, reelab, arlabel)
     # ---
     for tt in fix_years:
-        arlabel = re.sub(r"(\s*%s) (\d+\s*|عقد \d+\s*|القرن \d+\s*)" % tt, r"\g<1> في \g<2>", arlabel)
+        arlabel = re.sub(rf"(\s*{tt}) (\d+\s*|عقد \d+\s*|القرن \d+\s*)", r"\g<1> في \g<2>", arlabel)
     # ---
     for f_a, f_lab in Starting.items():
         if arlabel.startswith(f_a):
@@ -306,6 +306,45 @@ def fix_it(arlabel, en):
     return arlabel
 
 
+def add_fee(new_text):
+    # ---
+    # تصنيف:قضاة حسب الجنسية عقد 2010
+    # تصنيف:فنانون ذكور حسب الجنسية 2020
+    # تصنيف:فنانون ذكور حسب الجنسية القرن 20
+    # ---
+    hasab = [
+        "الآلة",
+        "البلد",
+        "البوابة",
+        "الجنسية والمجموعة العرقية",
+        "المجموعة العرقية",
+        "الجنسية والمهنة",
+        "الدين والجنسية",
+        "المهنة والجنسية",
+        "البلد أو اللغة",
+        "النوع الفني",
+        "الجنسية",
+        "الحرب",
+        "الدين",
+        "السنة",
+        "العقد",
+        "القارة",
+        "اللغة",
+        "المدينة",
+        "المنظمة",
+        "المهنة",
+        "الموقع",
+        "النزاع",
+        "الولاية",
+    ]
+    # ---
+    hasab_line = "|".join(hasab)
+    # ---
+    new_text = re.sub(rf" حسب\s({hasab_line}) ({YEARS_REGEX})$", r" حسب \1 في \2", new_text)
+    # ---
+    return new_text
+
+
 def fixlab(label_old, out=False, en=""):
     # ---
     en_literes = "[abcdefghijklmnopqrstuvwxyz]"
@@ -324,6 +363,8 @@ def fixlab(label_old, out=False, en=""):
     # ---
     arlabel = fix_it(label_old, en)
     # ---
+    arlabel = add_fee(arlabel)
+    # ---
     arlabel = move_years(arlabel)
     # ---
     if label_old != arlabel:
@@ -331,34 +372,3 @@ def fixlab(label_old, out=False, en=""):
             printe.output(f'fixtitle: label_old before:"{label_old}", after:"{arlabel}"')
     # ---
     return arlabel
-
-
-if __name__ == "__main__":
-    # python3 core8/pwb.py make/fix/fixtitle test
-    if "test" in sys.argv:
-        text_list = [
-            "2020 في جنوب إفريقيا",
-            "عقد 2010 في جنوب إفريقيا",
-            "القرن 21 في جنوب إفريقيا",
-            "2020 ق م في جنوب إفريقيا",
-            "عقد 2010 ق م في جنوب إفريقيا",
-            "القرن 21 في الأردن",
-            "عقد 1990 في السعودية",
-            "1995 في الإمارات",
-            "القرن 20 في مصر",
-            "القرن 20 ق م في مصر",
-            "عقد 1980 ق م في العراق",
-            "الألفية 1 في اليمن",
-            "2020 في مولدافيا",
-        ]
-
-        for text in text_list:
-            print_put(f'old: "{text}"')
-            print_put(f'new: "{fixlab(text)}"')
-            print_put("----------")
-    else:
-        text = " ".join(sys.argv[1:])
-        new = fixlab(text)
-        print_put(f'old: "{text}"')
-        print_put(f'new: "{new}"')
-        print_put("----------")
