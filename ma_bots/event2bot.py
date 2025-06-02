@@ -25,7 +25,7 @@ from .dodo_bots.event2bot_dodo import make_lab_dodo
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 event2_cash = {}
 
-Find_stubs = {1: True if "-stubs" in sys.argv else False}
+Find_stubs = {1: "-stubs" in sys.argv}
 
 
 def event2_d2(cat3, category3_not_lower):

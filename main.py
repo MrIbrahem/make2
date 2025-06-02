@@ -29,9 +29,9 @@ Dir_ma = Path(__file__).parent.parent
 
 event_done = {}
 
-start_yementest = {1: True if "yementest" in sys.argv else False}
+start_yementest = {1: "yementest" in sys.argv}
 use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else False}
-Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
+Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
 
 def event(NewList, noprint="", maketab="", Use_main_s="", printfirst=False, Local=False, printhead=False, all_print_off=False, tst_prnt_all=None, return_no_labs=False):

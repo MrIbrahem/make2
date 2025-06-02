@@ -8,7 +8,7 @@ import sys
 from ..helps.print_bot import print_put
 from .fax2_bots.squad_title_bot import get_squad_title
 
-Find_stubs = {1: True if "-stubs" in sys.argv else False}
+Find_stubs = {1: "-stubs" in sys.argv}
 
 # tab[Category:21st-century members of the Louisiana State Legislature] = "تصنيف:أعضاء القرن 21 هيئة ولاية لويزيانا التشريعية"
 # Category:Association football matches navigational boxes by teams:Egypt
