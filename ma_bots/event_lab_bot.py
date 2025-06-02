@@ -34,7 +34,7 @@ from .contry2_bot import Get_contry2
 from . import ye_ts_bot
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
-Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
+Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
 
 def event_Lab(cate_r):

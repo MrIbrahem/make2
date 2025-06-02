@@ -31,7 +31,7 @@ from ...helps.print_bot import print_put
 
 from ..contry_bot import Get_contry, Get_c_t_lab
 
-Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
+Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
 
 def get_con_lab(tito, do_Get_contry2, tito2, contry, contry_lower):

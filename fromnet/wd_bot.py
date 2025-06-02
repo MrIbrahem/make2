@@ -12,7 +12,7 @@ from ..matables_bots.bot_2018 import pop_All_2018
 from ..matables_bots.bot_2018 import Add_to_pop_All_18  # Add_to_pop_All_18(tab)
 
 wikidata_cash_oo = {}
-Find_f_wikidata = {1: False if "nowikidata" in sys.argv else True}
+Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
 
 def find_wikidata(contry):
