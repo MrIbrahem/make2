@@ -349,14 +349,6 @@ MONTHSTR = "(January|February|March|April|May|June|July|August|September|October
 
 type_after_contry = ["non-combat"]
 
-medalists_type = {
-    "%s medallists": "فائزون بميداليات %s",
-    "%s medalists": "فائزون بميداليات %s",
-    "%s gold medalists": "فائزون بميداليات ذهبية %s",
-    "%s silver medalists": "فائزون بميداليات فضية %s",
-    "%s bronze medalists": "فائزون بميداليات برونزية %s",
-}
-
 # Add_ar_in = [ "mediterranean games medalists",]
 Add_ar_in = olympicss.copy()
 

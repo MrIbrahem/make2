@@ -21,6 +21,8 @@ from ma_lists.Sport_key import fanco_line, Sports_Keys_For_Team, Sports_Keys_For
 
 from ma_lists.all_keys2 import pf_keys2, pop_of_without_in, pop_of_football_lower, Word_After_Years
 
+from ma_lists.games_labs import summer_winter_games
+
 from ma_lists.all_keys3 import typeTable_7, albums_type, film_production_company, NN_table, Ambassadors_tab
 
 from ma_lists.all_keys4 import Inter_Feds_lower
@@ -100,6 +102,7 @@ __all__ = [
     "film_production_company",
     "NN_table",
     "Ambassadors_tab",
+    "summer_winter_games",
     #
     "Inter_Feds_lower",
     #
