@@ -23,7 +23,7 @@ or
 import sys
 
 from ..helps import len_print
-from ..ma_lists_bots import summer_winter_tabs
+from ..ma_lists_bots import summer_winter_games
 from ..ma_lists_bots import pf_keys2
 from ..ma_lists_bots import New_P17_Finall
 from ..ma_lists_bots import films_mslslat_tab
@@ -141,7 +141,7 @@ medalists_type = {
 
 for tty, tty_lab in medalists_type.items():
 
-    for k, v in summer_winter_tabs.items():
+    for k, v in summer_winter_games.items():
         olympicss[tty % k] = tty_lab % v
 
     olympicss[tty % "world athletics indoor championships"] = tty_lab % "بطولة العالم لألعاب القوى داخل الصالات"
