@@ -23,6 +23,7 @@ or
 import sys
 
 from ..helps import len_print
+from ..ma_lists_bots import summer_winter_tabs
 from ..ma_lists_bots import pf_keys2
 from ..ma_lists_bots import New_P17_Finall
 from ..ma_lists_bots import films_mslslat_tab
@@ -119,33 +120,18 @@ olympicss = {
     "olympic silver medalists": "فائزون بميداليات فضية أولمبية",
     "olympic bronze medalists": "فائزون بميداليات برونزية أولمبية",
     "paralympic competitors": "منافسون بارالمبيون",
-    "pan american games competitors": "منافسون في دورة الألعاب الأمريكية",
-    "asian para games competitors": "منافسون في دورة الألعاب الآسيوية البارالمبية",
-    "commonwealth games competitors": "منافسون في ألعاب الكومنولث",
     "commonwealth games gold medalists": "فائزون بميداليات ذهبية في ألعاب الكومنولث",
-    "winter olympics competitors": "منافسون في الألعاب الأولمبية الشتوية",
+    # "winter olympics competitors": "منافسون في الألعاب الأولمبية الشتوية",
     "winter olympics medalists": "فائزون بميداليات أولمبية شتوية",
     "summer olympics medalists": "فائزون بميداليات أولمبية صيفية",
-    "summer olympics competitors": "منافسون في الألعاب الأولمبية الصيفية",
+    # "summer olympics competitors": "منافسون في الألعاب الأولمبية الصيفية",
+    "winter olympics competitors": "منافسون أولمبيون شتويون",
+    "summer olympics competitors": "منافسون أولمبيون صيفيون",
+    "olympics competitors": "منافسون أولمبيون"
 }
 
-olympicss["winter olympics competitors"] = "منافسون أولمبيون شتويون"
-olympicss["summer olympics competitors"] = "منافسون أولمبيون صيفيون"
-olympicss["olympics competitors"] = "منافسون أولمبيون"
-olympicss["paralympic competitors"] = "منافسون بارالمبيون"
-olympicss["southeast asian games competitors"] = "منافسون في ألعاب جنوب شرق آسيا"
-olympicss["asian games competitors"] = "منافسون في الألعاب الآسيوية"
-olympicss["maccabiah games competitors"] = "منافسون في الألعاب المكابيه"
-olympicss["world championships competitors"] = "منافسون في بطولات العالم"
-olympicss["african games competitors"] = "منافسون في الألعاب الإفريقية"
-olympicss["european games competitors"] = "منافسون في الألعاب الأوروبية"
-olympicss["mediterranean games competitors"] = "منافسون في الألعاب المتوسطية"
-olympicss["universiade competitors"] = "منافسون في الألعاب الجامعية"
-olympicss["commonwealth games competitors"] = "منافسون في ألعاب الكومنولث"
-olympicss["central american games competitors"] = "منافسون في ألعاب أمريكا الوسطى"
-olympicss["south american games competitors"] = "منافسون في ألعاب أمريكا الجنوبية"
-
 medalists_type = {
+    "%s competitors": "منافسون في %s",
     "%s medallists": "فائزون بميداليات %s",
     "%s medalists": "فائزون بميداليات %s",
     "%s gold medalists": "فائزون بميداليات ذهبية %s",
@@ -154,50 +140,15 @@ medalists_type = {
 }
 
 for tty, tty_lab in medalists_type.items():
-    olympicss[tty % "asian para games"] = tty_lab % "في دورة الألعاب الآسيوية البارالمبية"
-    olympicss[tty % "pan asian games"] = tty_lab % "في دورة الألعاب الآسيوية"
-    olympicss[tty % "pan american games"] = tty_lab % "في دورة الألعاب الأمريكية"
-    olympicss[tty % "pan arab games"] = tty_lab % "في دورة الألعاب العربية"
+
+    for k, v in summer_winter_tabs.items():
+        olympicss[tty % k] = tty_lab % v
+
     olympicss[tty % "world athletics indoor championships"] = tty_lab % "بطولة العالم لألعاب القوى داخل الصالات"
-    # olympicss[tty % " games"] = tty_lab % "في "
-    # olympicss[tty % " games"] = tty_lab % "في "
-    # olympicss[tty % " games"] = tty_lab % "في "
-    olympicss[tty % "military world games"] = tty_lab % "في دورة الألعاب العسكرية"
-    olympicss[tty % "winter olympics"] = tty_lab % "في الألعاب الأولمبية الشتوية"
-    olympicss[tty % "summer olympics"] = tty_lab % "في الألعاب الأولمبية الصيفية"
     olympicss[tty % "olympics"] = tty_lab % "أولمبية"
-    olympicss[tty % "paralympic"] = tty_lab % "في الألعاب البارالمبية"
-    olympicss[tty % "islamic solidarity games"] = tty_lab % "في ألعاب التضامن الإسلامي"
-    olympicss[tty % "southeast asian games"] = tty_lab % "في ألعاب جنوب شرق آسيا"
 
-    olympicss[tty % "asian games"] = tty_lab % "في الألعاب الآسيوية"
-    olympicss[tty % "asian winter games"] = tty_lab % "في الألعاب الآسيوية الشتوية"
-    olympicss[tty % "asian summer games"] = tty_lab % "في الألعاب الآسيوية الصيفية"
-
-    olympicss[tty % "mediterranean games"] = tty_lab % "في الألعاب المتوسطية"
-    olympicss[tty % "maccabiah games"] = tty_lab % "في الألعاب المكابيه"
-    olympicss[tty % "world championships"] = tty_lab % "في بطولات العالم"
-    olympicss[tty % "african games"] = tty_lab % "في الألعاب الإفريقية"
-    olympicss[tty % "european games"] = tty_lab % "في الألعاب الأوروبية"
-
-    olympicss[tty % "the universiade"] = tty_lab % "في الألعاب الجامعية"
-    olympicss[tty % "universiade"] = tty_lab % "في الألعاب الجامعية"
-    olympicss[tty % "winter universiade"] = tty_lab % "في الألعاب الجامعية الشتوية"
-    olympicss[tty % "summer universiade"] = tty_lab % "في الألعاب الجامعية الصيفية"
-
-    olympicss[tty % "commonwealth games"] = tty_lab % "في ألعاب الكومنولث"
-    olympicss[tty % "commonwealth youth games"] = tty_lab % "في ألعاب الكومنولث الشبابية"
-    olympicss[tty % "central american games"] = tty_lab % "في ألعاب أمريكا الوسطى"
-    olympicss[tty % "central american and caribbean games"] = tty_lab % "في ألعاب أمريكا الوسطى والكاريبي"
-    olympicss[tty % "south american games"] = tty_lab % "في ألعاب أمريكا الجنوبية"
-    olympicss[tty % "youth olympics games"] = tty_lab % "في الألعاب الأولمبية الشبابية"
-    olympicss[tty % "youth olympics"] = tty_lab % "في الألعاب الأولمبية الشبابية"
-    olympicss[tty % "european youth olympic"] = tty_lab % "في الألعاب الأولمبية الشبابية الأوروبية"
-    olympicss[tty % "european youth olympic winter"] = tty_lab % "في الألعاب الأولمبية الشبابية الأوروبية الشتوية"
-    olympicss[tty % "youth olympic"] = tty_lab % "في الألعاب الأولمبية الشبابية"
     # olympicss[tty % " games"] = tty_lab % "في "
 
-    olympicss[tty % "fis nordic world ski championships"] = tty_lab % "في بطولة العالم للتزلج النوردي على الثلج"
 
 olympicss["fis nordic world ski championships medalists"] = "فائزون بميداليات بطولة العالم للتزلج النوردي على الثلج"
 
