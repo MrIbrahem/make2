@@ -174,8 +174,12 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
             tatl = Tit_ose_Nmaes[tito2]
             print_put(f">>>>> > ({tito2=}): tito2 in Tit_ose_Nmaes and tito2 not in tito_list_s, {tatl=}")
 
-            if tito2 == "for" and Type_lower.strip().endswith("medalists") and contry_lower.startswith("for "):
-                tatl = "من"
+            if tito2 == "for" and contry_lower.startswith("for "):
+                if Type_lower.strip().endswith("competitors") and category.find("competitors for") != -1:
+                    tatl = "من"
+
+                if Type_lower.strip().endswith("medalists") and category.find("medalists for") != -1:
+                    tatl = "من"
 
             if tito2 == "to" and Type_lower.strip().startswith("ambassadors of"):
                 tatl = "لدى"
