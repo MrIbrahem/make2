@@ -120,6 +120,7 @@ olympicss = {
     "olympic bronze medalists": "فائزون بميداليات برونزية أولمبية",
     "paralympic competitors": "منافسون بارالمبيون",
     "pan american games competitors": "منافسون في دورة الألعاب الأمريكية",
+    "asian para games competitors": "منافسون في دورة الألعاب الآسيوية البارالمبية",
     "commonwealth games competitors": "منافسون في ألعاب الكومنولث",
     "commonwealth games gold medalists": "فائزون بميداليات ذهبية في ألعاب الكومنولث",
     "winter olympics competitors": "منافسون في الألعاب الأولمبية الشتوية",
@@ -153,6 +154,8 @@ medalists_type = {
 }
 
 for tty, tty_lab in medalists_type.items():
+    olympicss[tty % "asian para games"] = tty_lab % "في دورة الألعاب الآسيوية البارالمبية"
+    olympicss[tty % "pan asian games"] = tty_lab % "في دورة الألعاب الآسيوية"
     olympicss[tty % "pan american games"] = tty_lab % "في دورة الألعاب الأمريكية"
     olympicss[tty % "pan arab games"] = tty_lab % "في دورة الألعاب العربية"
     olympicss[tty % "world athletics indoor championships"] = tty_lab % "بطولة العالم لألعاب القوى داخل الصالات"
