@@ -12,7 +12,7 @@ elfffff = {
     2: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
     3: [21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
 }
-for elff in elfffff:
+for elff, tabe in elfffff.items():
     millennium = elff
 
     st = "th"  # the 1st millennium bc
@@ -39,7 +39,7 @@ for elff in elfffff:
     centries_years_dec[f"the {millennium}{st} millennium bc"] = millennium_lab_bc
     centries_years_dec[millennium_t_bc] = millennium_lab_bc
 
-    for centry in elfffff[elff]:
+    for centry in tabe:
         centry2 = str(centry - 1)
         if centry2 == "0":
             centry2 = ""
