@@ -64,22 +64,39 @@ class TranslationPipeline:
             self.foot_ballers,
             self.category3,
         ) = fax2.get_list_of_and_cat3(self.category3, self.category3_nolower)
+        # ---
+        # ايجاد تسميات مثل لاعبو  كرة سلة أثيوبيون
+        if self.category_lab == "" and self.list_of_cat == "لاعبو {}":
+            self.category_lab = Get_contry2(self.orginal_category3)
+            if self.category_lab:
+                self.list_of_cat = ""
 
-        handlers: List[Callable[[], Optional[str]]] = [
-            lambda: Get_contry2(self.orginal_category3) if self.list_of_cat == "لاعبو {}" else None,
-            lambda: year_lab.make_year_lab(self.category3),
-            lambda: sport_lab.Get_New_team_xo(self.category3),
-            lambda: Get_contry2(self.category3),
-            lambda: kooora.kooora_team(self.category3, Local=Find_f_wikidata[1]) if self.Find_ko else None,
-        ]
-        for handler in handlers:
-            lab = handler()
-            if lab:
-                self.category_lab = lab
-                break
+        if not self.category_lab:
+            self.category_lab = univer.test_Universities(self.category3)
 
-        if self.list_of_cat == "لاعبو {}" and self.category_lab:
-            self.list_of_cat = ""
+        if not self.category_lab:
+            self.category_lab = year_lab.make_year_lab(self.category3)
+
+        if not self.category_lab:
+            self.category_lab = sport_lab.Get_New_team_xo(self.category3)
+
+        if self.category_lab == "" and self.Find_wd:
+            self.category_lab = pop_All_2018.get(self.category3, "")
+
+        if self.list_of_cat == "" and self.category_lab == "":
+            # print("translate_general_category 10")
+            self.category_lab = ye_ts_bot.translate_general_category(self.category)
+
+        if not self.category_lab:
+            self.category_lab = Get_contry2(self.category3)
+
+        if self.category_lab == "" and self.Find_ko:
+            self.category_lab = kooora.kooora_team(self.category3, Local=Find_f_wikidata[1])
+            if self.category_lab and self.category_lab and re.sub(en_literes, "", self.category_lab, flags=re.IGNORECASE) == self.category_lab:
+                pop_All_2018.get({self.category3.lower(): self.category_lab})
+
+        if self.category_lab == "" and self.Find_wd:
+            self.category_lab = find_wikidata(self.category3)
 
         self.handle_pp_ends_with()
 
