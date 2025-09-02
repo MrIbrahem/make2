@@ -18,23 +18,23 @@ from ..fromnet import kooora
 
 import re
 import sys
-
+from typing import Dict, Any
 from .. import printe
 
 try:
     from API import open_url
 except BaseException:
-    open_url = False
+    open_url = None
 # ---
-Teamse_ko_done = {}
-pprindt = {1: False}
+Teamse_ko_done: Dict[str, str] = {}
+pprindt: Dict[int, bool] = {1: False}
 
 
-def gettheurl(url):
+def gettheurl(url: str) -> str:
     return open_url.open_the_url(url) if open_url else ""
 
 
-def log_kooora(t, dj):
+def log_kooora(t: str, dj: str) -> None:
     try:
         with open(dj, "a", encoding="utf-8") as f:
             f.write(t)
@@ -43,7 +43,7 @@ def log_kooora(t, dj):
         print("log_kooora Error writing")
 
 
-def kooora_player(EnName):
+def kooora_player(EnName: str) -> str:
     EnName2 = EnName.replace(" ", "+")
     # ---
     # if re.sub(r"\p{L}" , "" ,  EnName ) != EnName  :
@@ -64,7 +64,7 @@ def kooora_player(EnName):
     # ---
     arlabel = ""
     if tas:
-        if tas.find("var teams_list = new Array(") != -1:
+        if "var teams_list = new Array(" in tas:
             tas = tas.split("var teams_list = new Array(")[1]
             tas = tas.split("0,0 );")[0]
             # ---
@@ -97,50 +97,12 @@ def kooora_player(EnName):
                     log_kooora(lline, "make2/0kooora_player.log.csv")
             elif pprindt[1]:
                 printe.output(len(tas4))
-            # ---
-            # ---
-            r"""
-            printe.output(tas)
-            if tas.find('"%s"' % EnName ) != -1 :
-                tas = tas.split('"%s"' % EnName)[0]
-        # ---
-            tas3 = tas.split(",")
-            if EnName in tas3:
-                tas3.remove(EnName)
-        # ---
-            for nn in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] :
-                if nn in tas3:
-                    tas3.remove(nn)
-        # ---
-            if '' in tas3:
-                tas3.remove('')
-        # ---
-            tas4 = tas3
-        # ---
-            for x in tas4 :
-                f = x
-                f = re.sub(r"\d" , "" , f )# ['أيدي بوثرويد', '0', '']
-                f = f.strip()
-                if re.sub(r'[ابتثجحخدذرزسشصضطظعغفقكلمنهويأآإىءئؤة]' , '' , f) != f :
-                    arlabel = f
-                if f == "" or x == "" or f == "-" :
-                    tas4.remove(x)
-        # ---
-            if len(tas4) == 1:
-                arlabel = tas4[0]"""
-            # ---
-            # printe.output(tas4)
-            # ---
-    # ---
-    # if re.sub(r"\W" , "" , arlabel ) != arlabel :
-    # arlabel = ""
-    # ---
     Teamse_ko_done[EnName.lower()] = arlabel
     # ---
     return arlabel
 
 
-def kooora_team(EnName, Local=True):
+def kooora_team(EnName: str, Local: bool = True) -> str:
     EnName2 = EnName.replace(" ", "+")
     # ---
     if EnName.lower() == "israel":
@@ -148,10 +110,6 @@ def kooora_team(EnName, Local=True):
     # ---
     if Local is True:
         return ""
-    # ---
-    # if re.sub(r"\p{L}" , "" ,  EnName ) != EnName  :
-    # printe.output("unicode: %s " % EnName)
-    # EnName = ""
     # ---
     # eee = "https://www.kooora.com/?searchplayer=%s&showplayers=true" % EnName2
     eee = f"https://kooora.com/?searchteam={EnName2}&searchcountry=&showteams=3"
@@ -161,7 +119,7 @@ def kooora_team(EnName, Local=True):
         return ""
     # ---
     if Teamse_ko_done.get(EnName.lower()):
-        return Teamse_ko_done.get(EnName.lower())
+        return Teamse_ko_done.get(EnName.lower(), "")
     # ---
     if EnName.lower() in Teamse_ko_done:
         return Teamse_ko_done[EnName.lower()]
@@ -173,14 +131,11 @@ def kooora_team(EnName, Local=True):
     # ---
     arlabel = ""
     if tas:
-        if tas.find("var teams_list = new Array(") != -1:
+        if "var teams_list = new Array(" in tas:
             tas = tas.split("var teams_list = new Array(")[1]
             tas = tas.split("0,0 );")[0]
             # ---
             tas = re.sub(r'[\n\r"]', "", tas)
-            # tas = re.sub(r"\n" , "" ,  tas)
-            # tas = re.sub(r"\r" , "" ,  tas)
-            # tas = re.sub(r"\"" , "" ,  tas)
             # ---
             tas4 = tas.split(",")  # 38471,1,8,5,"العربي","العربي","الكويت",
             # ---
@@ -205,51 +160,15 @@ def kooora_team(EnName, Local=True):
                     log_kooora(lline, "make2/0kooora_team.log.csv")
             elif pprindt[1]:
                 printe.output(len(tas4))
-            # ---
-            # ---
-            r"""
-            printe.output(tas)
-            if tas.find('"%s"' % EnName ) != -1 :
-                tas = tas.split('"%s"' % EnName)[0]
-        # ---
-            tas3 = tas.split(",")
-            if EnName in tas3:
-                tas3.remove(EnName)
-        # ---
-            for nn in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] :
-                if nn in tas3:
-                    tas3.remove(nn)
-        # ---
-            if '' in tas3:
-                tas3.remove('')
-        # ---
-            tas4 = tas3
-        # ---
-            for x in tas4 :
-                f = x
-                f = re.sub(r"\d" , "" , f )# ['أيدي بوثرويد', '0', '']
-                f = f.strip()
-                if re.sub(r'[ابتثجحخدذرزسشصضطظعغفقكلمنهويأآإىءئؤة]' , '' , f) != f :
-                    arlabel = f
-                if f == "" or x == "" or f == "-" :
-                    tas4.remove(x)
-        # ---
-            if len(tas4) == 1:
-                arlabel = tas4[0]"""
-    # ---
-    # if re.sub(r"\W" , "" , arlabel ) != arlabel :
-    # arlabel = ""
     # ---
     Teamse_ko_done[EnName.lower()] = arlabel
     # ---
     return arlabel
 
 
-def main():
+def main() -> None:
     # ---
     pprindt[1] = True
-    # python3 core8/pwb.py make/kooora test Osceola, Fond du Lac County, Wisconsin
-    # python3 core8/pwb.py make/kooora test kristianstad
     # ---
     if sys.argv:
         if "team" in sys.argv:

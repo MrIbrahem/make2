@@ -5,15 +5,13 @@ from . import fax2
 """
 
 import sys
+from typing import Dict, Any, Tuple
 from ..helps.print_bot import print_put
 from .fax2_bots.squad_title_bot import get_squad_title
 
-Find_stubs = {1: "-stubs" in sys.argv}
+Find_stubs: Dict[int, bool] = {1: "-stubs" in sys.argv}
 
-# tab[Category:21st-century members of the Louisiana State Legislature] = "تصنيف:أعضاء القرن 21 هيئة ولاية لويزيانا التشريعية"
-# Category:Association football matches navigational boxes by teams:Egypt
-
-to_get_endswith = {
+to_get_endswith: Dict[str, Dict[str, Any]] = {
     "squad navigational boxes": {
         "lab": "صناديق تصفح تشكيلات {}",
         "Find_wd": False,
@@ -96,7 +94,7 @@ to_get_endswith = {
     },
 }
 
-to_get_startswith = {
+to_get_startswith: Dict[str, Dict[str, Any]] = {
     "association football matches navigational boxes by teams:": {
         "lab": "صناديق تصفح مباريات كرة قدم حسب الفرق:{}",
         "Find_wd": False,
@@ -124,7 +122,7 @@ to_get_startswith = {
 }
 
 
-def get_episodes(category3, category3_nolower):
+def get_episodes(category3: str, category3_nolower: str) -> Tuple[str, str]:
     """
     examples:
     Category:2016 American television episodes
@@ -134,15 +132,12 @@ def get_episodes(category3, category3_nolower):
 
     list_of_cat = ""
 
-    seasons = {}
+    seasons: Dict[str, str] = {}
 
-    # إنشاء القاموس ديناميكيًا
     for i in range(1, 11):
         label = f"حلقات {{}} الموسم {i}"
-
         key1 = f" (season {i}) episodes"
         key2 = f" season {i} episodes"
-
         seasons[key1] = label
         seasons[key2] = label
 
@@ -159,7 +154,7 @@ def get_episodes(category3, category3_nolower):
     return list_of_cat, category3
 
 
-def get_from_starts_dict(category3):
+def get_from_starts_dict(category3: str) -> Tuple[str, str, bool]:
     list_of_cat = ""
     Find_wd = False
 
@@ -176,7 +171,7 @@ def get_from_starts_dict(category3):
     return category3, list_of_cat, Find_wd
 
 
-def get_from_endswith_dict(category3):
+def get_from_endswith_dict(category3: str) -> Tuple[str, str, bool]:
     list_of_cat = ""
     Find_wd = False
 
@@ -193,7 +188,7 @@ def get_from_endswith_dict(category3):
     return category3, list_of_cat, Find_wd
 
 
-def get_templates_fo(category3):
+def get_templates_fo(category3: str) -> Tuple[str, str]:
     """
     examples:
     Category:2016 American television episodes
@@ -203,7 +198,7 @@ def get_templates_fo(category3):
 
     list_of_cat = ""
 
-    dict_temps = {
+    dict_temps: Dict[str, str] = {
         "sidebar templates": "قوالب اشرطة جانبية {}",
         "politics and government templates": "قوالب سياسة وحكومة {}",
         "infobox templates": "قوالب معلومات {}",
@@ -223,39 +218,33 @@ def get_templates_fo(category3):
     return list_of_cat, category3
 
 
-def get_list_of_and_cat3_with_lab2(category3_o, category3_nolower):
+def get_list_of_and_cat3_with_lab2(category3_o: str, category3_nolower: str) -> str:
     category_lab = ""
-    list_of_cat = ""
     category3 = category3_o
 
     if category3.endswith(" squad templates"):
-        list_of_cat = "قوالب تشكيلات {}"
         category3 = category3.replace(" squad templates", "", 1)
         cate_labs = get_squad_title(category3)
         if cate_labs:
             category_lab = f"قوالب {cate_labs}"
 
     elif category3.endswith(" squad navigational boxes"):
-        list_of_cat = "صناديق تصفح تشكيلات {}"
         category3 = category3.replace(" squad navigational boxes", "", 1)
         cate_labs = get_squad_title(category3)
         if cate_labs:
             category_lab = f"صناديق تصفح {cate_labs}"
 
     if category_lab:
-        # print_put(f'<<lightblue>>get_list_of_and_cat3_with_lab(): {list_of_cat=}, {category3=}, {category_lab=}')
         print(f"<<lightblue>>(): {category3_o=}, {category_lab=}")
 
     return category_lab
 
 
-def get_list_of_and_cat3(category3, category3_nolower):
+def get_list_of_and_cat3(category3: str, category3_nolower: str) -> Tuple[str, bool, bool, bool, str]:
     foot_ballers = False
     Find_wd = False
     Find_ko = False
     list_of_cat = ""
-
-    # print(f"get_list_of_and_cat3: {category3=}\n" * 10)
 
     category3, list_of_cat, Find_wd = get_from_starts_dict(category3)
 
@@ -307,17 +296,11 @@ def get_list_of_and_cat3(category3, category3_nolower):
 
             if category3.endswith("c. playerss"):
                 category3 = category3_nolower.replace(" playerss", "", 1)
-
             elif category3.endswith("c. players"):
-                list_of_cat = "لاعبو {}"
                 category3 = category3_nolower.replace(" players", "", 1)
-
             elif category3.endswith(" playerss"):
-                list_of_cat = "لاعبو {}"
                 category3 = category3_nolower.replace(" playerss", "", 1)
-
             elif category3.endswith(" players"):
-                list_of_cat = "لاعبو {}"
                 category3 = category3_nolower.replace(" players", "", 1)
 
     if not list_of_cat:

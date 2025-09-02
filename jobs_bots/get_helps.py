@@ -4,13 +4,13 @@
 from ..jobs_bots.get_helps import get_con_3
 
 """
-
+from typing import Dict, Tuple, List, Any
 from ..helps.print_bot import output_test4
 
-get_con_cash = {}
+get_con_cash: Dict[Tuple[str, str], Tuple[str, str]] = {}
 
 
-def get_con_3(cate, keys, Type):
+def get_con_3(cate: str, keys: List[str], Type: str) -> Tuple[str, str]:
     """Retrieve country information based on category and keys.
 
     This function checks if a given category and type tuple exists in a
@@ -31,16 +31,16 @@ def get_con_3(cate, keys, Type):
     """
 
     # ---
-    T_uple = cate, Type
+    T_uple = (cate, Type)
     # ---
     if T_uple in get_con_cash:
         return get_con_cash[T_uple]
     # ---
-    fo_3 = ""
-    contry_start = ""
+    fo_3: str = ""
+    contry_start: str = ""
     # ---
     for key in keys:
-        tables = {}
+        tables: Dict[int, str] = {}
         if not fo_3:
             # ---
             tables[2] = f"{key.lower()} "
@@ -50,21 +50,19 @@ def get_con_3(cate, keys, Type):
                 tables[1] = f"{key.lower().strip()} people "
             # ---
             if key.startswith("the "):
-                tables[3] = key[len("the "):]  #
-                # output_test4('<<lightblue>>>>>> get_con_3 startswith "the ", key3:"%s" changed to %s' % ( key , tables[3]) )
-            # ---
-            # sorted_list = [ x for x in tables ]
-            # sorted_list.sort()
+                tables[3] = key[len("the ") :]  #
             # ---
             for key_d in [1, 2, 3, 4]:
                 if fo_3 == "" and tables.get(key_d):
                     if cate.lower().startswith(tables[key_d].lower()):
                         contry_start = key
-                        fo_3 = cate[len(tables[key_d]):].strip()
-                        output_test4(f'<<lightyellow>>>>>> get_con_3 start_th key_:{key_d} ("{tables[key_d]}"), fo_3:"{fo_3}",contry_start:"{contry_start}"')
+                        fo_3 = cate[len(tables[key_d]) :].strip()
+                        output_test4(
+                            f'<<lightyellow>>>>>> get_con_3 start_th key_:{key_d} ("{tables[key_d]}"), fo_3:"{fo_3}",contry_start:"{contry_start}"'
+                        )
                         break
     # ---
-    get_con_cash[T_uple] = fo_3, contry_start
+    get_con_cash[T_uple] = (fo_3, contry_start)
     # ---
     if fo_3 and contry_start:
         output_test4(f'<<lightpurple>>>>>> test_4.py contry_start:"{contry_start}",get_con_3 fo_3:"{fo_3}",Type:{Type}')

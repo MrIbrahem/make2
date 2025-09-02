@@ -12,7 +12,7 @@ lab = contry_bot.Get_contry()
 """
 import sys
 import re
-
+from typing import Dict
 from . import ye_ts_bot
 
 from ..date_bots import with_years_bot
@@ -21,8 +21,7 @@ from ..sports_bots import team_work
 
 from ..media_bots.films_bot import test_films
 
-from . import contry2_bot  # contry2_bot.Get_contry2()
-
+from . import contry2_bot
 from . import contry2_lab
 from ..ma_lists_bots import Sports_Keys_For_Label
 from ..ma_lists_bots import Nat_mens
@@ -37,30 +36,11 @@ from ..ma_lists_bots import pop_of_without_in
 from ..ma_lists_bots import Jobs_key
 from ..matables_bots.bot_2018 import pop_All_2018
 
-Get_contry_done = {}
+Get_contry_done: Dict[str, str] = {}
 
 
-def Get_contry(contry, do_Get_contry2=True):
-    """Retrieve the label for a given country name.
-
-    This function takes a country name as input and attempts to retrieve its
-    corresponding label from various sources. It first checks if the country
-    has already been processed and stored in a cache. If not, it attempts to
-    derive the label through several methods, including checking against
-    predefined keys, utilizing helper functions, and applying specific
-    prefixes. The function also handles cases where the country name may
-    contain additional descriptors or is formatted in a certain way.
-
-    Args:
-        contry (str): The name of the country to retrieve the label for.
-        do_Get_contry2 (bool): A flag indicating whether to attempt a secondary retrieval method
-            if the initial attempts fail. Defaults to True.
-
-    Returns:
-        str: The label corresponding to the input country name, or an empty string if
-            no label
-            could be found.
-    """
+def Get_contry(contry: str, do_Get_contry2: bool = True) -> str:
+    """Retrieve the label for a given country name."""
 
     contry_no_lower = contry
     contry = contry.lower()
@@ -82,11 +62,7 @@ def Get_contry(contry, do_Get_contry2=True):
         cnt_la = team_work.Get_team_work_Club(contry_no_lower)
 
     if cnt_la == "" and do_Get_contry2:
-        # cnt_la = contry2_lab.get_lab_for_contry2(contry)
         cnt_la = contry2_bot.Get_contry2(contry)
-    # جديدة!
-    # if cnt_la == "":
-    #     cnt_la = ye_ts_bot.yementest_with_Titose_Nmaes(contry)
 
     if not cnt_la:
         Preffix = {
@@ -94,14 +70,13 @@ def Get_contry(contry, do_Get_contry2=True):
             "men's ": "رجالية",
             "fasa ": "فاسااا",
             "non-combat ": "غير قتالية",
-            # "expatriate " : "مغتربون",
         }
 
         for prif, prif_lab in Preffix.items():
             if not contry.startswith(prif):
                 continue
             print(f">>> contry.startswith({prif})")
-            con_3 = contry[len(prif):]
+            con_3 = contry[len(prif) :]
             Add_to_main2_tab(prif, prif_lab)
             con_3_lab = contry2_bot.Get_contry2(con_3)
 
@@ -109,7 +84,6 @@ def Get_contry(contry, do_Get_contry2=True):
                 con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
 
             if con_3_lab == "":
-                # print("yementest_with_Titose_Nmaes 6")
                 con_3_lab = ye_ts_bot.translate_general_category(con_3)
 
             if con_3_lab:
@@ -135,28 +109,26 @@ def Get_contry(contry, do_Get_contry2=True):
         ]
 
         for ttt in ti_toseslist:
-            if contry.find(ttt) != -1:
+            if ttt in contry:
                 OKay = False
                 break
 
     if cnt_la == "" and OKay:
         Preffix2 = {
             "defunct national ": "{} وطنية سابقة",
-            # "defunct " : "{} سابقة",
         }
 
         for prif, prif_lab in Preffix2.items():
             if not contry.startswith(prif):
                 continue
             print(f">>> contry.startswith({prif})")
-            con_3 = contry[len(prif):]
+            con_3 = contry[len(prif) :]
             con_3_lab = contry2_bot.Get_contry2(con_3)
 
             if con_3_lab == "":
                 con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
 
             if con_3_lab == "":
-                # print("yementest_with_Titose_Nmaes 7")
                 con_3_lab = ye_ts_bot.translate_general_category(con_3)
 
             if con_3_lab:
@@ -168,7 +140,7 @@ def Get_contry(contry, do_Get_contry2=True):
                 break
 
     if cnt_la:
-        if cnt_la.find("سنوات في القرن") != -1:
+        if "سنوات في القرن" in cnt_la:
             cnt_la = re.sub(r"سنوات في القرن", "سنوات القرن", cnt_la)
 
     if not cnt_la:
@@ -195,28 +167,8 @@ def Get_contry(contry, do_Get_contry2=True):
     return cnt_la
 
 
-def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
-    """Retrieve the corresponding label for a given country or term.
-
-    This function attempts to find a label associated with the input
-    `c_t_lower`, which may represent a country or other geographical term.
-    It utilizes various lookup mechanisms, including predefined dictionaries
-    and regular expressions, to derive the appropriate label. The function
-    also considers the context provided by the `tito` parameter and the
-    `Type` argument to refine its search. If no label is found, it may
-    recursively call itself to handle specific cases.
-
-    Args:
-        c_t_lower (str): The input string representing a country or term.
-        tito (str): Contextual information that may influence the label retrieval.
-        Type (str?): Specifies the type of label to retrieve. Defaults to an empty string.
-        do_Get_contry2 (bool?): A flag indicating whether to perform additional country lookups.
-            Defaults to True.
-
-    Returns:
-        str: The label corresponding to the input term, or an empty string if no
-            label is found.
-    """
+def Get_c_t_lab(c_t_lower: str, tito: str, Type: str = "", do_Get_contry2: bool = True) -> str:
+    """Retrieve the corresponding label for a given country or term."""
 
     print_put(f'Get_c_t_lab Type:"{Type}", tito:"{tito}", c_ct_lower:"{c_t_lower}" ')
     if "makeerr" in sys.argv:
@@ -233,7 +185,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
     if c_t_lab == "" and Type != "Type_lab":
         if c_t_lower.startswith("the "):
             print_put(f'>>>> c_t_lower:"{c_t_lower}" startswith("the ")')
-            LLL = c_t_lower[len("the "):]
+            LLL = c_t_lower[len("the ") :]
 
             c_t_lab = pop_All_2018.get(LLL, "")
 
@@ -259,7 +211,7 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
             if not c_t_lower.endswith(tat):
                 continue
 
-            tti = c_t_lower[:-len(tat)]
+            tti = c_t_lower[: -len(tat)]
 
             tto = Jobs_key.get(tti, "")
 
@@ -296,6 +248,6 @@ def Get_c_t_lab(c_t_lower, tito, Type="", do_Get_contry2=True):
         print_put(f'Get_c_t_lab c_t_lab:"{c_t_lab}" ')
 
     elif tito.strip() == "for" and c_t_lower.startswith("for "):
-        return Get_c_t_lab(c_t_lower[len("for "):], "", Type=Type)
+        return Get_c_t_lab(c_t_lower[len("for ") :], "", Type=Type)
 
     return c_t_lab

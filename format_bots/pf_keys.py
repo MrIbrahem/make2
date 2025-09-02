@@ -2,8 +2,9 @@
 """
 from .pf_keys import Change_key, Change_key2
 """
+from typing import Dict
 
-Change_key = {
+Change_key: Dict[str, str] = {
     # "people of the ottoman empire" :"people-of-the-ottoman-empire",
     # "sentenced to death" :"sentenced-to-death",
     "africa cup of nations": "africa cup-of-nations",
@@ -141,7 +142,7 @@ Change_key = {
 }
 # ---
 
-Change_key2 = {
+Change_key2: Dict[str, str] = {
     " for the deafblind$": " for-the-deafblind",
     "charter airlines": "charter-airlines",
     " for the blind$": " for-the-blind",

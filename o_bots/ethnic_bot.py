@@ -10,17 +10,17 @@ def Ethnic(cate, Start, con_3):
 # ---
 
 """
-
+from typing import Dict
 from ..ma_lists_bots import Nat_women, Nat_men, Nat_mens
 from ..ma_lists_bots import en_is_nat_ar_is_women_2
 
 from ..helps.print_bot import output_test4
 
-Ethnic_culture_cash = {}
-Ethnic_cash = {}
+Ethnic_culture_cash: Dict[str, str] = {}
+Ethnic_cash: Dict[str, str] = {}
 
 
-def Ethnic_culture(cate, Start, con_3):
+def Ethnic_culture(cate: str, Start: str, con_3: str) -> str:
     # ---
     cash_key = f"{cate}, {Start}, {con_3}".lower().strip()
     # ---
@@ -40,10 +40,8 @@ def Ethnic_culture(cate, Start, con_3):
         "culture": "ثقافة {}",
     }
     # ---
-    # if Nat_women.get("jnhn",""):
     if not cas and not cas_lab:
         contry_L = Nat_women.get(contry, "")
-        # for x in culture_table:
         for x, x_lab in en_is_nat_ar_is_women_2.items():
             if not cas_lab:
                 xx = f" {x}"
@@ -88,7 +86,7 @@ def Ethnic_culture(cate, Start, con_3):
     return contry_lab
 
 
-def Ethnic(cate, Start, con_3):
+def Ethnic(cate: str, Start: str, con_3: str) -> str:
     # ---
     cash_key = f"{cate}, {Start}, {con_3}".lower().strip()
     # ---
@@ -102,14 +100,10 @@ def Ethnic(cate, Start, con_3):
         con_nat = con_3[: -len(" people")]
         if Nat_mens.get(con_nat):
             con_3 = con_3[: -len(" people")]
-        # ---
-    # ---
-    # output_test4('<<lightblue>> Ethnic: cate:"%s" , Start:"%s" , con_3:"%s" ' % (cate,Start,con_3))
     # ---
     con_3_lab = Nat_mens.get(con_3, "")
     if con_3_lab:
         if Nat_mens.get(contry, "") != "":
-            # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
             contry_lab = f"{con_3_lab} {Nat_mens.get(contry, '')}"
             output_test4(f'<<lightblue>> test Ethnic: new contry_lab  "{contry_lab}" ')
     # ---

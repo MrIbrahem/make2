@@ -1,21 +1,17 @@
-"""
-from  ..date_bots.year_lab import year_lab #make_year_lab#make_month_lab
-"""
-
 import re
 from ..matables_bots.bot import MONTH_table
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 
 
-def print_put(s):
+def print_put(s: str) -> None:
     # ---
     # printe.output(s)
     # ---
     return
 
 
-def make_year_lab(year):  # 21st century
+def make_year_lab(year: str) -> str:  # 21st century
     # ---
     tata = (
         r"(\d|\d+)(th century BCE|th millennium BCE|th century BC|th millennium BC|th century|th millennium"
@@ -29,7 +25,7 @@ def make_year_lab(year):  # 21st century
     su = ""
     _ye_ = re.sub(tata.lower(), r"\g<1>", year)
 
-    if year.find(" bc") != -1 or year.find(" bc ") != -1 or year.find(" bce") != -1 or year.find(" bce ") != -1:
+    if " bc" in year or " bce" in year:
         su = " ق م "
 
     year2 = year.split(" bce")[0].split(" bc")[0]
@@ -47,10 +43,10 @@ def make_year_lab(year):  # 21st century
     elif test_2 == "s":
         y_l = f"عقد {_ye_}{su}"
 
-    elif year.find("century") != -1:
+    elif "century" in year:
         y_l = f"القرن {_ye_}{su}"
 
-    elif year.find("millennium") != -1:
+    elif "millennium" in year:
         y_l = f"الألفية {_ye_}{su}"
 
     tst3 = re.sub(r"\d+", "", year.strip())
@@ -67,12 +63,12 @@ def make_year_lab(year):  # 21st century
     return y_l
 
 
-def make_month_lab(year):  # 21st century
+def make_month_lab(year: str) -> str:  # 21st century
     y_l = ""
 
     tata = r"(January |February |March |April |May |June |July |August |September |October |November |December |)(\d+)".lower()
 
-    if test := re.match(r"^\d+$", year.strip()):
+    if re.match(r"^\d+$", year.strip()):
         return year.strip()
 
     _ye_ = re.sub(tata.lower(), r"\g<1>", year)

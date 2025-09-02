@@ -4,7 +4,7 @@
 from ..jobs_bots.jobs_mainbot import Jobs#, Jobs2
 
 """
-
+from typing import Dict, Optional, Any
 from ..ma_lists_bots import Nat_mens, Nat_Womens
 
 from ..ma_lists_bots import (
@@ -16,13 +16,13 @@ from ..ma_lists_bots import (
 from ..helps.print_bot import output_test4
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
 
-Jobs_cash = {}
+Jobs_cash: Dict[str, str] = {}
 
 
-def Jobs2(cate, Start, con_3):
+def Jobs2(cate: str, Start: str, con_3: str) -> str:
     # ---
-    contry = Start
-    contry_lab = ""
+    contry: str = Start
+    contry_lab: str = ""
     # ---
     con_3_lab = Jobs_key_mens.get(con_3, "")
     if con_3_lab:
@@ -34,7 +34,7 @@ def Jobs2(cate, Start, con_3):
     return contry_lab
 
 
-def Jobs(cate, Start, con_3, Type="", tab=None):
+def Jobs(cate: str, Start: str, con_3: str, Type: str = "", tab: Optional[Dict[str, str]] = None) -> str:
     """Retrieve job labels based on category and country.
 
     This function generates job labels for both men and women based on the
@@ -73,7 +73,7 @@ def Jobs(cate, Start, con_3, Type="", tab=None):
     # ---
     con_4 = con_3
     if con_3.startswith("people "):
-        con_4 = con_3[len("people "):]
+        con_4 = con_3[len("people ") :]
     # ---
     pkjn = [" مغتربون", " مغتربات"]
     # ---
@@ -89,7 +89,6 @@ def Jobs(cate, Start, con_3, Type="", tab=None):
             con_3_lab = priffix_Mens_work(con_3)
         # ---
         if con_3_lab:
-            # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
             # ---
             contry_lab = f"{con_3_lab} {mens_nat_lab}"
             if con_3_lab.startswith("حسب"):
@@ -99,12 +98,8 @@ def Jobs(cate, Start, con_3, Type="", tab=None):
             if con_3.strip() in Nat_Before_Occ or con_4.strip() in Nat_Before_Occ:
                 contry_lab = f"{mens_nat_lab} {con_3_lab}"
             # ---
-            # if con_3_lab.find("{nato}")  != -1 :
-            # contry_lab = con_3_lab.format(nato = Nat_Womens.get(contry,"") )
-            # output_test4('<<lightblue>> con_3_lab: has {nato} "%s"' %  con_3_lab)
-            # ---
-            TAJO = Men_Womens_with_nato.get(con_3, False)
-            if TAJO and TAJO["mens"].find("{nato}") != -1:
+            TAJO = Men_Womens_with_nato.get(con_3, {})
+            if TAJO and TAJO.get("mens", "").find("{nato}") != -1:
                 contry_lab = TAJO["mens"].format(nato=mens_nat_lab)
                 output_test4('<<lightblue>> TAJO["mens"]: has {nato} "%s"' % TAJO["mens"])
             # ---
@@ -135,7 +130,7 @@ def Jobs(cate, Start, con_3, Type="", tab=None):
                     # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
                     contry_lab = f"{f_lab} {women_nat_lab}"
                     # ---
-                    if f_lab.find("{nato}") != -1:
+                    if "{nato}" in f_lab:
                         contry_lab = f_lab.format(nato=women_nat_lab)
                         output_test4('<<lightblue>> TAJO["womens"]: has {nato} "%s"' % f_lab)
                 # ---

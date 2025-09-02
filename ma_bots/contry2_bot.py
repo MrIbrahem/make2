@@ -13,6 +13,7 @@ lab = contry2_bot.Get_contry2()
 """
 
 import sys
+from typing import Dict, List
 from . import contry2_lab
 
 from . import ye_ts_bot
@@ -24,32 +25,14 @@ from ..helps.print_bot import print_def_head, print_put, output_test
 
 from ..fromnet.wd_bot import find_wikidata
 
-Get_contry2_done = {}
-use_main_s_done = []
+Get_contry2_done: Dict[str, str] = {}
+use_main_s_done: List[str] = []
 
-use_main_s = {1: True if "usemains" in sys.argv or "use_main_s" in sys.argv else False}
+use_main_s: Dict[int, bool] = {1: "usemains" in sys.argv or "use_main_s" in sys.argv}
 
 
-def Get_contry2(contry, orginal="", With_Years=True):
-    """Retrieve information related to a specified country.
-
-    This function checks if the country has already been processed. If it
-    has, it retrieves the information from a cache. If not, it attempts to
-    gather information based on various criteria, including checking for
-    specific phrases in the country name and querying external data sources.
-    The function also handles cases where the country name may be formatted
-    differently or requires additional processing.
-
-    Args:
-        contry (str): The name of the country to retrieve information for.
-        orginal (str?): An optional original name for the country. Defaults to an empty string.
-        With_Years (bool?): A flag indicating whether to include year-related information. Defaults
-            to True.
-
-    Returns:
-        str: The information related to the specified country, or an empty string if
-            no information is found.
-    """
+def Get_contry2(contry: str, orginal: str = "", With_Years: bool = True) -> str:
+    """Retrieve information related to a specified country."""
 
     if contry in Get_contry2_done:
         output_test(f'>>>> contry: "{contry}" in Get_contry2_done, lab:"{Get_contry2_done[contry]}"')
@@ -64,7 +47,6 @@ def Get_contry2(contry, orginal="", With_Years=True):
         cnt_la = contry2_lab.get_lab_for_contry2(contry, with_test_ye=False)
 
     if not cnt_la:
-        # print("yementest_with_Titose_Nmaes 8")
         cnt_la = ye_ts_bot.translate_general_category(contry2, do_Get_contry2=False)
     ti_toseslist = [
         " based in ",
@@ -79,7 +61,7 @@ def Get_contry2(contry, orginal="", With_Years=True):
         " on ",
     ]
     for tat_o in ti_toseslist:
-        if contry2.find(tat_o) == -1:
+        if tat_o not in contry2:
             continue
 
         cnt_la = contry_2_tit(tat_o, contry, With_Years=With_Years)

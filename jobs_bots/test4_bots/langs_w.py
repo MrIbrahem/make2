@@ -4,8 +4,7 @@
 from .langs_w import Lang_work
 
 """
-
-# ---
+from typing import Dict
 from ...ma_lists_bots import (
     All_Nat,
     Films_keys_both_new,
@@ -19,10 +18,10 @@ from ...ma_lists_bots import (
 )
 from ...helps.print_bot import output_test4, print_put
 
-Lang_work_cash = {}
+Lang_work_cash: Dict[str, str] = {}
 
 
-def Lang_work(con_3):
+def Lang_work(con_3: str) -> str:
     """Process and retrieve language-related information based on input.
 
     This function takes a string input representing a language or a related
@@ -75,8 +74,6 @@ def Lang_work(con_3):
         # ---
         if con_3.startswith(lang2):
             output_test4(f"<<lightblue>> con_3.startswith(lang:{lang2})")
-            output_test4(f"<<lightblue>> con_3.startswith(lang:{lang2})")
-            output_test4(f"<<lightblue>> con_3.startswith(lang:{lang2})")
             # ---
             lang_lab = lab_from_lang_keys(con_3, lang, l_lab, lang2)
     # ---
@@ -85,7 +82,7 @@ def Lang_work(con_3):
     return lang_lab
 
 
-def lab_from_lang_keys(con_3, lang, l_lab, lang2):
+def lab_from_lang_keys(con_3: str, lang: str, l_lab: str, lang2: str) -> str:
     # ---
     if All_Nat.get(lang, False):
         nat_labe = All_Nat[lang]["mens"]
@@ -100,7 +97,7 @@ def lab_from_lang_keys(con_3, lang, l_lab, lang2):
     it_lab = ""
     # ---
     if con_78_lab:
-        it_lab = f"{con_78_lab} ب{language_lab}"  # language_lab.format(con_78_lab)
+        it_lab = f"{con_78_lab} ب{language_lab}"
         output_test4(f'<<lightblue>> Jobs_key_mens({con_8}): con_3.startswith_priff2("{lang2}"), it_lab:"{it_lab}"')
     # ---
     if not it_lab:
@@ -122,15 +119,12 @@ def lab_from_lang_keys(con_3, lang, l_lab, lang2):
             con_9 = con_8[: -len("films")].strip().lower()
             con_9_lab = Films_keys_both_new.get(con_9, {}).get("female", "")
             # ---
-            # print(f"({con_8}):({con_9}):({con_9_lab})\n" * 10)
-            # ---
             if con_9_lab:
                 it_lab = f"أفلام {con_9_lab} ب{language_lab}"
                 output_test4(f'<<lightblue>> lab_from_lang_keys Films_key_333. it_lab:"{it_lab}"')
     # ---
     dict_tabs = {
         "film_Keys_For_female": film_Keys_For_female,
-        # "Films_keys_both_new": Films_keys_both_new,
         "Films_key_333": Films_key_333,
         "Films_key_CAO": Films_key_CAO,
     }
