@@ -1,5 +1,6 @@
 import re
 import functools
+from typing import Dict, Tuple
 from ..ma_lists_bots import (
     All_contry_with_nat,
     All_contry_with_nat_keys_is_en,
@@ -11,70 +12,71 @@ from ..ma_lists_bots import (
 )
 
 
-def print_put(s):
+def print_put(s: str) -> None:
     # printe.output(s)
     pass
 
 
 @functools.lru_cache(maxsize=None)
-def find_country_from_category(cate):
+def find_country_from_category(category: str) -> Tuple[str, str, str]:
     """
     Finds the country from the category string and returns the remaining part of the category,
     and the women and men labels for that country.
     """
-    for contry, contry_dict in All_contry_with_nat.items():
-        contry2 = contry_dict.get("en", "")
-        women_labs = contry_dict.get("women", "")
-        men_labs = contry_dict.get("men", "")
+    for country, country_data in All_contry_with_nat.items():
+        en_country_name = country_data.get("en", "")
+        women_label = country_data.get("women", "")
+        men_label = country_data.get("men", "")
 
-        if not contry2 or (not women_labs and not men_labs):
+        if not en_country_name or (not women_label and not men_label):
             continue
 
-        contry2_lower = f"{contry2.lower()} "
+        en_country_name_lower = f"{en_country_name.lower()} "
         # "the " is a common prefix that should be stripped
-        contry3_lower = contry2_lower[4:].strip() if contry2_lower.startswith("the ") else contry2_lower
-        contry4_lower = f"{contry.lower()} "
+        en_country_name_lower_no_the = (
+            en_country_name_lower[4:].strip() if en_country_name_lower.startswith("the ") else en_country_name_lower
+        )
+        country_lower = f"{country.lower()} "
 
-        if cate.startswith(contry2_lower):
-            return cate[len(contry2_lower) :].strip(), women_labs, men_labs
-        if cate.startswith(contry3_lower):
-            return cate[len(contry3_lower) :].strip(), women_labs, men_labs
-        if cate.startswith(contry4_lower):
-            return cate[len(contry4_lower) :].strip(), women_labs, men_labs
+        if category.startswith(en_country_name_lower):
+            return category[len(en_country_name_lower) :].strip(), women_label, men_label
+        if category.startswith(en_country_name_lower_no_the):
+            return category[len(en_country_name_lower_no_the) :].strip(), women_label, men_label
+        if category.startswith(country_lower):
+            return category[len(country_lower) :].strip(), women_label, men_label
 
     return "", "", ""
 
 
 @functools.lru_cache(maxsize=None)
-def handle_military_format_women_without_al_from_end(cate):
+def handle_military_format_women_without_al_from_end(category: str) -> str:
     """
     Handles translation for categories that start with a military format for women,
     without 'al' at the end.
     e.g. Category:Unmanned_aerial_vehicles_of_Jordan -> طائرات بدون طيار أردنية
     """
-    for nana, nanalab in military_format_women_without_al_from_end.items():
-        nana2 = f"{nana} "
-        if cate.startswith(nana2):
-            gagaga = cate[len(nana2) :].strip()
-            con_labe = All_contry_with_nat_keys_is_en.get(gagaga, {}).get("women", "")
-            if con_labe:
-                return nanalab.format(nat=con_labe)
+    for format_str, translation_template in military_format_women_without_al_from_end.items():
+        if category.startswith(f"{format_str} "):
+            country_name = category[len(format_str) + 1 :].strip()
+            country_label = All_contry_with_nat_keys_is_en.get(country_name, {}).get("women", "")
+            if country_label:
+                return translation_template.format(nat=country_label)
     return ""
 
 
 @functools.lru_cache(maxsize=None)
-def handle_military_format_women_without_al(con_77, women_lab):
+def handle_military_format_women_without_al(category_part: str, women_label: str) -> str:
     """
     Handles translation for categories that match a military format for women, without 'al'.
     """
-    con_77_lab = military_format_women_without_al.get(con_77, "")
-    if con_77_lab:
-        return con_77_lab.format(nat=women_lab)
+    translation_template = military_format_women_without_al.get(category_part, "")
+    if translation_template:
+        return translation_template.format(nat=women_label)
     return ""
 
 
 @functools.lru_cache(maxsize=None)
-def handle_endswith_table(con_77, women_lab):
+def handle_endswith_table(category_part: str, women_label: str) -> str:
     """
     Handles translation for categories that end with specific keywords like 'civilians', 'generals', etc.
     """
@@ -83,73 +85,67 @@ def handle_endswith_table(con_77, women_lab):
         " generals": "جنرالات {}",
         " accidents and incidents": "حوادث {}",
     }
-    for xi, xi_lab in endswith_table.items():
-        if con_77.endswith(xi):
-            con_88 = con_77.replace(xi, "", 1)
-            con_88_lab = military_format_women.get(con_88, "")
-            if con_88_lab:
-                women_lab_no_al = re.sub(r" ", " ال", women_lab)
-                women_lab = f"ال{women_lab_no_al}"
-                cnt_la = con_88_lab.format(nat=women_lab)
-                return xi_lab.format(cnt_la)
+    for suffix, translation_template in endswith_table.items():
+        if category_part.endswith(suffix):
+            sub_category = category_part.replace(suffix, "", 1)
+            sub_category_translation = military_format_women.get(sub_category, "")
+            if sub_category_translation:
+                women_label_with_al = f"ال{re.sub(r' ', ' ال', women_label)}"
+                translated_subcategory = sub_category_translation.format(nat=women_label_with_al)
+                return translation_template.format(translated_subcategory)
+    return ""
+
+
+def _format_with_men_label(category_part: str, men_label: str, format_dict: Dict[str, str]) -> str:
+    """
+    Helper function to format a translation with a men's label.
+    """
+    translation_template = format_dict.get(category_part, "")
+    if translation_template and men_label:
+        men_label_with_al = f"ال{re.sub(r' ', ' ال', men_label)}"
+        return translation_template.format(nat=men_label_with_al)
     return ""
 
 
 @functools.lru_cache(maxsize=None)
-def handle_military_format_men(con_77, men_lab):
+def handle_military_format_men(category_part: str, men_label: str) -> str:
     """
     Handles translation for categories that match a military format for men.
     e.g. Category:French_labour_law
     """
-    con_77_lab = military_format_men.get(con_77, "")
-    if con_77_lab and men_lab:
-        men_lab_no_al = re.sub(r" ", " ال", men_lab)
-        men_lab = f"ال{men_lab_no_al}"
-        return con_77_lab.format(nat=men_lab)
-    return ""
+    return _format_with_men_label(category_part, men_label, military_format_men)
 
 
 @functools.lru_cache(maxsize=None)
-def handle_sport_formts_en_p17_ar_nat(con_77, men_lab):
+def handle_sport_formats(category_part: str, men_label: str) -> str:
     """
     Handles translation for categories that match a sport format.
     e.g. Category:China Basketball Federation
     """
-    con_77_lab = sport_formts_en_p17_ar_nat.get(con_77, "")
-    if con_77_lab and men_lab:
-        men_lab_no_al = re.sub(r" ", " ال", men_lab)
-        men_lab = f"ال{men_lab_no_al}"
-        return con_77_lab.format(nat=men_lab)
-    return ""
+    return _format_with_men_label(category_part, men_label, sport_formts_en_p17_ar_nat)
 
 
 @functools.lru_cache(maxsize=None)
-def test_Army(cate):
+def test_Army(category: str) -> str:
     """
     Translates a category related to military subjects.
     """
-    cate_lower = cate.lower()
-    cnt_la = ""
+    category_lower = category.lower()
+    translation = ""
 
-    con_77, women_lab, men_lab = find_country_from_category(cate_lower)
+    category_part, women_label, men_label = find_country_from_category(category_lower)
 
-    # if a country was not found, try to find a translation without a country
-    if not con_77:
-        cnt_la = handle_military_format_women_without_al_from_end(cate_lower)
-    # if a country was found, try to find a translation for the rest of the category
+    if not category_part:
+        translation = handle_military_format_women_without_al_from_end(category_lower)
     else:
         handlers = [
-            handle_military_format_women_without_al,
-            handle_endswith_table,
-            handle_military_format_men,
-            handle_sport_formts_en_p17_ar_nat,
+            (handle_military_format_women_without_al, women_label),
+            (handle_endswith_table, women_label),
+            (handle_military_format_men, men_label),
+            (handle_sport_formats, men_label),
         ]
-
-        for handler in handlers:
-            # pass the correct lab based on the handler
-            lab = men_lab if handler in [handle_military_format_men, handle_sport_formts_en_p17_ar_nat] else women_lab
-            cnt_la = handler(con_77, lab)
-            if cnt_la:
+        for handler, label in handlers:
+            translation = handler(category_part, label)
+            if translation:
                 break
-
-    return cnt_la
+    return translation

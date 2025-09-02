@@ -1,5 +1,6 @@
 import re
 import functools
+from typing import Callable
 from ..ma_lists_bots import By_table, By_orginal2, By_table_orginal
 from ..ma_lists_bots import New_P17_Finall
 from ..matables_bots.bot_2018 import pop_All_2018
@@ -7,13 +8,13 @@ from ..p17_bots.nats import find_nat_others
 from ..media_bots.films_bot import test_films
 
 
-def print_put(s):
+def print_put(s: str) -> None:
     # printe.output(s)
     pass
 
 
 @functools.lru_cache(maxsize=None)
-def get_label_for_by_part(by_part):
+def get_label_for_by_part(by_part: str) -> str:
     """
     Tries to find a label for a given 'by' part of a category.
     """
@@ -26,7 +27,7 @@ def get_label_for_by_part(by_part):
 
 
 @functools.lru_cache(maxsize=None)
-def get_label_for_main_part(main_part):
+def get_label_for_main_part(main_part: str) -> str:
     """
     Tries to find a label for the main part of a category.
     """
@@ -40,8 +41,21 @@ def get_label_for_main_part(main_part):
     return label
 
 
+def _handle_and_case(
+    part1_str: str, part2_str: str, template: str, label_getter: Callable[[str], str]
+) -> str:
+    """
+    Helper function to handle cases with 'and'.
+    """
+    part1_label = label_getter(part1_str)
+    part2_label = label_getter(part2_str)
+    if part1_label and part2_label:
+        return template.format(part1_label, part2_label)
+    return ""
+
+
 @functools.lru_cache(maxsize=None)
-def Make_By_lab(cate):
+def Make_By_lab(cate: str) -> str:
     """
     Translates categories that contain 'by' or 'and'.
     """
@@ -50,12 +64,7 @@ def Make_By_lab(cate):
     # Case 1: "by .* and .*"
     match = re.match(r"^by (.*?) and (.*?)$", cate_lower)
     if match:
-        by1 = match.group(1)
-        by2 = match.group(2)
-        by1_lab = By_orginal2.get(by1, "")
-        by2_lab = By_orginal2.get(by2, "")
-        if by1_lab and by2_lab:
-            return f"حسب {by1_lab} و{by2_lab}"
+        return _handle_and_case(match.group(1), match.group(2), "حسب {} و{}", By_orginal2.get)
 
     # Case 2: "by .*"
     if cate_lower.startswith("by "):
@@ -71,9 +80,7 @@ def Make_By_lab(cate):
         by_part = match.group(2)
 
         main_part_lab = get_label_for_main_part(main_part)
-        by_part_lab = By_table.get(by_part.lower(), "")
-        if not by_part_lab:
-            by_part_lab = By_table_orginal.get(by_part.lower(), "")
+        by_part_lab = By_table.get(by_part.lower(), "") or By_table_orginal.get(by_part.lower(), "")
 
         if main_part_lab and by_part_lab:
             return f"{main_part_lab} {by_part_lab}"
@@ -81,13 +88,6 @@ def Make_By_lab(cate):
     # Case 4: ".* and .*"
     match = re.match(r"(.*?) and (.*)", cate, flags=re.IGNORECASE)
     if match:
-        part1 = match.group(1)
-        part2 = match.group(2)
-
-        part1_lab = get_label_for_main_part(part1)
-        part2_lab = get_label_for_main_part(part2)
-
-        if part1_lab and part2_lab:
-            return f"{part1_lab} و{part2_lab}"
+        return _handle_and_case(match.group(1), match.group(2), "{} و{}", get_label_for_main_part)
 
     return ""

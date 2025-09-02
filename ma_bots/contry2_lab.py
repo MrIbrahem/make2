@@ -81,7 +81,7 @@ def get_lab_for_contry2(contry, with_test_ye=False, **kwargs):
 
     if not cnt_la and with_test_ye:
         # print("yementest_with_Titose_Nmaes 9")
-        cnt_la = ye_ts_bot.yementest_with_Titose_Nmaes(contry2, do_Get_contry2=False)
+        cnt_la = ye_ts_bot.translate_general_category(contry2, do_Get_contry2=False)
 
     if cnt_la:
         print_put(f'>> get_lab_for_contry2 "{contry2}": cnt_la: {cnt_la}')

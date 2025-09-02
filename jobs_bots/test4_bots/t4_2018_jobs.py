@@ -1,5 +1,6 @@
 import re
 import functools
+from typing import Tuple, Optional, Dict, Any
 from ...ma_lists_bots import (
     People_key, All_Nat, Nat_women, Nat_men, Jobs_key_mens, Jobs_key_womens
 )
@@ -16,7 +17,7 @@ from .langs_w import Lang_work
 
 
 @functools.lru_cache(maxsize=None)
-def handle_prefix(cate):
+def handle_prefix(cate: str) -> Tuple[str, str, str]:
     """
     Handles prefixes in the category string.
     """
@@ -34,7 +35,7 @@ def handle_prefix(cate):
 
 
 @functools.lru_cache(maxsize=None)
-def handle_direct_translation(cate):
+def handle_direct_translation(cate: str) -> Optional[str]:
     """
     Handles direct translations from various dictionaries.
     """
@@ -49,7 +50,7 @@ def handle_direct_translation(cate):
 
 
 @functools.lru_cache(maxsize=None)
-def handle_nationality_translation(cate, main_ss, main_lab):
+def handle_nationality_translation(cate: str, main_ss: str, main_lab: str) -> Tuple[str, str, str]:
     """
     Handles translations that involve nationalities.
     """
@@ -78,7 +79,7 @@ def handle_nationality_translation(cate, main_ss, main_lab):
 
 
 @functools.lru_cache(maxsize=None)
-def test4_2018_Jobs(cate, out=False, tab=None):
+def test4_2018_Jobs(cate: str, out: bool = False, tab: Optional[Dict[str, Any]] = None) -> str:
     """
     Retrieve job-related information based on the specified category.
     """
@@ -118,4 +119,4 @@ def test4_2018_Jobs(cate, out=False, tab=None):
         contry_lab = try_relegins_jobs(cate)
 
     output_test4(f'end test4_2018_Jobs "{original_cate}" , contry_lab:"{contry_lab}"')
-    return contry_lab
+    return contry_lab or ""

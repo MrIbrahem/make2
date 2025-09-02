@@ -1,5 +1,6 @@
 import re
 import functools
+from typing import Optional, Tuple, Dict, Any
 from .. import printe
 from ..ma_lists_bots import sport_formts_for_p17, nat_p17_oioi
 from ..ma_lists_bots import fanco_line, Sports_Keys_For_Team
@@ -9,13 +10,13 @@ from ..ma_lists_bots import All_Nat, Nat_women
 from ..jobs_bots.get_helps import get_con_3
 
 
-def print_put(s):
+def print_put(s: str) -> None:
     # printe.output(s)
     pass
 
 
 @functools.lru_cache(maxsize=None)
-def get_sport_template_label(sport_format_string):
+def get_sport_template_label(sport_format_string: str) -> str:
     """
     Generates a sport label from a template.
     This function uses a placeholder 'oioioi' to match templates and then replaces it
@@ -49,7 +50,7 @@ def get_sport_template_label(sport_format_string):
 
 
 @functools.lru_cache(maxsize=None)
-def handle_female_sport_translation(category_part, country_key):
+def handle_female_sport_translation(category_part: str, country_key: str) -> str:
     """
     Handles translation for female sport categories.
     """
@@ -60,24 +61,28 @@ def handle_female_sport_translation(category_part, country_key):
 
 
 @functools.lru_cache(maxsize=None)
-def handle_generic_sport_translation(category_part, country_key, original_category):
+def handle_generic_sport_translation(
+    category_part: str, country_key: str, original_category: str
+) -> Tuple[str, Optional[Dict[str, Any]]]:
     """
     Handles translation for generic sport categories.
+    Returns the translated label and the data to be added to the tables.
     """
     label_template = get_sport_template_label(category_part)
     country_label = All_Nat[country_key].get("ar", "")
 
     if label_template and country_label:
-        Add_to_main2_tab(category_part, label_template)
         final_label = label_template.format(nat=country_label)
-        Add_to_main2_tab(final_label, country_label)
-        New_players[original_category] = final_label
-        return final_label
-    return ""
+        new_data = {
+            "main2_tab": [(category_part, label_template), (final_label, country_label)],
+            "new_players": {original_category: final_label},
+        }
+        return final_label, new_data
+    return "", None
 
 
 @functools.lru_cache(maxsize=None)
-def find_nat_others(cate, fa=""):
+def find_nat_others(cate: str, fa: str = "") -> str:
     """
     Finds translations for sports-related categories that include a nationality.
     Caches the results.
@@ -94,9 +99,13 @@ def find_nat_others(cate, fa=""):
 
         # If that fails, try a generic sport translation
         if not translated_label:
-            translated_label = handle_generic_sport_translation(
+            translated_label, new_data = handle_generic_sport_translation(
                 category_part, country_key, cate
             )
+            if new_data:
+                for key, value in new_data["main2_tab"]:
+                    Add_to_main2_tab(key, value)
+                New_players.update(new_data["new_players"])
 
     return translated_label
 

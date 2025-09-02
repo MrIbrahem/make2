@@ -110,7 +110,7 @@ def Get_contry(contry, do_Get_contry2=True):
 
             if con_3_lab == "":
                 # print("yementest_with_Titose_Nmaes 6")
-                con_3_lab = ye_ts_bot.yementest_with_Titose_Nmaes(con_3)
+                con_3_lab = ye_ts_bot.translate_general_category(con_3)
 
             if con_3_lab:
                 Add_to_main2_tab(con_3, con_3_lab)
@@ -157,7 +157,7 @@ def Get_contry(contry, do_Get_contry2=True):
 
             if con_3_lab == "":
                 # print("yementest_with_Titose_Nmaes 7")
-                con_3_lab = ye_ts_bot.yementest_with_Titose_Nmaes(con_3)
+                con_3_lab = ye_ts_bot.translate_general_category(con_3)
 
             if con_3_lab:
                 Add_to_main2_tab(con_3, con_3_lab)

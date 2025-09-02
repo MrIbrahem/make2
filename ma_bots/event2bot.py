@@ -1,6 +1,7 @@
 import re
 import sys
 import functools
+from typing import Optional
 from .. import printe
 from ..fix import fixtitle
 from ..bots import tmp_bot
@@ -17,7 +18,7 @@ Find_stubs = {1: "-stubs" in sys.argv}
 
 
 @functools.lru_cache(maxsize=None)
-def university_handler(category):
+def university_handler(category: str) -> str:
     """
     Handles university-related categories.
     """
@@ -25,7 +26,7 @@ def university_handler(category):
 
 
 @functools.lru_cache(maxsize=None)
-def country_handler(category):
+def country_handler(category: str) -> Optional[str]:
     """
     Handles country-related categories.
     """
@@ -41,7 +42,7 @@ def country_handler(category):
 
 
 @functools.lru_cache(maxsize=None)
-def date_handler(category_r, category):
+def date_handler(category_r: str, category: str) -> str:
     """
     Handles date and time parsing.
     """
@@ -84,7 +85,7 @@ def date_handler(category_r, category):
 
 
 @functools.lru_cache(maxsize=None)
-def stub_handler(category_r):
+def stub_handler(category_r: str) -> Optional[str]:
     """
     Handles "stub" categories.
     """
@@ -101,7 +102,7 @@ def stub_handler(category_r):
 
 
 @functools.lru_cache(maxsize=None)
-def event2(category_r):
+def event2(category_r: str) -> str:
     """
     Translates an event-related category by trying a series of strategies.
     """
@@ -117,8 +118,9 @@ def event2(category_r):
 
     ar_label = ""
     for handler in handlers:
-        ar_label = handler(category_r)
-        if ar_label:
+        lab = handler(category_r)
+        if lab:
+            ar_label = lab
             break
 
     if ar_label and re.sub(en_literes, "", ar_label, flags=re.IGNORECASE) == ar_label:

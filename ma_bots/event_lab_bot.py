@@ -1,5 +1,6 @@
 import sys
 import re
+from typing import Optional, List, Tuple, Callable, Any
 from . import fax2
 from . import list_cat_format
 from .. import ma_lists_sport_lab as sport_lab
@@ -21,19 +22,19 @@ Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
 
 class TranslationPipeline:
-    def __init__(self, category_r):
-        self.category_r = category_r
-        self.category = ""
-        self.category3 = ""
-        self.orginal_category3 = ""
-        self.category3_nolower = ""
-        self.list_of_cat = ""
-        self.Find_wd = False
-        self.Find_ko = False
-        self.foot_ballers = False
-        self.category_lab = ""
+    def __init__(self, category_r: str):
+        self.category_r: str = category_r
+        self.category: str = ""
+        self.category3: str = ""
+        self.orginal_category3: str = ""
+        self.category3_nolower: str = ""
+        self.list_of_cat: str = ""
+        self.Find_wd: bool = False
+        self.Find_ko: bool = False
+        self.foot_ballers: bool = False
+        self.category_lab: str = ""
 
-    def preprocess(self):
+    def preprocess(self) -> None:
         self.category = self.category_r.lower().replace("_", " ")
         if not self.category.startswith("category:"):
             self.category = f"category:{self.category}"
@@ -49,7 +50,7 @@ class TranslationPipeline:
 
         self.orginal_category3 = self.category3
 
-    def run(self):
+    def run(self) -> str:
         self.preprocess()
 
         self.category_lab = fax2.get_list_of_and_cat3_with_lab2(self.category3, self.category3_nolower)
@@ -64,7 +65,7 @@ class TranslationPipeline:
             self.category3,
         ) = fax2.get_list_of_and_cat3(self.category3, self.category3_nolower)
 
-        handlers = [
+        handlers: List[Callable[[], Optional[str]]] = [
             lambda: Get_contry2(self.orginal_category3) if self.list_of_cat == "لاعبو {}" else None,
             lambda: year_lab.make_year_lab(self.category3),
             lambda: sport_lab.Get_New_team_xo(self.category3),
@@ -99,7 +100,7 @@ class TranslationPipeline:
 
         return self.postprocess()
 
-    def handle_pp_ends_with(self):
+    def handle_pp_ends_with(self) -> None:
         if self.list_of_cat or self.category_lab:
             return
 
@@ -114,13 +115,13 @@ class TranslationPipeline:
                 self.category3 = self.category3.replace(pri_ff.lower(), "", 1).strip()
                 return
 
-    def format_list_of_cat(self):
+    def format_list_of_cat(self) -> None:
         if self.list_of_cat and self.category_lab:
             self.category_lab, self.list_of_cat = list_cat_format.list_of_cat_func(
                 self.category_r, self.category_lab, self.list_of_cat, self.foot_ballers
             )
 
-    def handle_cricketers(self):
+    def handle_cricketers(self) -> None:
         category32 = ""
         list_of_cat2 = ""
         if self.category3.endswith(" cricketers"):
@@ -135,13 +136,13 @@ class TranslationPipeline:
             if category3_lab:
                 self.category_lab = list_of_cat2.format(category3_lab)
 
-    def postprocess(self):
+    def postprocess(self) -> str:
         if self.category_lab:
             fixed = fixtitle.fixlab(self.category_lab, en=self.category_r)
             return f"تصنيف:{fixed}"
         return ""
 
 
-def event_Lab(cate_r):
+def event_Lab(cate_r: str) -> str:
     pipeline = TranslationPipeline(cate_r)
     return pipeline.run()

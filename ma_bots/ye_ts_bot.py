@@ -1,6 +1,7 @@
 import re
 import sys
 import functools
+from typing import Optional
 from ..fix import fixtitle
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..helps.print_bot import print_def_head
@@ -13,7 +14,7 @@ Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
 
 @functools.lru_cache(maxsize=None)
-def direct_lookup_handler(category):
+def direct_lookup_handler(category: str) -> Optional[str]:
     """
     Handles direct lookups in various dictionaries.
     """
@@ -21,7 +22,7 @@ def direct_lookup_handler(category):
 
 
 @functools.lru_cache(maxsize=None)
-def year_lab_handler(category):
+def year_lab_handler(category: str) -> str:
     """
     Handles year-based translations.
     """
@@ -29,7 +30,7 @@ def year_lab_handler(category):
 
 
 @functools.lru_cache(maxsize=None)
-def titose_nmaes_handler(category, original_category, do_get_contry2):
+def titose_nmaes_handler(category: str, original_category: str, do_get_contry2: bool) -> Optional[str]:
     """
     Handles translations based on Tit_ose_Nmaes.
     """
@@ -42,7 +43,7 @@ def titose_nmaes_handler(category, original_category, do_get_contry2):
 
 
 @functools.lru_cache(maxsize=None)
-def translate_general_category(category_r, do_Get_contry2=True):
+def translate_general_category(category_r: str, do_Get_contry2: bool = True) -> str:
     """
     Translates a general category by trying a series of strategies.
     """
@@ -59,8 +60,9 @@ def translate_general_category(category_r, do_Get_contry2=True):
 
     arlabel = ""
     for handler in handlers:
-        arlabel = handler(category.lower())
-        if arlabel:
+        lab = handler(category.lower())
+        if lab:
+            arlabel = lab
             break
 
     if arlabel:
@@ -70,5 +72,3 @@ def translate_general_category(category_r, do_Get_contry2=True):
     return arlabel
 
 
-# Renaming for backward compatibility
-yementest_with_Titose_Nmaes = translate_general_category

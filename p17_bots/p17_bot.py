@@ -1,5 +1,6 @@
 import re
 import functools
+from typing import Optional, Tuple, List
 from ..jobs_bots.get_helps import get_con_3
 from ..matables_bots.bot import All_P17, Add_to_main2_tab
 from ..format_bots import Tit_ose_Nmaes, pop_format
@@ -14,12 +15,12 @@ from ..ma_lists_bots import (
 from .. import ma_lists_sport_lab as sport_lab
 
 
-def print_put(s):
+def print_put(s: str) -> None:
     # printe.output(s)
     pass
 
 
-def add_all(lab):
+def add_all(lab: str) -> str:
     """
     Adds 'ال' to the beginning of a string, and to the beginning of each word in the string.
     """
@@ -29,7 +30,7 @@ def add_all(lab):
 
 
 @functools.lru_cache(maxsize=None)
-def handle_men_nationality(cate):
+def handle_men_nationality(cate: str) -> str:
     """
     Handles translation for categories with men's nationalities.
     """
@@ -44,7 +45,7 @@ def handle_men_nationality(cate):
 
 
 @functools.lru_cache(maxsize=None)
-def handle_women_nationality(cate):
+def handle_women_nationality(cate: str) -> str:
     """
     Handles translation for categories with women's nationalities.
     """
@@ -60,7 +61,7 @@ def handle_women_nationality(cate):
 
 
 @functools.lru_cache(maxsize=None)
-def Get_P17_2(cate):
+def Get_P17_2(cate: str) -> str:
     """
     Translates categories where the English name is a country and the Arabic is a nationality.
     e.g. "United States government officials"
@@ -72,9 +73,10 @@ def Get_P17_2(cate):
 
 
 @functools.lru_cache(maxsize=None)
-def find_label_for_category_part(con_3):
+def find_label_for_category_part(con_3: str) -> Tuple[str, Optional[List[Tuple[str, str]]]]:
     """
     Finds a label for a part of a category from various sources.
+    Returns the label and the data to be added to the tables.
     """
     # List of functions to get the label from different sources
     label_sources = [
@@ -89,13 +91,12 @@ def find_label_for_category_part(con_3):
     for source in label_sources:
         label = source(con_3)
         if label:
-            Add_to_main2_tab(con_3, label)
-            return label
-    return ""
+            return label, [(con_3, label)]
+    return "", None
 
 
 @functools.lru_cache(maxsize=None)
-def Get_P17(cate):
+def Get_P17(cate: str) -> str:
     """
     Translates categories where the English name is a nationality and the Arabic is a country name.
     """
@@ -108,9 +109,13 @@ def Get_P17(cate):
         contry_start_lab = contries_from_nat.get(contry_start, "")
 
     if con_3 and contry_start:
-        con_3_lab = find_label_for_category_part(con_3)
+        con_3_lab, new_data = find_label_for_category_part(con_3)
         if con_3_lab:
+            if new_data:
+                for key, value in new_data:
+                    Add_to_main2_tab(key, value)
             Add_to_main2_tab(contry_start, contry_start_lab)
+
             if "{nat}" in con_3_lab:
                 return con_3_lab.format(nat=contry_start_lab)
             else:
