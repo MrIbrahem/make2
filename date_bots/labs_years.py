@@ -18,13 +18,14 @@ if not from_year and cat_year:
 """
 
 import re
+from typing import Dict, Tuple
 from ..helps.print_bot import output_main
 
-labs_done = {1: 0}
-cats_labels = {}
+labs_done: Dict[int, int] = {1: 0}
+cats_labels: Dict[str, str] = {}
 
 
-def lab_from_year(category_r: str) -> tuple:
+def lab_from_year(category_r: str) -> Tuple[str, str]:
     """
     Given a string `category_r` representing a category, this function extracts the year from the category and returns a tuple containing the extracted year and the corresponding category key. If no year is found in the category, an empty string and an empty string are returned.
 
@@ -35,8 +36,8 @@ def lab_from_year(category_r: str) -> tuple:
     - `tuple`: A tuple containing the extracted year and the corresponding category key. If no year is found, an empty string and an empty string are returned.
     """
     # ---
-    from_year = ""
-    cat_year = ""
+    from_year: str = ""
+    cat_year: str = ""
     # ---
     m = re.search(r"\d\d\d\d", category_r)
     # ---

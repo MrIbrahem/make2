@@ -17,13 +17,14 @@ len_print.lenth_pri("Labels_Contry.py", Lentha)
 """
 
 import sys
+from typing import Dict, List, Any
 from .. import printe
 from humanize import naturalsize
 
-lenth_pri_text = True
+lenth_pri_text: bool = True
 
 
-def lenth_pri(bot, tab, Max=10000, lens=[]):
+def lenth_pri(bot: str, tab: Dict[str, Any], Max: int = 10000, lens: List[str] = []) -> None:
     """Print formatted information based on the provided parameters.
 
     This function checks if certain conditions are met before printing a
@@ -48,14 +49,14 @@ def lenth_pri(bot, tab, Max=10000, lens=[]):
     if "printhead" in sys.argv or "lenth_pri_text" in sys.argv:
         return
 
-    def do(x, y):
+    def do(x: str, y: Any) -> Any:
         if x in lens:
             return y
         return naturalsize(y, binary=True)
 
-    faf = ", ".join([
+    faf = ", ".join(
         # f"<<lightpurple>>{x}<<default>>: {tab[x]}"
-        f"<<lightpurple>>{x}<<default>>: {do(x, tab[x])}" for x in tab if tab[x] > Max
-    ])
+        [f"<<lightpurple>>{x}<<default>>: {do(x, tab[x])}" for x in tab if isinstance(tab[x], int) and tab[x] > Max]
+    )
     if faf:
         printe.output(f"{bot}:".ljust(20) + faf)

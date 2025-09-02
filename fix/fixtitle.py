@@ -1,18 +1,10 @@
-"""
-
-
-
-"""
-
 import re
-import sys
-from .. import printe
 from .fixlists import replase, Starting, Ending, fix_years
 from .mv_years import move_years, YEARS_REGEX
 from ..helps.print_bot import print_put
 
 
-def fix_n(arlabel):
+def fix_n(arlabel: str) -> str:
     """Fix and format a given label string based on predefined rules.
 
     This function takes an input string `arlabel` and applies a series of
@@ -41,7 +33,7 @@ def fix_n(arlabel):
     for f_a, f_lab in Starting.items():
         if arlabel.startswith(f_a):
             # arlabel = re.sub(r"^%s" % f_a, f_lab, arlabel)
-            arlabel = f_lab + arlabel[len(f_a):]
+            arlabel = f_lab + arlabel[len(f_a) :]
     # ---
     arlabel = arlabel.strip()
     for fa, falab in Ending.items():
@@ -80,7 +72,7 @@ def fix_n(arlabel):
     return arlabel
 
 
-def fix_2(text):
+def fix_2(text: str) -> str:
     if rus := re.match(r"^(الغزو \w+|\w+ الغزو \w+) في (\w+.*?)$", text):
         s1 = rus.group(1)
         s2 = rus.group(2)
@@ -91,18 +83,18 @@ def fix_2(text):
     return text
 
 
-def fix_sub(text):
-    if text.find("اليابان") != -1 or text.find("يابانيون") != -1 or text.find("يابانيات") != -1:
+def fix_sub(text: str) -> str:
+    if "اليابان" in text or "يابانيون" in text or "يابانيات" in text:
         text = re.sub(r"حسب الولاية", "حسب المحافظة", text)
     # ---
-    if text.find("سريلانكي") != -1 or text.find("سريلانكا") != -1:
+    if "سريلانكي" in text or "سريلانكا" in text:
         text = re.sub(r"الإقليم", "المقاطعة", text)
         text = re.sub(r"أقاليم", "مقاطعات", text)
     # ---
-    if text.find("تركيا") != -1:  # Turkey
+    if "تركيا" in text:  # Turkey
         text = re.sub(r"مديريات", "أقضية", text)
     # ---
-    if text.find("جزائر") != -1:
+    if "جزائر" in text:
         text = re.sub(r"المقاطعة", "الإقليم", text)
         text = re.sub(r"مقاطعات", "أقاليم", text)
         text = re.sub(r"مديريات", "دوائر", text)
@@ -111,7 +103,7 @@ def fix_sub(text):
     return text
 
 
-def fix_it2(arlabel, en):
+def fix_it2(arlabel: str, en: str) -> str:
     # مسلسلات تلفزيونية ...> مسلسلات تلفازية أنتجها أو أنتجتها ...
     # مبان ومنشآت بواسطة ...> مبان ومنشآت صممها أو خططها ...
     # ألبومات ... بواسطة ... > ألبومات ... ل.....
@@ -196,7 +188,7 @@ def fix_it2(arlabel, en):
     return arlabel
 
 
-def fix_it(arlabel, en):
+def fix_it(arlabel: str, en: str) -> str:
     """Fix and normalize the Arabic label based on specific rules.
 
     This function takes an Arabic label and an English string, processes the
@@ -221,13 +213,12 @@ def fix_it(arlabel, en):
     # ---
     if arlabel.endswith(" في"):
         # arlabel = re.sub(r"في$" ,"" , arlabel ).strip()
-        arlabel = arlabel[:-len(" في")]
+        arlabel = arlabel[: -len(" في")]
     # ---
     if arlabel.startswith("لاعبو ") and arlabel.endswith(" للسيدات"):
         arlabel = re.sub(r"^لاعبو ", "لاعبات ", arlabel)
     # ---
-    en = en.replace("_", " ")
-    en = en.lower()
+    en = en.replace("_", " ").lower()
     # print_put("fixlab : " + en )
     # if arlabel.find( "سرائيل") != -1 and "israeli" not in sys.argv :
     # return ""
@@ -268,12 +259,12 @@ def fix_it(arlabel, en):
     # ---
     arlabel = fix_n(arlabel)
     # ---
-    if arlabel.find("مبنية على") == -1:
+    if "مبنية على" not in arlabel:
         arlabel = re.sub(r" على أفلام$", " في الأفلام", arlabel)
     # ---
     arlabel = fix_sub(arlabel)
     # ---
-    if en.find("attacks on") != -1 and arlabel.find("هجمات في ") != -1:
+    if "attacks on" in en and "هجمات في " in arlabel:
         arlabel = re.sub(r"هجمات في ", "هجمات على ", arlabel)
     # ---
     arlabel = arlabel.replace("(توضيح)", "")
@@ -306,7 +297,7 @@ def fix_it(arlabel, en):
     return arlabel
 
 
-def add_fee(new_text):
+def add_fee(new_text: str) -> str:
     # ---
     # تصنيف:قضاة حسب الجنسية عقد 2010
     # تصنيف:فنانون ذكور حسب الجنسية 2020
@@ -345,7 +336,7 @@ def add_fee(new_text):
     return new_text
 
 
-def fixlab(label_old, out=False, en=""):
+def fixlab(label_old: str, out: bool = False, en: str = "") -> str:
     # ---
     en_literes = "[abcdefghijklmnopqrstuvwxyz]"
     # output_main('fixlab:"%s"' % label_old)
@@ -353,7 +344,7 @@ def fixlab(label_old, out=False, en=""):
     if re.sub(en_literes, "", label_old, flags=re.IGNORECASE) != label_old:
         return ""
     # ---
-    if label_old.find("مشاعر معادية للإسرائيليون") != -1:
+    if "مشاعر معادية للإسرائيليون" in label_old:
         return ""
     # ---
     label_old = label_old.strip()

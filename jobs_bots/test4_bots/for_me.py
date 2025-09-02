@@ -4,6 +4,7 @@ from .test4_bots.for_me import Work_for_me
 """
 
 import re
+from typing import Dict
 from ...ma_lists_bots import NN_table
 from ...ma_lists_bots import (
     Nat_women,
@@ -18,11 +19,11 @@ from ...ma_lists_bots import en_is_nat_ar_is_P17, en_is_nat_ar_is_al_mens, en_is
 from ...o_bots import ethnic_bot
 from ...helps.print_bot import output_test4
 
-wo_2018_cash = {}
-Work_for_me_cash = {}
+wo_2018_cash: Dict[str, str] = {}
+Work_for_me_cash: Dict[str, str] = {}
 
 
-def Work_for_New_2018_men_Keys_with_all(cate, nat, con_3):
+def Work_for_New_2018_men_Keys_with_all(cate: str, nat: str, con_3: str) -> str:
     """Retrieve country label for men based on category, nationality, and a
     specific key.
 
@@ -48,15 +49,10 @@ def Work_for_New_2018_men_Keys_with_all(cate, nat, con_3):
     if cash_key in wo_2018_cash:
         return wo_2018_cash[cash_key]
     # ---
-    # women_nat_lab = Nat_women.get(nat, "")
     men_nat_lab = Nat_men.get(nat, "")
-    # nat_lab = Nat_women[nat]
     # ---
-    # output_test4('<<lightblue>>>> Work_for_me >> %s .nat:(%s), con_3:"%s", nat_lab:"%s"' % (cate , nat , con_3,nat_lab))
-    # contry = nat
     contry_lab = ""
     con_3_lab = ""
-    # cco_lab = ""
     # ---
     # رجالية بألف ولام التعريف
     if not con_3_lab and not contry_lab:
@@ -70,33 +66,14 @@ def Work_for_New_2018_men_Keys_with_all(cate, nat, con_3):
             contry_lab = con_3_lab.format(men_nat_lab)
             output_test4(f'<<lightblue>> test_4:en_is_nat_ar_is_al_mens new contry_lab  "{contry_lab}" ')
     # ---
-    # output_test4('<<lightblue>>>> Work_for_me >> contry_lab:"%s"' % contry_lab)
-    # ---
     wo_2018_cash[cash_key] = contry_lab
     # ---
     return contry_lab
 
 
-def Work_for_me(cate, nat, con_3):
+def Work_for_me(cate: str, nat: str, con_3: str) -> str:
     """Retrieve a country label based on category, nationality, and a third
     parameter.
-
-    This function constructs a unique key from the provided category,
-    nationality, and third parameter, and checks if this key exists in a
-    cached dictionary. If the key is found, it returns the corresponding
-    value. If not, it attempts to derive the country label through various
-    lookups and transformations based on the nationality and the third
-    parameter. The function handles different cases for both male and female
-    labels, ensuring that the correct format is applied based on the input
-    values.
-
-    Args:
-        cate (str): The category to be used in the lookup.
-        nat (str): The nationality to be used in the lookup.
-        con_3 (str): An additional parameter that influences the country label.
-
-    Returns:
-        str: The derived country label based on the inputs.
     """
 
     # ---
@@ -110,7 +87,6 @@ def Work_for_me(cate, nat, con_3):
     nat_lab = Nat_women[nat]
     # ---
     output_test4(f'<<lightblue>>>> Work_for_me >> {cate} .nat:({nat}), con_3:"{con_3}", nat_lab:"{nat_lab}"')
-    # contry = nat
     contry_lab = ""
     con_3_lab = ""
     cco_lab = ""
@@ -131,20 +107,10 @@ def Work_for_me(cate, nat, con_3):
     if con_3_lab == "" and contry_lab == "":
         contry_lab = ethnic_bot.Ethnic(cate, nat, con_3)
     # ---
-    # en_is_P17_ar_is_mens
-    # mens_nat_lab = Nat_mens.get(nat, "")
-    # con_3_lab = Nat_mens.get(con_3 , "")
-    # if con_3_lab:
-    # if Nat_mens.get(contry,""):
-    # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
-    # contry_lab = con_3_lab + " " + Nat_mens.get(contry,"")
-    # output_test4('<<lightblue>> test Work_for_me: new contry_lab  "%s" ' % contry_lab)
-    # ---
     # نسائية بدون ألف ولام التعريف
     if con_3_lab == "" and contry_lab == "":
         con_3_lab = en_is_nat_ar_is_women.get(con_3.strip(), "")
         # ---
-        # new 24-02-2022
         if not con_3_lab:
             con_3_lab = New_female_keys.get(con_3.strip(), "")
             if con_3_lab:
@@ -164,7 +130,7 @@ def Work_for_me(cate, nat, con_3):
                 women_nat_lab = NN_table[nat]["women"]
             women_nat_lab = add_all(women_nat_lab)
             # ---
-            if con_3_lab.find("{nat}") != -1:
+            if "{nat}" in con_3_lab:
                 contry_lab = con_3_lab.format(nat=women_nat_lab)
             else:
                 contry_lab = con_3_lab.format(women_nat_lab)
@@ -175,7 +141,6 @@ def Work_for_me(cate, nat, con_3):
     if con_3_lab == "" and contry_lab == "":
         con_3_lab = en_is_nat_ar_is_man.get(con_3.strip(), "")
         # ---
-        # new 24-02-2022
         if not con_3_lab:
             con_3_lab = New_male_keys.get(con_3.strip(), "")
             if con_3_lab:
@@ -189,14 +154,12 @@ def Work_for_me(cate, nat, con_3):
     if con_3_lab == "" and contry_lab == "":
         contry_lab = Work_for_New_2018_men_Keys_with_all(cate, nat, con_3)
     # ---
-    # output_test4('<<lightblue>>>> Work_for_me >> contry_lab:"%s"' % contry_lab)
-    # ---
     Work_for_me_cash[cash_key] = contry_lab
     # ---
     return contry_lab
 
 
-def add_all(lab):
+def add_all(lab: str) -> str:
     lab_no_al = re.sub(r" ", " ال", lab)
     new_lab = f"ال{lab_no_al}"
     return new_lab

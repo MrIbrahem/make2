@@ -3,6 +3,7 @@ from  make.fromnet.wd_bot import find_wikidata
 """
 
 import sys
+from typing import Dict
 from .wd import find_name_from_wikidata
 from ..helps.print_bot import print_put
 from ..ma_lists_bots import New_P17_Finall
@@ -11,14 +12,14 @@ from ..matables_bots.centries_bot import centries_years_dec
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..matables_bots.bot_2018 import Add_to_pop_All_18  # Add_to_pop_All_18(tab)
 
-wikidata_cash_oo = {}
-Find_f_wikidata = {1: "nowikidata" not in sys.argv}
+wikidata_cash_oo: Dict[str, str] = {}
+Find_f_wikidata: Dict[int, bool] = {1: "nowikidata" not in sys.argv}
 
 
-def find_wikidata(contry):
+def find_wikidata(contry: str) -> str:
     contry2 = contry.lower().strip()
     if wikidata_cash_oo.get(contry2, False):
-        return wikidata_cash_oo.get(contry2, False)
+        return wikidata_cash_oo.get(contry2, "")
 
     cnt_la = ""
     if not cnt_la:

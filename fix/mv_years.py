@@ -1,23 +1,13 @@
-"""
-
-from ..fix.mv_years import move_years
-
-تصنيف:1974–75 في دوريات كرة قدم لبنانية
-Category:1974–75 in Lebanese football leagues
-"""
-
 import re
-import sys
 
-# YEARS_REGEX = r'(\d+\sق[\s\.]م|\d+)|عقد\s(\d+\sق[\s\.]م|\d+)|القرن\s(\d+\sق[\s\.]م|\d+)|الألفية\s(\d+\sق[\s\.]م|\d+)'
 YEARS_REGEX = r"(\d+[-–]\d+|\d+\sق[\s\.]م|\d+)|عقد\s(\d+\sق[\s\.]م|\d+)|القرن\s(\d+\sق[\s\.]م|\d+)|الألفية\s(\d+\sق[\s\.]م|\d+)"
 
 
-def print_test(s):
+def print_test(s: str) -> str:
     return s
 
 
-def move_3(text_str):
+def move_3(text_str: str) -> str:
     """
     A function that takes in a string and searches for a specific pattern within it. The function replaces underscores in the string with spaces and then uses a regular expression to search for a pattern of the form '{first_part} حسب {by_part} في {date}'.
 
@@ -34,10 +24,6 @@ def move_3(text_str):
     # ---
     new_text = text_str
     # ---
-    # result = re.search(r'^(.*)\sحسب\s([\s\w]+)\sفي\s(القرن\s\d+|عقد\s\d+|\d+\sق[\s\.]م|\d+)$', text_str)
-    # result = re.search(fr'^(.*)\sحسب\s([\s\w]+)\sفي\s(?P<first_part>{YEARS_REGEX})$', text_str)
-    # ---
-    # result = re.search(r'^(?P<first_part>.*)\sحسب\s(?P<by_part>[\s\w]+)\sفي\s(?P<date>.*?)$', text_str)
     if result := re.search(rf"^(?P<first_part>.*)\sحسب\s(?P<by_part>[\s\w]+)\sفي\s(?P<date>{YEARS_REGEX})$", text_str):
         # [[تصنيف:اتحاد الرجبي في 1989 حسب البلد]]
         # ---
@@ -59,7 +45,7 @@ def move_3(text_str):
     return new_text
 
 
-def move_by_in(text_str):
+def move_by_in(text_str: str) -> str:
     """
     A function that takes in a string and searches for a specific pattern within it. The function replaces underscores in the string with spaces and then uses a regular expression to search for a pattern of the form '{first_part} حسب {by_part} في {date}'.
 
@@ -76,10 +62,6 @@ def move_by_in(text_str):
     # ---
     new_text = text_str
     # ---
-    # result = re.search(r'^(.*)\sحسب\s([\s\w]+)\sفي\s(القرن\s\d+|عقد\s\d+|\d+\sق[\s\.]م|\d+)$', text_str)
-    # result = re.search(fr'^(.*)\sحسب\s([\s\w]+)\sفي\s(?P<first_part>{YEARS_REGEX})$', text_str)
-    # ---
-    # result = re.search(r'^(?P<first_part>.*)\sحسب\s(?P<by_part>[\s\w]+)\sفي\s(?P<date>.*?)$', text_str)
     if result := re.search(rf"^(?P<first_part>.*)\sحسب\s(?P<by_part>[\s\w]+)\sفي\s(?P<date>{YEARS_REGEX})$", text_str):
         # [[تصنيف:اتحاد الرجبي في 1989 حسب البلد]]
         # ---
@@ -101,7 +83,7 @@ def move_by_in(text_str):
     return new_text
 
 
-def move_years_first(text_str):
+def move_years_first(text_str: str) -> str:
     """
     Generates a function comment for the given function body in a markdown code block with the correct language syntax.
 
@@ -114,8 +96,6 @@ def move_years_first(text_str):
     # ---
     new = text_str
     # ---
-    # التعبير العادي للبحث عن النص المطلوب
-    # pattern = r"^(?P<first_part>(\d+ ق[\s\.]م|\d+)|عقد (\d+ ق[\s\.]م|\d+)|القرن (\d+ ق[\s\.]م|\d+)|الألفية (\d+ ق[\s\.]م|\d+)) في (?P<second_part>[^0-9]*)$"
     pattern = rf"^(?P<first_part>{YEARS_REGEX})\sفي\s(?P<second_part>[^0-9]*)$"
     if match := re.match(pattern, text_str):
         # ---
@@ -133,22 +113,18 @@ def move_years_first(text_str):
         if second_part in skip_it:
             return text_str
         # ---- "^.*?_في_.*?_في_.*?$"
-        if second_part.find(" في x") != -1:
+        if " في x" in second_part:
             print_test('second_part.find(" في ") != -1:')
             return text_str
         # ---
         # إعادة ترتيب الجملة
         new = f"{second_part} في {first_part}"
         # ---
-        # if the second part ends with "حسب [\s\w]+"
-        # move it to the end
-        # ---
         if result := re.search(r"^(.*)\sحسب\s([\s\w]+)$", second_part):
             print_test("<<yellow>> find حسب in result:")
             new = f"{result.group(1)} في {first_part}" + f" حسب {result.group(2)}"
     else:
         print_test("move_years no match")
-        # text_str = move_by_in(text_str)
     # ---
     if new != text_str:
         new = re.sub(r"\s+", " ", new)
@@ -157,7 +133,8 @@ def move_years_first(text_str):
     # ---
     return new
 
-def move_years(text_str):
+
+def move_years(text_str: str) -> str:
     # ---
     text_str = text_str.replace("_", " ").strip()
     # ---
@@ -171,9 +148,6 @@ def move_years(text_str):
     # ---
     if new_text == text_str:
         new_text = move_by_in(text_str)
-    # ---
-    # if new_text == text_str:
-    # new_text = move_3(text_str)
     # ---
     if cat_ns:
         new_text = f"تصنيف:{new_text}"
