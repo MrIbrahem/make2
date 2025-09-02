@@ -2,6 +2,7 @@
 from  ..date_bots.with_years_bot import Try_With_Years
 """
 
+import functools
 import re
 
 # ---
@@ -24,6 +25,7 @@ def print_put(s):
     return
 
 
+@functools.lru_cache(maxsize=None)
 def Try_With_Years(contry):
     """Retrieve a formatted label for a given country based on its historical
     context.
@@ -45,11 +47,6 @@ def Try_With_Years(contry):
         or an empty string if no valid information is found.
     """
 
-    # ---
-    cash_key = contry.lower().strip()
-    # ---
-    if cash_key in Try_With_Years_cash:
-        return Try_With_Years_cash[cash_key]
     # ---
     print_put(f">>> Try With Years contry ({contry})")
     # pop_final_Without_Years
@@ -77,8 +74,6 @@ def Try_With_Years(contry):
         lab2 = f"{hh_Lab} {num_lab}"
         print_put(f">>> 1591 lab2 ({lab2}),contry: ({contry})")
         # ---
-        Try_With_Years_cash[cash_key] = lab2
-        # ---
         return lab2
 
     RE1 = re.match(r"^(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d).*", contry)
@@ -89,8 +84,6 @@ def Try_With_Years(contry):
     # RE4 = re.match(r"^.*?\s*(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d) season$", contry)
 
     if not RE1 and not RE2 and not RE3:  # and not RE4
-        # ---
-        Try_With_Years_cash[cash_key] = ""
         # ---
         return ""
 
@@ -165,7 +158,5 @@ def Try_With_Years(contry):
 
     if lab2:
         print_put(f'>>>>>> Try With Years lab2 "{lab2}" ')
-    # ---
-    Try_With_Years_cash[cash_key] = lab2
-    # ---
+
     return lab2
