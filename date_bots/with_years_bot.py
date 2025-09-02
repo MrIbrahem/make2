@@ -1,3 +1,7 @@
+"""
+from  ..date_bots.with_years_bot import Try_With_Years
+"""
+
 import re
 from typing import Dict, Optional
 from ..ma_lists_bots import change_numb_to_word
@@ -5,8 +9,11 @@ from ..ma_lists_bots import Word_After_Years
 from ..format_bots import ar_lab_before_year_to_add_in
 from ..matables_bots.bot import Add_in_table
 from ..matables_bots.table1_bot import get_KAKO
+
 from ..ma_bots import contry2_lab
 from ..ma_bots.ye_ts_bot import translate_general_category
+
+Try_With_Years_cash = {}
 
 
 def print_put(s: str) -> None:
@@ -38,6 +45,14 @@ def Try_With_Years(contry: str) -> str:
     """
 
     # ---
+    cash_key = contry.lower().strip()
+    # ---
+    if cash_key in Try_With_Years_cash:
+        return Try_With_Years_cash[cash_key]
+    # ---
+    print_put(f">>> Try With Years contry ({contry})")
+    # pop_final_Without_Years
+
     lab2: str = ""
     con_3_lab: str = ""
 
@@ -61,6 +76,8 @@ def Try_With_Years(contry: str) -> str:
         lab2 = f"{hh_Lab} {num_lab}"
         print_put(f">>> 1591 lab2 ({lab2}),contry: ({contry})")
         # ---
+        # Try_With_Years_cash[cash_key] = lab2
+        # ---
         return lab2
 
     RE1 = re.match(r"^(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d).*", contry)
@@ -71,6 +88,9 @@ def Try_With_Years(contry: str) -> str:
     # RE4 = re.match(r"^.*?\s*(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d) season$", contry)
 
     if not RE1 and not RE2 and not RE3:  # and not RE4
+        # ---
+        # Try_With_Years_cash[cash_key] = ""
+        # ---
         return ""
 
     # year = re.sub(r"^(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d)\s*.*$", r"\g<1>", contry)
@@ -89,6 +109,7 @@ def Try_With_Years(contry: str) -> str:
             print_put(f">>> Try With Years get_KAKO con_3_lab:{con_3_lab}")
 
         if con_3_lab == "":
+            # print("translate_general_category 4")
             con_3_lab = translate_general_category(con_3)
 
         if not con_3_lab:
@@ -118,11 +139,15 @@ def Try_With_Years(contry: str) -> str:
             )
             year2 = year2_match.group(1) if year2_match else None
 
+        # if RE4:
+        # year2 = "موسم " + re.sub(r"^.*?\s*(\d+\-\d+|\d+\–\d+|\d+\−\d+|\d\d\d\d) season$", r"\g<1>", contry.strip() )
+
         if year2:
             year2_lab = year2
             print_put(f">>> Try With Years contry.startswith(year2:{year2})")
             con_4 = contry[: -len(year2)]
 
+            # print("translate_general_category 5")
             con_4_lab = translate_general_category(con_4)
 
             if con_4_lab == "":
@@ -137,4 +162,7 @@ def Try_With_Years(contry: str) -> str:
 
     if lab2:
         print_put(f'>>>>>> Try With Years lab2 "{lab2}" ')
+    # ---
+    # Try_With_Years_cash[cash_key] = lab2
+    # ---
     return lab2

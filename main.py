@@ -194,7 +194,7 @@ def new_func_lab(category_r):
 
         if not category_lab:
             if start_yementest[1]:
-                # print("yementest_with_Titose_Nmaes 1")
+                # print("translate_general_category 1")
                 category_lab = ye_ts_bot.translate_general_category(changed_cat)
 
         if not category_lab:

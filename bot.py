@@ -1,3 +1,13 @@
+"""
+
+Usage:
+from .bot import event # event(tab, **kwargs)
+
+from . import bot # bot.event(tab, **kwargs)
+
+from . import bot as MA_MAIN # MA_MAIN.event(tab, **kwargs)
+"""
+
 from typing import Dict, Any, List
 from . import main
 from .media_bots import films_bot  # test_films
