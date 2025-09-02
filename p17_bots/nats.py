@@ -1,127 +1,120 @@
-"""
-from ..p17_bots import nats
-"""
-
 import re
+import functools
+from typing import Optional, Tuple, Dict, Any
 from .. import printe
 from ..ma_lists_bots import sport_formts_for_p17, nat_p17_oioi
 from ..ma_lists_bots import fanco_line, Sports_Keys_For_Team
-from ..matables_bots.bot import New_players, Add_to_main2_tab  # Add_to_main2_tab()
+from ..matables_bots.bot import New_players, Add_to_main2_tab
 from .. import ma_lists_sport_lab as sport_lab
 from ..ma_lists_bots import All_Nat, Nat_women
 from ..jobs_bots.get_helps import get_con_3
 
 
-nat_others_cash = {}
-
-
-def print_put(s):
-    # ---
+def print_put(s: str) -> None:
     # printe.output(s)
-    # ---
-    return
+    pass
 
 
-def make_sport_formts_p17(co89):
-    # ---
-    # make_sport_formts_p17("football junior championships")
-    # ---
-    print_put(f'<<lightblue>>>>>> make_sport_formts_p17: co89:"{co89}"')
-    # ---
-    co89_lab = sport_formts_for_p17.get(co89, "")
-    # ---
-    if co89_lab:
-        print_put(f"\tfind lab in sport_formts_for_p17: {co89_lab}")
-        return co89_lab
-    # ---
-    # قبل تطبيق الوظيفة
-    # len sport_formts_for_p17: 66435
-    # ---
-    # بعد تطبيق الوظيفة
-    # len sport_formts_for_p17: 1
-    # len nat_p17_oioi: 100
-    # ---
-    co89_lab = ""
-    # ---
-    faev = re.match(fanco_line, co89, flags=re.IGNORECASE)
-    # ---
-    if not faev:
+@functools.lru_cache(maxsize=None)
+def get_sport_template_label(sport_format_string: str) -> str:
+    """
+    Generates a sport label from a template.
+    This function uses a placeholder 'oioioi' to match templates and then replaces it
+    with the specific sport key.
+    e.g. "football junior championships" -> "بطولات الناشئين لكرة القدم"
+    """
+    # First, check for a direct match in the pre-compiled formats
+    direct_label = sport_formts_for_p17.get(sport_format_string, "")
+    if direct_label:
+        return direct_label
+
+    # If no direct match, try to match a template using fanco_line regex
+    match = re.match(fanco_line, sport_format_string, flags=re.IGNORECASE)
+    if not match:
         return ""
-    # ---
-    sport_key = faev.group(1)
-    sport_key_lab = ""
-    ar_label = ""
-    # ---
-    team_xz = co89.replace(sport_key, "oioioi")
-    team_xz = re.sub(sport_key, "oioioi", team_xz, flags=re.IGNORECASE)
-    print_put(f'make_sport_formts_p17 co89:"{co89}", sport_key:"{sport_key}", team_xz:"{team_xz}"')
-    # ---
-    if team_xz in nat_p17_oioi:
-        sport_key_lab = Sports_Keys_For_Team.get(sport_key, "")
-        # ---
-        if not sport_key_lab:
-            print_put(f' sport_key:"{sport_key}" not in Sports_Keys_For_Team ')
-        # ---
-        ar_label = nat_p17_oioi[team_xz]
-        # ---
-        if ar_label and sport_key_lab:
-            bbvb = ar_label.replace("oioioi", sport_key_lab)
-            if bbvb.find("oioioi") == -1:
-                co89_lab = bbvb
-                print_put(f'make_sport_formts_p17 bbvb:"{co89_lab}"')
-    else:
-        print_put(f'make_sport_formts_p17 team_xz:"{team_xz}" not in nat_p17_oioi')
-    # ---
-    if co89_lab:
-        print_put(f'make_sport_formts_p17 co89:"{co89}", co89_lab:"{co89_lab}"')
-    # ---
-    return co89_lab
+
+    sport_key = match.group(1)
+    # Use 'oioioi' as a placeholder for the sport key to match the template
+    template_key = re.sub(sport_key, "oioioi", sport_format_string, flags=re.IGNORECASE)
+
+    if template_key in nat_p17_oioi:
+        sport_key_label = Sports_Keys_For_Team.get(sport_key, "")
+        template_label = nat_p17_oioi[template_key]
+
+        if sport_key_label and template_label:
+            # Replace the placeholder with the actual sport label
+            final_label = template_label.replace("oioioi", sport_key_label)
+            if "oioioi" not in final_label:
+                return final_label
+    return ""
 
 
-def find_nat_others(cate, fa=""):
-    if cate in nat_others_cash:
-        return nat_others_cash[cate]
+@functools.lru_cache(maxsize=None)
+def handle_female_sport_translation(category_part: str, country_key: str) -> str:
+    """
+    Handles translation for female sport categories.
+    """
+    label_template = sport_lab.Get_sport_formts_female_nat(category_part)
+    if label_template:
+        return label_template.format(nat=Nat_women[country_key])
+    return ""
 
-    print_put(f"<<lightblue>>>> vvvvvvvvvvvv find_nat_others cate:{cate} vvvvvvvvvvvv ")
 
-    cnt_la = ""
+@functools.lru_cache(maxsize=None)
+def handle_generic_sport_translation(
+    category_part: str, country_key: str, original_category: str
+) -> Tuple[str, Optional[Dict[str, Any]]]:
+    """
+    Handles translation for generic sport categories.
+    Returns the translated label and the data to be added to the tables.
+    """
+    label_template = get_sport_template_label(category_part)
+    country_label = All_Nat[country_key].get("ar", "")
 
-    cate = cate.lower()
+    if label_template and country_label:
+        final_label = label_template.format(nat=country_label)
+        new_data = {
+            "main2_tab": [(category_part, label_template), (final_label, country_label)],
+            "new_players": {original_category: final_label},
+        }
+        return final_label, new_data
+    return "", None
 
-    con_77, contry_start = get_con_3(cate, Nat_women, "nat")
 
-    if con_77 and contry_start:
-        # con_77_lab = sport_formts_female_nat.get(con_77, "")
-        con_77_lab = sport_lab.Get_sport_formts_female_nat(con_77)
-        if con_77_lab:
-            cnt_la = con_77_lab.format(nat=Nat_women[contry_start])
-            print_put(f'<<lightblue>>xxx sport_formts_female_nat: new cnt_la  "{cnt_la}"')
+@functools.lru_cache(maxsize=None)
+def find_nat_others(cate: str, fa: str = "") -> str:
+    """
+    Finds translations for sports-related categories that include a nationality.
+    Caches the results.
+    """
+    translated_label = ""
+    category_lower = cate.lower()
 
-    if con_77 and contry_start and cnt_la == "":
-        con_77_lab = make_sport_formts_p17(con_77)
-        # ---
-        P17_lab = All_Nat[contry_start].get("ar", "")
-        # ---
-        if con_77_lab and P17_lab:
-            Add_to_main2_tab(con_77, con_77_lab)
+    # Extract the country and the rest of the category
+    category_part, country_key = get_con_3(category_lower, Nat_women, "nat")
 
-            cnt_la = con_77_lab.format(nat=P17_lab)
-            Add_to_main2_tab(cnt_la, P17_lab)
-            print_put(f'<<lightblue>>>>>> sport_formts_for_p17: new cnt_la  "{cnt_la}"')
-            New_players[cate] = cnt_la
-    # ---
-    print_put("<<lightblue>>>> ^^^^^^^^^ find_nat_others end ^^^^^^^^^ ")
+    if category_part and country_key:
+        # First, try to find a translation for a female-specific sport category
+        translated_label = handle_female_sport_translation(category_part, country_key)
 
-    nat_others_cash[cate] = cnt_la
+        # If that fails, try a generic sport translation
+        if not translated_label:
+            translated_label, new_data = handle_generic_sport_translation(
+                category_part, country_key, cate
+            )
+            if new_data:
+                for key, value in new_data["main2_tab"]:
+                    Add_to_main2_tab(key, value)
+                New_players.update(new_data["new_players"])
 
-    return cnt_la
+    return translated_label
 
 
 if __name__ == "__main__":
     print_put = printe.output
     print("_________________")
     # python3 core8/pwb.py make/bots/nats
-    op = make_sport_formts_p17("football junior championships")
+    op = get_sport_template_label("football junior championships")
     print(op)
 
     zo = find_nat_others("yemeni football junior championships")

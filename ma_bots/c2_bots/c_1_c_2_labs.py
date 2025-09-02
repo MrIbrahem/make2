@@ -6,7 +6,7 @@ from .c_1_c_2_labs import c_1_1_lab, c_2_1_lab
 """
 
 import re
-
+from typing import Callable, List
 from ...o_bots import fax
 from ...media_bots.films_bot import test_films
 from .. import contry2_lab
@@ -27,23 +27,10 @@ from ...helps.print_bot import print_put, output_test
 from ...date_bots import with_years_bot
 
 
-def check_sources(cone_1):
-    """Check multiple sources for a result based on the provided input.
+def check_sources(cone_1: str) -> str:
+    """Check multiple sources for a result based on the provided input."""
 
-    This function iterates through a predefined list of source functions,
-    passing the input parameter `cone_1` to each source. If any source
-    returns a truthy value, that value is returned immediately. If none of
-    the sources return a truthy value, an empty string is returned.
-
-    Args:
-        cone_1: The input parameter to be passed to each source function.
-
-    Returns:
-        str: The result from the first truthy source or an empty string
-        if no sources return a truthy value.
-    """
-
-    sources = [
+    sources: List[Callable[[str], str]] = [
         test_films,
         nats.find_nat_others,
         fax.Get_Teams_new,
@@ -55,30 +42,10 @@ def check_sources(cone_1):
     return ""
 
 
-def c_1_1_lab(tat_o, With_Years, cone_1):
-    """Retrieve a label based on the given parameters.
-
-    This function attempts to find a corresponding label for the provided
-    `cone_1` input by checking various data sources in a specific order. It
-    first normalizes the input and checks against predefined mappings and
-    functions. If the input matches certain conditions, it may return
-    localized labels or formatted strings. The function also handles
-    specific cases for "women" and "from" inputs.
-
-    Args:
-        tat_o (str): A string indicating a specific condition or context.
-        With_Years (bool): A flag indicating whether to include year-related
-            information in the label retrieval process.
-        cone_1 (str): A string representing the primary input for label
-            retrieval.
-
-    Returns:
-        str: The corresponding label for the input `cone_1`, or an empty
-            string if no match is found.
-    """
+def c_1_1_lab(tat_o: str, With_Years: bool, cone_1: str) -> str:
+    """Retrieve a label based on the given parameters."""
 
     con_1_no_lower = cone_1.strip()
-
     cone_1 = cone_1.strip().lower()
 
     c_1_l = pop_All_2018.get(cone_1, "")
@@ -126,11 +93,9 @@ def c_1_1_lab(tat_o, With_Years, cone_1):
                     c_1_l = pri_lab.format(U_lab)
                     print_put(f'>>>> c_1_l:"{c_1_l}"')
 
-    # #pop_format
     if cone_1 in pop_format:
         c_1_l = pop_format[cone_1]
 
-    # add in 4-10-2019
     if not c_1_l:
         c_1_l = contry_bot.Get_c_t_lab(cone_1, "", Type="Type_lab")
     if not c_1_l:
@@ -141,34 +106,15 @@ def c_1_1_lab(tat_o, With_Years, cone_1):
     return c_1_l
 
 
-def c_2_1_lab(With_Years, cone_2):
-    """Retrieve a label based on the provided cone identifier.
-
-    This function attempts to find a corresponding label for the given cone
-    identifier by checking various sources in a specific order. It first
-    normalizes the input by stripping whitespace and converting it to
-    lowercase. The function checks multiple data sources, including
-    predefined mappings and external functions, to find a match. If no match
-    is found, it applies additional processing to determine if the input can
-    be simplified or transformed to yield a result.
-
-    Args:
-        With_Years (bool): A flag indicating whether to consider year-based
-            labels in the search.
-        cone_2 (str): The identifier for which to retrieve the label.
-
-    Returns:
-        str: The label corresponding to the input identifier, or an empty
-            string if no match is found.
-    """
+def c_2_1_lab(With_Years: bool, cone_2: str) -> str:
+    """Retrieve a label based on the provided cone identifier."""
 
     con_2_no_lower = cone_2.strip()
-
     cone_2 = cone_2.strip().lower()
 
     c_2_l = pop_All_2018.get(cone_2, "")
-    if c_2_l == "" and cone_2.find(" by ") != -1:
-        c_2_l = bys.Get_by_label(cone_2)
+    if c_2_l == "" and " by " in cone_2:
+        c_2_l = bys.Make_By_lab(cone_2)
 
     if not c_2_l:
         c_2_l = test_films(cone_2)
@@ -176,8 +122,8 @@ def c_2_1_lab(With_Years, cone_2):
         c_2_l = nats.find_nat_others(cone_2)
     if not c_2_l:
         c_2_l = fax.Get_Teams_new(cone_2)
-    if c_2_l == "" and cone_2.find(" and ") != -1:
-        c_2_l = bys.Get_and_label(cone_2)
+    if c_2_l == "" and " and " in cone_2:
+        c_2_l = bys.Make_By_lab(cone_2)
     if not c_2_l:
         c_2_l = team_work.Get_team_work_Club(con_2_no_lower)
 
@@ -200,7 +146,5 @@ def c_2_1_lab(With_Years, cone_2):
         c_2_l = with_years_bot.Try_With_Years(cone_2)
     if not c_2_l:
         c_2_l = contry_bot.Get_c_t_lab(cone_2, "")
-
-    # if not c_2_l:       c_2_l = pop_All_2018.get( cone_2, "")
 
     return c_2_l

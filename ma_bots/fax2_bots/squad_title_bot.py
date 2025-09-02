@@ -17,7 +17,7 @@ from ...matables_bots.bot_2018 import pop_All_2018
 from ...helps.print_bot import print_def_head, print_put
 
 
-def get_squad_title(tit):
+def get_squad_title(tit: str) -> str:
     lab = ""
 
     lab = sport_lab.Get_New_team_xo(tit)

@@ -1,139 +1,74 @@
-#!/usr/bin/python3
-"""
-from  make.ma_bots.ye_ts_bot import translate_general_category
-
-from ..ma_bots import ye_ts_bot
-
-
-lab = ye_ts_bot.translate_general_category()
-
-"""
-
 import re
 import sys
+import functools
+from typing import Optional
 from ..fix import fixtitle
 from ..matables_bots.bot_2018 import pop_All_2018
-from ..helps.print_bot import print_def_head, print_put
+from ..helps.print_bot import print_def_head
 from ..format_bots import Tit_ose_Nmaes
 from ..date_bots import year_lab
-
 from ..ma_bots.ar_label_bot import find_ar_label
+from ..matables_bots.bot import Films_O_TT, New_players
 
 Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
-YTN_cash = {}
-from ..matables_bots.bot import Films_O_TT, New_players
 
-
-def find_lab(category, category_r):
-    cate_low = category.lower()
-
-    _lab = Films_O_TT.get(cate_low, "")
-
-    if not _lab:
-        _lab = pop_All_2018.get(cate_low, "")
-
-    if not _lab:
-        _lab = New_players.get(cate_low, "")
-    if not _lab:
-        _lab = year_lab.make_year_lab(cate_low)
-
-    if _lab:
-        _lab = fixtitle.fixlab(_lab, en=category_r)
-
-        print_put(f'>>>> <<lightyellow>>test: cat "{category_r}", _lab:"{_lab}"')
-        # NoLabb = False
-        print_put(f'>>>> <<lightyellow>> cat:"{category_r}", _lab "{_lab}"')
-    return _lab
-
-
-def work_titose_nmaes(category_r, do_Get_contry2, category, Cate_test):
-    """Work with titose names based on the provided category.
-
-    This function iterates through a predefined dictionary of titose names
-    and checks if the given category contains any of these names. If a match
-    is found, it calls the `find_ar_label` function to retrieve an
-    associated label. The function will print the label if it is found and
-    return it. The iteration stops after the first match.
-
-    Args:
-        category_r (type): Description of category_r parameter.
-        do_Get_contry2 (type): Description of do_Get_contry2 parameter.
-        category (str): The category string to search for titose names.
-        Cate_test (type): Description of Cate_test parameter.
-
-    Returns:
-        str: The associated arlabel if found, otherwise an empty string.
+@functools.lru_cache(maxsize=None)
+def direct_lookup_handler(category: str) -> Optional[str]:
     """
+    Handles direct lookups in various dictionaries.
+    """
+    return pop_All_2018.get(category) or Films_O_TT.get(category) or New_players.get(category)
 
-    arlabel = ""
 
+@functools.lru_cache(maxsize=None)
+def year_lab_handler(category: str) -> str:
+    """
+    Handles year-based translations.
+    """
+    return year_lab.make_year_lab(category)
+
+
+@functools.lru_cache(maxsize=None)
+def titose_nmaes_handler(category: str, original_category: str, do_get_contry2: bool) -> Optional[str]:
+    """
+    Handles translations based on Tit_ose_Nmaes.
+    """
     for tito, tito_name in Tit_ose_Nmaes.items():
-        tito = f" {tito} "
-        # if Keep_Work and category.find(tito) != -1:
-        if category.find(tito) == -1:
-            continue
-        # ---
-        arlabel = find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contry2=do_Get_contry2)
-        # ---
-        if arlabel:
-            print_put(f'>>>> <<lightyellow>>arlabel "{arlabel}"')
-        # ---
-        break
-    return arlabel
+        if f" {tito} " in category:
+            return find_ar_label(
+                category, f" {tito} ", tito_name, category, original_category, do_Get_contry2=do_get_contry2
+            )
+    return None
 
 
-def translate_general_category(category_r, do_Get_contry2=True):
-    """Retrieve and process category names for the Yementest application.
-
-    This function takes a category string, processes it to standardize the
-    format, and attempts to retrieve associated labels from predefined data
-    structures. If the category is not found, it will invoke additional
-    functions to derive the necessary labels based on the input. The
-    function also handles logging for debugging purposes.
-
-    Args:
-        category_r (str): The input category string that needs to be processed.
-        do_Get_contry2 (bool): A flag indicating whether to retrieve country-related data.
-            Defaults to True.
-
-    Returns:
-        str: The processed label associated with the input category.
+@functools.lru_cache(maxsize=None)
+def translate_general_category(category_r: str, do_Get_contry2: bool = True) -> str:
     """
-
+    Translates a general category by trying a series of strategies.
+    """
     category = re.sub(r"_", " ", category_r)
     category = re.sub(r"category:", "", category, flags=re.IGNORECASE)
 
-    cash_key = category.lower().strip()
+    print_def_head(f"<<lightyellow>>>> ^^^^^^^^^ translate_general_category start ^^^^^^^^^ ({category}) ")
 
-    if cash_key in YTN_cash:
-        return YTN_cash[cash_key]
+    handlers = [
+        direct_lookup_handler,
+        year_lab_handler,
+        lambda cat: titose_nmaes_handler(cat, category_r, do_Get_contry2),
+    ]
 
-    print_def_head(f"<<lightyellow>>>> ^^^^^^^^^ yementest start ^^^^^^^^^ ({category}) ")
-
-    # if category == "women's universities and colleges":
-    #     print(dadas)
-
-    print_def_head(f'<<lightyellow>>>>>> yementest, category_r:"{category_r}", category:"{category}"')
-    Cate_test = category.lower()
-
-    # Keep_Work = True
-
-    arlabel = pop_All_2018.get(category, "")
-
-    if not arlabel:
-        arlabel = find_lab(category, category_r)
-
-    if not arlabel:
-        arlabel = work_titose_nmaes(category_r, do_Get_contry2, category, Cate_test)
+    arlabel = ""
+    for handler in handlers:
+        lab = handler(category.lower())
+        if lab:
+            arlabel = lab
+            break
 
     if arlabel:
         arlabel = fixtitle.fixlab(arlabel, en=category_r)
-        print_put(f'xxxxx <<lightyellow>>Cate_test: "{Cate_test}" ')
-        print_put(f'>>>>>> <<lightyellow>>test: cat "{category_r}", arlabel:"{arlabel}"')
 
-    print_def_head("<<lightyellow>>>> ^^^^^^^^^ yementest end ^^^^^^^^^ ")
-
-    YTN_cash[cash_key] = arlabel
-
+    print_def_head("<<lightyellow>>>> ^^^^^^^^^ translate_general_category end ^^^^^^^^^ ")
     return arlabel
+
+

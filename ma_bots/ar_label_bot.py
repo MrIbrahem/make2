@@ -5,7 +5,7 @@ from ..ma_bots.ar_label_bot import find_ar_label
 """
 
 import re
-
+from typing import Dict, Any, List, Tuple
 from ..fix import fixtitle
 from ..ma_lists_bots import pop_of_without_in
 
@@ -29,31 +29,11 @@ from .arlabel_bots.bot_con_lab import get_con_lab
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 
 
-def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contry2=True):
-    """Find the Arabic label based on the provided parameters.
+def find_ar_label(
+    category: str, tito: str, tito_name: str, Cate_test: str, category_r: str, do_Get_contry2: bool = True
+) -> str:
+    """Find the Arabic label based on the provided parameters."""
 
-    This function processes various inputs to generate an Arabic label that
-    corresponds to the given category and tito. It performs several checks
-    and transformations based on the type and country derived from the input
-    parameters. The function modifies the `Cate_test` string based on the
-    presence of specific keywords and conditions, and it constructs the
-    final Arabic label by combining different components based on predefined
-    rules.
-
-    Args:
-        category (str): The category to which the label belongs.
-        tito (str): The keyword or phrase used for label generation.
-        tito_name (str): The name associated with the tito.
-        Cate_test (str): A string used for testing and modification.
-        category_r (str): The category reference for final output.
-        do_Get_contry2 (bool?): Flag to determine if country retrieval is needed. Defaults to True.
-
-    Returns:
-        str: The generated Arabic label or an empty string if conditions are not met.
-    """
-
-    # Keep_Work = False
-    # NoLabb = True
     CAO = True
 
     print_put(f'<<lightblue>>>>>> yementest: category.find(tito:"{tito_name}":"{tito}") != -1 ')
@@ -90,7 +70,6 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
         print_put(f'<<lightgreen>>>>>> ------------- contry_lower:"{contry_lower}", con_lab:"{con_lab}"')
         print_put(f'<<lightgreen>>>>>> ------------- Type_lower:"{Type_lower}", Type_lab:"{Type_lab}"')
 
-    # Add_In_Done = False
     if not CAO:
         return ""
     # ---
@@ -100,25 +79,22 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
         return ""
     # ---
     if tito2 in tito_list_s and Add_in_lab:
-        if tito2 == "in" or Type_lower.find(" in") != -1:
+        if tito2 == "in" or " in" in Type_lower:
             if Type_lower in pop_of_without_in:
                 print_put(f'>>-- Skip aAdd في to Type_lab:"{Type_lab}", "{Type_lower}"')
 
             else:
-                if Type_lab.find(" في") == -1 and Type_lower.find(" in") != -1:
+                if " في" not in Type_lab and " in" in Type_lower:
                     print_put(f'>>-- aAdd في to Type_lab:in"{Type_lab}", for "{Type_lower}"')
                     Type_lab = Type_lab + " في"
-                    # Add_In_Done = True
 
-                elif tito2 == "in" and Type_lower.find(" in") != -1:
+                elif tito2 == "in" and " in" in Type_lower:
                     print_put(f'>>>> aAdd في to Type_lab:in"{Type_lab}", for "{Type_lower}"')
                     Type_lab = Type_lab + " في"
-                    # Add_In_Done = True
 
-        elif (tito2 == "at" or Type_lower.find(" at") != -1) and (Type_lab.find(" في") == -1):
+        elif (tito2 == "at" or " at" in Type_lower) and (" في" not in Type_lab):
             print_put('>>>> Add في to Type_lab:at"%s"' % Type_lab)
             Type_lab = Type_lab + " في"
-            # Add_In_Done = True
     # ---
     Type_lower2 = Type_lower
     # ---
@@ -127,8 +103,8 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
 
         if Type_lower not in Dont_Add_min:
             if Type_lower.endswith(" of") and ty_in18:
-                Type_lower2 = Type_lower[:-len(" of")]
-                if Type_lab.find(" في") == -1:
+                Type_lower2 = Type_lower[: -len(" of")]
+                if " في" not in Type_lab:
                     if (Type_lower in New_players) or (Type_lower2 in New_players):
                         print_put('>>>> nAdd من to Type_lab"%s" line:1853' % Type_lab)
                         Type_lab = Type_lab + " من "
@@ -160,11 +136,11 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
         sps = " في "
 
     if contry_in_Table and Add_in_lab:
-        if (tito2 == "in" or tito2 == "at") and (con_lab.find(" في") == -1 or Type_lower in Add_ar_in):
+        if (tito2 == "in" or tito2 == "at") and (" في" not in con_lab or Type_lower in Add_ar_in):
             sps = " في "
             print_put("ssps:%s" % sps)
     else:
-        if (tito2 == "in" or tito2 == "at") and (Type_lab.find(" في") == -1 or Type_lower in Add_ar_in):
+        if (tito2 == "in" or tito2 == "at") and (" في" not in Type_lab or Type_lower in Add_ar_in):
             Type_lab = Type_lab + " في"
 
     # ---
@@ -175,10 +151,10 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
             print_put(f">>>>> > ({tito2=}): tito2 in Tit_ose_Nmaes and tito2 not in tito_list_s, {tatl=}")
 
             if tito2 == "for" and contry_lower.startswith("for "):
-                if Type_lower.strip().endswith("competitors") and category.find("competitors for") != -1:
+                if Type_lower.strip().endswith("competitors") and "competitors for" in category:
                     tatl = "من"
 
-                if Type_lower.strip().endswith("medalists") and category.find("medalists for") != -1:
+                if Type_lower.strip().endswith("medalists") and "medalists for" in category:
                     tatl = "من"
 
             if tito2 == "to" and Type_lower.strip().startswith("ambassadors of"):
@@ -283,7 +259,6 @@ def find_ar_label(category, tito, tito_name, Cate_test, category_r, do_Get_contr
     arlabel = fixtitle.fixlab(arlabel, en=category_r)
     print_put('>>>>>> <<lightyellow>>Cate_test: "%s" ' % Cate_test)
     print_put(f'>>>>>> <<lightyellow>>test: cat "{category_r}", arlabel:"{arlabel}"')
-    # NoLabb = False
 
     print_put('>>>> <<lightblue>>Cate_test :"%s"' % Cate_test)
     return arlabel
