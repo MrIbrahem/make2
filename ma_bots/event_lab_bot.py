@@ -29,7 +29,7 @@ from ..bots import tmp_bot
 from .lab_seoo_bot import event_Lab_seoo
 from .contry2_bot import Get_contry2
 
-# ImportError: cannot import name 'yementest_with_Titose_Nmaes' from partially initialized module 'make2.ma_bots.ye_ts_bot'
+# ImportError: cannot import name 'translate_general_category' from partially initialized module 'make2.ma_bots.ye_ts_bot'
 #  (most likely due to a circular import) (I:\core\bots\ma\make2\ma_bots\ye_ts_bot.py)
 from . import ye_ts_bot
 
@@ -38,24 +38,6 @@ Find_f_wikidata = {1: "nowikidata" not in sys.argv}
 
 
 def event_Lab(cate_r):
-    """Generate a category label based on the input category string.
-
-    This function processes the input category string to generate a
-    corresponding category label. It performs various transformations and
-    checks, including converting the string to lowercase, replacing
-    underscores with spaces, and adding a prefix if necessary. The function
-    also attempts to retrieve category information from multiple sources and
-    applies specific logic based on the content of the input string. If no
-    category label is found, it falls back on additional methods to derive a
-    suitable label.
-
-    Args:
-        cate_r (str): The input category string that needs to be processed.
-
-    Returns:
-        str: The generated category label based on the input string.
-    """
-
     category_lab = ""
     list_of_cat = ""
     cate_r2 = cate_r
@@ -80,6 +62,8 @@ def event_Lab(cate_r):
     # ---
     foot_ballers = False
     # ---
+    Find_wd, Find_ko = False, False
+    # ---
     if not category_lab:
         list_of_cat, Find_wd, Find_ko, foot_ballers, category3 = fax2.get_list_of_and_cat3(category3, category3_nolower)
     # ---
@@ -102,8 +86,8 @@ def event_Lab(cate_r):
         category_lab = pop_All_2018.get(category3, "")
 
     if list_of_cat == "" and category_lab == "":
-        # print("yementest_with_Titose_Nmaes 10")
-        category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(category)
+        # print("translate_general_category 10")
+        category_lab = ye_ts_bot.translate_general_category(category)
 
     if not category_lab:
         category_lab = Get_contry2(category3)
@@ -150,8 +134,8 @@ def event_Lab(cate_r):
         category_lab = tmp_bot.Work_Templates(orginal_category3)
     # ---
     if not category_lab:
-        # print("yementest_with_Titose_Nmaes 11")
-        category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(orginal_category3)
+        # print("translate_general_category 11")
+        category_lab = ye_ts_bot.translate_general_category(orginal_category3)
 
     if not category_lab:
         category32 = ""

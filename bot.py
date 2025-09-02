@@ -8,13 +8,14 @@ from . import bot # bot.event(tab, **kwargs)
 from . import bot as MA_MAIN # MA_MAIN.event(tab, **kwargs)
 """
 
+from typing import Dict, Any, List
 from . import main
 from .media_bots import films_bot  # test_films
-# from .jobs_bots.test4_bots.langs_w import Lang_work
 
-def event(tab, return_no_labs=False, **kwargs):
+
+def event(tab: Dict[str, Any], return_no_labs: bool = False, **kwargs: Any) -> List[str]:
     return main.event(tab, return_no_labs=return_no_labs, **kwargs)
 
 
-def test_films(cate, fa=""):
+def test_films(cate: str, fa: str = "") -> str:
     return films_bot.test_films(cate, fa=fa)

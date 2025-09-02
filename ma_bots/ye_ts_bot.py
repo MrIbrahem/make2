@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-from  make.ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
+from  make.ma_bots.ye_ts_bot import translate_general_category
 
 from ..ma_bots import ye_ts_bot
 
 
-lab = ye_ts_bot.yementest_with_Titose_Nmaes()
+lab = ye_ts_bot.translate_general_category()
 
 """
 
@@ -83,7 +83,7 @@ def work_titose_nmaes(category_r, do_Get_contry2, category, Cate_test):
     return arlabel
 
 
-def yementest_with_Titose_Nmaes(category_r, do_Get_contry2=True):
+def translate_general_category(category_r, do_Get_contry2=True):
     """Retrieve and process category names for the Yementest application.
 
     This function takes a category string, processes it to standardize the
