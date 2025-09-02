@@ -2,6 +2,7 @@
 from  ..date_bots.with_years_bot import Try_With_Years
 """
 
+import functools
 import re
 from typing import Dict, Optional
 from ..ma_lists_bots import change_numb_to_word
@@ -23,6 +24,7 @@ def print_put(s: str) -> None:
     return
 
 
+@functools.lru_cache(maxsize=None)
 def Try_With_Years(contry: str) -> str:
     """Retrieve a formatted label for a given country based on its historical
     context.
