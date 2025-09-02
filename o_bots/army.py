@@ -1,5 +1,5 @@
 import re
-
+import functools
 from ..ma_lists_bots import (
     All_contry_with_nat,
     All_contry_with_nat_keys_is_en,
@@ -10,14 +10,13 @@ from ..ma_lists_bots import (
     military_format_men,
 )
 
-test_Army_Cash = {}
-
 
 def print_put(s):
     # printe.output(s)
     pass
 
 
+@functools.lru_cache(maxsize=None)
 def find_country_from_category(cate):
     """
     Finds the country from the category string and returns the remaining part of the category,
@@ -37,15 +36,16 @@ def find_country_from_category(cate):
         contry4_lower = f"{contry.lower()} "
 
         if cate.startswith(contry2_lower):
-            return cate[len(contry2_lower):].strip(), women_labs, men_labs
+            return cate[len(contry2_lower) :].strip(), women_labs, men_labs
         if cate.startswith(contry3_lower):
-            return cate[len(contry3_lower):].strip(), women_labs, men_labs
+            return cate[len(contry3_lower) :].strip(), women_labs, men_labs
         if cate.startswith(contry4_lower):
-            return cate[len(contry4_lower):].strip(), women_labs, men_labs
+            return cate[len(contry4_lower) :].strip(), women_labs, men_labs
 
     return "", "", ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_military_format_women_without_al_from_end(cate):
     """
     Handles translation for categories that start with a military format for women,
@@ -62,6 +62,7 @@ def handle_military_format_women_without_al_from_end(cate):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_military_format_women_without_al(con_77, women_lab):
     """
     Handles translation for categories that match a military format for women, without 'al'.
@@ -72,6 +73,7 @@ def handle_military_format_women_without_al(con_77, women_lab):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_endswith_table(con_77, women_lab):
     """
     Handles translation for categories that end with specific keywords like 'civilians', 'generals', etc.
@@ -93,6 +95,7 @@ def handle_endswith_table(con_77, women_lab):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_military_format_men(con_77, men_lab):
     """
     Handles translation for categories that match a military format for men.
@@ -106,6 +109,7 @@ def handle_military_format_men(con_77, men_lab):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_sport_formts_en_p17_ar_nat(con_77, men_lab):
     """
     Handles translation for categories that match a sport format.
@@ -119,13 +123,11 @@ def handle_sport_formts_en_p17_ar_nat(con_77, men_lab):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def test_Army(cate):
     """
     Translates a category related to military subjects.
     """
-    if cate in test_Army_Cash:
-        return test_Army_Cash[cate]
-
     cate_lower = cate.lower()
     cnt_la = ""
 
@@ -149,8 +151,5 @@ def test_Army(cate):
             cnt_la = handler(con_77, lab)
             if cnt_la:
                 break
-
-    if cnt_la:
-        test_Army_Cash[cate] = cnt_la
 
     return cnt_la

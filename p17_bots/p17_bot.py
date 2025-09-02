@@ -1,4 +1,5 @@
 import re
+import functools
 from ..jobs_bots.get_helps import get_con_3
 from ..matables_bots.bot import All_P17, Add_to_main2_tab
 from ..format_bots import Tit_ose_Nmaes, pop_format
@@ -27,6 +28,7 @@ def add_all(lab):
     return new_lab
 
 
+@functools.lru_cache(maxsize=None)
 def handle_men_nationality(cate):
     """
     Handles translation for categories with men's nationalities.
@@ -41,6 +43,7 @@ def handle_men_nationality(cate):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_women_nationality(cate):
     """
     Handles translation for categories with women's nationalities.
@@ -56,6 +59,7 @@ def handle_women_nationality(cate):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def Get_P17_2(cate):
     """
     Translates categories where the English name is a country and the Arabic is a nationality.
@@ -67,6 +71,7 @@ def Get_P17_2(cate):
     return translation
 
 
+@functools.lru_cache(maxsize=None)
 def find_label_for_category_part(con_3):
     """
     Finds a label for a part of a category from various sources.
@@ -89,6 +94,7 @@ def find_label_for_category_part(con_3):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def Get_P17(cate):
     """
     Translates categories where the English name is a nationality and the Arabic is a country name.

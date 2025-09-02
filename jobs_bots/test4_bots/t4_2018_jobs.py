@@ -1,5 +1,5 @@
 import re
-
+import functools
 from ...ma_lists_bots import (
     People_key, All_Nat, Nat_women, Nat_men, Jobs_key_mens, Jobs_key_womens
 )
@@ -14,9 +14,8 @@ from ..jobs_mainbot import Jobs
 from .relegin_jobs import try_relegins_jobs
 from .langs_w import Lang_work
 
-test4_2018_Jobs_cash = {}
 
-
+@functools.lru_cache(maxsize=None)
 def handle_prefix(cate):
     """
     Handles prefixes in the category string.
@@ -34,6 +33,7 @@ def handle_prefix(cate):
     return "", "", cate
 
 
+@functools.lru_cache(maxsize=None)
 def handle_direct_translation(cate):
     """
     Handles direct translations from various dictionaries.
@@ -48,6 +48,7 @@ def handle_direct_translation(cate):
     )
 
 
+@functools.lru_cache(maxsize=None)
 def handle_nationality_translation(cate, main_ss, main_lab):
     """
     Handles translations that involve nationalities.
@@ -76,14 +77,11 @@ def handle_nationality_translation(cate, main_ss, main_lab):
     return "", main_lab, ""
 
 
+@functools.lru_cache(maxsize=None)
 def test4_2018_Jobs(cate, out=False, tab=None):
     """
     Retrieve job-related information based on the specified category.
     """
-    cach_key = cate.lower().strip()
-    if cach_key in test4_2018_Jobs_cash:
-        return test4_2018_Jobs_cash[cach_key]
-
     original_cate = cate
     cate = re.sub(r"_", " ", cate)
     main_ss, main_lab, cate = handle_prefix(cate)
@@ -120,5 +118,4 @@ def test4_2018_Jobs(cate, out=False, tab=None):
         contry_lab = try_relegins_jobs(cate)
 
     output_test4(f'end test4_2018_Jobs "{original_cate}" , contry_lab:"{contry_lab}"')
-    test4_2018_Jobs_cash[cach_key] = contry_lab
     return contry_lab

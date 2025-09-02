@@ -1,4 +1,5 @@
 import re
+import functools
 from .. import printe
 from ..ma_lists_bots import sport_formts_for_p17, nat_p17_oioi
 from ..ma_lists_bots import fanco_line, Sports_Keys_For_Team
@@ -7,14 +8,13 @@ from .. import ma_lists_sport_lab as sport_lab
 from ..ma_lists_bots import All_Nat, Nat_women
 from ..jobs_bots.get_helps import get_con_3
 
-nat_others_cash = {}
-
 
 def print_put(s):
     # printe.output(s)
     pass
 
 
+@functools.lru_cache(maxsize=None)
 def get_sport_template_label(sport_format_string):
     """
     Generates a sport label from a template.
@@ -48,6 +48,7 @@ def get_sport_template_label(sport_format_string):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_female_sport_translation(category_part, country_key):
     """
     Handles translation for female sport categories.
@@ -58,6 +59,7 @@ def handle_female_sport_translation(category_part, country_key):
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def handle_generic_sport_translation(category_part, country_key, original_category):
     """
     Handles translation for generic sport categories.
@@ -74,14 +76,12 @@ def handle_generic_sport_translation(category_part, country_key, original_catego
     return ""
 
 
+@functools.lru_cache(maxsize=None)
 def find_nat_others(cate, fa=""):
     """
     Finds translations for sports-related categories that include a nationality.
     Caches the results.
     """
-    if cate in nat_others_cash:
-        return nat_others_cash[cate]
-
     translated_label = ""
     category_lower = cate.lower()
 
@@ -98,7 +98,6 @@ def find_nat_others(cate, fa=""):
                 category_part, country_key, cate
             )
 
-    nat_others_cash[cate] = translated_label
     return translated_label
 
 

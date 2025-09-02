@@ -1,5 +1,6 @@
 import re
 import sys
+import functools
 from ..fix import fixtitle
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..helps.print_bot import print_def_head
@@ -9,9 +10,9 @@ from ..ma_bots.ar_label_bot import find_ar_label
 from ..matables_bots.bot import Films_O_TT, New_players
 
 Find_f_wikidata = {1: "nowikidata" not in sys.argv}
-translation_cache = {}
 
 
+@functools.lru_cache(maxsize=None)
 def direct_lookup_handler(category):
     """
     Handles direct lookups in various dictionaries.
@@ -19,6 +20,7 @@ def direct_lookup_handler(category):
     return pop_All_2018.get(category) or Films_O_TT.get(category) or New_players.get(category)
 
 
+@functools.lru_cache(maxsize=None)
 def year_lab_handler(category):
     """
     Handles year-based translations.
@@ -26,6 +28,7 @@ def year_lab_handler(category):
     return year_lab.make_year_lab(category)
 
 
+@functools.lru_cache(maxsize=None)
 def titose_nmaes_handler(category, original_category, do_get_contry2):
     """
     Handles translations based on Tit_ose_Nmaes.
@@ -38,16 +41,13 @@ def titose_nmaes_handler(category, original_category, do_get_contry2):
     return None
 
 
+@functools.lru_cache(maxsize=None)
 def translate_general_category(category_r, do_Get_contry2=True):
     """
     Translates a general category by trying a series of strategies.
     """
     category = re.sub(r"_", " ", category_r)
     category = re.sub(r"category:", "", category, flags=re.IGNORECASE)
-    cash_key = category.lower().strip()
-
-    if cash_key in translation_cache:
-        return translation_cache[cash_key]
 
     print_def_head(f"<<lightyellow>>>> ^^^^^^^^^ translate_general_category start ^^^^^^^^^ ({category}) ")
 
@@ -67,7 +67,6 @@ def translate_general_category(category_r, do_Get_contry2=True):
         arlabel = fixtitle.fixlab(arlabel, en=category_r)
 
     print_def_head("<<lightyellow>>>> ^^^^^^^^^ translate_general_category end ^^^^^^^^^ ")
-    translation_cache[cash_key] = arlabel
     return arlabel
 
 

@@ -1,5 +1,5 @@
 import re
-
+import functools
 from ..ma_lists_bots import By_table, By_orginal2, By_table_orginal
 from ..ma_lists_bots import New_P17_Finall
 from ..matables_bots.bot_2018 import pop_All_2018
@@ -12,6 +12,7 @@ def print_put(s):
     pass
 
 
+@functools.lru_cache(maxsize=None)
 def get_label_for_by_part(by_part):
     """
     Tries to find a label for a given 'by' part of a category.
@@ -24,6 +25,7 @@ def get_label_for_by_part(by_part):
     return label
 
 
+@functools.lru_cache(maxsize=None)
 def get_label_for_main_part(main_part):
     """
     Tries to find a label for the main part of a category.
@@ -38,6 +40,7 @@ def get_label_for_main_part(main_part):
     return label
 
 
+@functools.lru_cache(maxsize=None)
 def Make_By_lab(cate):
     """
     Translates categories that contain 'by' or 'and'.

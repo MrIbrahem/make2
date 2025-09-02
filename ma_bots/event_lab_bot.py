@@ -66,14 +66,10 @@ class TranslationPipeline:
 
         handlers = [
             lambda: Get_contry2(self.orginal_category3) if self.list_of_cat == "لاعبو {}" else None,
-            lambda: univer.test_Universities(self.category3),
             lambda: year_lab.make_year_lab(self.category3),
             lambda: sport_lab.Get_New_team_xo(self.category3),
-            lambda: pop_All_2018.get(self.category3) if self.Find_wd else None,
-            lambda: ye_ts_bot.translate_general_category(self.category) if not self.list_of_cat else None,
             lambda: Get_contry2(self.category3),
             lambda: kooora.kooora_team(self.category3, Local=Find_f_wikidata[1]) if self.Find_ko else None,
-            lambda: find_wikidata(self.category3) if self.Find_wd else None,
         ]
         for handler in handlers:
             lab = handler()
@@ -97,9 +93,6 @@ class TranslationPipeline:
 
         if not self.category_lab:
             self.category_lab = tmp_bot.Work_Templates(self.orginal_category3)
-
-        if not self.category_lab:
-            self.category_lab = ye_ts_bot.translate_general_category(self.orginal_category3)
 
         if not self.category_lab:
             self.handle_cricketers()

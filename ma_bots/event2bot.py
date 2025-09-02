@@ -1,5 +1,6 @@
 import re
 import sys
+import functools
 from .. import printe
 from ..fix import fixtitle
 from ..bots import tmp_bot
@@ -12,10 +13,10 @@ from .contry_bot import Get_contry
 from .dodo_bots.event2bot_dodo import make_lab_dodo
 
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
-event2_cash = {}
 Find_stubs = {1: "-stubs" in sys.argv}
 
 
+@functools.lru_cache(maxsize=None)
 def university_handler(category):
     """
     Handles university-related categories.
@@ -23,6 +24,7 @@ def university_handler(category):
     return univer.test_Universities(category)
 
 
+@functools.lru_cache(maxsize=None)
 def country_handler(category):
     """
     Handles country-related categories.
@@ -38,6 +40,7 @@ def country_handler(category):
     return None
 
 
+@functools.lru_cache(maxsize=None)
 def date_handler(category_r, category):
     """
     Handles date and time parsing.
@@ -80,6 +83,7 @@ def date_handler(category_r, category):
     return make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, category3, category_r)
 
 
+@functools.lru_cache(maxsize=None)
 def stub_handler(category_r):
     """
     Handles "stub" categories.
@@ -96,13 +100,13 @@ def stub_handler(category_r):
     return None
 
 
+@functools.lru_cache(maxsize=None)
 def event2(category_r):
     """
     Translates an event-related category by trying a series of strategies.
     """
-    cash_key = category_r.replace("category:", "").lower().strip()
-    if not category_r or cash_key in event2_cash:
-        return event2_cash.get(cash_key, "")
+    if not category_r:
+        return ""
 
     handlers = [
         university_handler,
@@ -122,5 +126,4 @@ def event2(category_r):
         if not ar_label.startswith("تصنيف:"):
             ar_label = f"تصنيف:{ar_label}"
 
-    event2_cash[cash_key] = ar_label
     return ar_label
