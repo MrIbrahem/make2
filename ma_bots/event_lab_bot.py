@@ -29,7 +29,7 @@ from ..bots import tmp_bot
 from .lab_seoo_bot import event_Lab_seoo
 from .contry2_bot import Get_contry2
 
-# ImportError: cannot import name 'yementest_with_Titose_Nmaes' from partially initialized module 'make2.ma_bots.ye_ts_bot'
+# ImportError: cannot import name 'translate_general_category' from partially initialized module 'make2.ma_bots.ye_ts_bot'
 #  (most likely due to a circular import) (I:\core\bots\ma\make2\ma_bots\ye_ts_bot.py)
 from . import ye_ts_bot
 
@@ -102,8 +102,8 @@ def event_Lab(cate_r):
         category_lab = pop_All_2018.get(category3, "")
 
     if list_of_cat == "" and category_lab == "":
-        # print("yementest_with_Titose_Nmaes 10")
-        category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(category)
+        # print("translate_general_category 10")
+        category_lab = ye_ts_bot.translate_general_category(category)
 
     if not category_lab:
         category_lab = Get_contry2(category3)
@@ -150,8 +150,8 @@ def event_Lab(cate_r):
         category_lab = tmp_bot.Work_Templates(orginal_category3)
     # ---
     if not category_lab:
-        # print("yementest_with_Titose_Nmaes 11")
-        category_lab = ye_ts_bot.yementest_with_Titose_Nmaes(orginal_category3)
+        # print("translate_general_category 11")
+        category_lab = ye_ts_bot.translate_general_category(orginal_category3)
 
     if not category_lab:
         category32 = ""

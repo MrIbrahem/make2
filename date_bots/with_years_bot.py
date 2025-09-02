@@ -12,7 +12,7 @@ from ..matables_bots.bot import Add_in_table
 from ..matables_bots.table1_bot import get_KAKO
 
 from ..ma_bots import contry2_lab
-from ..ma_bots.ye_ts_bot import yementest_with_Titose_Nmaes
+from ..ma_bots.ye_ts_bot import translate_general_category
 
 Try_With_Years_cash = {}
 
@@ -112,8 +112,8 @@ def Try_With_Years(contry):
             print_put(f">>> Try With Years get_KAKO con_3_lab:{con_3_lab}")
 
         if con_3_lab == "":
-            # print("yementest_with_Titose_Nmaes 4")
-            con_3_lab = yementest_with_Titose_Nmaes(con_3)
+            # print("translate_general_category 4")
+            con_3_lab = translate_general_category(con_3)
 
         if not con_3_lab:
             con_3_lab = contry2_lab.get_lab_for_contry2(con_3)
@@ -150,8 +150,8 @@ def Try_With_Years(contry):
             print_put(f">>> Try With Years contry.startswith(year2:{year2})")
             con_4 = contry[:-len(year2)]
 
-            # print("yementest_with_Titose_Nmaes 5")
-            con_4_lab = yementest_with_Titose_Nmaes(con_4)
+            # print("translate_general_category 5")
+            con_4_lab = translate_general_category(con_4)
 
             if con_4_lab == "":
                 con_4_lab = contry2_lab.get_lab_for_contry2(con_4)
