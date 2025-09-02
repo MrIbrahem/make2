@@ -3,6 +3,7 @@
 from ..media_bots.film_keys_bot import get_Films_key_CAO, Films
 
 """
+from typing import Dict
 from ..ma_lists_bots import en_is_nat_ar_is_women
 
 from ..ma_lists_bots import (
@@ -19,11 +20,11 @@ from ..ma_lists_bots import (
 from ..helps.print_bot import output_test4
 
 
-get_Films_key_CAO_cash = {}
-Films_cash = {}
+get_Films_key_CAO_cash: Dict[str, str] = {}
+Films_cash: Dict[str, str] = {}
 
 
-def get_Films_key_CAO(con_3):
+def get_Films_key_CAO(con_3: str) -> str:
     # ---
     if con_3 in get_Films_key_CAO_cash:
         return get_Films_key_CAO_cash[con_3]
@@ -42,7 +43,7 @@ def get_Films_key_CAO(con_3):
             # ---
             if con_3_lab:
                 output_test4(f'<<lightblue>> get_Films_key_CAO : cc "{cc}" ')
-                if con_3_lab.find("{}") != -1:
+                if "{}" in con_3_lab:
                     labr = con_3_lab.format(tyty=cas_lab)
                 else:
                     labr = f"{cas_lab} {con_3_lab}"
@@ -53,20 +54,14 @@ def get_Films_key_CAO(con_3):
     return labr
 
 
-def Films(cate, Start, con_3, fa=""):
+def Films(cate: str, Start: str, con_3: str, fa: str = "") -> str:
     # ---
     cash_key = f"{cate}, {Start}, {con_3}".lower().strip()
     # ---
     if cash_key in Films_cash:
         return Films_cash[cash_key]
     # ---
-    # for contry in Nat_women:
-    # ---
-    # output_test4('<<lightblue>> Films : cate "%s" ' % cate)
-    # ---
-    # wd = {"contry":"", "k":""}
     contry = Start
-    # wd["contry"] = contry
     contry_lab = ""
     # ---
     if con_3:
@@ -79,7 +74,6 @@ def Films(cate, Start, con_3, fa=""):
         if not contry_lab:
             con_3_lab = Films_key_CAO.get(con_3, get_Films_key_CAO(con_3))
             if con_3_lab:
-                # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
                 contry_lab = f"{con_3_lab} {llab}"
                 # ---
                 if con_3 in Films_key_CAO_new_format:
@@ -90,12 +84,8 @@ def Films(cate, Start, con_3, fa=""):
         if not contry_lab:
             con_3_lab = Films_key_For_nat.get(con_3, "")
             if con_3_lab:
-                # output_test4('<<lightblue>> cate.startswith("%s"), con_3:"%s"' % (cate , con_3))
                 contry_lab = con_3_lab.format(llab)
                 output_test4(f'<<lightblue>> Films_key_For_nat:Films: new contry_lab  "{contry_lab}" ')
-                # wd["k"] = con_3
-    # else:
-    # output_test4( '<<lightred>> con_3 == "" ')
     # ---#get_Films_key_CAO
     if not contry_lab:
         cate_lab = Films_key_CAO.get(cate, "")
@@ -107,8 +97,6 @@ def Films(cate, Start, con_3, fa=""):
         contry_lab = get_Films_key_CAO(cate)
         if contry_lab:
             output_test4(f'<<lightblue>> test Films: new contry_lab "{contry_lab}" ')
-    # ---
-    # wd["lab"] = contry_lab
     # ---
     Films_cash[cash_key] = contry_lab
     # ---

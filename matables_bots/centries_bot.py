@@ -3,10 +3,10 @@
 Usage:
 from ..matables_bots.centries_bot import centries_years_dec
 """
+from typing import Dict
 
-centries_years_dec = {}
+centries_years_dec: Dict[str, str] = {}
 
-# elfffff = {1:[1,2] ,  3:[21,22] }
 elfffff = {
     1: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     2: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
@@ -15,7 +15,7 @@ elfffff = {
 for elff, tabe in elfffff.items():
     millennium = elff
 
-    st = "th"  # the 1st millennium bc
+    st = "th"
     millennium_lab = f"الألفية {millennium}"
     millennium_lab_bc = f"الألفية {millennium} ق م"
 
