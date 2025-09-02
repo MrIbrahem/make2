@@ -1,18 +1,15 @@
 #!/usr/bin/python3
 """
-!
+from ..format_bots import Dont_Add_min, NewFormat, Tabl_with_in, Tit_ose_Nmaes, ar_lab_before_year_to_add_in, change_cat, contry_before_year, for_table, pop_format, pop_format2, pop_format33, pp_ends_with, pp_ends_with_pase, pp_start_with, pp_start_with2, tito_list_s
+
 """
 
 import re
 import sys
-
-# from . import printe
-
 from ..helps import len_print
 from ..ma_lists_bots import ministrs_tab_for_pop_format
 from ..ma_lists_bots import New_Company
 from ..helps.print_bot import output_main
-
 from .pf_keys import Change_key, Change_key2
 
 # ---
@@ -27,10 +24,10 @@ Tit_ose_Nmaes = {
     "published by": "نشرتها",
     "published in": "نشرت في",
     "launched in": "أطلقت في",
-    
+
     "imprisoned-in": "مسجونون في",
     "imprisoned in": "مسجونون في",
-    
+
     "launched-in": "أطلقت في",
     "launched by": "أطلقتها",
     "launched-by": "أطلقتها",
@@ -214,9 +211,6 @@ contry_before_year = [
 # category = re.sub(r" {}".format(chk) , " {}".format(chk_lab) , category )
 # category = re.sub(r"{} ".format(chk) , "{} ".format(chk_lab) , category )
 # ---
-for x in New_Company:
-    Change_key[f"defunct {x} companies"] = f"defunct-{x}-companies"
-# ---
 NewFormat = {
     "### in american motorsport": "رياضة محركات في الولايات المتحدة في ###",
     "###_in_American_motorsport": "رياضة محركات في الولايات المتحدة في ###",
@@ -311,14 +305,6 @@ key_2_3 = {
     "men's": "رجال",
     # ---
 }
-fof = "{}"
-# ---
-for start, start_lab in key_2_3.items():
-    for suff, suff_lab in key_5_suff.items():
-        ke = f" - {start} {suff}"
-        lab_ke = f"{fof} - {suff_lab} {start_lab}"
-        pp_ends_with[ke] = lab_ke
-# ---
 fix_o = {
     # "squad navigational boxes": "صناديق تصفح تشكيلات",
     "squads navigational boxes": "صناديق تصفح تشكيلات",
@@ -371,9 +357,7 @@ fix_o = {
     "terminology": "مصطلحات",
     "variants": "أشكال",
 }
-for i, i_lab in fix_o.items():
-    pp_ends_with[f" {i}"] = i_lab + " {}"
-# ---
+
 pop_format33 = {
     "qualification for the": "تصفيات {} مؤهلة إلى {} ",
     "qualification for": "تصفيات {} مؤهلة إلى {} ",
@@ -434,14 +418,58 @@ pop_format = {
     # "law" : "قانون {}" ,
 }
 # ---
-for a, b in ministrs_tab_for_pop_format.items():
-    pop_format[a] = b
-# ---
 pop_format2 = {
     "politics of {}": "سياسة {}",
     "military installations of": "منشآت {} العسكرية",
 }
-# ---produced
+# ---
+fof = "{}"
+# ---
+for start, start_lab in key_2_3.items():
+    for suff, suff_lab in key_5_suff.items():
+        ke = f" - {start} {suff}"
+        lab_ke = f"{fof} - {suff_lab} {start_lab}"
+        pp_ends_with[ke] = lab_ke
+# ---
+for i, i_lab in fix_o.items():
+    pp_ends_with[f" {i}"] = i_lab + " {}"
+# ---
+for a, b in ministrs_tab_for_pop_format.items():
+    pop_format[a] = b
+# ---
+for x in New_Company:
+    Change_key[f"defunct {x} companies"] = f"defunct-{x}-companies"
+
+replaces = {
+    "national women's youth" : "national youth women's",
+    "national youth women's" : "national youth women's",
+    "women's youth national" : "national youth women's",
+    "women's national youth" : "national youth women's",
+    "youth national women's" : "national youth women's",
+    "youth women's national" : "national youth women's",
+    # ---
+    "national women's junior" : "national junior women's",
+    "national junior women's" : "national junior women's",
+    "women's junior national" : "national junior women's",
+    "women's national junior" : "national junior women's",
+    "junior women's national" : "national junior women's",
+    # ---
+    "national men's junior" : "national junior men's",
+    "national junior men's" : "national junior men's",
+    "men's junior national" : "national junior men's",
+    "men's national junior" : "national junior men's",
+    "junior men's national" : "national junior men's",
+    # ---
+    " men's national" : " national men's",
+    "women's national" : "national women's",
+    # ---
+    "junior national" : "national junior",
+    "youth national" : "national youth",
+    "amateur national" : "national amateur",
+    "heads of mission " : "heads-of-mission ",
+    "house of commons of canada" : "house-of-commons-of-canada",
+}
+# ---
 
 
 def change_cat(cat_orginal):
@@ -469,32 +497,12 @@ def change_cat(cat_orginal):
     category = re.sub(r"austria hungary", "austria hungary", category, flags=re.IGNORECASE)
     category = re.sub(r"-millennium", " millennium", category, flags=re.IGNORECASE)
     # ---
-    category = re.sub(
-        r"unmanned military aircraft of",
-        "unmanned military aircraft-oof",
-        category,
-        flags=re.IGNORECASE,
-    )
-    category = re.sub(
-        r"unmanned aerial vehicles of",
-        "unmanned aerial vehicles-oof",
-        category,
-        flags=re.IGNORECASE,
-    )
+    category = re.sub(r"unmanned military aircraft of", "unmanned military aircraft-oof", category, flags=re.IGNORECASE)
+    category = re.sub(r"unmanned aerial vehicles of", "unmanned aerial vehicles-oof", category, flags=re.IGNORECASE)
     # ---
-    category = re.sub(
-        r"democratic republic of the congo",
-        "democratic-republic-of-the-congo",
-        category,
-        flags=re.IGNORECASE,
-    )
+    category = re.sub(r"democratic republic of the congo", "democratic-republic-of-the-congo", category, flags=re.IGNORECASE)
     category = re.sub(r"republic of the congo", "republic-of-the-congo", category, flags=re.IGNORECASE)
-    category = re.sub(
-        r"athletics \(track and field\)",
-        "track-and-field athletics",
-        category,
-        flags=re.IGNORECASE,
-    )
+    category = re.sub(r"athletics \(track and field\)", "track-and-field athletics", category, flags=re.IGNORECASE)
     category = re.sub(r"twin people", "twinpeople", category, flags=re.IGNORECASE)
     # ---
     # category = re.sub(r"\–" , "-" , category, flags = re.IGNORECASE)
@@ -512,46 +520,16 @@ def change_cat(cat_orginal):
     # category = re.sub(r"assassinated (.*) people" , r"\g<1> assassinated people" , category, flags = re.IGNORECASE)
     # category = re.sub(r"'" , " " , category, flags = re.IGNORECASE)
     # ---
-    category = category.replace("national women's youth", "national youth women's")
-    category = category.replace("national youth women's", "national youth women's")
-    category = category.replace("women's youth national", "national youth women's")
-    category = category.replace("women's national youth", "national youth women's")
-    category = category.replace("youth national women's", "national youth women's")
-    category = category.replace("youth women's national", "national youth women's")
-    # ---
-    category = category.replace("national women's junior", "national junior women's")
-    category = category.replace("national junior women's", "national junior women's")
-    category = category.replace("women's junior national", "national junior women's")
-    category = category.replace("women's national junior", "national junior women's")
-    category = category.replace("junior women's national", "national junior women's")
-    category = category.replace("junior women's national", "national junior women's")
-    # ---
-    category = category.replace("national men's junior", "national junior men's")
-    category = category.replace("national junior men's", "national junior men's")
-    category = category.replace("men's junior national", "national junior men's")
-    category = category.replace("men's national junior", "national junior men's")
-    category = category.replace("junior men's national", "national junior men's")
-    category = category.replace("junior men's national", "national junior men's")
-    # ---
-    category = category.replace(" men's national", " national men's")
-    category = category.replace("women's national", "national women's")
-    # ---
-    category = category.replace("junior national", "national junior")
-    category = category.replace("youth national", "national youth")
-    category = category.replace("amateur national", "national amateur")
-    category = category.replace("heads of mission ", "heads-of-mission ")
-    category = category.replace("house of commons of canada", "house-of-commons-of-canada")
-    # ---
+    for x, d in replaces.items():
+        category = category.replace(x, d)
     # ---
     for chk2, chk2_lab in Change_key2.items():
         category = re.sub(chk2, chk2_lab, category, flags=re.IGNORECASE)
     # ---
     for chk, chk_lab in Change_key.items():
-        # chk2 = chk.replace("
         category = re.sub(rf"^category\:{chk} ", f"category:{chk_lab} ", category, flags=re.IGNORECASE)
         category = re.sub(rf"^{chk} ", f"{chk_lab} ", category, flags=re.IGNORECASE)
         category = re.sub(rf" {chk} ", f" {chk_lab} ", category, flags=re.IGNORECASE)
-        # category = re.sub(r" {}".format(chk) , " {}".format(chk_lab) , category , flags = re.IGNORECASE)
         category = re.sub(rf" {chk}$", f" {chk_lab}", category, flags=re.IGNORECASE)
         category = re.sub(rf"category\:{chk} ", f"category:{chk_lab} ", category, flags=re.IGNORECASE)
     # ---
@@ -565,30 +543,29 @@ def change_cat(cat_orginal):
     # ---
     if category != cat_orginal:
         output_main(f'change_cat to :"{category}", orginal: {cat_orginal}.')
-        # print(dodd)
     # ---
     return category
 
 
-# ---
 Lenth1 = {"Change_key": sys.getsizeof(Change_key), "Change_key2": sys.getsizeof(Change_key2)}
-# ---
 
 len_print.lenth_pri("pop_format.py", Lenth1)
 
-
-def main():
-    # ---
-    """
-    if sys.argv and sys.argv[1]:
-        La = sys.argv[1].lower()
-        La = re.sub(r"_", " " , La)
-        cat = change_cat(La)
-        print( "La: " + La)
-        print( "cat: " + cat)"""
-
-
-# ---
-if __name__ == "__main__":
-    main()
-# ---
+__all__ = [
+    "Dont_Add_min",
+    "NewFormat",
+    "Tabl_with_in",
+    "Tit_ose_Nmaes",
+    "ar_lab_before_year_to_add_in",
+    "change_cat",
+    "contry_before_year",
+    "for_table",
+    "pop_format",
+    "pop_format2",
+    "pop_format33",
+    "pp_ends_with",
+    "pp_ends_with_pase",
+    "pp_start_with",
+    "pp_start_with2",
+    "tito_list_s"
+]

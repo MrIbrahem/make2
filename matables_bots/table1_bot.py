@@ -77,12 +77,14 @@ KAKO = {
 
 def get_KAKO(cont):
     cnt_la = ""
-    for KO in KAKO:
+    # ---
+    for KO, KOTab in KAKO.items():
         if not cnt_la:
-            cnt_la = KAKO[KO].get(cont, "")
+            cnt_la = KOTab.get(cont, "")
             if cnt_la:
                 output_test(f'>> get_KAKO_({KO}) for ["{cont}"] = "{cnt_la}"')
                 return cnt_la
+    # ---
     return cnt_la
 
 
