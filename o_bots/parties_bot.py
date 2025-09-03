@@ -3,8 +3,8 @@ from  make.bots.parties_bot import get_parties_lab
 
 """
 
-from ..ma_lists_bots import party_end_keys
-from ..ma_lists_bots import Parties
+from ..malists_bots import party_end_keys
+from ..malists_bots import Parties
 
 
 def print_put(s):

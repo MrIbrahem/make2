@@ -1,6 +1,6 @@
 """
 
-from .. import ma_lists_sport_lab as sport_lab
+from .. import malists_sport_lab as sport_lab
 
 """
 

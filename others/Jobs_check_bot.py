@@ -7,8 +7,8 @@ import sys
 from pathlib import Path
 
 # ---
-from ..ma_lists_bots import ar_Nat_men
-from ..ma_lists_bots import Jobs_new, Jobs_key_womens, Jobs_key_mens, Men_Womens_Jobs
+from ..malists_bots import ar_Nat_men
+from ..malists_bots import Jobs_new, Jobs_key_womens, Jobs_key_mens, Men_Womens_Jobs
 from .. import printe
 
 # ---
