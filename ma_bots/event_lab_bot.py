@@ -13,12 +13,12 @@ import re
 from . import fax2
 from . import list_cat_format
 
-from .. import ma_lists_sport_lab as sport_lab
+from .. import malists_sport_lab as sport_lab
 
 from ..helps.print_bot import print_put
 from ..date_bots import year_lab
 from ..o_bots import univer
-from ..ma_lists_bots import New_P17_Finall
+from ..malists_bots import New_P17_Finall
 from ..fromnet import kooora
 from ..fromnet.wd_bot import find_wikidata
 from ..format_bots import pp_ends_with, pp_ends_with_pase, change_cat

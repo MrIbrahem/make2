@@ -1,11 +1,11 @@
 r"""
 
-from .ma_lists_bots import *
+from .malists_bots import *
 
 find:
 # from ma_lists\.[^ ]+ import
 replace:
-# from .ma_lists_bots import
+# from .malists_bots import
 
 """
 

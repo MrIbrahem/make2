@@ -11,13 +11,13 @@ from .. import printe
 import sys
 
 # ---
-from ..ma_lists_bots import Clubs_key_2
-from ..ma_lists_bots import Inter_Feds_lower
-from ..ma_lists_bots import pop_of_football_lower
+from ..malists_bots import Clubs_key_2
+from ..malists_bots import Inter_Feds_lower
+from ..malists_bots import pop_of_football_lower
 from ..jobs_bots import test_4
 from ..matables_bots.bot_2018 import Add_to_pop_All_18
 
-# from ..ma_lists_bots import pop_of_football_lower
+# from ..malists_bots import pop_of_football_lower
 # ---
 from ..fromnet import kooora
 

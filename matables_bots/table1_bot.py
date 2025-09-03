@@ -55,11 +55,11 @@ for tabd in list(Fgos2):
 
 FgosLi = {1: Fgos1, 2: Fgos2}
 
-from ..ma_lists_bots import pf_keys2
-from ..ma_lists_bots import Music_By_table
-from ..ma_lists_bots import Films_key_man
+from ..malists_bots import pf_keys2
+from ..malists_bots import Music_By_table
+from ..malists_bots import Films_key_man
 from .bot import All_P17
-from ..ma_lists_bots import By_table
+from ..malists_bots import By_table
 
 KAKO = {
     "pf_keys2": pf_keys2,
