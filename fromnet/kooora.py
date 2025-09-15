@@ -130,7 +130,6 @@ def kooora_player(EnName):
                 arlabel = tas4[0]"""
             # ---
             # printe.output(tas4)
-            # ---
     # ---
     # if re.sub(r"\W" , "" , arlabel ) != arlabel :
     # arlabel = ""

@@ -110,7 +110,6 @@ def test_Universities(cate):
         citelab = N_cit_ies_s_lower.get(cite, "")
         # ---
         print_put(f"<<lightblue>>>> test_Universities cite:{cite}, majorlab:{majorlab}, citelab:{citelab}")
-        # ---
     # ---
     univer_lab = ""
     # ---
