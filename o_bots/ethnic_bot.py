@@ -102,7 +102,6 @@ def Ethnic(cate, Start, con_3):
         con_nat = con_3[: -len(" people")]
         if Nat_mens.get(con_nat):
             con_3 = con_3[: -len(" people")]
-        # ---
     # ---
     # output_test4('<<lightblue>> Ethnic: cate:"%s" , Start:"%s" , con_3:"%s" ' % (cate,Start,con_3))
     # ---

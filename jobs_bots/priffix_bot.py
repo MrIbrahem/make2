@@ -201,7 +201,6 @@ def Women_s_priffix_work(con_3):
                 # f_lab = TAJO["womens"]#.format(nato = f_lab )
                 # f_lab = wrifflab.format(TAJO["womens"])
                 # output_test4('<<lightblue>> TAJO["womens"]: has {nato} "%s"' %   TAJO["womens"])
-                # ---
     # ---
     priffix_woMens_work_cash[cash_key] = f_lab
     # ---

@@ -149,7 +149,6 @@ def test4_2018_with_nat(cate, out=False, fa="", tab=None):
         # ---
         if not contry_lab:
             contry_lab = nat_match(cate, nat, con_3)
-        # ---
     # ---
     if not contry_lab:
         contry_lab = priffix_Mens_work(cate)
@@ -228,7 +227,6 @@ def Jobs_in_Multi_Sports(cate, out=False, tab=None):
     # ---
     if job and game_lab and job_lab:
         Main_lab = f"{job_lab} في {game_lab}"
-        # ---
     # ---
     output_test4(f'end Jobs_in_Multi_Sports "{cate}" , Main_lab:"{Main_lab}"')
     # ---
