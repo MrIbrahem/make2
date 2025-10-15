@@ -122,7 +122,7 @@ to_get_startswith: Dict[str, Dict[str, Any]] = {
 }
 
 
-def get_episodes(category3, category3_nolower):
+def get_episodes(category3: str, category3_nolower: str) -> Tuple[str, str]:
     """
     examples:
     Category:2016 American television episodes
@@ -132,15 +132,12 @@ def get_episodes(category3, category3_nolower):
 
     list_of_cat = ""
 
-    seasons = {}
+    seasons: Dict[str, str] = {}
 
-    # إنشاء القاموس ديناميكيًا
     for i in range(1, 11):
         label = f"حلقات {{}} الموسم {i}"
-
         key1 = f" (season {i}) episodes"
         key2 = f" season {i} episodes"
-
         seasons[key1] = label
         seasons[key2] = label
 
@@ -157,7 +154,7 @@ def get_episodes(category3, category3_nolower):
     return list_of_cat, category3
 
 
-def get_from_starts_dict(category3):
+def get_from_starts_dict(category3: str) -> Tuple[str, str, bool]:
     list_of_cat = ""
     Find_wd = False
 
@@ -174,7 +171,7 @@ def get_from_starts_dict(category3):
     return category3, list_of_cat, Find_wd
 
 
-def get_from_endswith_dict(category3):
+def get_from_endswith_dict(category3: str) -> Tuple[str, str, bool]:
     list_of_cat = ""
     Find_wd = False
 
@@ -191,7 +188,7 @@ def get_from_endswith_dict(category3):
     return category3, list_of_cat, Find_wd
 
 
-def get_templates_fo(category3):
+def get_templates_fo(category3: str) -> Tuple[str, str]:
     """
     examples:
     Category:2016 American television episodes
@@ -201,7 +198,7 @@ def get_templates_fo(category3):
 
     list_of_cat = ""
 
-    dict_temps = {
+    dict_temps: Dict[str, str] = {
         "sidebar templates": "قوالب اشرطة جانبية {}",
         "politics and government templates": "قوالب سياسة وحكومة {}",
         "infobox templates": "قوالب معلومات {}",
@@ -221,7 +218,7 @@ def get_templates_fo(category3):
     return list_of_cat, category3
 
 
-def get_list_of_and_cat3_with_lab2(category3_o, category3_nolower):
+def get_list_of_and_cat3_with_lab2(category3_o: str, category3_nolower: str) -> str:
     category_lab = ""
     list_of_cat = ""
     category3 = category3_o
@@ -247,7 +244,7 @@ def get_list_of_and_cat3_with_lab2(category3_o, category3_nolower):
     return category_lab
 
 
-def get_list_of_and_cat3(category3, category3_nolower):
+def get_list_of_and_cat3(category3: str, category3_nolower: str) -> Tuple[str, bool, bool, bool, str]:
     foot_ballers = False
     Find_wd = False
     Find_ko = False

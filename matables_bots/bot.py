@@ -43,7 +43,7 @@ from ..matables_bots.bot import (
 )
 """
 import sys
-
+from typing import Dict, Any, List, Set
 from .bot_2018 import pop_All_2018, olympicss
 from ..helps import len_print
 from ..ma_lists_bots import military_format_women, military_format_men

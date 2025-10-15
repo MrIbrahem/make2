@@ -3,6 +3,7 @@
 from .arlabel_bots.bot_type_lab import get_Type_lab
 
 """
+from typing import Tuple
 from .. import contry2_lab
 from ...o_bots.popl import make_people_lab
 from ...sports_bots import team_work
@@ -24,27 +25,8 @@ from ...helps.print_bot import print_put, output_test, mainoutput
 from ..contry_bot import Get_c_t_lab
 
 
-def get_Type_lab(tito, Type, Type_lower, contry_lower):
-    """Determine the type label based on input parameters.
-
-    This function generates a type label based on the provided inputs, which
-    include a title, a type descriptor, and country information. It checks
-    various conditions and mappings to derive the appropriate label,
-    including handling specific cases for women and sports. The function
-    utilizes several dictionaries and helper functions to find the correct
-    label based on the provided type descriptor.
-
-    Args:
-        tito (str): A string that may influence the type label.
-        Type (str): The type descriptor to be processed.
-        Type_lower (str): The lowercased version of the type descriptor.
-        contry_lower (str): The lowercased version of the country descriptor.
-
-    Returns:
-        tuple: A tuple containing:
-            - str: The determined type label.
-            - bool: A flag indicating whether to add the label in a lab context.
-    """
+def get_Type_lab(tito: str, Type: str, Type_lower: str, contry_lower: str) -> Tuple[str, bool]:
+    """Determine the type label based on input parameters."""
 
     tito2 = tito.strip()
 

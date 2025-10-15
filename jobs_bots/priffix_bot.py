@@ -2,8 +2,7 @@
 """
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
 """
-# from ..ma_lists_bots import en_is_nat_ar_is_P17, en_is_nat_ar_is_al_mens, en_is_nat_ar_is_man, en_is_nat_ar_is_al_women, en_is_nat_ar_is_women, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
-
+from typing import Dict
 from ..ma_lists_bots import Nat_mens
 from ..ma_lists_bots import (
     Jobs_key_mens,
@@ -17,11 +16,11 @@ from ..ma_lists_bots import replace_labels_2022, change_male_to_female, Mens_suf
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..helps.print_bot import output_test4
 
-priffix_Mens_work_cash = {}
-priffix_woMens_work_cash = {}
+priffix_Mens_work_cash: Dict[str, str] = {}
+priffix_woMens_work_cash: Dict[str, str] = {}
 
 
-def priffix_Mens_work(con_33):
+def priffix_Mens_work(con_33: str) -> str:
     """Process and retrieve the appropriate label for a given input string.
 
     This function takes an input string, processes it to determine if it
@@ -55,10 +54,6 @@ def priffix_Mens_work(con_33):
             priffix_Mens_work_cash[cash_key] = con_33_lab
             # ---
             return con_33_lab
-        # ---
-        # ينتج تصنيفات مثل : tab[Category:American research food] = "تصنيف:طعام بحثي أمريكيون"
-        # con_33_lab = New_male_keys.get(con_33 , "")
-        # if con_33_lab : return con_33_lab
     # ---
     if not con_33_lab:
         con_33_lab = Jobs_key_mens.get(con_33, "")
@@ -74,11 +69,11 @@ def priffix_Mens_work(con_33):
         if not con_33.startswith(pri):
             continue
         # ---
-        con_8 = con_33[len(pri):]
+        con_8 = con_33[len(pri) :]
         con_88 = con_8
         # ---
         if con_8.endswith(" people"):
-            con_nat = con_8[:-len(" people")]
+            con_nat = con_8[: -len(" people")]
             if Nat_mens.get(con_nat):
                 con_88 = con_nat
         con_88 = con_88.strip()
@@ -91,18 +86,12 @@ def priffix_Mens_work(con_33):
         if not con_8_lab:
             con_8_lab = Nat_mens.get(con_88, "")
         # ---
-        # stoped at: 24-02-2022.
         if con_88 in Female_Jobs and priff_lab in change_male_to_female:
             priff_lab = change_male_to_female[priff_lab]
         # ---
         if con_8_lab:
             output_test4(f'<<lightblue>> priffix_Mens_work: pri("{pri}"), con_88:{con_88}, con_8_lab:"{con_8_lab}"')
             con_33_lab = priff_lab.format(con_8_lab)
-            # ---
-            # TAJO = Men_Womens_with_nato.get(con_8 , False )
-            # if TAJO and TAJO["mens"].find("{nato}")  != -1 :
-            # con_33_lab = priff_lab.format(TAJO["mens"]) #TAJO["womens"]#.format(nato = con_8_lab )
-            # output_test4('<<lightblue>> TAJO["womens"]: has {nato} "%s"' %   TAJO["womens"])
             # ---
             if con_33_lab in replace_labels_2022:
                 con_33_lab = replace_labels_2022[con_33_lab]
@@ -118,19 +107,17 @@ def priffix_Mens_work(con_33):
         if not con_33.endswith(suffix2):
             continue
         # ---
-        con_8 = con_33[:-len(suffix2)]
+        con_8 = con_33[: -len(suffix2)]
         con_88 = con_8
         # ---
         if con_8.endswith(" people"):
-            con_nat = con_8[:-len(" people")]
+            con_nat = con_8[: -len(" people")]
             if Nat_mens.get(con_nat):
                 con_88 = con_nat
         con_88 = con_88.strip()
         # ---
         output_test4(f'<<lightblue>> con_33.endswith suffix2("{suffix2}"), con 88:"{con_88}"')
         # ---
-        # con_88_lab = Jobs_key_mens.get(con_88,"")
-        # if not con_88_lab:
         con_88_lab = Nat_mens.get(con_88, "")
         # ---
         if not con_88_lab:
@@ -149,7 +136,7 @@ def priffix_Mens_work(con_33):
     return con_33_lab
 
 
-def Women_s_priffix_work(con_3):
+def Women_s_priffix_work(con_3: str) -> str:
     """Retrieve the women's prefix work label based on the input string.
 
     This function processes the input string to determine if it matches any
@@ -174,14 +161,13 @@ def Women_s_priffix_work(con_3):
         return priffix_woMens_work_cash[cash_key]
     # ---
     f_lab = ""
-    # output_test4('<<lightblue>> Womens priffix work :"%s"' % con_3)
     # ---
     if not f_lab:
         f_lab = Jobs_key_womens.get(con_3, "")
     # ---
     con_33 = con_3
     if con_3.endswith(" women"):
-        con_33 = con_3[:len(" women")]
+        con_33 = con_3[: -len(" women")]
     # ---
     for wriff, wrifflab in Women_s_priffix.items():
         if f_lab:
@@ -190,17 +176,11 @@ def Women_s_priffix_work(con_3):
         if wriff == "women's":
             Wriff2 = "women's-"
         if con_33.startswith(Wriff2):
-            con_4 = con_33[len(Wriff2):]
+            con_4 = con_33[len(Wriff2) :]
             con_8_Wb = womens_Jobs_2017.get(con_4, "")
             output_test4(f'<<lightblue>> con_33.startswith_Wriff2("{Wriff2}"),con_4:"{con_4}", con_8_Wb:"{con_8_Wb}"')
             if con_8_Wb:
                 f_lab = wrifflab.format(con_8_Wb)
-                # ---
-                # TAJO = Men_Womens_with_nato.get(con_4 , False )
-                # if TAJO and TAJO["womens"].find("{nato}")  != -1 :
-                # f_lab = TAJO["womens"]#.format(nato = f_lab )
-                # f_lab = wrifflab.format(TAJO["womens"])
-                # output_test4('<<lightblue>> TAJO["womens"]: has {nato} "%s"' %   TAJO["womens"])
     # ---
     priffix_woMens_work_cash[cash_key] = f_lab
     # ---

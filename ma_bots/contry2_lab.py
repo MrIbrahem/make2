@@ -6,7 +6,7 @@ python3 core8/pwb.py make/ma_bots/contry2_bot
 
 
 """
-
+from typing import Any
 from ..o_bots import fax
 from ..media_bots.films_bot import test_films
 
@@ -27,28 +27,8 @@ from ..o_bots import univer
 from . import ye_ts_bot
 
 
-def get_lab_for_contry2(contry, with_test_ye=False, **kwargs):
-    """Retrieve laboratory information for a specified country.
-
-    This function attempts to gather laboratory data for a given country by
-    checking various sources in a specific order. It first normalizes the
-    input country name and then queries multiple data sources to find
-    relevant information. If no data is found, it checks for variations of
-    the country name (e.g., removing "the" prefix). Additionally, if the
-    `with_test_ye` flag is set to True, it will attempt to retrieve data
-    using an alternative method.
-
-    Args:
-        contry (str): The name of the country for which to retrieve laboratory information.
-        with_test_ye (bool?): A flag indicating whether to use an alternative method for data
-            retrieval. Defaults to False.
-        **kwargs: Additional keyword arguments that may be used by the underlying data
-            retrieval functions.
-
-    Returns:
-        str: The laboratory information for the specified country, or an empty string
-            if no data is found.
-    """
+def get_lab_for_contry2(contry: str, with_test_ye: bool = False, **kwargs: Any) -> str:
+    """Retrieve laboratory information for a specified country."""
 
     contry2_no_lower = contry.strip()
     contry2 = contry.lower().strip()
@@ -77,10 +57,9 @@ def get_lab_for_contry2(contry, with_test_ye=False, **kwargs):
         cnt_la = centries_years_dec.get(contry2, "")
 
     if not cnt_la and contry2.startswith("the "):
-        cnt_la = pop_All_2018.get(contry2[len("the "):], "")
+        cnt_la = pop_All_2018.get(contry2[len("the ") :], "")
 
     if not cnt_la and with_test_ye:
-        # print("translate_general_category 9")
         cnt_la = ye_ts_bot.translate_general_category(contry2, do_Get_contry2=False)
 
     if cnt_la:
