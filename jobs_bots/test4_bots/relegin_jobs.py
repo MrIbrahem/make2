@@ -3,15 +3,16 @@
 from .test4_bots.relegin_jobs import try_relegins_jobs
 
 """
+from typing import Dict
 from ..jobs_mainbot import Jobs
-from ...malists_bots import religious_keys_PP
+from ...ma_lists_bots import religious_keys_PP
 from ...helps.print_bot import output_test4
 from ..get_helps import get_con_3
 
-try_relegins_jobs_cash = {}
+try_relegins_jobs_cash: Dict[str, str] = {}
 
 
-def try_relegins_jobs(cate):
+def try_relegins_jobs(cate: str) -> str:
     # ---
     cach_key = cate.lower().strip()
     # ---
@@ -22,7 +23,7 @@ def try_relegins_jobs(cate):
     # ---
     contry_lab = ""
     # ---
-    job_example, nat = get_con_3(cate, religious_keys_PP, "religions")
+    job_example, nat = get_con_3(cate, list(religious_keys_PP.keys()), "religions")
     # ---
     Tab = religious_keys_PP.get(nat, {})
     # ---

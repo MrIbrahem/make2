@@ -5,7 +5,7 @@ from .cn_lab import make_cnt_lab
 """
 
 import re
-from ...malists_bots import By_table
+from ...ma_lists_bots import By_table
 from ...format_bots import pop_format, pop_format2
 
 from ...matables_bots.bot import (
@@ -16,27 +16,8 @@ from ...matables_bots.bot import (
 from ...helps.print_bot import print_put
 
 
-def make_cnt_lab(tat_o, contry2, c_2_l, c_1_l, cona_1, cona_2, sps):
-    """Construct a formatted string based on various input parameters.
-
-    This function generates a string that combines different components
-    based on the provided arguments. It checks for specific conditions
-    related to the input values and formats the output accordingly. The
-    function also handles special cases for certain input values and
-    modifies the output string based on predefined formats.
-
-    Args:
-        tat_o (str): A string representing some title or description.
-        contry2 (str): A string representing the country name.
-        c_2_l (str): A string that may represent a location or context.
-        c_1_l (str): A string that may represent another location or context.
-        cona_1 (str): A string that represents a specific entity or subject.
-        cona_2 (str): A string that may represent another entity or subject.
-        sps (str): A string that serves as a separator or additional context.
-
-    Returns:
-        str: The formatted string based on the input parameters.
-    """
+def make_cnt_lab(tat_o: str, contry2: str, c_2_l: str, c_1_l: str, cona_1: str, cona_2: str, sps: str) -> str:
+    """Construct a formatted string based on various input parameters."""
 
     cnt_la = c_1_l + sps + c_2_l
 

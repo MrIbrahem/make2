@@ -6,11 +6,11 @@ from .arlabel_bots.bot_type_country import get_type_country
 
 
 import re
-
+from typing import Tuple
 from ...helps.print_bot import print_def_head, print_put
 
 
-def get_type_country(category, tito):
+def get_type_country(category: str, tito: str) -> Tuple[str, str]:
     """Extract the type and country from a given category string.
 
     This function takes a category string and a delimiter (tito) to split

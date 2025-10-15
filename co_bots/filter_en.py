@@ -1,14 +1,7 @@
-"""
-from  make.ma_bots import filter_en # filter_en.filter_cat(encat)
-"""
-
-# ---
 import re
 from .. import printe
 
-# ---
-
-BBlcak = [
+BBlcak: list[str] = [
     "Disambiguation",
     "wikiproject",
     "sockpuppets",
@@ -16,7 +9,7 @@ BBlcak = [
     "images for deletion",
 ]
 # ---
-blcak_starts = [
+blcak_starts: list[str] = [
     "Clean-up",
     "Cleanup",
     "Uncategorized",
@@ -44,9 +37,9 @@ blcak_starts = [
 ]
 
 
-def filter_cat(cat):
+def filter_cat(cat: str) -> bool:
     for x in BBlcak:
-        if cat.lower().find(x) != -1:
+        if x in cat.lower():
             printe.output(f"<<lightred>> find ({x}) in cat")
             return False
     # ---

@@ -7,11 +7,12 @@ from .event2bot_dodo import make_lab_dodo
 """
 
 import re
+from typing import Dict, Any
 from ...fix import fixtitle
 from ...date_bots import year_lab
 from ...format_bots import Tit_ose_Nmaes, NewFormat
-from ...malists_bots import Nat_mens
-from ...matables_bots.bot import Add_to_main2_tab  # Add_to_main2_tab()
+from ...ma_lists_bots import Nat_mens
+from ...matables_bots.bot import Add_to_main2_tab
 from ...matables_bots.bot import (
     New_Lan,
     Films_O_TT,
@@ -29,40 +30,24 @@ from .mk2 import new_func_mk2
 en_literes = "[abcdefghijklmnopqrstuvwxyz]"
 
 
-def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, cat_test, category_r):
+def make_lab_dodo(
+    _category_: str,
+    Tita_year: str,
+    tita: str,
+    tita_other: str,
+    category3: str,
+    category: str,
+    cat_test: str,
+    category_r: str,
+) -> str:
     """Generate a label based on various input parameters related to categories
     and years.
-
-    This function processes the input parameters to create a formatted label
-    that incorporates information about the category, year, type, and
-    country. It handles various conditions to determine how to construct the
-    label, including checking for specific keywords and replacing them as
-    necessary. The function also manages cases where certain inputs may not
-    yield a valid label and provides fallback mechanisms to ensure
-    meaningful output.
-
-    Args:
-        _category_ (str): The initial category string to be processed.
-        Tita_year (str): A pattern for extracting the year from the category.
-        tita (str): A pattern used for type extraction.
-        tita_other (str): Additional type information.
-        category3 (str): A secondary category for comparison.
-        category (str): The main category name.
-        cat_test (str): A test string for validating categories.
-        category_r (str): The category reference for output labeling.
-
-    Returns:
-        str: The generated label if successful; otherwise, an empty string.
     """
-
-    # ---
     Add_In_Done = False
     NoLab = False
-    # ---
     category2 = category.lower()
     if category2.startswith("category:"):
         category2 = category2[len("category:") :]
-    # ---
     year = re.sub(Tita_year, r"\g<1>\g<2>", _category_)
     typeo = re.sub(tita, r"\g<3>", _category_)
     if year == _category_ or year == category3:
@@ -70,7 +55,6 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
     elif year and _category_.startswith("category:" + year):
         cat_test = cat_test.replace(year.lower(), "")
         tita_n = "category:" + year + tita_other
-
         typeo = re.sub(tita_n, r"\g<1>", _category_)
 
     if typeo == _category_ or typeo == category3:
@@ -95,7 +79,6 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
 
     Add_In = True
     if typeo:
-        # typeolower = typeo.lower()
         if typeo in typeTable:
             print_put('a<<lightblue>>>>>> typeo "{}" in typeTable "{}"'.format(typeo, typeTable[typeo]["ar"]))
             cat_test = cat_test.replace(typeo.lower(), "")
@@ -114,10 +97,7 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
     cnt_la = ""
 
     if contry:
-        cnt_la = ""
-
-        if not cnt_la:
-            cnt_la = pop_All_2018.get(contry, "")
+        cnt_la = pop_All_2018.get(contry, "")
 
         if not cnt_la:
             cnt_la = Get_contry(contry_not_lower)
@@ -134,17 +114,13 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
             cat_test = cat_test.replace(contry.lower(), "")
             print_put("a<<lightblue>>>cnt_la : %s" % cnt_la)
 
-    # ar_label_b = arlabel.strip()
-
     if year:
         year_labe = year_lab.make_year_lab(year)
         if year_labe:
             Add_to_main2_tab(year, year_labe)
             cat_test = cat_test.lower().replace(year.lower(), "")
-
             arlabel = arlabel + " " + year_labe
             print_put(f'252: year != ""({year}) arlabel:"{arlabel}",In.strip() == "{In.strip()}"')
-
             if (In.strip() == "in" or In.strip() == "at") and suf.strip() == "":
                 print_put('Add في to arlabel:in,at"%s"' % arlabel)
                 arlabel = arlabel + " في "
@@ -155,7 +131,7 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
     if not (contry != "" and cnt_la == "") and not (year != "" and year_labe == ""):
         if not (typeo != "" and typeo_lab == ""):
             if In.strip():
-                if In.strip() in Tit_ose_Nmaes and arlabel.find(Tit_ose_Nmaes[In.strip()].strip()) != -1:
+                if In.strip() in Tit_ose_Nmaes and Tit_ose_Nmaes[In.strip()].strip() in arlabel:
                     cat_test = cat_test.replace(In.strip(), "")
                 else:
                     print_put('<<lightred>>>>>> In in Tit_ose_Nmaes, and arlabel wothout "%s" ' % Tit_ose_Nmaes[In.strip()])
@@ -169,7 +145,6 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
     if (year == "" or year_labe == "") and cat_test.strip():
         NoLab = True
         print_put("year == " ' or year_labe == ""')
-    # elif contry == '" and In == "':
     elif contry == "" and In == "":
         print_put('a<<lightblue>>>>>> contry == "" and In ==  "" ')
         arlabel = re.sub(r" ", " ", arlabel)
@@ -177,17 +152,16 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
             arlabel = arlabel + " " + suf
         arlabel = re.sub(r"\s+", " ", arlabel)
         output_test("a<<lightblue>>>>>> No contry.")
-
     elif contry:
         if cnt_la:
-            cat_test, arlabel = new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe, suf, Add_In, cnt_la, Add_In_Done)
+            cat_test, arlabel = new_func_mk2(
+                category, cat_test, year, typeo, In, contry, arlabel, year_labe, suf, Add_In, cnt_la, Add_In_Done
+            )
         else:
             print_put('a<<lightblue>>>>>> Cant id contry : "%s" ' % contry)
-            # Cant_Find_Contry = True
     else:
         print_put("a<<lightblue>>>>>> No label.")
         NoLab = True
-    # ---
 
     if NoLab and cat_test == "":
         if cnt_la and typeo_lab and year == "" and In == "":
@@ -200,8 +174,6 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
             New_Lan[category_r] = ar
             print_put(f'>>>> <<lightyellow>> typeo_lab:"{typeo_lab}", cnt_la "{cnt_la}"')
             print_put(f'>>>> <<lightyellow>> New_Lan[{category_r}] = "{ar}" ')
-
-    # ---
 
     if cat_test != cat_test3:
         output_test('<<lightgreen>>>>>> cat_test : "%s" ' % cat_test)
@@ -243,5 +215,4 @@ def make_lab_dodo(_category_, Tita_year, tita, tita_other, category3, category, 
             print_put(f'>>>> <<lightyellow>> cat:"{category_r}", category_lab "{arlabel}"')
             print_put("<<lightblue>>>> ^^^^^^^^^ event2 end 3 ^^^^^^^^^ ")
             return arlabel
-    # ---
     return ""

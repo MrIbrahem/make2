@@ -23,7 +23,7 @@ import re
 import sys
 
 # ---
-from ..malists_bots import (
+from ..ma_lists_bots import (
     Multi_sport_for_Jobs,
     All_Nat,
     Nat_mens,

@@ -13,6 +13,7 @@ films_bot.
 """
 
 import re
+from typing import Dict
 from ..o_bots.army import test_Army
 from ..p17_bots import p17_bot
 from ..media_bots.film_keys_bot import get_Films_key_CAO
@@ -23,10 +24,10 @@ from ..matables_bots.bot import Add_to_main2_tab
 from ..matables_bots.bot import Films_O_TT, New_players
 from ..helps.print_bot import print_def_head, output_test, mainoutput
 
-test_films_done = {}
+test_films_done: Dict[str, str] = {}
 
 
-def test_films(cate, fa=""):
+def test_films(cate: str, fa: str = "") -> str:
     cate = cate.lower()
     if cate in test_films_done:
         output_test(f'>>>> cate: "{cate}" in test_films_done, lab:"{test_films_done[cate]}"')
@@ -62,7 +63,7 @@ def test_films(cate, fa=""):
             output_test(f'>>>> test_4 2018 Jobs: New_players[{cate}] ="{cnt_la}"')
 
     if not cnt_la:
-        cnt_la = nat_match(cate, out=mainoutput[1])
+        cnt_la = nat_match(cate)
         if cnt_la:
             Add_to_main2_tab(cate, cnt_la)
             output_test(f'>>>> nat_match: [{cate}] ="{cnt_la}"')
@@ -72,9 +73,6 @@ def test_films(cate, fa=""):
     if not cnt_la:
         cnt_la = p17_bot.Get_P17_2(cate)
 
-    # contry_start = ""
-    # con_77_lab = ""
-    # con_77 = ""
     if not cnt_la:
         cnt_la = fax.test_Lang(cate)
 
