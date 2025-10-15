@@ -12,6 +12,7 @@ from typing import Dict, Any, List
 from . import main
 from .media_bots import films_bot  # test_films
 
+new_func_lab = main.new_func_lab
 
 def event(tab: Dict[str, Any], return_no_labs: bool = False, **kwargs: Any) -> List[str]:
     return main.event(tab, return_no_labs=return_no_labs, **kwargs)
