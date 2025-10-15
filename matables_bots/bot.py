@@ -46,19 +46,19 @@ import sys
 
 from .bot_2018 import pop_All_2018, olympicss
 from ..helps import len_print
-from ..malists_bots import military_format_women, military_format_men
+from ..ma_lists_bots import military_format_women, military_format_men
 
-from ..malists_bots import languages_pop
-from ..malists_bots import Films_TT, typeTable_4
-from ..malists_bots import typeTable_7, albums_type, film_production_company
-from ..malists_bots import Jobs_new
-from ..malists_bots import Sports_Keys_For_Label
-from ..malists_bots import By_table
+from ..ma_lists_bots import languages_pop
+from ..ma_lists_bots import Films_TT, typeTable_4
+from ..ma_lists_bots import typeTable_7, albums_type, film_production_company
+from ..ma_lists_bots import Jobs_new
+from ..ma_lists_bots import Sports_Keys_For_Label
+from ..ma_lists_bots import By_table
 
-from ..malists_bots import Add_in_table2
+from ..ma_lists_bots import Add_in_table2
 
-from ..malists_bots import People_key
-from ..malists_bots import All_contry_with_nat
+from ..ma_lists_bots import People_key
+from ..ma_lists_bots import All_contry_with_nat
 
 from ..format_bots import Tit_ose_Nmaes
 

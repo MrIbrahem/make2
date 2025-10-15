@@ -2,17 +2,17 @@
 """
 from ..jobs_bots.priffix_bot import Women_s_priffix_work, priffix_Mens_work
 """
-# from ..malists_bots import en_is_nat_ar_is_P17, en_is_nat_ar_is_al_mens, en_is_nat_ar_is_man, en_is_nat_ar_is_al_women, en_is_nat_ar_is_women, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
+# from ..ma_lists_bots import en_is_nat_ar_is_P17, en_is_nat_ar_is_al_mens, en_is_nat_ar_is_man, en_is_nat_ar_is_al_women, en_is_nat_ar_is_women, change_male_to_female, priffix_lab_for_2018, Main_priffix, Main_priffix_to, Multi_sport_for_Jobs
 
-from ..malists_bots import Nat_mens
-from ..malists_bots import (
+from ..ma_lists_bots import Nat_mens
+from ..ma_lists_bots import (
     Jobs_key_mens,
     Jobs_key_womens,
     womens_Jobs_2017,
     Female_Jobs,
 )
-from ..malists_bots import By_table
-from ..malists_bots import replace_labels_2022, change_male_to_female, Mens_suffix, Mens_priffix, Women_s_priffix
+from ..ma_lists_bots import By_table
+from ..ma_lists_bots import replace_labels_2022, change_male_to_female, Mens_suffix, Mens_priffix, Women_s_priffix
 
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..helps.print_bot import output_test4

@@ -5,15 +5,13 @@ from . import fax2
 """
 
 import sys
+from typing import Dict, Any, Tuple
 from ..helps.print_bot import print_put
 from .fax2_bots.squad_title_bot import get_squad_title
 
-Find_stubs = {1: "-stubs" in sys.argv}
+Find_stubs: Dict[int, bool] = {1: "-stubs" in sys.argv}
 
-# tab[Category:21st-century members of the Louisiana State Legislature] = "تصنيف:أعضاء القرن 21 هيئة ولاية لويزيانا التشريعية"
-# Category:Association football matches navigational boxes by teams:Egypt
-
-to_get_endswith = {
+to_get_endswith: Dict[str, Dict[str, Any]] = {
     "squad navigational boxes": {
         "lab": "صناديق تصفح تشكيلات {}",
         "Find_wd": False,
@@ -96,7 +94,7 @@ to_get_endswith = {
     },
 }
 
-to_get_startswith = {
+to_get_startswith: Dict[str, Dict[str, Any]] = {
     "association football matches navigational boxes by teams:": {
         "lab": "صناديق تصفح مباريات كرة قدم حسب الفرق:{}",
         "Find_wd": False,
