@@ -43,7 +43,7 @@ from ..matables_bots.bot import (
 )
 """
 import sys
-from typing import Dict, Any, List, Set
+from typing import Dict, Any, Callable, List, Optional, Set
 from .bot_2018 import pop_All_2018, olympicss
 from ..helps import len_print
 from ..ma_lists_bots import military_format_women, military_format_men
@@ -88,6 +88,7 @@ cash_2022 = {
 Work_With_Change_key = {1: False}
 make_tab = {1: False}
 main2_tab = {1: {"title": "", "lab": {}, "nolab": {}}}
+_current_table_sink: Optional[Callable[[str, str], None]] = None
 
 # ---
 New_Lan = {}
@@ -380,9 +381,20 @@ Table_for_frist_word = {
 }
 
 
+def set_table_sink(sink: Optional[Callable[[str, str], None]]) -> None:
+    """Register a table sink used by the new event processor."""
+
+    global _current_table_sink
+    _current_table_sink = sink
+    make_tab[1] = sink is not None
+    main2_tab[1] = {"title": "", "lab": {}, "nolab": {}}
+
+
 def Add_to_main2_tab(en, ar):
-    if make_tab[1] and en and ar:
-        main2_tab[1]["lab"][en] = ar
+    if not en or not ar:
+        return
+    if _current_table_sink is not None:
+        _current_table_sink(en, ar)
 
 
 Lenth = {}

@@ -1,11 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from .src import event, printe, do_print_options, print_memory, new_func_lab
+from .src import (
+    EventProcessor,
+    EventProcessorConfig,
+    event,
+    new_func_lab,
+    printe,
+    do_print_options,
+    print_memory,
+)
 
 __all__ = [
     "printe",
-    "new_func_lab",
     "event",
+    "new_func_lab",
+    "EventProcessor",
+    "EventProcessorConfig",
     "do_print_options",
     "print_memory",
 ]
