@@ -25,7 +25,7 @@ from .helps.print_bot import do_print_options, print_put, output_test
 
 from .ma_bots import event2bot
 
-Dir_ma = Path(__file__).parent.parent
+Dir_ma = Path(__file__).parent.parent.parent
 
 event_done = {}
 

@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
-from .bot import event
-from . import printe
-from .helps.print_bot import do_print_options
-from .memory import print_memory
 
+from .src import event, printe, do_print_options, print_memory, new_func_lab
 
 __all__ = [
     "printe",
+    "new_func_lab",
     "event",
     "do_print_options",
     "print_memory",
