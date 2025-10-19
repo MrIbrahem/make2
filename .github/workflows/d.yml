@@ -25,5 +25,6 @@ jobs:
             become ${{ secrets.TOOL2 }} bash -lc "
               web_sh/install_make2.sh ${{ secrets.GF_TOKEN }} &&
               echo \"Updated on: $(date '+%Y-%m-%d %H:%M:%S')\" > ~/update_make2_from_github &&
-              webservice python3.11 restart
+              webservice python3.11 restart &&
+              echo ''
             "
