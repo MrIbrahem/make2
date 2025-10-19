@@ -18,5 +18,12 @@ jobs:
           script_stop: true
           key: ${{ secrets.KEY }}
           script: |
-            become ${{ secrets.TOOL1 }} sh -c "shs/update_make2.sh; echo ''"
-            become ${{ secrets.TOOL2 }} sh -c "web_sh/install_make2.sh ${{ secrets.GF_TOKEN }}; webservice python3.11 restart"
+            become ${{ secrets.TOOL1 }} bash -lc "
+              shs/update_make2.sh &&
+              echo \"Updated on: $(date '+%Y-%m-%d %H:%M:%S')\" > ~/update_make2_from_github
+            "
+            become ${{ secrets.TOOL2 }} bash -lc "
+              web_sh/install_make2.sh ${{ secrets.GF_TOKEN }} &&
+              echo \"Updated on: $(date '+%Y-%m-%d %H:%M:%S')\" > ~/update_make2_from_github &&
+              webservice python3.11 restart
+            "
