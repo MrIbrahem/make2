@@ -6,45 +6,6 @@ YEARS_REGEX = r"(\d+[-–]\d+|\d+\sق[\s\.]م|\d+)|عقد\s(\d+\sق[\s\.]م|\d+)
 def print_test(s: str) -> str:
     return s
 
-
-def move_3(text_str: str) -> str:
-    """
-    A function that takes in a string and searches for a specific pattern within it. The function replaces underscores in the string with spaces and then uses a regular expression to search for a pattern of the form '{first_part} حسب {by_part} في {date}'.
-
-    Parameters:
-    - text_str (str): The input string.
-
-    Returns:
-    - str: The modified string if a match is found, otherwise the original string.
-    """
-
-    # ---
-    # تصنيف:اتحاد الرجبي حسب البلد في 1989
-    text_str = text_str.replace("_", " ")
-    # ---
-    new_text = text_str
-    # ---
-    if result := re.search(rf"^(?P<first_part>.*)\sحسب\s(?P<by_part>[\s\w]+)\sفي\s(?P<date>{YEARS_REGEX})$", text_str):
-        # [[تصنيف:اتحاد الرجبي في 1989 حسب البلد]]
-        # ---
-        first_part = result.group("first_part")
-        by_part = result.group("by_part")
-        date = result.group("date")
-        # ---
-        new_text = f"{first_part} في {date} حسب {by_part}"
-        # ---
-        print_test(f"move_by_in: new_text: {new_text}")
-    else:
-        print_test("move_by_in: no match")
-    # ---
-    if new_text != text_str:
-        new_text = re.sub(r"\s+", " ", new_text)
-        new_text = re.sub(r"\bق\.م\b", "ق م", new_text)
-        new_text = new_text.replace(" في في ", " في ")
-    # ---
-    return new_text
-
-
 def move_by_in(text_str: str) -> str:
     """
     A function that takes in a string and searches for a specific pattern within it. The function replaces underscores in the string with spaces and then uses a regular expression to search for a pattern of the form '{first_part} حسب {by_part} في {date}'.
