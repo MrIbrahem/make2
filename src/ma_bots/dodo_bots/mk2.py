@@ -69,13 +69,12 @@ def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe
     arlabel2 = arlabel
 
     if Contry_In_Table and typeo not in Keep_it_frist:
-        if not con_lab.startswith("حسب"):
-            if (In.strip() == "in" or In.strip() == "at") or (contry.lower() in New_players):
-                if year_labe:
-                    con_lab = f"{con_lab} في "
-                    Add_In_Done = True
-                    output_test(">>> Add في line: 1010")
-                    cat_test = cat_test.replace(In, "")
+        if (In.strip() == "in" or In.strip() == "at") or (contry.lower() in New_players) and not con_lab.startswith("حسب"):
+            if year_labe:
+                con_lab = f"{con_lab} في "
+                Add_In_Done = True
+                output_test(">>> Add في line: 1010")
+                cat_test = cat_test.replace(In, "")
 
         arlabel = con_lab + suf + arlabel
         if arlabel.startswith("حسب"):
