@@ -6,7 +6,7 @@ import sys
 from typing import Dict
 from .wd import find_name_from_wikidata
 from ..helps.print_bot import print_put
-from ..ma_lists_bots import New_P17_Finall
+from ..ma_lists_bots import COUNTRY_LABEL_INDEX
 from ..ma_lists_bots import Ambassadors_tab
 from ..matables_bots.centries_bot import centries_years_dec
 from ..matables_bots.bot_2018 import pop_All_2018
@@ -23,7 +23,7 @@ def find_wikidata(contry: str) -> str:
 
     cnt_la = ""
     if not cnt_la:
-        cnt_la = New_P17_Finall.get(contry2, "")
+        cnt_la = COUNTRY_LABEL_INDEX.get(contry2, "")
     if not cnt_la:
         cnt_la = Ambassadors_tab.get(contry2, "")
     if not cnt_la:

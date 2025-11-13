@@ -25,7 +25,7 @@ from typing import Dict, Any
 from ..helps import len_print
 from ..ma_lists_bots import summer_winter_games
 from ..ma_lists_bots import pf_keys2
-from ..ma_lists_bots import New_P17_Finall
+from ..ma_lists_bots import COUNTRY_LABEL_INDEX
 from ..ma_lists_bots import films_mslslat_tab
 from ..ma_lists_bots import Jobs_new, Jobs_key
 from ..ma_lists_bots import Sports_Keys_For_Label
@@ -79,10 +79,10 @@ for paa, taba in Teams_new.items():
         if not pop_All_2018.get(paa2):
             pop_All_2018[paa2] = taba
 
-for xo in list(New_P17_Finall):
+for xo in list(COUNTRY_LABEL_INDEX):
     xo2 = xo.lower()
     if not pop_All_2018.get(xo2):
-        pop_All_2018[xo2] = New_P17_Finall[xo]
+        pop_All_2018[xo2] = COUNTRY_LABEL_INDEX[xo]
 
 for paa in Sports_Keys_For_Label:
     paa2 = paa.lower()
@@ -148,6 +148,6 @@ olympicss["fis nordic world ski championships medalists"] = "فائزون بمي
 for olmp, olmp_lab in olympicss.items():
     pop_All_2018[olmp] = olmp_lab
 
-Lenth: Dict[str, int] = {}
-Lenth["pop_All_2018"] = sys.getsizeof(pop_All_2018)
-len_print.lenth_pri("matables_bots/bot_2018.py", Lenth, Max=10)
+len_print.lenth_pri("make2_bots.matables_bots/bot_2018.py", {
+    "pop_All_2018" : sys.getsizeof(pop_All_2018)
+}, Max=10)

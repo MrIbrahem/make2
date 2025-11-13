@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from .src import event, printe, do_print_options, print_memory, new_func_lab
+from ma_lists import dump_all_len, lenth_pri
 
 __all__ = [
     "printe",
@@ -8,4 +9,6 @@ __all__ = [
     "event",
     "do_print_options",
     "print_memory",
+    "dump_all_len",
+    "lenth_pri",
 ]

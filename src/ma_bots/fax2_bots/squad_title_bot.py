@@ -8,7 +8,7 @@ from ..ma_bots.squad_title_bot import get_squad_title
 from ...date_bots import with_years_bot
 from ... import malists_sport_lab as sport_lab
 from ...ma_lists_bots import pop_of_football_lower
-from ...ma_lists_bots import New_P17_Finall
+from ...ma_lists_bots import COUNTRY_LABEL_INDEX
 from ...fromnet.wd_bot import find_wikidata
 
 from ...matables_bots.bot import All_P17
@@ -34,7 +34,7 @@ def get_squad_title(tit: str) -> str:
                 tit2 = tit[len(f"{oo} ") :]
                 tit2 = tit2.strip()
                 print_put(f'<<lightblue>> get_squad_title tit.startswith("{oo}"), tit2:({tit2}) ')
-                falab = pop_All_2018.get(tit2) or pop_of_football_lower.get(tit2) or New_P17_Finall.get(tit2) or ""
+                falab = pop_All_2018.get(tit2) or pop_of_football_lower.get(tit2) or COUNTRY_LABEL_INDEX.get(tit2) or ""
                 if not falab:
                     falab = find_wikidata(tit2)
 

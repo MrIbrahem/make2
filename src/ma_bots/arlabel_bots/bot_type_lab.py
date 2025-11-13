@@ -14,7 +14,7 @@ from ...jobs_bots.test4_bots.t4_2018_jobs import test4_2018_Jobs
 from ...media_bots.films_bot import test_films
 from .. import event2bot
 
-from ...ma_lists_bots import New_P17_Finall
+from ...ma_lists_bots import COUNTRY_LABEL_INDEX
 from ...ma_lists_bots import religious_keys_PP
 from ...ma_lists_bots import New_female_keys
 
@@ -52,14 +52,14 @@ def get_Type_lab(tito: str, Type: str, Type_lower: str, contry_lower: str) -> Tu
             print_put(f'<<<< Type_lower_in "{Type_lower_in}",Type_lab : "{Type_lab}"')
 
     if not Type_lab:
-        Type_lab = New_P17_Finall.get(Type_lower, "")
+        Type_lab = COUNTRY_LABEL_INDEX.get(Type_lower, "")
         if Type_lab:
             output_test(f'<< Type_lower_in "{Type_lower_in}", Type_lab : "{Type_lab}"')
 
     if Type_lab == "" and Type_lower.startswith("the "):
         Type_lower2 = Type_lower[len("the ") :]
 
-        Type_lab = New_P17_Finall.get(Type_lower2, "")
+        Type_lab = COUNTRY_LABEL_INDEX.get(Type_lower2, "")
         if Type_lab:
             output_test(f'<<< Type_lower_in "{Type_lower_in}", Type_lab : "{Type_lab}"')
     if Type_lower == "sport" and contry_lower.startswith("by "):

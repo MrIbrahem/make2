@@ -6,7 +6,7 @@ import re
 
 # ---
 from ..ma_lists_bots import By_table, By_orginal2, By_table_orginal
-from ..ma_lists_bots import New_P17_Finall
+from ..ma_lists_bots import COUNTRY_LABEL_INDEX
 from ..matables_bots.bot_2018 import pop_All_2018
 from ..p17_bots.nats import find_nat_others
 from ..media_bots.films_bot import test_films
@@ -74,7 +74,7 @@ def Get_by_label(cat):
 
     if frist:
         if not frist_lab:
-            frist_lab = New_P17_Finall.get(frist.lower(), "")
+            frist_lab = COUNTRY_LABEL_INDEX.get(frist.lower(), "")
 
         if not frist_lab:
             frist_lab = pop_All_2018.get(frist.lower(), "")
@@ -111,14 +111,14 @@ def Get_and_label(cat):
 
     if frist:
         if not frist_lab:
-            frist_lab = New_P17_Finall.get(frist.lower(), "")
+            frist_lab = COUNTRY_LABEL_INDEX.get(frist.lower(), "")
 
         if not frist_lab:
             frist_lab = pop_All_2018.get(frist.lower(), "")
 
     if last:
         if not last_lab:
-            last_lab = New_P17_Finall.get(last.lower(), "")
+            last_lab = COUNTRY_LABEL_INDEX.get(last.lower(), "")
 
         if not last_lab:
             last_lab = pop_All_2018.get(last.lower(), "")

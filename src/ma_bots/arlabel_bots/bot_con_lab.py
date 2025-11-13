@@ -17,7 +17,7 @@ from ...p17_bots import nats
 from ...media_bots.films_bot import test_films
 
 from ...ma_lists_bots import pf_keys2
-from ...ma_lists_bots import New_P17_Finall
+from ...ma_lists_bots import COUNTRY_LABEL_INDEX
 from ...ma_lists_bots import New_female_keys
 
 from ...fromnet.wd_bot import find_wikidata
@@ -40,7 +40,7 @@ def get_con_lab(tito: str, do_Get_contry2: bool, tito2: str, contry: str, contry
     con_lab = ""
 
     if not con_lab:
-        con_lab = New_P17_Finall.get(contry_lower, "")
+        con_lab = COUNTRY_LABEL_INDEX.get(contry_lower, "")
     if not con_lab:
         con_lab = pf_keys2.get(contry_lower, "")
     if not con_lab:

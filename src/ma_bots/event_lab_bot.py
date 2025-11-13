@@ -18,7 +18,7 @@ from .. import malists_sport_lab as sport_lab
 from ..helps.print_bot import print_put
 from ..date_bots import year_lab
 from ..o_bots import univer
-from ..ma_lists_bots import New_P17_Finall
+from ..ma_lists_bots import COUNTRY_LABEL_INDEX
 from ..fromnet import kooora
 from ..fromnet.wd_bot import find_wikidata
 from ..format_bots import pp_ends_with, pp_ends_with_pase, change_cat
@@ -149,7 +149,7 @@ def event_Lab(cate_r):
             category32 = category3_nolower.replace(" cricket captains", "", 1)
 
         if list_of_cat2 and category32:
-            category3_lab = New_P17_Finall.get(category32.lower(), "")
+            category3_lab = COUNTRY_LABEL_INDEX.get(category32.lower(), "")
 
             if category3_lab:
                 category_lab = list_of_cat2.format(category3_lab)

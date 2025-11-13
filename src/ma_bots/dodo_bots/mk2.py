@@ -64,10 +64,7 @@ def new_func_mk2(category, cat_test, year, typeo, In, contry, arlabel, year_labe
         Contry_In_Table = True
         output_test(f'>> >> X:<<lightpurple>> Contry_In_Table "{contry}" in contry_before_year.')
 
-    if suf:
-        suf = f" {suf.strip()} "
-    else:
-        suf = " "
+    suf = f" {suf.strip()} " if suf else " "
 
     arlabel2 = arlabel
 
