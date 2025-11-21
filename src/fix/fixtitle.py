@@ -25,7 +25,7 @@ def fix_n(arlabel: str) -> str:
 
     # ---
     for ree, reelab in replase.items():
-        arlabel = re.sub(ree, reelab, arlabel)
+        arlabel = arlabel.replace(ree, reelab)
     # ---
     for tt in fix_years:
         arlabel = re.sub(rf"(\s*{tt}) (\d+\s*|عقد \d+\s*|القرن \d+\s*)", r"\g<1> في \g<2>", arlabel)
@@ -61,7 +61,7 @@ def fix_n(arlabel: str) -> str:
         if re.match(mat, arlabel):
             year = re.sub(mat, r"\g<1>", arlabel)
             print_put(f"year: {year}")
-            fa = re.sub(year, "", arlabel)
+            fa = arlabel.replace(year, "")
             arlabel = f"{fa} في {year}"
     # ---
     for fa, falab in Ending.items():
@@ -85,20 +85,20 @@ def fix_2(text: str) -> str:
 
 def fix_sub(text: str) -> str:
     if "اليابان" in text or "يابانيون" in text or "يابانيات" in text:
-        text = re.sub(r"حسب الولاية", "حسب المحافظة", text)
+        text = text.replace(r"حسب الولاية", "حسب المحافظة")
     # ---
     if "سريلانكي" in text or "سريلانكا" in text:
-        text = re.sub(r"الإقليم", "المقاطعة", text)
-        text = re.sub(r"أقاليم", "مقاطعات", text)
+        text = text.replace(r"الإقليم", "المقاطعة")
+        text = text.replace(r"أقاليم", "مقاطعات")
     # ---
     if "تركيا" in text:  # Turkey
-        text = re.sub(r"مديريات", "أقضية", text)
+        text = text.replace(r"مديريات", "أقضية")
     # ---
     if "جزائر" in text:
-        text = re.sub(r"المقاطعة", "الإقليم", text)
-        text = re.sub(r"مقاطعات", "أقاليم", text)
-        text = re.sub(r"مديريات", "دوائر", text)
-        text = re.sub(r"المديرية", "الدائرة", text)
+        text = text.replace(r"المقاطعة", "الإقليم")
+        text = text.replace(r"مقاطعات", "أقاليم")
+        text = text.replace(r"مديريات", "دوائر")
+        text = text.replace(r"المديرية", "الدائرة")
     # ---
     return text
 
@@ -119,15 +119,15 @@ def fix_it2(arlabel: str, en: str) -> str:
         "كتب",
     ]
     for x in fixx_byy:
-        arlabel = re.sub(f"{x} بواسطة ", f"{x} ", arlabel)
+        arlabel = arlabel.replace(f"{x} بواسطة ", f"{x} ")
 
-    arlabel = re.sub(r"وفيات بواسطة ضربات ", "وفيات بضربات ", arlabel)
-    arlabel = re.sub(r"ضربات جوية نفذت بواسطة ", "ضربات جويت نفذتها ", arlabel)
-    arlabel = re.sub(r"أفلام أنتجت بواسطة ", "أفلام أنتجها ", arlabel)
-    arlabel = re.sub(r"كاميرات اخترعت ", "كاميرات عرضت ", arlabel)
-    arlabel = re.sub(r"هواتف محمولة اخترعت ", "هواتف محمولة عرضت ", arlabel)
-    arlabel = re.sub(r"مركبات اخترعت ", "مركبات عرضت ", arlabel)
-    arlabel = re.sub(r"منتجات اخترعت ", "منتجات عرضت ", arlabel)
+    arlabel = arlabel.replace(r"وفيات بواسطة ضربات ", "وفيات بضربات ")
+    arlabel = arlabel.replace(r"ضربات جوية نفذت بواسطة ", "ضربات جويت نفذتها ")
+    arlabel = arlabel.replace(r"أفلام أنتجت بواسطة ", "أفلام أنتجها ")
+    arlabel = arlabel.replace(r"كاميرات اخترعت ", "كاميرات عرضت ")
+    arlabel = arlabel.replace(r"هواتف محمولة اخترعت ", "هواتف محمولة عرضت ")
+    arlabel = arlabel.replace(r"مركبات اخترعت ", "مركبات عرضت ")
+    arlabel = arlabel.replace(r"منتجات اخترعت ", "منتجات عرضت ")
     # ---
 
     # قصص قصيرة 1613 > قصص قصيرة كتبت سنة 1613
@@ -135,55 +135,55 @@ def fix_it2(arlabel: str, en: str) -> str:
     # قصص قصيرة لأنطون تشيخوف > قصص أنطون تشيخوف القصيرة
     arlabel = re.sub(r"^قصص قصيرة (\d+)$", r"قصص قصيرة كتبت سنة \1", arlabel)
     # ---
-    arlabel = re.sub(r"ردود فعل إلى ", "ردود فعل على ", arlabel)
-    arlabel = re.sub(r"مدراء كرة", "مدربو كرة", arlabel)
-    arlabel = re.sub(r"متعلقة 2", "متعلقة ب2", arlabel)
-    arlabel = re.sub(r"هولوكوستية", "الهولوكوست", arlabel)
-    arlabel = re.sub(r"في هولوكوست", "في الهولوكوست", arlabel)
-    arlabel = re.sub(r"صدور عظام في الدولة العثمانية", "صدور عظام عثمانيون في", arlabel)
-    arlabel = re.sub(r"أعمال بواسطة ", "أعمال ", arlabel)
-    arlabel = re.sub(r" في فائزون ", " فائزون ", arlabel)
-    arlabel = re.sub(r" في منافسون ", " منافسون ", arlabel)
-    arlabel = re.sub(r" على السجل الوطني للأماكن ", " في السجل الوطني للأماكن ", arlabel)
-    arlabel = re.sub(r" من قبل البلد", " حسب البلد", arlabel)
-    arlabel = re.sub(r"حكم عليهم الموت", "حكم عليهم بالإعدام", arlabel)
-    arlabel = re.sub(r"محررون من منشورات", "محررو منشورات", arlabel)
-    arlabel = re.sub(r"محررات من منشورات", "محررات منشورات", arlabel)
-    arlabel = re.sub(r"قديسون صوفيون", "أولياء صوفيون", arlabel)
-    arlabel = re.sub(r"مدربو رياضية", "مدربو رياضة", arlabel)
-    arlabel = re.sub(r" من من ", " من ", arlabel)
-    arlabel = re.sub(r" حسب حسب ", " حسب ", arlabel)
-    arlabel = re.sub(r" حسب بواسطة ", " بواسطة ", arlabel)
-    arlabel = re.sub(r" في في ", " في ", arlabel)
-    arlabel = re.sub(r" في في ", " في ", arlabel)
-    arlabel = re.sub(r" في في ", " في ", arlabel)
-    arlabel = re.sub(r"أدينوا ب ", "أدينوا ب", arlabel)
-    arlabel = re.sub(r" في من ", " من ", arlabel)
-    arlabel = re.sub(r" العسكري القرن ", " العسكري في القرن ", arlabel)
-    arlabel = re.sub(r" من في ", " في ", arlabel)
-    arlabel = re.sub(r" فورمولا 1 2", " فورمولا 1 في سنة 2", arlabel)
-    arlabel = re.sub(r" فورمولا 1 1", " فورمولا 1 في سنة 1", arlabel)
-    arlabel = re.sub(r" في حسب ", " حسب ", arlabel)
-    arlabel = re.sub(r" من حسب ", " حسب ", arlabel)
+    arlabel = arlabel.replace(r"ردود فعل إلى ", "ردود فعل على ")
+    arlabel = arlabel.replace(r"مدراء كرة", "مدربو كرة")
+    arlabel = arlabel.replace(r"متعلقة 2", "متعلقة ب2")
+    arlabel = arlabel.replace(r"هولوكوستية", "الهولوكوست")
+    arlabel = arlabel.replace(r"في هولوكوست", "في الهولوكوست")
+    arlabel = arlabel.replace(r"صدور عظام في الدولة العثمانية", "صدور عظام عثمانيون في")
+    arlabel = arlabel.replace(r"أعمال بواسطة ", "أعمال ")
+    arlabel = arlabel.replace(r" في فائزون ", " فائزون ")
+    arlabel = arlabel.replace(r" في منافسون ", " منافسون ")
+    arlabel = arlabel.replace(r" على السجل الوطني للأماكن ", " في السجل الوطني للأماكن ")
+    arlabel = arlabel.replace(r" من قبل البلد", " حسب البلد")
+    arlabel = arlabel.replace(r"حكم عليهم الموت", "حكم عليهم بالإعدام")
+    arlabel = arlabel.replace(r"محررون من منشورات", "محررو منشورات")
+    arlabel = arlabel.replace(r"محررات من منشورات", "محررات منشورات")
+    arlabel = arlabel.replace(r"قديسون صوفيون", "أولياء صوفيون")
+    arlabel = arlabel.replace(r"مدربو رياضية", "مدربو رياضة")
+    arlabel = arlabel.replace(r" من من ", " من ")
+    arlabel = arlabel.replace(r" حسب حسب ", " حسب ")
+    arlabel = arlabel.replace(r" حسب بواسطة ", " بواسطة ")
+    arlabel = arlabel.replace(r" في في ", " في ")
+    arlabel = arlabel.replace(r" في في ", " في ")
+    arlabel = arlabel.replace(r" في في ", " في ")
+    arlabel = arlabel.replace(r"أدينوا ب ", "أدينوا ب")
+    arlabel = arlabel.replace(r" في من ", " من ")
+    arlabel = arlabel.replace(r" العسكري القرن ", " العسكري في القرن ")
+    arlabel = arlabel.replace(r" من في ", " في ")
+    arlabel = arlabel.replace(r" فورمولا 1 2", " فورمولا 1 في سنة 2")
+    arlabel = arlabel.replace(r" فورمولا 1 1", " فورمولا 1 في سنة 1")
+    arlabel = arlabel.replace(r" في حسب ", " حسب ")
+    arlabel = arlabel.replace(r" من حسب ", " حسب ")
     arlabel = re.sub(r" ق\.م ", " ق م ", arlabel)
-    # arlabel = re.sub(r"تأسيسات سنة", "تأسيسات", arlabel)
+    # arlabel = arlabel.replace(r"تأسيسات سنة", "تأسيسات")
 
     # ---
-    arlabel = re.sub(r"أحداث رياضية الرياضية", "أحداث رياضية", arlabel)
-    arlabel = re.sub(r" من القرن", " في القرن", arlabel)
-    arlabel = re.sub(r" من حروب", " في حروب", arlabel)
-    arlabel = re.sub(r" من الحروب", " في الحروب", arlabel)
-    arlabel = re.sub(r" من حرب", " في حرب", arlabel)
-    arlabel = re.sub(r" من الحرب", " في الحرب", arlabel)
-    arlabel = re.sub(r" من الثورة", " في الثورة", arlabel)
-    arlabel = re.sub(r"مغتربون ال", "مغتربون من ال", arlabel)
-    arlabel = re.sub(r"سفراء إلى ", "سفراء لدى ", arlabel)
-    arlabel = re.sub(r"أشخاص أصل ", "أشخاص من أصل ", arlabel)
+    arlabel = arlabel.replace(r"أحداث رياضية الرياضية", "أحداث رياضية")
+    arlabel = arlabel.replace(r" من القرن", " في القرن")
+    arlabel = arlabel.replace(r" من حروب", " في حروب")
+    arlabel = arlabel.replace(r" من الحروب", " في الحروب")
+    arlabel = arlabel.replace(r" من حرب", " في حرب")
+    arlabel = arlabel.replace(r" من الحرب", " في الحرب")
+    arlabel = arlabel.replace(r" من الثورة", " في الثورة")
+    arlabel = arlabel.replace(r"مغتربون ال", "مغتربون من ال")
+    arlabel = arlabel.replace(r"سفراء إلى ", "سفراء لدى ")
+    arlabel = arlabel.replace(r"أشخاص أصل ", "أشخاص من أصل ")
     # ---
-    arlabel = re.sub(r" بدأ عرضها حسب السنة", " حسب سنة بدء العرض", arlabel)
+    arlabel = arlabel.replace(r" بدأ عرضها حسب السنة", " حسب سنة بدء العرض")
     # ---
-    arlabel = re.sub(r" أنتهت حسب السنة", " حسب سنة انتهاء العرض", arlabel)
-    arlabel = re.sub(r" في رياضة في ", " في الرياضة في ", arlabel)
+    arlabel = arlabel.replace(r" أنتهت حسب السنة", " حسب سنة انتهاء العرض")
+    arlabel = arlabel.replace(r" في رياضة في ", " في الرياضة في ")
     # ---
     return arlabel
 
@@ -231,7 +231,7 @@ def fix_it(arlabel: str, en: str) -> str:
     if mat := re.match(r".*(\d\d\d\d)\-(\d\d).*", arlabel, flags=re.IGNORECASE):
         te_1 = mat.group(1)
         te_2 = mat.group(2)
-        arlabel = re.sub(f"{te_1}-{te_2}", f"{te_1}–{te_2}", arlabel)
+        arlabel = arlabel.replace(f"{te_1}-{te_2}", f"{te_1}–{te_2}")
         print_put(" fixlab : fixlab :  replace - by  u2013.. ")
     # ---
     if re.sub(r"^\–\d+", "", arlabel) != arlabel:
@@ -242,13 +242,13 @@ def fix_it(arlabel: str, en: str) -> str:
     arlabel = fix_n(arlabel)
     # ---
     arlabel = re.sub(r"كأس العالم لكرة القدم (\d)", r"كأس العالم \g<1>", arlabel)
-    arlabel = re.sub(r",", "،", arlabel)
+    arlabel = arlabel.replace(r",", "،")
     arlabel = re.sub(r"^(.*) تصفيات مؤهلة إلى (.*)$", r"تصفيات \g<1> مؤهلة إلى \g<2>", arlabel)
     arlabel = re.sub(r"تأسيسات (\d+.*)$", r"تأسيسات سنة \g<1>", arlabel)
     arlabel = re.sub(r"انحلالات (\d+.*)$", r"انحلالات سنة \g<1>", arlabel)
-    arlabel = re.sub(r" من حسب ", " حسب ", arlabel)
-    # arlabel = re.sub(r"لاعبو في " , "لاعبو ", arlabel)
-    # arlabel = re.sub(r"لاعبو من " , "لاعبو " , arlabel)
+    arlabel = arlabel.replace(r" من حسب ", " حسب ")
+    # arlabel = arlabel.replace(r"لاعبو في " , "لاعبو ")
+    # arlabel = arlabel.replace(r"لاعبو من " , "لاعبو " )
     # ---
     arlabel = fix_it2(arlabel, en)
     # ---
@@ -265,7 +265,7 @@ def fix_it(arlabel: str, en: str) -> str:
     arlabel = fix_sub(arlabel)
     # ---
     if "attacks on" in en and "هجمات في " in arlabel:
-        arlabel = re.sub(r"هجمات في ", "هجمات على ", arlabel)
+        arlabel = arlabel.replace(r"هجمات في ", "هجمات على ")
     # ---
     arlabel = arlabel.replace("(توضيح)", "")
     # ---
@@ -287,8 +287,8 @@ def fix_it(arlabel: str, en: str) -> str:
     # ---
     arlabel = re.sub(r"^شغب (\d+)", r"شغب في \g<1>", arlabel)
     # ---
-    arlabel = re.sub(r"قوائممتعلقة", "قوائم متعلقة", arlabel)
-    arlabel = re.sub(r" في أصل ", " من أصل ", arlabel)
+    arlabel = arlabel.replace(r"قوائممتعلقة", "قوائم متعلقة")
+    arlabel = arlabel.replace(r" في أصل ", " من أصل ")
     # ---
     arlabel = fix_2(arlabel)
     # ---
@@ -348,9 +348,9 @@ def fixlab(label_old: str, out: bool = False, en: str = "") -> str:
         return ""
     # ---
     label_old = label_old.strip()
-    label_old = re.sub(r"_", " ", label_old)
+    label_old = label_old.replace(r"_", " ")
     label_old = re.sub(r"تصنيف\:\s*", "", label_old)
-    label_old = re.sub(r"تصنيف:", "", label_old)
+    label_old = label_old.replace(r"تصنيف:", "")
     # ---
     arlabel = fix_it(label_old, en)
     # ---

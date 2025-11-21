@@ -13,6 +13,7 @@ from ..jobs_bots.get_helps import get_con_3
 
 
 nat_others_cash = {}
+fanco_line_comp = re.compile(fanco_line, flags=re.IGNORECASE)
 
 
 def print_put(s):
@@ -43,7 +44,7 @@ def make_sport_formts_p17(co89):
     # ---
     co89_lab = ""
     # ---
-    faev = re.match(fanco_line, co89, flags=re.IGNORECASE)
+    faev = fanco_line_comp.match(co89)
     # ---
     if not faev:
         return ""
