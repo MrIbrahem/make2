@@ -690,7 +690,7 @@ States2_list = {
     "Category:Maryland": "تصنيف:ماريلند",
     "Category:Massachusetts": "تصنيف:ماساتشوستس",
     "Category:Michigan": "تصنيف:ميشيغان",
-    "Category:Minnesota": "تصنيف:مينيسوتا",
+    "Category:Minnesota": "تصنيف:منيسوتا",
     "Category:Mississippi": "تصنيف:مسيسيبي",
     "Category:Missouri": "تصنيف:ميزوري",
     "Category:Montana": "تصنيف:مونتانا",
