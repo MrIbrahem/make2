@@ -124,7 +124,7 @@ def new_func_mk2(category, cat_test, year, typeo, In, country, arlabel, year_lab
     co_in_tables, tab_name = check_key_in_tables_return_tuple(country, to_check_them_tuble)
     # co_in_tables = country in Add_in_table or country in add_in_to_country or country in Films_O_TT
     # ANY CHANGES IN FOLOWING LINE MAY BRAKE THE CODE !
-    print(f"co_in_tables: {co_in_tables} tab_name:{tab_name}, country: {country}")
+    # print(f"co_in_tables: {co_in_tables} tab_name:{tab_name}, country: {country}")
 
     if (typeo == "" and In == "") and (country and year != ""):
         print_put("a<<lightblue>>>>>> Add year before")

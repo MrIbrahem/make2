@@ -38,7 +38,7 @@ def make_cnt_lab(tat_o: str, contry2: str, c_2_l: str, c_1_l: str, cona_1: str, 
     }
 
     co_in_tables, tab_name = check_key_in_tables_return_tuple(cona_1, to_check_them_tuble)
-    print(f"co_in_tables: {co_in_tables} tab_name:{tab_name}, cona_1: {cona_1}")
+    # print(f"co_in_tables: {co_in_tables} tab_name:{tab_name}, cona_1: {cona_1}")
 
     # if cona_1 in typeTable or cona_1 in Films_O_TT or cona_1.lower() in New_players:
     if co_in_tables:
@@ -51,7 +51,7 @@ def make_cnt_lab(tat_o: str, contry2: str, c_2_l: str, c_1_l: str, cona_1: str, 
                 cnt_la += " في "
         if cona_2 not in By_table:
             Films_O_TT[contry2] = cnt_la
-            print(f"cn_lab: {contry2=}, {cnt_la=}\n"*10)
+            # print(f"cn_lab: {contry2=}, {cnt_la=}\n"*10)
         else:
             print_put("<<lightblue>>>>>> cona_2 in By_table")
 
