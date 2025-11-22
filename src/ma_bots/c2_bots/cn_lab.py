@@ -5,6 +5,8 @@ from .cn_lab import make_cnt_lab
 """
 
 import re
+from typing import Dict, List, Set
+
 from ...ma_lists_bots import By_table
 from ...format_bots import pop_format, pop_format2
 
@@ -16,12 +18,30 @@ from ...matables_bots.bot import (
 from ...helps.print_bot import print_put
 
 
+def check_key_in_tables_return_tuple(key: str, tables: Dict[str, Dict[str, str] | Set[str]]) -> tuple[bool, str]:
+    """Return presence flag and table name when ``key`` is found."""
+    for name, table in tables.items():
+        if key in table or key.lower() in table:
+            return True, name
+    return False, ""
+
+
 def make_cnt_lab(tat_o: str, contry2: str, c_2_l: str, c_1_l: str, cona_1: str, cona_2: str, sps: str) -> str:
     """Construct a formatted string based on various input parameters."""
 
     cnt_la = c_1_l + sps + c_2_l
 
-    if cona_1 in typeTable or cona_1 in Films_O_TT or cona_1.lower() in New_players:
+    to_check_them_tuble = {
+        "typeTable": typeTable,
+        "New_players": New_players,
+        "Films_O_TT": Films_O_TT,
+    }
+
+    co_in_tables, tab_name = check_key_in_tables_return_tuple(cona_1, to_check_them_tuble)
+    print(f"co_in_tables: {co_in_tables} tab_name:{tab_name}, cona_1: {cona_1}")
+
+    # if cona_1 in typeTable or cona_1 in Films_O_TT or cona_1.lower() in New_players:
+    if co_in_tables:
         if cona_1.lower() in New_players:
             if c_2_l.startswith("أصل "):
                 print_put(f'>>>>>> Add من to cona_1:"{cona_1}" cona_1 in New_players:')
@@ -31,6 +51,7 @@ def make_cnt_lab(tat_o: str, contry2: str, c_2_l: str, c_1_l: str, cona_1: str, 
                 cnt_la += " في "
         if cona_2 not in By_table:
             Films_O_TT[contry2] = cnt_la
+            print(f"cn_lab: {contry2=}, {cnt_la=}\n"*10)
         else:
             print_put("<<lightblue>>>>>> cona_2 in By_table")
 
