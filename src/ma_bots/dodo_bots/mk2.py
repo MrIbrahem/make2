@@ -61,23 +61,26 @@ def new_func_mk2(category, cat_test, year, typeo, In, country, arlabel, year_lab
 
     Add_to_main2_tab(country, cnt_la)
     cat_test = cat_test.replace(country, "")
+
     arlabel = re.sub(r" ", " ", arlabel)
-    country_label = cnt_la
-    Contry_In_Table = False
-    for table in Table_for_frist_word.keys():
-        if country in Table_for_frist_word[table]:
-            Contry_In_Table = True
-            output_test(f'>> >> dX:<<lightpurple>> Contry_In_Table "{country}" in {table}.')
-
-    if country in contry_before_year:
-        Contry_In_Table = True
-        output_test(f'>> >> X:<<lightpurple>> Contry_In_Table "{country}" in contry_before_year.')
-
-    suf = f" {suf.strip()} " if suf else " "
-
     arlabel2 = arlabel
 
-    if Contry_In_Table and typeo not in Keep_it_frist:
+    country_label = cnt_la
+    suf = f" {suf.strip()} " if suf else " "
+    # ---------------------
+    # phase 1
+    # ---------------------
+    in_table = False
+    for table in Table_for_frist_word.keys():
+        if country in Table_for_frist_word[table]:
+            in_table = True
+            output_test(f'>> >> dX:<<lightpurple>> in_table "{country}" in {table}.')
+
+    if country in contry_before_year:
+        in_table = True
+        output_test(f'>> >> X:<<lightpurple>> in_table "{country}" in contry_before_year.')
+
+    if in_table and typeo not in Keep_it_frist:
         if (In.strip() == "in" or In.strip() == "at") or (country.lower() in New_players) and not country_label.startswith("حسب"):
             if year_labe:
                 country_label = f"{country_label} في "
@@ -109,6 +112,9 @@ def new_func_mk2(category, cat_test, year, typeo, In, country, arlabel, year_lab
 
     print_put(f"{year_labe=}, {arlabel2=}")
 
+    # ---------------------
+    # phase 2
+    # ---------------------
     to_check_them_tuble = {
         "Add_in_table": Add_in_table,
         "add_in_to_country": add_in_to_contry,
