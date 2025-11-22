@@ -62,7 +62,7 @@ def new_func_mk2(category, cat_test, year, typeo, In, country, arlabel, year_lab
     Add_to_main2_tab(country, cnt_la)
     cat_test = cat_test.replace(country, "")
     arlabel = re.sub(r" ", " ", arlabel)
-    con_lab = cnt_la
+    country_label = cnt_la
     Contry_In_Table = False
     for table in Table_for_frist_word.keys():
         if country in Table_for_frist_word[table]:
@@ -78,26 +78,26 @@ def new_func_mk2(category, cat_test, year, typeo, In, country, arlabel, year_lab
     arlabel2 = arlabel
 
     if Contry_In_Table and typeo not in Keep_it_frist:
-        if (In.strip() == "in" or In.strip() == "at") or (country.lower() in New_players) and not con_lab.startswith("حسب"):
+        if (In.strip() == "in" or In.strip() == "at") or (country.lower() in New_players) and not country_label.startswith("حسب"):
             if year_labe:
-                con_lab = f"{con_lab} في "
+                country_label = f"{country_label} في "
                 Add_In_Done = True
                 output_test(">>> Add في line: 1010")
                 cat_test = cat_test.replace(In, "")
 
-        arlabel = con_lab + suf + arlabel
+        arlabel = country_label + suf + arlabel
         if arlabel.startswith("حسب"):
-            arlabel = arlabel2 + suf + con_lab
+            arlabel = arlabel2 + suf + country_label
         Add_to_main2_tab(In.strip(), "في")
     else:
         if In.strip() == "in" or In.strip() == "at":
-            con_lab = f"في {con_lab}"
+            country_label = f"في {country_label}"
 
             cat_test = cat_test.replace(In, "")
             Add_to_main2_tab(In.strip(), "في")
             Add_In_Done = True
 
-        arlabel = arlabel + suf + con_lab
+        arlabel = arlabel + suf + country_label
         # ---
         arlabel = re.sub(r"\s+", " ", arlabel)
         # ---
@@ -123,29 +123,29 @@ def new_func_mk2(category, cat_test, year, typeo, In, country, arlabel, year_lab
     if (typeo == "" and In == "") and (country and year != ""):
         print_put("a<<lightblue>>>>>> Add year before")
         if (
-            suf.strip() == "" and con_lab.startswith("ال")
+            suf.strip() == "" and country_label.startswith("ال")
         ) or co_in_tables:
             suf = " في "
             print_put("a<<lightblue>>>>>> Add في to suf")
 
-        print_put(f'a<<lightblue>>>>>> con_lab:{con_lab},suf:{suf}:,arlabel2:"{arlabel2}"')
+        print_put(f'a<<lightblue>>>>>> country_label:{country_label},suf:{suf}:,arlabel2:"{arlabel2}"')
 
         if not Add_In_Done and In.strip() == "" and suf.strip() == "" and year_labe.strip() == arlabel2.strip():
-            if Add_In and con_lab.strip() in ar_lab_before_year_to_add_in:
+            if Add_In and country_label.strip() in ar_lab_before_year_to_add_in:
                 print_put("ar_lab_before_year_to_add_in Add في to arlabel")
                 suf = " في "
                 Add_In = False
                 Add_In_Done = True
 
-            elif con_lab.strip().startswith("أعضاء ") and con_lab.find(" حسب ") == -1:
+            elif country_label.strip().startswith("أعضاء ") and country_label.find(" حسب ") == -1:
                 print_put(">354 Add في to arlabel")
                 suf = " في "
                 Add_In = False
                 Add_In_Done = True
 
-        arlabel = con_lab + suf + arlabel2
+        arlabel = country_label + suf + arlabel2
 
-        print_put("a<<lightblue>>>3265>>>arlabel = con_lab + suf +  arlabel2")
+        print_put("a<<lightblue>>>3265>>>arlabel = country_label + suf +  arlabel2")
         print_put(f"a<<lightblue>>>3265>>>{arlabel}")
 
     print_put(f'a<<lightblue>>>>>> p:{cnt_la}, year_labe: {year_labe}:, cat:"{category}"')
