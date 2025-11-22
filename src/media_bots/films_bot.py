@@ -21,7 +21,7 @@ from ..jobs_bots.test4_bots.t4_2018_jobs import test4_2018_Jobs
 from ..jobs_bots.test_4 import test4_2018_with_nat, Jobs_in_Multi_Sports, nat_match
 from ..o_bots import fax
 from ..matables_bots.bot import Add_to_main2_tab
-from ..matables_bots.bot import Films_O_TT, New_players
+from ..matables_bots.bot import Films_O_TT, add_key_new_players
 from ..helps.print_bot import print_def_head, output_test, mainoutput
 
 test_films_done: Dict[str, str] = {}
@@ -45,9 +45,9 @@ def test_films(cate: str, fa: str = "") -> str:
     if not resolved_label:
         resolved_label = Jobs_in_Multi_Sports(normalized_category, out=mainoutput[1])
         if resolved_label:
-            New_players[normalized_category] = resolved_label
+            add_key_new_players(normalized_category, resolved_label, "films_bot.py")
             Add_to_main2_tab(normalized_category, resolved_label)
-            output_test(f'>>>> Jobs_in_Multi Sports: New_players[{normalized_category}] ="{resolved_label}"')
+            output_test(f'>>>> Jobs_in_Multi Sports: [{normalized_category}] ="{resolved_label}"')
 
     if not resolved_label:
         resolved_label = test4_2018_with_nat(normalized_category, out=mainoutput[1], fa=fa)
@@ -59,9 +59,9 @@ def test_films(cate: str, fa: str = "") -> str:
     if not resolved_label:
         resolved_label = test4_2018_Jobs(normalized_category, out=mainoutput[1])
         if resolved_label:
-            New_players[normalized_category] = resolved_label
+            add_key_new_players(normalized_category, resolved_label, "films_bot.py2")
             Add_to_main2_tab(normalized_category, resolved_label)
-            output_test(f'>>>> test_4 2018 Jobs: New_players[{normalized_category}] ="{resolved_label}"')
+            output_test(f'>>>> test_4 2018 Jobs: [{normalized_category}] ="{resolved_label}"')
 
     if not resolved_label:
         resolved_label = nat_match(normalized_category)

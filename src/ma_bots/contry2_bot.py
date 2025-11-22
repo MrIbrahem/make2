@@ -31,23 +31,8 @@ use_main_s_done: List[str] = []
 use_main_s: Dict[int, bool] = {1: "usemains" in sys.argv or "use_main_s" in sys.argv}
 
 
-def Get_contry2(contry: str, orginal: str = "", With_Years: bool = True) -> str:
-    """Retrieve information related to a specified country."""
+def country_2_title_work(country: str, With_Years: bool = True) -> str:
 
-    if contry in Get_contry2_done:
-        output_test(f'>>>> contry: "{contry}" in Get_contry2_done, lab:"{Get_contry2_done[contry]}"')
-        return Get_contry2_done[contry]
-
-    contry2 = contry.lower().strip()
-    print_def_head(f'>> Get_contry2 "{contry2}":')
-
-    cnt_la = ""
-
-    if not cnt_la:
-        cnt_la = contry2_lab.get_lab_for_contry2(contry, with_test_ye=False)
-
-    if not cnt_la:
-        cnt_la = ye_ts_bot.translate_general_category(contry2, do_Get_contry2=False)
     ti_toseslist = [
         " based in ",
         " in ",
@@ -60,26 +45,48 @@ def Get_contry2(contry: str, orginal: str = "", With_Years: bool = True) -> str:
         " at ",
         " on ",
     ]
+    resolved_label = ""
     for tat_o in ti_toseslist:
-        if tat_o not in contry2:
+        if tat_o not in country:
             continue
 
-        cnt_la = contry_2_tit(tat_o, contry, With_Years=With_Years)
+        resolved_label = contry_2_tit(tat_o, country, With_Years=With_Years)
 
         break
+    return resolved_label
 
-    if not cnt_la:
-        if contry2 in use_main_s_done:
+
+def Get_contry2(contry: str, orginal: str = "", With_Years: bool = True) -> str:
+    """Retrieve information related to a specified country."""
+
+    if contry in Get_contry2_done:
+        output_test(f'>>>> contry: "{contry}" in Get_contry2_done, lab:"{Get_contry2_done[contry]}"')
+        return Get_contry2_done[contry]
+
+    normalized_country = contry.lower().strip()
+    print_def_head(f'>> Get_contry2 "{normalized_country}":')
+
+    resolved_label = contry2_lab.get_lab_for_contry2(contry, with_test_ye=False)
+
+    if not resolved_label:
+        resolved_label = country_2_title_work(normalized_country, With_Years=With_Years)
+
+    if not resolved_label:
+        resolved_label = ye_ts_bot.translate_general_category(normalized_country, do_Get_contry2=False)
+
+    if not resolved_label:
+        if normalized_country in use_main_s_done:
             if use_main_s[1]:
-                use_main_s_done.append(contry2)
-                cnt_la = find_wikidata(contry2)
+                use_main_s_done.append(normalized_country)
+                resolved_label = find_wikidata(normalized_country)
 
-        elif pop_All_2018.get(contry2.lower(), "") != "":
-            cnt_la = pop_All_2018.get(contry2.lower(), "")
-    if cnt_la:
-        Get_contry2_done[contry] = cnt_la
-        print_put(f'>> Get_ scontry2 "{contry2}": cnt_la: {cnt_la}')
-        return cnt_la
+        elif pop_All_2018.get(normalized_country.lower(), "") != "":
+            resolved_label = pop_All_2018.get(normalized_country.lower(), "")
 
-    Get_contry2_done[contry] = cnt_la
-    return cnt_la
+    if resolved_label:
+        Get_contry2_done[contry] = resolved_label
+        print_put(f'>> Get_ scontry2 "{normalized_country}": resolved_label: {resolved_label}')
+        return resolved_label
+
+    Get_contry2_done[contry] = resolved_label
+    return resolved_label

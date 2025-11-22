@@ -6,7 +6,7 @@ import re
 from .. import printe
 from ..ma_lists_bots import sport_formts_for_p17, nat_p17_oioi
 from ..ma_lists_bots import fanco_line, Sports_Keys_For_Team
-from ..matables_bots.bot import New_players, Add_to_main2_tab  # Add_to_main2_tab()
+from ..matables_bots.bot import Add_to_main2_tab, add_key_new_players
 from .. import malists_sport_lab as sport_lab
 from ..ma_lists_bots import All_Nat, Nat_women
 from ..jobs_bots.get_helps import get_con_3
@@ -109,7 +109,7 @@ def find_nat_others(cate, fa=""):
             cnt_la = con_77_lab.format(nat=P17_lab)
             Add_to_main2_tab(cnt_la, P17_lab)
             print_put(f'<<lightblue>>>>>> sport_formts_for_p17: new cnt_la  "{cnt_la}"')
-            New_players[cate] = cnt_la
+            add_key_new_players(cate, cnt_la, "nats.py")
     # ---
     print_put("<<lightblue>>>> ^^^^^^^^^ find_nat_others end ^^^^^^^^^ ")
 

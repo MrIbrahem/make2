@@ -105,6 +105,20 @@ Films_O_TT = {}
 
 New_players = {}
 # ---
+
+
+def add_key_new_players(key, value, file):
+    New_players[key.lower()] = value
+    # print(f"add to New_players[{key}] = {value} in {file}")
+
+
+def check_key_new_players(key):
+    result = key in New_players or key.lower() in New_players
+    # print(f"check_key_new_players [{key}] == {result}")
+    return result
+
+
+# ---
 typeTable = {
     # 'winter' : {"ar":"الشتاء", "Q":""},
     # 'winter sports' : {"ar":"الرياضة الشتوية", "Q":""},
