@@ -118,7 +118,7 @@ def Try_With_Years(contry):
             sus = " في "
 
         elif con_3 in Add_in_table:
-            print_put("a<<lightblue>>>>>> Add في to suf")
+            print_put("a<<lightblue> > > > > > Add في to suf")
             sus = " في "
 
         if con_3_lab:
