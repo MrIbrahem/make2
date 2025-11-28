@@ -55,8 +55,6 @@ from ..ma_lists_bots import Jobs_new
 from ..ma_lists_bots import Sports_Keys_For_Label
 from ..ma_lists_bots import By_table
 
-from ..ma_lists_bots import Add_in_table2
-
 from ..ma_lists_bots import People_key
 from ..ma_lists_bots import All_contry_with_nat
 
@@ -106,6 +104,20 @@ All_P17 = {}
 Films_O_TT = {}
 
 New_players = {}
+# ---
+
+
+def add_key_new_players(key, value, file):
+    New_players[key.lower()] = value
+    # print(f"add to New_players[{key}] = {value} in {file}")
+
+
+def check_key_new_players(key):
+    result = key in New_players or key.lower() in New_players
+    # print(f"check_key_new_players [{key}] == {result}")
+    return result
+
+
 # ---
 typeTable = {
     # 'winter' : {"ar":"الشتاء", "Q":""},
@@ -264,9 +276,8 @@ Add_in_table = [
     "military alliances",
     "illuminated manuscripts",
     "biblical manuscripts",
+    "censuses",  # تعداد السكان
 ]
-# ---
-Add_in_table += Add_in_table2
 # ---
 # P17_keys = [x for x in pop_new]
 P17_keys = [x for x in list(pop_All_2018)]
